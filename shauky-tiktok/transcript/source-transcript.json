@@ -1,0 +1,872 @@
+{
+ "segments": [
+  {
+   "start": 0.394,
+   "end": 2.636,
+   "text": "Kalau kau jumpa SE,",
+   "words": [
+    {
+     "id": "w0",
+     "text": "Kalau",
+     "start": 0.394,
+     "end": 1.095
+    },
+    {
+     "id": "w1",
+     "text": "kau",
+     "start": 1.095,
+     "end": 1.515
+    },
+    {
+     "id": "w2",
+     "text": "jumpa",
+     "start": 1.515,
+     "end": 2.216
+    },
+    {
+     "id": "w3",
+     "text": "SE,",
+     "start": 2.216,
+     "end": 2.636
+    }
+   ]
+  },
+  {
+   "start": 2.954,
+   "end": 3.788,
+   "text": "Yang cakap",
+   "words": [
+    {
+     "id": "w4",
+     "text": "Yang",
+     "start": 2.954,
+     "end": 3.325
+    },
+    {
+     "id": "w5",
+     "text": "cakap",
+     "start": 3.325,
+     "end": 3.788
+    }
+   ]
+  },
+  {
+   "start": 4.202,
+   "end": 5.356,
+   "text": "Lengkabli approve",
+   "words": [
+    {
+     "id": "w6",
+     "text": "Lengkabli",
+     "start": 4.202,
+     "end": 4.851
+    },
+    {
+     "id": "w7",
+     "text": "approve",
+     "start": 4.851,
+     "end": 5.356
+    }
+   ]
+  },
+  {
+   "start": 5.802,
+   "end": 7.948,
+   "text": "Sebelum bank bagi approval, kau kena hati-",
+   "words": [
+    {
+     "id": "w8",
+     "text": "Sebelum",
+     "start": 5.802,
+     "end": 6.219
+    },
+    {
+     "id": "w9",
+     "text": "bank",
+     "start": 6.219,
+     "end": 6.458
+    },
+    {
+     "id": "w10",
+     "text": "bagi",
+     "start": 6.458,
+     "end": 6.696
+    },
+    {
+     "id": "w11",
+     "text": "approval,",
+     "start": 6.696,
+     "end": 7.233
+    },
+    {
+     "id": "w12",
+     "text": "kau",
+     "start": 7.233,
+     "end": 7.411
+    },
+    {
+     "id": "w13",
+     "text": "kena",
+     "start": 7.411,
+     "end": 7.65
+    },
+    {
+     "id": "w14",
+     "text": "hati-",
+     "start": 7.65,
+     "end": 7.948
+    }
+   ]
+  },
+  {
+   "start": 8.266,
+   "end": 11.916,
+   "text": "Nenek kerja di sini, bila dapat dokumen daripada korang,",
+   "words": [
+    {
+     "id": "w15",
+     "text": "Nenek",
+     "start": 8.266,
+     "end": 8.646
+    },
+    {
+     "id": "w16",
+     "text": "kerja",
+     "start": 8.646,
+     "end": 9.026
+    },
+    {
+     "id": "w17",
+     "text": "di",
+     "start": 9.026,
+     "end": 9.179
+    },
+    {
+     "id": "w18",
+     "text": "sini,",
+     "start": 9.179,
+     "end": 9.559
+    },
+    {
+     "id": "w19",
+     "text": "bila",
+     "start": 9.559,
+     "end": 9.863
+    },
+    {
+     "id": "w20",
+     "text": "dapat",
+     "start": 9.863,
+     "end": 10.243
+    },
+    {
+     "id": "w21",
+     "text": "dokumen",
+     "start": 10.243,
+     "end": 10.775
+    },
+    {
+     "id": "w22",
+     "text": "daripada",
+     "start": 10.775,
+     "end": 11.384
+    },
+    {
+     "id": "w23",
+     "text": "korang,",
+     "start": 11.384,
+     "end": 11.916
+    }
+   ]
+  },
+  {
+   "start": 12.138,
+   "end": 13.868,
+   "text": "Karim pertama mereka akan buat simakan.",
+   "words": [
+    {
+     "id": "w24",
+     "text": "Karim",
+     "start": 12.138,
+     "end": 12.392
+    },
+    {
+     "id": "w25",
+     "text": "pertama",
+     "start": 12.392,
+     "end": 12.749
+    },
+    {
+     "id": "w26",
+     "text": "mereka",
+     "start": 12.749,
+     "end": 13.054
+    },
+    {
+     "id": "w27",
+     "text": "akan",
+     "start": 13.054,
+     "end": 13.257
+    },
+    {
+     "id": "w28",
+     "text": "buat",
+     "start": 13.257,
+     "end": 13.461
+    },
+    {
+     "id": "w29",
+     "text": "simakan.",
+     "start": 13.461,
+     "end": 13.868
+    }
+   ]
+  },
+  {
+   "start": 14.282,
+   "end": 16.108,
+   "text": "Dan yang kedua mereka akan tengok.",
+   "words": [
+    {
+     "id": "w30",
+     "text": "Dan",
+     "start": 14.282,
+     "end": 14.471
+    },
+    {
+     "id": "w31",
+     "text": "yang",
+     "start": 14.471,
+     "end": 14.723
+    },
+    {
+     "id": "w32",
+     "text": "kedua",
+     "start": 14.723,
+     "end": 15.038
+    },
+    {
+     "id": "w33",
+     "text": "mereka",
+     "start": 15.038,
+     "end": 15.415
+    },
+    {
+     "id": "w34",
+     "text": "akan",
+     "start": 15.415,
+     "end": 15.667
+    },
+    {
+     "id": "w35",
+     "text": "tengok.",
+     "start": 15.667,
+     "end": 16.108
+    }
+   ]
+  },
+  {
+   "start": 16.394,
+   "end": 18.732,
+   "text": "Bank mana yang bersusahian dengan dokumen korang? Bank mana",
+   "words": [
+    {
+     "id": "w36",
+     "text": "Bank",
+     "start": 16.394,
+     "end": 16.577
+    },
+    {
+     "id": "w37",
+     "text": "mana",
+     "start": 16.577,
+     "end": 16.761
+    },
+    {
+     "id": "w38",
+     "text": "yang",
+     "start": 16.761,
+     "end": 16.944
+    },
+    {
+     "id": "w39",
+     "text": "bersusahian",
+     "start": 16.944,
+     "end": 17.448
+    },
+    {
+     "id": "w40",
+     "text": "dengan",
+     "start": 17.448,
+     "end": 17.723
+    },
+    {
+     "id": "w41",
+     "text": "dokumen",
+     "start": 17.723,
+     "end": 18.044
+    },
+    {
+     "id": "w42",
+     "text": "korang?",
+     "start": 18.044,
+     "end": 18.365
+    },
+    {
+     "id": "w43",
+     "text": "Bank",
+     "start": 18.365,
+     "end": 18.549
+    },
+    {
+     "id": "w44",
+     "text": "mana",
+     "start": 18.549,
+     "end": 18.732
+    }
+   ]
+  },
+  {
+   "start": 19.018,
+   "end": 22.7,
+   "text": "Selepas itu mereka akan follow up pula dengan bank untuk dapatkan keputusan.",
+   "words": [
+    {
+     "id": "w45",
+     "text": "Selepas",
+     "start": 19.018,
+     "end": 19.415
+    },
+    {
+     "id": "w46",
+     "text": "itu",
+     "start": 19.415,
+     "end": 19.584
+    },
+    {
+     "id": "w47",
+     "text": "mereka",
+     "start": 19.584,
+     "end": 19.924
+    },
+    {
+     "id": "w48",
+     "text": "akan",
+     "start": 19.924,
+     "end": 20.151
+    },
+    {
+     "id": "w49",
+     "text": "follow",
+     "start": 20.151,
+     "end": 20.491
+    },
+    {
+     "id": "w50",
+     "text": "up",
+     "start": 20.491,
+     "end": 20.604
+    },
+    {
+     "id": "w51",
+     "text": "pula",
+     "start": 20.604,
+     "end": 20.831
+    },
+    {
+     "id": "w52",
+     "text": "dengan",
+     "start": 20.831,
+     "end": 21.171
+    },
+    {
+     "id": "w53",
+     "text": "bank",
+     "start": 21.171,
+     "end": 21.397
+    },
+    {
+     "id": "w54",
+     "text": "untuk",
+     "start": 21.397,
+     "end": 21.68
+    },
+    {
+     "id": "w55",
+     "text": "dapatkan",
+     "start": 21.68,
+     "end": 22.134
+    },
+    {
+     "id": "w56",
+     "text": "keputusan.",
+     "start": 22.134,
+     "end": 22.7
+    }
+   ]
+  },
+  {
+   "start": 23.178,
+   "end": 24.108,
+   "text": "Pihak apapun.",
+   "words": [
+    {
+     "id": "w57",
+     "text": "Pihak",
+     "start": 23.178,
+     "end": 23.566
+    },
+    {
+     "id": "w58",
+     "text": "apapun.",
+     "start": 23.566,
+     "end": 24.108
+    }
+   ]
+  },
+  {
+   "start": 24.426,
+   "end": 25.452,
+   "text": "Kebetusan akhir",
+   "words": [
+    {
+     "id": "w59",
+     "text": "Kebetusan",
+     "start": 24.426,
+     "end": 25.086
+    },
+    {
+     "id": "w60",
+     "text": "akhir",
+     "start": 25.086,
+     "end": 25.452
+    }
+   ]
+  },
+  {
+   "start": 25.706,
+   "end": 27.756,
+   "text": "Terletak daripada tangan bank.",
+   "words": [
+    {
+     "id": "w61",
+     "text": "Terletak",
+     "start": 25.706,
+     "end": 26.313
+    },
+    {
+     "id": "w62",
+     "text": "daripada",
+     "start": 26.313,
+     "end": 26.921
+    },
+    {
+     "id": "w63",
+     "text": "tangan",
+     "start": 26.921,
+     "end": 27.376
+    },
+    {
+     "id": "w64",
+     "text": "bank.",
+     "start": 27.376,
+     "end": 27.756
+    }
+   ]
+  },
+  {
+   "start": 28.586,
+   "end": 37.628,
+   "text": "Jadi kalau untuk aku, aku lebih rela explain awal-awal dekat customer Kalau dia layak, aku akan cakap layak Kalau dia tak layak, aku akan bagi tahu tak layak Sebab apa?",
+   "words": [
+    {
+     "id": "w65",
+     "text": "Jadi",
+     "start": 28.586,
+     "end": 28.846
+    },
+    {
+     "id": "w66",
+     "text": "kalau",
+     "start": 28.846,
+     "end": 29.171
+    },
+    {
+     "id": "w67",
+     "text": "untuk",
+     "start": 29.171,
+     "end": 29.497
+    },
+    {
+     "id": "w68",
+     "text": "aku,",
+     "start": 29.497,
+     "end": 29.757
+    },
+    {
+     "id": "w69",
+     "text": "aku",
+     "start": 29.757,
+     "end": 29.952
+    },
+    {
+     "id": "w70",
+     "text": "lebih",
+     "start": 29.952,
+     "end": 30.277
+    },
+    {
+     "id": "w71",
+     "text": "rela",
+     "start": 30.277,
+     "end": 30.538
+    },
+    {
+     "id": "w72",
+     "text": "explain",
+     "start": 30.538,
+     "end": 30.993
+    },
+    {
+     "id": "w73",
+     "text": "awal-awal",
+     "start": 30.993,
+     "end": 31.578
+    },
+    {
+     "id": "w74",
+     "text": "dekat",
+     "start": 31.578,
+     "end": 31.904
+    },
+    {
+     "id": "w75",
+     "text": "customer",
+     "start": 31.904,
+     "end": 32.424
+    },
+    {
+     "id": "w76",
+     "text": "Kalau",
+     "start": 32.424,
+     "end": 32.749
+    },
+    {
+     "id": "w77",
+     "text": "dia",
+     "start": 32.749,
+     "end": 32.944
+    },
+    {
+     "id": "w78",
+     "text": "layak,",
+     "start": 32.944,
+     "end": 33.335
+    },
+    {
+     "id": "w79",
+     "text": "aku",
+     "start": 33.335,
+     "end": 33.53
+    },
+    {
+     "id": "w80",
+     "text": "akan",
+     "start": 33.53,
+     "end": 33.79
+    },
+    {
+     "id": "w81",
+     "text": "cakap",
+     "start": 33.79,
+     "end": 34.115
+    },
+    {
+     "id": "w82",
+     "text": "layak",
+     "start": 34.115,
+     "end": 34.441
+    },
+    {
+     "id": "w83",
+     "text": "Kalau",
+     "start": 34.441,
+     "end": 34.766
+    },
+    {
+     "id": "w84",
+     "text": "dia",
+     "start": 34.766,
+     "end": 34.961
+    },
+    {
+     "id": "w85",
+     "text": "tak",
+     "start": 34.961,
+     "end": 35.156
+    },
+    {
+     "id": "w86",
+     "text": "layak,",
+     "start": 35.156,
+     "end": 35.546
+    },
+    {
+     "id": "w87",
+     "text": "aku",
+     "start": 35.546,
+     "end": 35.742
+    },
+    {
+     "id": "w88",
+     "text": "akan",
+     "start": 35.742,
+     "end": 36.002
+    },
+    {
+     "id": "w89",
+     "text": "bagi",
+     "start": 36.002,
+     "end": 36.262
+    },
+    {
+     "id": "w90",
+     "text": "tahu",
+     "start": 36.262,
+     "end": 36.522
+    },
+    {
+     "id": "w91",
+     "text": "tak",
+     "start": 36.522,
+     "end": 36.717
+    },
+    {
+     "id": "w92",
+     "text": "layak",
+     "start": 36.717,
+     "end": 37.043
+    },
+    {
+     "id": "w93",
+     "text": "Sebab",
+     "start": 37.043,
+     "end": 37.368
+    },
+    {
+     "id": "w94",
+     "text": "apa?",
+     "start": 37.368,
+     "end": 37.628
+    }
+   ]
+  },
+  {
+   "start": 37.898,
+   "end": 41.004,
+   "text": "Aku tak nak bagi harapan palsu kepada customer-customer aku.",
+   "words": [
+    {
+     "id": "w95",
+     "text": "Aku",
+     "start": 37.898,
+     "end": 38.077
+    },
+    {
+     "id": "w96",
+     "text": "tak",
+     "start": 38.077,
+     "end": 38.256
+    },
+    {
+     "id": "w97",
+     "text": "nak",
+     "start": 38.256,
+     "end": 38.436
+    },
+    {
+     "id": "w98",
+     "text": "bagi",
+     "start": 38.436,
+     "end": 38.675
+    },
+    {
+     "id": "w99",
+     "text": "harapan",
+     "start": 38.675,
+     "end": 39.093
+    },
+    {
+     "id": "w100",
+     "text": "palsu",
+     "start": 39.093,
+     "end": 39.391
+    },
+    {
+     "id": "w101",
+     "text": "kepada",
+     "start": 39.391,
+     "end": 39.75
+    },
+    {
+     "id": "w102",
+     "text": "customer-customer",
+     "start": 39.75,
+     "end": 40.765
+    },
+    {
+     "id": "w103",
+     "text": "aku.",
+     "start": 40.765,
+     "end": 41.004
+    }
+   ]
+  },
+  {
+   "start": 42.57,
+   "end": 48.044,
+   "text": "Kalau kau tengah mencari kereta Pudua, kau nak tahu tentang loan dengan lebih jelas?",
+   "words": [
+    {
+     "id": "w104",
+     "text": "Kalau",
+     "start": 42.57,
+     "end": 42.955
+    },
+    {
+     "id": "w105",
+     "text": "kau",
+     "start": 42.955,
+     "end": 43.187
+    },
+    {
+     "id": "w106",
+     "text": "tengah",
+     "start": 43.187,
+     "end": 43.649
+    },
+    {
+     "id": "w107",
+     "text": "mencari",
+     "start": 43.649,
+     "end": 44.189
+    },
+    {
+     "id": "w108",
+     "text": "kereta",
+     "start": 44.189,
+     "end": 44.652
+    },
+    {
+     "id": "w109",
+     "text": "Pudua,",
+     "start": 44.652,
+     "end": 45.114
+    },
+    {
+     "id": "w110",
+     "text": "kau",
+     "start": 45.114,
+     "end": 45.346
+    },
+    {
+     "id": "w111",
+     "text": "nak",
+     "start": 45.346,
+     "end": 45.577
+    },
+    {
+     "id": "w112",
+     "text": "tahu",
+     "start": 45.577,
+     "end": 45.885
+    },
+    {
+     "id": "w113",
+     "text": "tentang",
+     "start": 45.885,
+     "end": 46.425
+    },
+    {
+     "id": "w114",
+     "text": "loan",
+     "start": 46.425,
+     "end": 46.733
+    },
+    {
+     "id": "w115",
+     "text": "dengan",
+     "start": 46.733,
+     "end": 47.196
+    },
+    {
+     "id": "w116",
+     "text": "lebih",
+     "start": 47.196,
+     "end": 47.581
+    },
+    {
+     "id": "w117",
+     "text": "jelas?",
+     "start": 47.581,
+     "end": 48.044
+    }
+   ]
+  },
+  {
+   "start": 48.202,
+   "end": 50.828,
+   "text": "Nombor aku dekat Bayu, boleh contact aku insyaAllah.",
+   "words": [
+    {
+     "id": "w118",
+     "text": "Nombor",
+     "start": 48.202,
+     "end": 48.552
+    },
+    {
+     "id": "w119",
+     "text": "aku",
+     "start": 48.552,
+     "end": 48.727
+    },
+    {
+     "id": "w120",
+     "text": "dekat",
+     "start": 48.727,
+     "end": 49.019
+    },
+    {
+     "id": "w121",
+     "text": "Bayu,",
+     "start": 49.019,
+     "end": 49.311
+    },
+    {
+     "id": "w122",
+     "text": "boleh",
+     "start": 49.311,
+     "end": 49.603
+    },
+    {
+     "id": "w123",
+     "text": "contact",
+     "start": 49.603,
+     "end": 50.011
+    },
+    {
+     "id": "w124",
+     "text": "aku",
+     "start": 50.011,
+     "end": 50.186
+    },
+    {
+     "id": "w125",
+     "text": "insyaAllah.",
+     "start": 50.186,
+     "end": 50.828
+    }
+   ]
+  }
+ ]
+}

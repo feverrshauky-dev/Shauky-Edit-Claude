@@ -1,0 +1,108 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-family: "Montserrat", sans-serif;
+    }
+    #cta-q {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 205px;
+      text-align: center;
+    }
+    .cta-chip {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 12px 28px 14px;
+      border-radius: 999px;
+      background: rgba(14, 17, 22, 0.86);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 50px;
+      line-height: 1;
+      opacity: 0;
+    }
+    .cta-chip b {
+      color: #c8ec3c;
+    }
+    #cta-card {
+      position: absolute;
+      left: 70px;
+      right: 70px;
+      top: 200px;
+      padding: 26px 30px 30px;
+      border-radius: 34px;
+      background: #c8ec3c;
+      color: #0e1116;
+      text-align: center;
+      opacity: 0;
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
+    }
+    #cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+    }
+    #cta-icon {
+      flex: none;
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      background: #0e1116;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #cta-icon svg {
+      width: 58px;
+      height: 58px;
+    }
+    #cta-big {
+      font-weight: 800;
+      font-size: 76px;
+      line-height: 1;
+      text-align: left;
+    }
+    #cta-small {
+      margin-top: 16px;
+      font-weight: 800;
+      font-size: 36px;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+  </style>
+  <div id="root" data-composition-id="cta" data-width="1080" data-height="1920">
+    <div id="cta-q">
+      <div class="cta-chip" id="cta-c1">NAK BELI <b>PERODUA?</b></div>
+      <br />
+      <div class="cta-chip" id="cta-c2">NAK TAHU PASAL <b>LOAN?</b></div>
+    </div>
+    <div id="cta-card">
+      <div id="cta-row">
+        <div id="cta-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c8ec3c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
+          </svg>
+        </div>
+        <div id="cta-big">NOMBOR AKU<br />DEKAT BIO</div>
+      </div>
+      <div id="cta-small">CONTACT SA SHAUKY</div>
+    </div>
+  </div>
+  <script>
+    // Scene clock starts at 35.6 s of the film.
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cta-c1", { opacity: 0, y: 24, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.36, ease: "back.out(1.5)" }, 2.24);
+    tl.fromTo("#cta-c2", { opacity: 0, y: 24, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.36, ease: "back.out(1.5)" }, 4.17);
+    tl.to(["#cta-c1", "#cta-c2"], { opacity: 0, y: -30, duration: 0.16, ease: "power3.in", stagger: 0.03 }, 5.0);
+    // "nombor aku dekat bio": the card lands and holds to the end
+    tl.fromTo("#cta-card", { opacity: 0, y: -40, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "expo.out" }, 5.19);
+    tl.fromTo("#cta-icon", { rotation: -18 }, { rotation: 0, duration: 0.6, ease: "elastic.out(1, 0.5)" }, 5.25);
+    window.__timelines["cta"] = tl;
+  </script>
+</template>

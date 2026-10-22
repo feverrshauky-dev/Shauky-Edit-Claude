@@ -1,0 +1,109 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-family: "Montserrat", sans-serif;
+    }
+    #hook-card {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 200px;
+      padding: 30px 34px 34px;
+      border-radius: 34px;
+      background: rgba(14, 17, 22, 0.86);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      text-align: center;
+    }
+    #hook-l1 {
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 62px;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+    }
+    #hook-l2 {
+      position: relative;
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 22px 12px;
+      font-weight: 800;
+      font-size: 100px;
+      line-height: 1;
+      color: #c8ec3c;
+    }
+    #hook-l2-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: #c8ec3c;
+      transform-origin: 0% 50%;
+      transform: scaleX(0);
+    }
+    #hook-l2-t {
+      position: relative;
+    }
+    #hook-warn {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 548px;
+      text-align: center;
+    }
+    #hook-warn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 34px 16px 26px;
+      border-radius: 999px;
+      background: #ff3b3b;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 64px;
+      line-height: 1;
+      box-shadow: 0 16px 40px rgba(255, 59, 59, 0.45);
+      opacity: 0;
+    }
+    #hook-warn-pill svg {
+      width: 62px;
+      height: 62px;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-card">
+      <div id="hook-l1">SA CAKAP LOAN KAU</div>
+      <div id="hook-l2"><span id="hook-l2-bg"></span><span id="hook-l2-t">CONFIRM LULUS?</span></div>
+    </div>
+    <div id="hook-warn">
+      <div id="hook-warn-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3 2.5 20h19L12 3Z" />
+          <path d="M12 10v4.5" />
+          <path d="M12 17.4v.1" />
+        </svg>
+        <span>HATI-HATI!</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // Frame 0 is the thumbnail: the card is already there and holds still.
+    tl.fromTo("#hook-card", { opacity: 1, y: 0 }, { opacity: 1, y: 0, duration: 0.01 }, 0);
+    // "loan kau boleh approve" -> the claim lights up
+    tl.fromTo("#hook-l2-bg", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power3.out" }, 2.88);
+    tl.fromTo("#hook-l2-t", { color: "#c8ec3c" }, { color: "#0e1116", duration: 0.08 }, 2.92);
+    // "kau kena hati-hati" -> warning stamp
+    tl.fromTo(
+      "#hook-warn-pill",
+      { opacity: 0, scale: 1.7, rotation: -9 },
+      { opacity: 1, scale: 1, rotation: -3, duration: 0.32, ease: "back.out(1.6)" },
+      5.29,
+    );
+    // leave clean before the cut
+    tl.to(["#hook-card", "#hook-warn-pill"], { opacity: 0, y: -40, duration: 0.18, ease: "power3.in" }, 5.66);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

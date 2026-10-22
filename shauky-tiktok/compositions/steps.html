@@ -1,0 +1,97 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-family: "Montserrat", sans-serif;
+    }
+    #st-head {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 196px;
+      text-align: center;
+    }
+    #st-head-pill {
+      display: inline-block;
+      padding: 12px 28px 14px;
+      border-radius: 999px;
+      background: rgba(14, 17, 22, 0.86);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 40px;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      opacity: 0;
+    }
+    #st-head-pill b {
+      color: #c8ec3c;
+    }
+    #st-row {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      top: 284px;
+      display: flex;
+      gap: 16px;
+    }
+    .st-step {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 16px 18px;
+      border-radius: 24px;
+      background: rgba(14, 17, 22, 0.86);
+      color: #ffffff;
+      opacity: 0;
+    }
+    .st-num {
+      flex: none;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #c8ec3c;
+      color: #0e1116;
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 58px;
+      text-align: center;
+    }
+    .st-label {
+      font-weight: 800;
+      font-size: 31px;
+      line-height: 1.08;
+    }
+  </style>
+  <div id="root" data-composition-id="steps" data-width="1080" data-height="1920">
+    <div id="st-head"><div id="st-head-pill">MACAM MANA <b>LOAN</b> DIPROSES</div></div>
+    <div id="st-row">
+      <div class="st-step" id="st-1"><div class="st-num">1</div><div class="st-label">SEMAK<br />DOKUMEN</div></div>
+      <div class="st-step" id="st-2"><div class="st-num">2</div><div class="st-label">PILIH BANK<br />SESUAI</div></div>
+      <div class="st-step" id="st-3"><div class="st-num">3</div><div class="st-label">FOLLOW UP<br />BANK</div></div>
+    </div>
+  </div>
+  <script>
+    // Scene clock starts at 5.86 s of the film.
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#st-head-pill", { opacity: 0, y: -24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 0.3);
+    const steps = [
+      ["#st-1", 4.09], // "perkara yang pertama"
+      ["#st-2", 5.69], // "yang kedua"
+      ["#st-3", 9.5], //  "selepas itu ... follow up"
+    ];
+    steps.forEach(([sel, t], i) => {
+      tl.fromTo(sel, { opacity: 0, y: 30, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.5)" }, t);
+      tl.fromTo(sel, { backgroundColor: "rgba(14, 17, 22, 0.86)" }, { backgroundColor: "rgba(36, 44, 18, 0.92)", duration: 0.2 }, t);
+      if (i > 0) {
+        const prev = steps[i - 1][0];
+        tl.to(prev, { backgroundColor: "rgba(14, 17, 22, 0.72)", opacity: 0.78, duration: 0.25, ease: "power2.out" }, t);
+      }
+    });
+    tl.to(["#st-head-pill", "#st-1", "#st-2", "#st-3"], { opacity: 0, y: -36, duration: 0.2, ease: "power3.in", stagger: 0.04 }, 12.7);
+    window.__timelines["steps"] = tl;
+  </script>
+</template>
