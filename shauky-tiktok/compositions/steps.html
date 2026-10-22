@@ -4,94 +4,90 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      font-family: "Montserrat", sans-serif;
     }
-    #st-head {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      top: 196px;
-      text-align: center;
-    }
-    #st-head-pill {
-      display: inline-block;
-      padding: 12px 28px 14px;
-      border-radius: 999px;
-      background: rgba(14, 17, 22, 0.86);
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 40px;
-      line-height: 1;
-      letter-spacing: 0.04em;
-      opacity: 0;
-    }
-    #st-head-pill b {
-      color: #c8ec3c;
-    }
+    /* a gear-indicator strip under the chin, above the captions */
     #st-row {
       position: absolute;
-      left: 40px;
-      right: 40px;
-      top: 284px;
+      left: 64px;
+      right: 64px;
+      top: 1036px;
       display: flex;
-      gap: 16px;
-    }
-    .st-step {
-      flex: 1;
-      display: flex;
-      align-items: center;
       gap: 14px;
-      padding: 16px 16px 18px;
-      border-radius: 24px;
-      background: rgba(14, 17, 22, 0.86);
-      color: #ffffff;
+    }
+    .st-seg {
+      position: relative;
+      flex: 1;
+      height: 112px;
       opacity: 0;
     }
+    .st-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: rgba(11, 13, 16, 0.74);
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.22);
+      transform: skewX(-10deg);
+    }
+    .st-fill {
+      position: absolute;
+      inset: 0;
+      background: var(--lime, #c6e83a);
+      transform-origin: 0% 50%;
+    }
+    .st-txt {
+      position: relative;
+      padding: 14px 10px 0 26px;
+      color: #ffffff;
+    }
     .st-num {
-      flex: none;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #c8ec3c;
-      color: #0e1116;
-      font-weight: 800;
-      font-size: 36px;
-      line-height: 58px;
-      text-align: center;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      color: var(--lime, #c6e83a);
     }
     .st-label {
-      font-weight: 800;
-      font-size: 31px;
-      line-height: 1.08;
+      margin-top: 6px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 1.04;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
     }
   </style>
-  <div id="root" data-composition-id="steps" data-width="1080" data-height="1920">
-    <div id="st-head"><div id="st-head-pill">MACAM MANA <b>LOAN</b> DIPROSES</div></div>
-    <div id="st-row">
-      <div class="st-step" id="st-1"><div class="st-num">1</div><div class="st-label">SEMAK<br />DOKUMEN</div></div>
-      <div class="st-step" id="st-2"><div class="st-num">2</div><div class="st-label">PILIH BANK<br />SESUAI</div></div>
-      <div class="st-step" id="st-3"><div class="st-num">3</div><div class="st-label">FOLLOW UP<br />BANK</div></div>
+  <div data-hf-id="hf-bwau" id="root" data-composition-id="steps" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-typr" id="st-row">
+      <div data-hf-id="hf-skug" class="st-seg" id="st-1"><div data-hf-id="hf-fxrv" class="st-bg"><div data-hf-id="hf-dv21" class="st-fill"></div></div><div data-hf-id="hf-rauu" class="st-txt"><div data-hf-id="hf-g5s5" class="st-num">01</div><div data-hf-id="hf-9k24" class="st-label">SEMAK DOKUMEN</div></div></div>
+      <div data-hf-id="hf-18qb" class="st-seg" id="st-2"><div data-hf-id="hf-g4fv" class="st-bg"><div data-hf-id="hf-8a4t" class="st-fill"></div></div><div data-hf-id="hf-vnkq" class="st-txt"><div data-hf-id="hf-hcp8" class="st-num">02</div><div data-hf-id="hf-832d" class="st-label">CARI BANK SESUAI</div></div></div>
+      <div data-hf-id="hf-xama" class="st-seg" id="st-3"><div data-hf-id="hf-fq4u" class="st-bg"><div data-hf-id="hf-9h1w" class="st-fill"></div></div><div data-hf-id="hf-w1vr" class="st-txt"><div data-hf-id="hf-gye7" class="st-num">03</div><div data-hf-id="hf-5lvg" class="st-label">FOLLOW UP BANK</div></div></div>
     </div>
   </div>
   <script>
-    // Scene clock starts at 5.86 s of the film.
+    // Scene clock starts at 9.5667 s of the film ("perkara yang pertama").
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#st-head-pill", { opacity: 0, y: -24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 0.3);
+    // all three slots arrive empty, so the viewer sees there are three steps
+    tl.fromTo(".st-seg", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out", stagger: 0.06 }, 0.04);
     const steps = [
-      ["#st-1", 4.09], // "perkara yang pertama"
-      ["#st-2", 5.69], // "yang kedua"
-      ["#st-3", 9.5], //  "selepas itu ... follow up"
+      ["#st-1", 0.3], //  "pertama"
+      ["#st-2", 2.14], // "kedua"
+      ["#st-3", 6.94], // "follow up"
     ];
     steps.forEach(([sel, t], i) => {
-      tl.fromTo(sel, { opacity: 0, y: 30, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.5)" }, t);
-      tl.fromTo(sel, { backgroundColor: "rgba(14, 17, 22, 0.86)" }, { backgroundColor: "rgba(36, 44, 18, 0.92)", duration: 0.2 }, t);
+      tl.fromTo(`${sel} .st-fill`, { scaleX: 0 }, { scaleX: 1, duration: 0.32, ease: "expo.out" }, t);
+      tl.fromTo(`${sel} .st-txt`, { color: "#ffffff" }, { color: "#0b0d10", duration: 0.1, ease: "none" }, t + 0.06);
+      tl.fromTo(`${sel} .st-num`, { color: "#c6e83a" }, { color: "#0b0d10", duration: 0.1, ease: "none" }, t + 0.06);
       if (i > 0) {
+        // the finished step steps back: dark again, number stays lime
         const prev = steps[i - 1][0];
-        tl.to(prev, { backgroundColor: "rgba(14, 17, 22, 0.72)", opacity: 0.78, duration: 0.25, ease: "power2.out" }, t);
+        tl.to(`${prev} .st-fill`, { opacity: 0, duration: 0.25, ease: "power2.out" }, t);
+        tl.to(`${prev} .st-txt`, { color: "#ffffff", duration: 0.2, ease: "none" }, t);
+        tl.to(`${prev} .st-num`, { color: "#c6e83a", duration: 0.2, ease: "none" }, t);
       }
     });
-    tl.to(["#st-head-pill", "#st-1", "#st-2", "#st-3"], { opacity: 0, y: -36, duration: 0.2, ease: "power3.in", stagger: 0.04 }, 12.7);
+    tl.to(".st-seg", { opacity: 0, y: 16, duration: 0.18, ease: "power3.in", stagger: 0.03 }, 9.2);
     window.__timelines["steps"] = tl;
   </script>
 </template>

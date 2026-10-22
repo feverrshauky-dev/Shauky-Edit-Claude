@@ -4,92 +4,92 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      font-family: "Montserrat", sans-serif;
     }
+    /* the camera pushes in on the face; the line plays out under the chin */
     #po-scrim {
       position: absolute;
       left: 0;
       right: 0;
-      top: 0;
-      height: 820px;
-      background: linear-gradient(180deg, rgba(8, 10, 14, 0.78) 0%, rgba(8, 10, 14, 0.55) 55%, rgba(8, 10, 14, 0) 100%);
+      top: 860px;
+      height: 600px;
+      background: linear-gradient(180deg, rgba(11, 13, 16, 0) 0%, rgba(11, 13, 16, 0.3) 22%, rgba(11, 13, 16, 0.66) 40%, rgba(11, 13, 16, 0.66) 80%, rgba(11, 13, 16, 0) 100%);
       opacity: 0;
     }
     #po-text {
       position: absolute;
       left: 0;
       width: 100%;
-      top: 210px;
+      top: 1040px;
       text-align: center;
-    }
-    .po-line {
-      display: block;
       color: #ffffff;
-      font-weight: 800;
-      line-height: 1;
     }
     #po-l1 {
-      font-size: 82px;
-      letter-spacing: 0.01em;
+      font-family: "Oswald", sans-serif;
+      font-weight: 700;
+      font-size: 86px;
+      line-height: 1;
+      letter-spacing: 0.02em;
     }
     #po-l1 span {
       display: inline-block;
       opacity: 0;
     }
     #po-l2 {
-      margin-top: 22px;
-      font-size: 54px;
+      margin-top: 10px;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 1;
+      color: #dfe4e9;
       opacity: 0;
     }
     #po-bank {
       display: inline-flex;
       align-items: center;
       gap: 22px;
-      margin-top: 18px;
-      padding: 10px 36px 18px 28px;
-      border-radius: 28px;
-      background: #c8ec3c;
-      color: #0e1116;
-      font-weight: 800;
-      font-size: 140px;
+      margin-top: 12px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 700;
+      font-size: 136px;
       line-height: 1;
+      letter-spacing: 0.04em;
+      color: var(--lime, #c6e83a);
       opacity: 0;
-      box-shadow: 0 24px 60px rgba(200, 236, 60, 0.35);
     }
     #po-bank svg {
-      width: 120px;
-      height: 120px;
+      width: 104px;
+      height: 104px;
     }
   </style>
-  <div id="root" data-composition-id="payoff" data-width="1080" data-height="1920">
-    <div id="po-scrim"></div>
-    <div id="po-text">
-      <div class="po-line" id="po-l1"><span id="po-w1">KEPUTUSAN</span> <span id="po-w2">AKHIR</span></div>
-      <div class="po-line" id="po-l2">TERLETAK DI TANGAN</div>
-      <div id="po-bank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#0e1116" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9.5 12 4l9 5.5" />
-          <path d="M4 10h16" />
-          <path d="M6 10v7M10 10v7M14 10v7M18 10v7" />
-          <path d="M3 20h18" />
+  <div data-hf-id="hf-emvc" id="root" data-composition-id="payoff" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-tl4n" id="po-scrim"></div>
+    <div data-hf-id="hf-w1by" id="po-text">
+      <div data-hf-id="hf-iuvi" id="po-l1"><span data-hf-id="hf-d4y8" id="po-w1">KEPUTUSAN</span> <span data-hf-id="hf-nigg" id="po-w2">AKHIR</span></div>
+      <div data-hf-id="hf-6tko" id="po-l2">terletak daripada tangan</div>
+      <div data-hf-id="hf-2uft" id="po-bank">
+        <svg data-hf-id="hf-aca3" viewBox="0 0 24 24" fill="none" stroke="#c6e83a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-deo6" d="M3 9.5 12 4l9 5.5" />
+          <path data-hf-id="hf-vtzt" d="M4 10h16" />
+          <path data-hf-id="hf-05mf" d="M6 10v7M10 10v7M14 10v7M18 10v7" />
+          <path data-hf-id="hf-tmtn" d="M3 20h18" />
         </svg>
-        <span>BANK</span>
+        <span data-hf-id="hf-4vjv">BANK</span>
       </div>
     </div>
   </div>
   <script>
-    // Scene clock starts at 18.87 s of the film.
+    // Scene clock starts at 19.0 s of the film ("Tapi apa-apa pun").
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#po-scrim", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 1.0);
-    // per word: blur -> sharp, no translate
-    tl.fromTo("#po-w1", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, 1.23);
-    tl.fromTo("#po-w2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, 1.78);
-    tl.fromTo("#po-l2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 2.24);
+    tl.fromTo("#po-scrim", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0.86);
+    // per word, blur to sharp, on the spoken word
+    tl.fromTo("#po-w1", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, 1.11);
+    tl.fromTo("#po-w2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, 1.67);
+    tl.fromTo("#po-l2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 2.13);
     // the payoff lands on "bank" with the impact
-    tl.fromTo("#po-bank", { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 3.95);
-    tl.to(["#po-l1", "#po-l2", "#po-bank"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.03 }, 5.05);
-    tl.to("#po-scrim", { opacity: 0, duration: 0.25, ease: "power2.in" }, 5.05);
+    tl.fromTo("#po-bank", { opacity: 0, scale: 1.9 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 3.71);
+    tl.to(["#po-l1", "#po-l2", "#po-bank"], { opacity: 0, filter: "blur(8px)", duration: 0.1, ease: "power2.in", stagger: 0.01 }, 4.04);
+    tl.to("#po-scrim", { opacity: 0, duration: 0.12, ease: "power2.in" }, 4.04);
     window.__timelines["payoff"] = tl;
   </script>
 </template>

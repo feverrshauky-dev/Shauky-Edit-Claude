@@ -9,316 +9,182 @@
       position: absolute;
       left: 0;
       width: 100%;
-      top: 1190px;
       padding: 0 70px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 6px 14px;
       text-align: center;
       opacity: 0;
       visibility: hidden;
       overflow: visible;
     }
     .cg-in {
-      display: inline-flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 6px 10px;
+      display: inline-block;
       max-width: 940px;
-      padding: 12px 16px 14px;
-      border-radius: 26px;
-      background: rgba(8, 10, 14, 0.46);
+      padding: 10px 24px 16px;
+      border-radius: 14px;
+      background: rgba(11, 13, 16, 0.56);
+      font-family: "Inter", sans-serif;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      white-space: nowrap;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
     }
     .cw {
-      position: relative;
       display: inline-block;
-      padding: 4px 14px 8px;
-      font-family: "Montserrat", sans-serif;
-      font-weight: 800;
-      font-size: inherit;
-      line-height: 1;
-      letter-spacing: 0.01em;
-      color: #ffffff;
-      text-shadow:
-        0 0 2px rgba(0, 0, 0, 0.9),
-        0 4px 0 rgba(0, 0, 0, 0.55),
-        0 8px 22px rgba(0, 0, 0, 0.55);
     }
-    .cw.kw .cw-t {
-      color: var(--lime, #c8ec3c);
+    .acc {
+      color: var(--lime, #c6e83a);
     }
-    .cw-t {
+    .chip {
       position: relative;
-      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.18em;
+      margin: 0 0.06em;
+      padding: 0.06em 0.34em 0.1em 0.24em;
+      border-radius: 10px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-shadow: none;
+      vertical-align: middle;
     }
-    .cw-bg {
+    .chip svg {
+      width: 0.8em;
+      height: 0.8em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 3.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .chip-yes {
+      background: #1fa35a;
+      color: #ffffff;
+    }
+    .chip-no {
+      background: #ff4a3d;
+      color: #ffffff;
+    }
+    .chip-palsu {
+      padding: 0.06em 0.3em 0.1em;
+      background: #f4f6f8;
+      color: #0b0d10;
+    }
+    .strike {
       position: absolute;
-      inset: 0;
-      border-radius: 14px;
-      background: var(--lime, #c8ec3c);
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+      left: 0.16em;
+      right: 0.16em;
+      top: 52%;
+      height: 0.14em;
+      border-radius: 0.07em;
+      background: #ff4a3d;
       transform-origin: 0% 50%;
-      opacity: 0;
-      z-index: 0;
+      transform: scaleX(0);
     }
   </style>
-  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
-    <div class="cg" id="cap-g0" style="top: 664px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w0"><span class="cw-bg"></span><span class="cw-t">KALAU</span></span> <span class="cw" id="cap-w1"><span class="cw-bg"></span><span class="cw-t">KAU</span></span> <span class="cw" id="cap-w2"><span class="cw-bg"></span><span class="cw-t">JUMPA</span></span></div></div>
-    <div class="cg" id="cap-g1" style="top: 664px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w3"><span class="cw-bg"></span><span class="cw-t">SA</span></span></div></div>
-    <div class="cg" id="cap-g2" style="top: 664px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w4"><span class="cw-bg"></span><span class="cw-t">YANG</span></span> <span class="cw" id="cap-w5"><span class="cw-bg"></span><span class="cw-t">CAKAP</span></span></div></div>
-    <div class="cg" id="cap-g3" style="top: 664px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w6"><span class="cw-bg"></span><span class="cw-t">LOAN</span></span> <span class="cw" id="cap-w7"><span class="cw-bg"></span><span class="cw-t">KAU</span></span> <span class="cw" id="cap-w8"><span class="cw-bg"></span><span class="cw-t">BOLEH</span></span></div></div>
-    <div class="cg" id="cap-g4" style="top: 664px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w9"><span class="cw-bg"></span><span class="cw-t">APPROVE</span></span></div></div>
-    <div class="cg" id="cap-g5" style="top: 664px"><div class="cg-in" style="font-size: 68px"><span class="cw" id="cap-w10"><span class="cw-bg"></span><span class="cw-t">SEBELUM</span></span> <span class="cw kw" id="cap-w11"><span class="cw-bg"></span><span class="cw-t">BANK</span></span> <span class="cw" id="cap-w12"><span class="cw-bg"></span><span class="cw-t">BAGI</span></span></div></div>
-    <div class="cg" id="cap-g6" style="top: 664px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w13"><span class="cw-bg"></span><span class="cw-t">APPROVAL</span></span> <span class="cw" id="cap-w14"><span class="cw-bg"></span><span class="cw-t">KAU</span></span> <span class="cw" id="cap-w15"><span class="cw-bg"></span><span class="cw-t">KENA</span></span></div></div>
-    <div class="cg" id="cap-g7" style="top: 664px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w16"><span class="cw-bg"></span><span class="cw-t">HATI-HATI</span></span></div></div>
-    <div class="cg" id="cap-g8" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w17"><span class="cw-bg"></span><span class="cw-t">SA</span></span> <span class="cw" id="cap-w18"><span class="cw-bg"></span><span class="cw-t">YANG</span></span> <span class="cw" id="cap-w19"><span class="cw-bg"></span><span class="cw-t">KERJA</span></span></div></div>
-    <div class="cg" id="cap-g9" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w20"><span class="cw-bg"></span><span class="cw-t">DI</span></span> <span class="cw" id="cap-w21"><span class="cw-bg"></span><span class="cw-t">SINI</span></span></div></div>
-    <div class="cg" id="cap-g10" style="top: 1190px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w22"><span class="cw-bg"></span><span class="cw-t">BILA</span></span> <span class="cw" id="cap-w23"><span class="cw-bg"></span><span class="cw-t">DAPAT</span></span> <span class="cw" id="cap-w24"><span class="cw-bg"></span><span class="cw-t">DOKUMEN</span></span></div></div>
-    <div class="cg" id="cap-g11" style="top: 1190px"><div class="cg-in" style="font-size: 72px"><span class="cw" id="cap-w25"><span class="cw-bg"></span><span class="cw-t">DARIPADA</span></span> <span class="cw" id="cap-w26"><span class="cw-bg"></span><span class="cw-t">KORANG</span></span></div></div>
-    <div class="cg" id="cap-g12" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w27"><span class="cw-bg"></span><span class="cw-t">PERKARA</span></span> <span class="cw" id="cap-w28"><span class="cw-bg"></span><span class="cw-t">YANG</span></span></div></div>
-    <div class="cg" id="cap-g13" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w29"><span class="cw-bg"></span><span class="cw-t">PERTAMA</span></span> <span class="cw" id="cap-w30"><span class="cw-bg"></span><span class="cw-t">MEREKA</span></span></div></div>
-    <div class="cg" id="cap-g14" style="top: 1190px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w31"><span class="cw-bg"></span><span class="cw-t">AKAN</span></span> <span class="cw" id="cap-w32"><span class="cw-bg"></span><span class="cw-t">BUAT</span></span> <span class="cw kw" id="cap-w33"><span class="cw-bg"></span><span class="cw-t">SEMAKAN</span></span></div></div>
-    <div class="cg" id="cap-g15" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w34"><span class="cw-bg"></span><span class="cw-t">DAN</span></span> <span class="cw" id="cap-w35"><span class="cw-bg"></span><span class="cw-t">YANG</span></span> <span class="cw" id="cap-w36"><span class="cw-bg"></span><span class="cw-t">KEDUA</span></span></div></div>
-    <div class="cg" id="cap-g16" style="top: 1190px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w37"><span class="cw-bg"></span><span class="cw-t">MEREKA</span></span> <span class="cw" id="cap-w38"><span class="cw-bg"></span><span class="cw-t">AKAN</span></span> <span class="cw" id="cap-w39"><span class="cw-bg"></span><span class="cw-t">TENGOK</span></span></div></div>
-    <div class="cg" id="cap-g17" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w40"><span class="cw-bg"></span><span class="cw-t">BANK</span></span> <span class="cw" id="cap-w41"><span class="cw-bg"></span><span class="cw-t">MANA</span></span> <span class="cw" id="cap-w42"><span class="cw-bg"></span><span class="cw-t">YANG</span></span></div></div>
-    <div class="cg" id="cap-g18" style="top: 1190px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w43"><span class="cw-bg"></span><span class="cw-t">BERSESUAIAN</span></span> <span class="cw" id="cap-w44"><span class="cw-bg"></span><span class="cw-t">DENGAN</span></span></div></div>
-    <div class="cg" id="cap-g19" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w45"><span class="cw-bg"></span><span class="cw-t">DOKUMEN</span></span> <span class="cw" id="cap-w46"><span class="cw-bg"></span><span class="cw-t">KORANG</span></span></div></div>
-    <div class="cg" id="cap-g20" style="top: 1190px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w47"><span class="cw-bg"></span><span class="cw-t">SELEPAS</span></span> <span class="cw" id="cap-w48"><span class="cw-bg"></span><span class="cw-t">ITU</span></span> <span class="cw" id="cap-w49"><span class="cw-bg"></span><span class="cw-t">MEREKA</span></span></div></div>
-    <div class="cg" id="cap-g21" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w50"><span class="cw-bg"></span><span class="cw-t">AKAN</span></span> <span class="cw" id="cap-w51"><span class="cw-bg"></span><span class="cw-t">FOLLOW</span></span> <span class="cw" id="cap-w52"><span class="cw-bg"></span><span class="cw-t">UP</span></span></div></div>
-    <div class="cg" id="cap-g22" style="top: 1190px"><div class="cg-in" style="font-size: 72px"><span class="cw" id="cap-w53"><span class="cw-bg"></span><span class="cw-t">PULA</span></span> <span class="cw" id="cap-w54"><span class="cw-bg"></span><span class="cw-t">DENGAN</span></span> <span class="cw kw" id="cap-w55"><span class="cw-bg"></span><span class="cw-t">BANK</span></span></div></div>
-    <div class="cg" id="cap-g23" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w56"><span class="cw-bg"></span><span class="cw-t">UNTUK</span></span> <span class="cw" id="cap-w57"><span class="cw-bg"></span><span class="cw-t">DAPATKAN</span></span></div></div>
-    <div class="cg" id="cap-g24" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w58"><span class="cw-bg"></span><span class="cw-t">KEPUTUSAN</span></span></div></div>
-    <div class="cg" id="cap-g25" style="top: 1190px"><div class="cg-in" style="font-size: 68px"><span class="cw" id="cap-w59"><span class="cw-bg"></span><span class="cw-t">TAPI</span></span> <span class="cw" id="cap-w60"><span class="cw-bg"></span><span class="cw-t">APA-APA</span></span> <span class="cw" id="cap-w61"><span class="cw-bg"></span><span class="cw-t">PUN</span></span></div></div>
-    <div class="cg" id="cap-g26" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w62"><span class="cw-bg"></span><span class="cw-t">KEPUTUSAN</span></span> <span class="cw kw" id="cap-w63"><span class="cw-bg"></span><span class="cw-t">AKHIR</span></span></div></div>
-    <div class="cg" id="cap-g27" style="top: 1190px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w64"><span class="cw-bg"></span><span class="cw-t">TERLETAK</span></span> <span class="cw" id="cap-w65"><span class="cw-bg"></span><span class="cw-t">DI</span></span> <span class="cw" id="cap-w66"><span class="cw-bg"></span><span class="cw-t">TANGAN</span></span></div></div>
-    <div class="cg" id="cap-g28" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w67"><span class="cw-bg"></span><span class="cw-t">BANK</span></span></div></div>
-    <div class="cg" id="cap-g29" style="top: 1190px"><div class="cg-in" style="font-size: 60px"><span class="cw" id="cap-w68"><span class="cw-bg"></span><span class="cw-t">TAPI</span></span> <span class="cw" id="cap-w69"><span class="cw-bg"></span><span class="cw-t">KALAU</span></span> <span class="cw" id="cap-w70"><span class="cw-bg"></span><span class="cw-t">UNTUK</span></span> <span class="cw" id="cap-w71"><span class="cw-bg"></span><span class="cw-t">AKU</span></span></div></div>
-    <div class="cg" id="cap-g30" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w72"><span class="cw-bg"></span><span class="cw-t">AKU</span></span> <span class="cw" id="cap-w73"><span class="cw-bg"></span><span class="cw-t">LEBIH</span></span> <span class="cw" id="cap-w74"><span class="cw-bg"></span><span class="cw-t">RELA</span></span></div></div>
-    <div class="cg" id="cap-g31" style="top: 1190px"><div class="cg-in" style="font-size: 68px"><span class="cw" id="cap-w75"><span class="cw-bg"></span><span class="cw-t">EXPLAIN</span></span> <span class="cw" id="cap-w76"><span class="cw-bg"></span><span class="cw-t">AWAL-AWAL</span></span></div></div>
-    <div class="cg" id="cap-g32" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w77"><span class="cw-bg"></span><span class="cw-t">DEKAT</span></span> <span class="cw" id="cap-w78"><span class="cw-bg"></span><span class="cw-t">CUSTOMER</span></span></div></div>
-    <div class="cg" id="cap-g33" style="top: 1190px"><div class="cg-in" style="font-size: 72px"><span class="cw" id="cap-w79"><span class="cw-bg"></span><span class="cw-t">KALAU</span></span> <span class="cw" id="cap-w80"><span class="cw-bg"></span><span class="cw-t">DIA</span></span> <span class="cw kw" id="cap-w81"><span class="cw-bg"></span><span class="cw-t">LAYAK</span></span></div></div>
-    <div class="cg" id="cap-g34" style="top: 1190px"><div class="cg-in" style="font-size: 60px"><span class="cw" id="cap-w82"><span class="cw-bg"></span><span class="cw-t">AKU</span></span> <span class="cw" id="cap-w83"><span class="cw-bg"></span><span class="cw-t">AKAN</span></span> <span class="cw" id="cap-w84"><span class="cw-bg"></span><span class="cw-t">CAKAP</span></span> <span class="cw kw" id="cap-w85"><span class="cw-bg"></span><span class="cw-t">LAYAK</span></span></div></div>
-    <div class="cg" id="cap-g35" style="top: 1190px"><div class="cg-in" style="font-size: 60px"><span class="cw" id="cap-w86"><span class="cw-bg"></span><span class="cw-t">KALAU</span></span> <span class="cw" id="cap-w87"><span class="cw-bg"></span><span class="cw-t">DIA</span></span> <span class="cw kw" id="cap-w88"><span class="cw-bg"></span><span class="cw-t">TAK</span></span> <span class="cw kw" id="cap-w89"><span class="cw-bg"></span><span class="cw-t">LAYAK</span></span></div></div>
-    <div class="cg" id="cap-g36" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w90"><span class="cw-bg"></span><span class="cw-t">AKU</span></span> <span class="cw" id="cap-w91"><span class="cw-bg"></span><span class="cw-t">AKAN</span></span> <span class="cw" id="cap-w92"><span class="cw-bg"></span><span class="cw-t">BAGI</span></span></div></div>
-    <div class="cg" id="cap-g37" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w93"><span class="cw-bg"></span><span class="cw-t">TAHU</span></span> <span class="cw kw" id="cap-w94"><span class="cw-bg"></span><span class="cw-t">TAK</span></span> <span class="cw kw" id="cap-w95"><span class="cw-bg"></span><span class="cw-t">LAYAK</span></span></div></div>
-    <div class="cg" id="cap-g38" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w96"><span class="cw-bg"></span><span class="cw-t">SEBAB</span></span> <span class="cw" id="cap-w97"><span class="cw-bg"></span><span class="cw-t">APA?</span></span></div></div>
-    <div class="cg" id="cap-g39" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w98"><span class="cw-bg"></span><span class="cw-t">AKU</span></span> <span class="cw kw" id="cap-w99"><span class="cw-bg"></span><span class="cw-t">TAK</span></span> <span class="cw" id="cap-w100"><span class="cw-bg"></span><span class="cw-t">NAK</span></span></div></div>
-    <div class="cg" id="cap-g40" style="top: 1190px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w101"><span class="cw-bg"></span><span class="cw-t">BAGI</span></span> <span class="cw kw" id="cap-w102"><span class="cw-bg"></span><span class="cw-t">HARAPAN</span></span> <span class="cw kw" id="cap-w103"><span class="cw-bg"></span><span class="cw-t">PALSU</span></span></div></div>
-    <div class="cg" id="cap-g41" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w104"><span class="cw-bg"></span><span class="cw-t">KEPADA</span></span></div></div>
-    <div class="cg" id="cap-g42" style="top: 1190px"><div class="cg-in" style="font-size: 60px"><span class="cw" id="cap-w105"><span class="cw-bg"></span><span class="cw-t">CUSTOMER-CUSTOMER</span></span> <span class="cw" id="cap-w106"><span class="cw-bg"></span><span class="cw-t">AKU</span></span></div></div>
-    <div class="cg" id="cap-g43" style="top: 1190px"><div class="cg-in" style="font-size: 72px"><span class="cw" id="cap-w107"><span class="cw-bg"></span><span class="cw-t">KALAU</span></span> <span class="cw" id="cap-w108"><span class="cw-bg"></span><span class="cw-t">KAU</span></span> <span class="cw" id="cap-w109"><span class="cw-bg"></span><span class="cw-t">TENGAH</span></span></div></div>
-    <div class="cg" id="cap-g44" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w110"><span class="cw-bg"></span><span class="cw-t">MENCARI</span></span> <span class="cw" id="cap-w111"><span class="cw-bg"></span><span class="cw-t">KERETA</span></span></div></div>
-    <div class="cg" id="cap-g45" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw kw" id="cap-w112"><span class="cw-bg"></span><span class="cw-t">PERODUA</span></span></div></div>
-    <div class="cg" id="cap-g46" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w113"><span class="cw-bg"></span><span class="cw-t">KAU</span></span> <span class="cw" id="cap-w114"><span class="cw-bg"></span><span class="cw-t">NAK</span></span> <span class="cw" id="cap-w115"><span class="cw-bg"></span><span class="cw-t">TAHU</span></span></div></div>
-    <div class="cg" id="cap-g47" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w116"><span class="cw-bg"></span><span class="cw-t">TENTANG</span></span> <span class="cw kw" id="cap-w117"><span class="cw-bg"></span><span class="cw-t">LOAN</span></span></div></div>
-    <div class="cg" id="cap-g48" style="top: 1190px"><div class="cg-in" style="font-size: 61px"><span class="cw" id="cap-w118"><span class="cw-bg"></span><span class="cw-t">DENGAN</span></span> <span class="cw" id="cap-w119"><span class="cw-bg"></span><span class="cw-t">LEBIH</span></span> <span class="cw" id="cap-w120"><span class="cw-bg"></span><span class="cw-t">JELAS</span></span></div></div>
-    <div class="cg" id="cap-g49" style="top: 1190px"><div class="cg-in" style="font-size: 60px"><span class="cw" id="cap-w121"><span class="cw-bg"></span><span class="cw-t">NOMBOR</span></span> <span class="cw" id="cap-w122"><span class="cw-bg"></span><span class="cw-t">AKU</span></span> <span class="cw" id="cap-w123"><span class="cw-bg"></span><span class="cw-t">DEKAT</span></span> <span class="cw kw" id="cap-w124"><span class="cw-bg"></span><span class="cw-t">BIO</span></span></div></div>
-    <div class="cg" id="cap-g50" style="top: 1190px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w125"><span class="cw-bg"></span><span class="cw-t">BOLEH</span></span> <span class="cw" id="cap-w126"><span class="cw-bg"></span><span class="cw-t">CONTACT</span></span> <span class="cw" id="cap-w127"><span class="cw-bg"></span><span class="cw-t">AKU</span></span></div></div>
-    <div class="cg" id="cap-g51" style="top: 1190px"><div class="cg-in" style="font-size: 74px"><span class="cw" id="cap-w128"><span class="cw-bg"></span><span class="cw-t">INSYAALLAH</span></span></div></div>
+  <div data-hf-id="hf-ov84" id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-x2i0" class="cg" id="cap-g0" style="top: 584px"><div data-hf-id="hf-08zf" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-9ied" class="cw" id="cap-w0">Kalau</span> <span data-hf-id="hf-pgjv" class="cw" id="cap-w1">kau</span> <span data-hf-id="hf-y8qe" class="cw" id="cap-w2">jumpa</span> <span data-hf-id="hf-b0my" class="cw" id="cap-w3">SA</span></div></div>
+    <div data-hf-id="hf-kj6v" class="cg" id="cap-g1" style="top: 584px"><div data-hf-id="hf-gxff" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-r4a0" class="cw" id="cap-w4">yang</span> <span data-hf-id="hf-inz4" class="cw" id="cap-w5">cakap</span></div></div>
+    <div data-hf-id="hf-74yy" class="cg" id="cap-g2" style="top: 584px"><div data-hf-id="hf-21p4" class="cg-in" style="font-size: 65px"><span data-hf-id="hf-y8qp" class="cw" id="cap-w6">loan</span> <span data-hf-id="hf-hppd" class="cw" id="cap-w7">kau</span> <span data-hf-id="hf-nxkr" class="cw" id="cap-w8">boleh</span> <span data-hf-id="hf-g0ko" class="cw acc" id="cap-w9">approve</span></div></div>
+    <div data-hf-id="hf-yps1" class="cg" id="cap-g3" style="top: 584px"><div data-hf-id="hf-lcz5" class="cg-in" style="font-size: 55px"><span data-hf-id="hf-8wmp" class="cw" id="cap-w10">sebelum</span> <span data-hf-id="hf-58k7" class="cw" id="cap-w11">bank</span> <span data-hf-id="hf-irm3" class="cw" id="cap-w12">bagi</span> <span data-hf-id="hf-qo78" class="cw" id="cap-w13">approval</span></div></div>
+    <div data-hf-id="hf-zxms" class="cg" id="cap-g4" style="top: 584px"><div data-hf-id="hf-gj4e" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-whpz" class="cw" id="cap-w14">kau</span> <span data-hf-id="hf-h4gk" class="cw" id="cap-w15">kena</span> <span data-hf-id="hf-oy66" class="cw acc" id="cap-w16">hati-hati</span></div></div>
+    <div data-hf-id="hf-dwkz" class="cg" id="cap-g5" style="top: 1176px"><div data-hf-id="hf-0wvk" class="cg-in" style="font-size: 65px"><span data-hf-id="hf-xxwm" class="cw" id="cap-w17">Dan</span> <span data-hf-id="hf-zw89" class="cw" id="cap-w18">yang</span> <span data-hf-id="hf-03sk" class="cw" id="cap-w19">kerja</span> <span data-hf-id="hf-auva" class="cw" id="cap-w20">di</span> <span data-hf-id="hf-vfet" class="cw" id="cap-w21">sini</span></div></div>
+    <div data-hf-id="hf-vsro" class="cg" id="cap-g6" style="top: 1176px"><div data-hf-id="hf-g4td" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-5tvd" class="cw" id="cap-w22">bila</span> <span data-hf-id="hf-khmq" class="cw" id="cap-w23">dapat</span> <span data-hf-id="hf-9824" class="cw" id="cap-w24">dokumen</span></div></div>
+    <div data-hf-id="hf-8sah" class="cg" id="cap-g7" style="top: 1176px"><div data-hf-id="hf-fqic" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-h8fa" class="cw" id="cap-w25">daripada</span> <span data-hf-id="hf-bwi3" class="cw" id="cap-w26">korang</span></div></div>
+    <div data-hf-id="hf-ckwy" class="cg" id="cap-g8" style="top: 1176px"><div data-hf-id="hf-fc7b" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-qal8" class="cw" id="cap-w27">perkara</span> <span data-hf-id="hf-j9to" class="cw" id="cap-w28">yang</span> <span data-hf-id="hf-3jqu" class="cw" id="cap-w29">pertama</span></div></div>
+    <div data-hf-id="hf-l7uv" class="cg" id="cap-g9" style="top: 1176px"><div data-hf-id="hf-mbjh" class="cg-in" style="font-size: 60px"><span data-hf-id="hf-y7jh" class="cw" id="cap-w30">mereka</span> <span data-hf-id="hf-uhlw" class="cw" id="cap-w31">akan</span> <span data-hf-id="hf-ybr0" class="cw" id="cap-w32">buat</span> <span data-hf-id="hf-td6s" class="cw acc" id="cap-w33">semakan</span></div></div>
+    <div data-hf-id="hf-vlf9" class="cg" id="cap-g10" style="top: 1176px"><div data-hf-id="hf-exwa" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-rbc1" class="cw" id="cap-w34">Dan</span> <span data-hf-id="hf-6nym" class="cw" id="cap-w35">yang</span> <span data-hf-id="hf-piou" class="cw" id="cap-w36">kedua</span></div></div>
+    <div data-hf-id="hf-ez0w" class="cg" id="cap-g11" style="top: 1176px"><div data-hf-id="hf-ejl9" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-lwiy" class="cw" id="cap-w37">mereka</span> <span data-hf-id="hf-fent" class="cw" id="cap-w38">akan</span> <span data-hf-id="hf-ep5t" class="cw" id="cap-w39">tengok</span></div></div>
+    <div data-hf-id="hf-xw3j" class="cg" id="cap-g12" style="top: 1176px"><div data-hf-id="hf-ki6o" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-gjgh" class="cw" id="cap-w40">bank</span> <span data-hf-id="hf-30np" class="cw" id="cap-w41">mana</span> <span data-hf-id="hf-ixtc" class="cw" id="cap-w42">yang</span></div></div>
+    <div data-hf-id="hf-487u" class="cg" id="cap-g13" style="top: 1176px"><div data-hf-id="hf-k3vn" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-1j3z" class="cw acc" id="cap-w43">bersesuaian</span> <span data-hf-id="hf-jryw" class="cw" id="cap-w44">dengan</span></div></div>
+    <div data-hf-id="hf-5fx5" class="cg" id="cap-g14" style="top: 1176px"><div data-hf-id="hf-s3f5" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-ghzx" class="cw" id="cap-w45">dokumen</span> <span data-hf-id="hf-itgx" class="cw" id="cap-w46">korang</span></div></div>
+    <div data-hf-id="hf-xsas" class="cg" id="cap-g15" style="top: 1176px"><div data-hf-id="hf-shq6" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-up5d" class="cw" id="cap-w47">Selepas</span> <span data-hf-id="hf-pv4h" class="cw" id="cap-w48">itu</span> <span data-hf-id="hf-jiel" class="cw" id="cap-w49">mereka</span></div></div>
+    <div data-hf-id="hf-fkyb" class="cg" id="cap-g16" style="top: 1176px"><div data-hf-id="hf-sw17" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-elkf" class="cw" id="cap-w50">akan</span> <span data-hf-id="hf-b610" class="cw" id="cap-w51">follow</span> <span data-hf-id="hf-0thj" class="cw" id="cap-w52">up</span> <span data-hf-id="hf-o4yb" class="cw" id="cap-w53">pula</span></div></div>
+    <div data-hf-id="hf-vwem" class="cg" id="cap-g17" style="top: 1176px"><div data-hf-id="hf-tac8" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-jebv" class="cw" id="cap-w54">dengan</span> <span data-hf-id="hf-giof" class="cw" id="cap-w55">bank</span> <span data-hf-id="hf-1wir" class="cw" id="cap-w56">untuk</span></div></div>
+    <div data-hf-id="hf-ayjh" class="cg" id="cap-g18" style="top: 1176px"><div data-hf-id="hf-qi71" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-o7a5" class="cw" id="cap-w57">dapatkan</span> <span data-hf-id="hf-91ip" class="cw acc" id="cap-w58">keputusan</span></div></div>
+    <div data-hf-id="hf-4sk8" class="cg" id="cap-g19" style="top: 1176px"><div data-hf-id="hf-qwi2" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-cwdx" class="cw" id="cap-w59">Tapi</span> <span data-hf-id="hf-ptme" class="cw" id="cap-w60">apa-apa</span> <span data-hf-id="hf-sjh7" class="cw" id="cap-w61">pun</span></div></div>
+    <div data-hf-id="hf-i6ws" class="cg" id="cap-g20" style="top: 1222px"><div data-hf-id="hf-rat3" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-tq47" class="cw" id="cap-w68">Jadi</span> <span data-hf-id="hf-we32" class="cw" id="cap-w69">kalau</span> <span data-hf-id="hf-p60b" class="cw" id="cap-w70">untuk</span> <span data-hf-id="hf-yxju" class="cw" id="cap-w71">aku</span></div></div>
+    <div data-hf-id="hf-d9y5" class="cg" id="cap-g21" style="top: 1222px"><div data-hf-id="hf-zpyh" class="cg-in" style="font-size: 65px"><span data-hf-id="hf-kepf" class="cw" id="cap-w72">aku</span> <span data-hf-id="hf-lntt" class="cw" id="cap-w73">lebih</span> <span data-hf-id="hf-10co" class="cw" id="cap-w74">rela</span> <span data-hf-id="hf-v9bu" class="cw" id="cap-w75">explain</span></div></div>
+    <div data-hf-id="hf-bgne" class="cg" id="cap-g22" style="top: 1222px"><div data-hf-id="hf-gty9" class="cg-in" style="font-size: 60px"><span data-hf-id="hf-zx7u" class="cw acc" id="cap-w76">awal-awal</span> <span data-hf-id="hf-szne" class="cw" id="cap-w77">dekat</span> <span data-hf-id="hf-p8dy" class="cw" id="cap-w78">customer</span></div></div>
+    <div data-hf-id="hf-vvlf" class="cg" id="cap-g23" style="top: 1222px"><div data-hf-id="hf-rp44" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-yenz" class="cw" id="cap-w79">Kalau</span> <span data-hf-id="hf-x1t7" class="cw" id="cap-w80">dia</span> <span data-hf-id="hf-qgo5" class="chip chip-yes" id="cap-chip-w81"><svg data-hf-id="hf-ulu9" viewBox="0 0 24 24"><path data-hf-id="hf-lvfk" d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-hf-id="hf-f3bw" class="cw" id="cap-w81">LAYAK</span></span></div></div>
+    <div data-hf-id="hf-bu2w" class="cg" id="cap-g24" style="top: 1222px"><div data-hf-id="hf-049i" class="cg-in" style="font-size: 65px"><span data-hf-id="hf-dz2w" class="cw" id="cap-w82">aku</span> <span data-hf-id="hf-p6gb" class="cw" id="cap-w83">akan</span> <span data-hf-id="hf-f33d" class="cw" id="cap-w84">cakap</span> <span data-hf-id="hf-5a9t" class="chip chip-yes" id="cap-chip-w85"><svg data-hf-id="hf-1tol" viewBox="0 0 24 24"><path data-hf-id="hf-eh5k" d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-hf-id="hf-yfk8" class="cw" id="cap-w85">LAYAK</span></span></div></div>
+    <div data-hf-id="hf-y4wp" class="cg" id="cap-g25" style="top: 1222px"><div data-hf-id="hf-v9vd" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-paxd" class="cw" id="cap-w86">Kalau</span> <span data-hf-id="hf-8ph6" class="cw" id="cap-w87">dia</span> <span data-hf-id="hf-1bc8" class="chip chip-no" id="cap-chip-w88"><svg data-hf-id="hf-30lo" viewBox="0 0 24 24"><path data-hf-id="hf-4ga7" d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span data-hf-id="hf-jd61" class="cw" id="cap-w88">TAK</span> <span data-hf-id="hf-inw4" class="cw" id="cap-w89">LAYAK</span></span></div></div>
+    <div data-hf-id="hf-4ud2" class="cg" id="cap-g26" style="top: 1222px"><div data-hf-id="hf-vo6e" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-r0ij" class="cw" id="cap-w90">aku</span> <span data-hf-id="hf-hkfy" class="cw" id="cap-w91">akan</span> <span data-hf-id="hf-u7df" class="cw" id="cap-w92">bagi</span> <span data-hf-id="hf-cscn" class="cw" id="cap-w93">tahu</span></div></div>
+    <div data-hf-id="hf-fz2n" class="cg" id="cap-g27" style="top: 1222px"><div data-hf-id="hf-dzve" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-ix73" class="chip chip-no" id="cap-chip-w94"><svg data-hf-id="hf-2man" viewBox="0 0 24 24"><path data-hf-id="hf-7hjj" d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span data-hf-id="hf-3do4" class="cw" id="cap-w94">TAK</span> <span data-hf-id="hf-54cp" class="cw" id="cap-w95">LAYAK</span></span></div></div>
+    <div data-hf-id="hf-lttw" class="cg" id="cap-g28" style="top: 1222px"><div data-hf-id="hf-dlkd" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-zp4b" class="cw" id="cap-w96">Sebab</span> <span data-hf-id="hf-6ufu" class="cw" id="cap-w97">apa?</span></div></div>
+    <div data-hf-id="hf-x4qt" class="cg" id="cap-g29" style="top: 1222px"><div data-hf-id="hf-eshg" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-pivn" class="cw" id="cap-w98">Aku</span> <span data-hf-id="hf-317r" class="cw" id="cap-w99">tak</span> <span data-hf-id="hf-wxx6" class="cw" id="cap-w100">nak</span> <span data-hf-id="hf-h8rs" class="cw" id="cap-w101">bagi</span></div></div>
+    <div data-hf-id="hf-f7hj" class="cg" id="cap-g30" style="top: 1222px"><div data-hf-id="hf-ee6f" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-ln55" class="chip chip-palsu" id="cap-chip-w102"><span data-hf-id="hf-fiz3" class="cw" id="cap-w102">HARAPAN</span> <span data-hf-id="hf-dfl0" class="cw" id="cap-w103">PALSU</span><i data-hf-id="hf-7qtu" class="strike"></i></span> <span data-hf-id="hf-dxc8" class="cw" id="cap-w104">kepada</span></div></div>
+    <div data-hf-id="hf-bojy" class="cg" id="cap-g31" style="top: 1222px"><div data-hf-id="hf-fl3i" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-u07s" class="cw" id="cap-w105">customer-customer</span> <span data-hf-id="hf-q7hl" class="cw" id="cap-w106">aku</span></div></div>
+    <div data-hf-id="hf-8xqp" class="cg" id="cap-g32" style="top: 1222px"><div data-hf-id="hf-f6sh" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-2rnv" class="cw" id="cap-w107">Kalau</span> <span data-hf-id="hf-s0pf" class="cw" id="cap-w108">kau</span> <span data-hf-id="hf-apx4" class="cw" id="cap-w109">tengah</span></div></div>
+    <div data-hf-id="hf-jvy8" class="cg" id="cap-g33" style="top: 1222px"><div data-hf-id="hf-yxcf" class="cg-in" style="font-size: 65px"><span data-hf-id="hf-1bio" class="cw" id="cap-w110">mencari</span> <span data-hf-id="hf-9kuc" class="cw" id="cap-w111">kereta</span> <span data-hf-id="hf-8r4k" class="cw acc" id="cap-w112">Perodua</span></div></div>
+    <div data-hf-id="hf-0lm3" class="cg" id="cap-g34" style="top: 1222px"><div data-hf-id="hf-gdpk" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-gyxn" class="cw" id="cap-w113">kau</span> <span data-hf-id="hf-ds2j" class="cw" id="cap-w114">nak</span> <span data-hf-id="hf-njoi" class="cw" id="cap-w115">tahu</span> <span data-hf-id="hf-vi6c" class="cw" id="cap-w116">tentang</span></div></div>
+    <div data-hf-id="hf-1fky" class="cg" id="cap-g35" style="top: 1222px"><div data-hf-id="hf-k2fz" class="cg-in" style="font-size: 62px"><span data-hf-id="hf-d95p" class="cw acc" id="cap-w117">loan</span> <span data-hf-id="hf-7wvc" class="cw" id="cap-w118">dengan</span> <span data-hf-id="hf-fods" class="cw" id="cap-w119">lebih</span> <span data-hf-id="hf-xlgp" class="cw" id="cap-w120">jelas</span></div></div>
+    <div data-hf-id="hf-lqvp" class="cg" id="cap-g36" style="top: 1222px"><div data-hf-id="hf-fzej" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-r872" class="cw" id="cap-w121">nombor</span> <span data-hf-id="hf-jxpb" class="cw" id="cap-w122">aku</span> <span data-hf-id="hf-6tmy" class="cw" id="cap-w123">dekat</span> <span data-hf-id="hf-rqeh" class="cw acc" id="cap-w124">bio</span></div></div>
+    <div data-hf-id="hf-v05w" class="cg" id="cap-g37" style="top: 1222px"><div data-hf-id="hf-h6bm" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-o3qp" class="cw" id="cap-w125">boleh</span> <span data-hf-id="hf-2i4g" class="cw" id="cap-w126">contact</span> <span data-hf-id="hf-uuog" class="cw" id="cap-w127">aku</span></div></div>
+    <div data-hf-id="hf-ety7" class="cg" id="cap-g38" style="top: 1222px"><div data-hf-id="hf-gs0l" class="cg-in" style="font-size: 66px"><span data-hf-id="hf-yk3e" class="cw" id="cap-w128">InsyaAllah</span></div></div>
   </div>
   <script>
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
     function group(sel, start, end) {
       tl.set(sel, { visibility: "visible" }, start);
-      tl.fromTo(sel, { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: "expo.out" }, start);
-      tl.to(sel, { opacity: 0, duration: 0.1, ease: "power2.in" }, Math.max(end - 0.1, start + 0.17));
+      tl.fromTo(sel, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.12, ease: "power2.out" }, start);
+      tl.to(sel, { opacity: 0, duration: 0.08, ease: "power2.in" }, Math.max(end - 0.08, start + 0.13));
       tl.set(sel, { opacity: 0, visibility: "hidden" }, end);
     }
-    function word(sel, start, end) {
-      const bg = sel + " .cw-bg";
-      const t = sel + " .cw-t";
-      tl.fromTo(bg, { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.12, ease: "power3.out" }, start);
-      tl.fromTo(t, { color: "#ffffff", textShadow: "0 0 0 rgba(0,0,0,0)" }, { color: "#0e1116", textShadow: "0 0 0 rgba(0,0,0,0)", duration: 0.06 }, start);
-      tl.fromTo(sel, { scale: 1 }, { scale: 1.08, duration: 0.1, ease: "power2.out" }, start);
-      tl.to(sel, { scale: 1, duration: 0.14, ease: "power2.out" }, end);
-      tl.to(bg, { opacity: 0, duration: 0.1, ease: "power2.in" }, end);
-      tl.set(t, { clearProps: "color,textShadow" }, end + 0.06);
+    // a verdict chip lands on its word
+    function chip(sel, at) {
+      tl.fromTo(sel, { scale: 0.6 }, { scale: 1, duration: 0.32, ease: "back.out(1.7)" }, at);
     }
-  word("#cap-w0", 0.04, 0.70);
-  word("#cap-w1", 0.70, 0.93);
-  word("#cap-w2", 0.93, 1.62);
-  group("#cap-g0", 0.15, 1.62);
-  word("#cap-w3", 1.62, 1.96);
-  group("#cap-g1", 1.62, 2.08);
-  word("#cap-w4", 2.08, 2.25);
-  word("#cap-w5", 2.25, 2.79);
-  group("#cap-g2", 2.08, 2.88);
-  word("#cap-w6", 2.88, 3.00);
-  word("#cap-w7", 3.00, 3.17);
-  word("#cap-w8", 3.17, 3.42);
-  group("#cap-g3", 2.88, 3.42);
-  word("#cap-w9", 3.42, 3.80);
-  group("#cap-g4", 3.42, 3.83);
-  word("#cap-w10", 3.83, 4.15);
-  word("#cap-w11", 4.15, 4.27);
-  word("#cap-w12", 4.24, 4.43);
-  group("#cap-g5", 3.83, 4.43);
-  word("#cap-w13", 4.43, 4.74);
-  word("#cap-w14", 4.74, 4.86);
-  word("#cap-w15", 4.84, 5.29);
-  group("#cap-g6", 4.43, 5.29);
-  word("#cap-w16", 5.29, 5.86);
-  group("#cap-g7", 5.29, 5.86);
-  word("#cap-w17", 5.86, 6.02);
-  word("#cap-w18", 6.02, 6.22);
-  word("#cap-w19", 6.22, 6.51);
-  group("#cap-g8", 5.86, 6.51);
-  word("#cap-w20", 6.51, 6.65);
-  word("#cap-w21", 6.65, 6.94);
-  group("#cap-g9", 6.51, 6.94);
-  word("#cap-w22", 6.94, 7.28);
-  word("#cap-w23", 7.28, 7.80);
-  word("#cap-w24", 7.80, 8.34);
-  group("#cap-g10", 6.94, 8.34);
-  word("#cap-w25", 8.34, 9.05);
-  word("#cap-w26", 9.05, 9.34);
-  group("#cap-g11", 8.34, 9.56);
-  word("#cap-w27", 9.56, 9.80);
-  word("#cap-w28", 9.80, 9.95);
-  group("#cap-g12", 9.56, 9.95);
-  word("#cap-w29", 9.95, 10.19);
-  word("#cap-w30", 10.19, 10.55);
-  group("#cap-g13", 9.95, 10.55);
-  word("#cap-w31", 10.55, 10.72);
-  word("#cap-w32", 10.72, 10.84);
-  word("#cap-w33", 10.80, 11.10);
-  group("#cap-g14", 10.55, 11.14);
-  word("#cap-w34", 11.14, 11.32);
-  word("#cap-w35", 11.42, 11.55);
-  word("#cap-w36", 11.55, 11.81);
-  group("#cap-g15", 11.14, 11.81);
-  word("#cap-w37", 11.81, 12.24);
-  word("#cap-w38", 12.24, 12.56);
-  word("#cap-w39", 12.56, 12.86);
-  group("#cap-g16", 11.81, 13.01);
-  word("#cap-w40", 13.01, 13.15);
-  word("#cap-w41", 13.15, 13.44);
-  word("#cap-w42", 13.44, 13.58);
-  group("#cap-g17", 13.01, 13.58);
-  word("#cap-w43", 13.58, 14.06);
-  word("#cap-w44", 14.06, 14.37);
-  group("#cap-g18", 13.58, 14.37);
-  word("#cap-w45", 14.37, 14.87);
-  word("#cap-w46", 14.91, 15.22);
-  group("#cap-g19", 14.37, 15.36);
-  word("#cap-w47", 15.36, 15.70);
-  word("#cap-w48", 15.70, 15.87);
-  word("#cap-w49", 15.87, 16.24);
-  group("#cap-g20", 15.36, 16.24);
-  word("#cap-w50", 16.24, 16.48);
-  word("#cap-w51", 16.48, 16.79);
-  word("#cap-w52", 16.79, 16.92);
-  group("#cap-g21", 16.24, 16.96);
-  word("#cap-w53", 16.96, 17.13);
-  word("#cap-w54", 17.13, 17.30);
-  word("#cap-w55", 17.30, 17.42);
-  group("#cap-g22", 16.96, 17.38);
-  word("#cap-w56", 17.38, 17.87);
-  word("#cap-w57", 17.87, 18.33);
-  group("#cap-g23", 17.38, 18.33);
-  word("#cap-w58", 18.33, 18.85);
-  group("#cap-g24", 18.33, 18.87);
-  word("#cap-w59", 18.87, 19.21);
-  word("#cap-w60", 19.21, 19.81);
-  word("#cap-w61", 19.81, 19.93);
-  group("#cap-g25", 18.87, 20.10);
-  word("#cap-w62", 20.10, 20.65);
-  word("#cap-w63", 20.65, 20.96);
-  group("#cap-g26", 20.10, 21.11);
-  word("#cap-w64", 21.11, 22.17);
-  word("#cap-w65", 22.17, 22.38);
-  word("#cap-w66", 22.38, 22.82);
-  group("#cap-g27", 21.11, 22.82);
-  word("#cap-w67", 22.82, 23.03);
-  group("#cap-g28", 22.82, 23.03);
-  word("#cap-w68", 23.03, 23.43);
-  word("#cap-w69", 23.43, 23.74);
-  word("#cap-w70", 23.74, 24.36);
-  word("#cap-w71", 24.36, 24.61);
-  group("#cap-g29", 23.03, 24.61);
-  word("#cap-w72", 24.61, 24.88);
-  word("#cap-w73", 24.88, 25.13);
-  word("#cap-w74", 25.13, 25.41);
-  group("#cap-g30", 24.61, 25.41);
-  word("#cap-w75", 25.41, 25.81);
-  word("#cap-w76", 25.81, 26.32);
-  group("#cap-g31", 25.41, 26.32);
-  word("#cap-w77", 26.32, 26.69);
-  word("#cap-w78", 26.69, 27.16);
-  group("#cap-g32", 26.32, 27.42);
-  word("#cap-w79", 27.42, 27.60);
-  word("#cap-w80", 27.60, 27.72);
-  word("#cap-w81", 27.70, 27.89);
-  group("#cap-g33", 27.42, 27.89);
-  word("#cap-w82", 27.89, 28.37);
-  word("#cap-w83", 28.37, 28.69);
-  word("#cap-w84", 28.69, 28.92);
-  word("#cap-w85", 28.92, 29.11);
-  group("#cap-g34", 27.89, 29.33);
-  word("#cap-w86", 29.33, 29.50);
-  word("#cap-w87", 29.50, 29.62);
-  word("#cap-w88", 29.58, 29.75);
-  word("#cap-w89", 29.75, 29.96);
-  group("#cap-g35", 29.33, 29.96);
-  word("#cap-w90", 29.96, 30.26);
-  word("#cap-w91", 30.26, 30.49);
-  word("#cap-w92", 30.49, 30.66);
-  group("#cap-g36", 29.96, 30.66);
-  word("#cap-w93", 30.66, 30.94);
-  word("#cap-w94", 30.94, 31.06);
-  word("#cap-w95", 31.02, 31.19);
-  group("#cap-g37", 30.66, 31.19);
-  word("#cap-w96", 31.19, 31.42);
-  word("#cap-w97", 31.42, 31.68);
-  group("#cap-g38", 31.19, 31.88);
-  word("#cap-w98", 31.88, 32.23);
-  word("#cap-w99", 32.23, 32.35);
-  word("#cap-w100", 32.32, 32.44);
-  group("#cap-g39", 31.88, 32.43);
-  word("#cap-w101", 32.43, 32.62);
-  word("#cap-w102", 32.62, 33.21);
-  word("#cap-w103", 33.21, 33.52);
-  group("#cap-g40", 32.43, 33.61);
-  word("#cap-w104", 33.61, 34.00);
-  group("#cap-g41", 33.61, 34.00);
-  word("#cap-w105", 34.00, 34.77);
-  word("#cap-w106", 34.77, 35.08);
-  group("#cap-g42", 34.00, 35.43);
-  word("#cap-w107", 35.75, 36.23);
-  word("#cap-w108", 36.23, 36.37);
-  word("#cap-w109", 36.37, 36.65);
-  group("#cap-g43", 35.75, 36.65);
-  word("#cap-w110", 36.65, 37.21);
-  word("#cap-w111", 37.21, 37.84);
-  group("#cap-g44", 36.65, 37.84);
-  word("#cap-w112", 37.84, 38.60);
-  group("#cap-g45", 37.84, 38.60);
-  word("#cap-w113", 38.60, 38.82);
-  word("#cap-w114", 38.82, 38.96);
-  word("#cap-w115", 38.96, 39.42);
-  group("#cap-g46", 38.60, 39.42);
-  word("#cap-w116", 39.42, 39.77);
-  word("#cap-w117", 39.77, 39.91);
-  group("#cap-g47", 39.42, 39.91);
-  word("#cap-w118", 39.91, 40.21);
-  word("#cap-w119", 40.21, 40.49);
-  word("#cap-w120", 40.49, 40.79);
-  group("#cap-g48", 39.91, 40.79);
-  word("#cap-w121", 40.79, 41.12);
-  word("#cap-w122", 41.12, 41.38);
-  word("#cap-w123", 41.38, 41.63);
-  word("#cap-w124", 41.63, 41.75);
-  group("#cap-g49", 40.79, 41.72);
-  word("#cap-w125", 41.72, 42.21);
-  word("#cap-w126", 42.21, 42.49);
-  word("#cap-w127", 42.49, 42.78);
-  group("#cap-g50", 41.72, 42.79);
-  word("#cap-w128", 42.79, 43.09);
-  group("#cap-g51", 42.79, 43.20);
+    function strike(sel, at) {
+      tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power3.out" }, at);
+    }
+  group("#cap-g0", 0.12, 2.02);
+  group("#cap-g1", 2.04, 2.79);
+  group("#cap-g2", 2.81, 3.82);
+  group("#cap-g3", 3.84, 5.22);
+  group("#cap-g4", 5.24, 5.95);
+  group("#cap-g5", 5.97, 7.14);
+  group("#cap-g6", 7.16, 8.30);
+  group("#cap-g7", 8.32, 9.58);
+  group("#cap-g8", 9.60, 10.16);
+  group("#cap-g9", 10.18, 11.25);
+  group("#cap-g10", 11.27, 11.93);
+  group("#cap-g11", 11.95, 13.03);
+  group("#cap-g12", 13.05, 13.64);
+  group("#cap-g13", 13.66, 14.51);
+  group("#cap-g14", 14.53, 15.38);
+  group("#cap-g15", 15.40, 16.24);
+  group("#cap-g16", 16.26, 17.09);
+  group("#cap-g17", 17.11, 17.89);
+  group("#cap-g18", 17.91, 18.99);
+  group("#cap-g19", 19.01, 20.28);
+  group("#cap-g20", 23.14, 24.37);
+  group("#cap-g21", 24.39, 25.70);
+  group("#cap-g22", 25.72, 27.39);
+  chip("#cap-chip-w81", 27.90);
+  group("#cap-g23", 27.41, 28.17);
+  chip("#cap-chip-w85", 28.90);
+  group("#cap-g24", 28.19, 29.27);
+  chip("#cap-chip-w88", 29.73);
+  group("#cap-g25", 29.29, 30.11);
+  group("#cap-g26", 30.12, 30.84);
+  chip("#cap-chip-w94", 30.90);
+  group("#cap-g27", 30.86, 31.23);
+  group("#cap-g28", 31.25, 31.82);
+  group("#cap-g29", 31.84, 32.79);
+  chip("#cap-chip-w102", 32.85);
+  strike("#cap-chip-w102 .strike", 33.67);
+  group("#cap-g30", 32.81, 34.12);
+  group("#cap-g31", 34.14, 35.69);
+  group("#cap-g32", 35.71, 36.69);
+  group("#cap-g33", 36.71, 38.05);
+  group("#cap-g34", 38.07, 39.27);
+  group("#cap-g35", 39.29, 40.95);
+  group("#cap-g36", 40.97, 41.85);
+  group("#cap-g37", 41.87, 42.56);
+  group("#cap-g38", 42.58, 43.21);
     window.__timelines["captions"] = tl;
   </script>
 </template>

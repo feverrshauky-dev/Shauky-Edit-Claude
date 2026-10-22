@@ -4,106 +4,120 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      font-family: "Montserrat", sans-serif;
     }
-    #hook-card {
+    /* take 1 frames the face low: the title owns the showroom wall above it */
+    #hk-scrim {
       position: absolute;
-      left: 60px;
-      right: 60px;
-      top: 200px;
-      padding: 30px 34px 34px;
-      border-radius: 34px;
-      background: rgba(14, 17, 22, 0.86);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-      text-align: center;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 700px;
+      background: linear-gradient(180deg, rgba(11, 13, 16, 0.82) 0%, rgba(11, 13, 16, 0.6) 58%, rgba(11, 13, 16, 0) 100%);
     }
-    #hook-l1 {
+    #hk-kicker {
+      position: absolute;
+      left: 72px;
+      top: 196px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.16em;
+      color: #f4f6f8;
+    }
+    .slash {
+      width: 34px;
+      height: 16px;
+      background: var(--lime, #c6e83a);
+      transform: skewX(-24deg);
+    }
+    #hk-title {
+      position: absolute;
+      left: 72px;
+      top: 246px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 700;
+      font-size: 112px;
+      line-height: 1.02;
+      letter-spacing: 0.005em;
       color: #ffffff;
-      font-weight: 800;
-      font-size: 62px;
-      line-height: 1.05;
-      letter-spacing: 0.01em;
+      text-transform: uppercase;
     }
-    #hook-l2 {
+    #hk-l2 {
       position: relative;
       display: inline-block;
-      margin-top: 14px;
-      padding: 6px 22px 12px;
-      font-weight: 800;
-      font-size: 100px;
-      line-height: 1;
-      color: #c8ec3c;
+      margin-left: -14px;
+      padding: 0 14px 4px;
     }
-    #hook-l2-bg {
+    #hk-l2-bg {
       position: absolute;
-      inset: 0;
-      border-radius: 18px;
-      background: #c8ec3c;
+      inset: 6px 0 0 0;
+      background: var(--lime, #c6e83a);
       transform-origin: 0% 50%;
       transform: scaleX(0);
     }
-    #hook-l2-t {
+    #hk-l2-t {
       position: relative;
     }
-    #hook-warn {
+    #hk-warn {
       position: absolute;
-      left: 0;
-      width: 100%;
-      top: 548px;
-      text-align: center;
-    }
-    #hook-warn-pill {
-      display: inline-flex;
+      right: 72px;
+      top: 470px;
+      display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 14px 34px 16px 26px;
-      border-radius: 999px;
-      background: #ff3b3b;
+      gap: 14px;
+      padding: 10px 30px 14px 24px;
+      background: #ff4a3d;
       color: #ffffff;
-      font-weight: 800;
-      font-size: 64px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 700;
+      font-size: 62px;
       line-height: 1;
-      box-shadow: 0 16px 40px rgba(255, 59, 59, 0.45);
+      letter-spacing: 0.03em;
+      box-shadow: 0 18px 40px rgba(255, 74, 61, 0.35);
       opacity: 0;
     }
-    #hook-warn-pill svg {
-      width: 62px;
-      height: 62px;
+    #hk-warn svg {
+      width: 56px;
+      height: 56px;
     }
   </style>
-  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
-    <div id="hook-card">
-      <div id="hook-l1">SA CAKAP LOAN KAU</div>
-      <div id="hook-l2"><span id="hook-l2-bg"></span><span id="hook-l2-t">CONFIRM LULUS?</span></div>
+  <div data-hf-id="hf-srfg" id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-3xz7" id="hk-scrim"></div>
+    <div data-hf-id="hf-9v8k" id="hk-kicker"><span data-hf-id="hf-akog" class="slash"></span><span data-hf-id="hf-claf">LOAN KERETA</span></div>
+    <div data-hf-id="hf-mkaz" id="hk-title">
+      <div data-hf-id="hf-y1zn" id="hk-l1">SA cakap loan kau</div>
+      <div data-hf-id="hf-gd9d" id="hk-l2"><span data-hf-id="hf-k6hw" id="hk-l2-bg"></span><span data-hf-id="hf-7ad1" id="hk-l2-t">boleh approve?</span></div>
     </div>
-    <div id="hook-warn">
-      <div id="hook-warn-pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3 2.5 20h19L12 3Z" />
-          <path d="M12 10v4.5" />
-          <path d="M12 17.4v.1" />
-        </svg>
-        <span>HATI-HATI!</span>
-      </div>
+    <div data-hf-id="hf-9fhn" id="hk-warn">
+      <svg data-hf-id="hf-blkv" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <path data-hf-id="hf-i3v8" d="M12 3 2.5 20h19L12 3Z" />
+        <path data-hf-id="hf-gfzk" d="M12 10v4.5" />
+        <path data-hf-id="hf-xj59" d="M12 17.4v.1" />
+      </svg>
+      <span data-hf-id="hf-i4h0">HATI-HATI</span>
     </div>
   </div>
   <script>
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    // Frame 0 is the thumbnail: the card is already there and holds still.
-    tl.fromTo("#hook-card", { opacity: 1, y: 0 }, { opacity: 1, y: 0, duration: 0.01 }, 0);
-    // "loan kau boleh approve" -> the claim lights up
-    tl.fromTo("#hook-l2-bg", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power3.out" }, 2.88);
-    tl.fromTo("#hook-l2-t", { color: "#c8ec3c" }, { color: "#0e1116", duration: 0.08 }, 2.92);
-    // "kau kena hati-hati" -> warning stamp
+    // Frame 0 is the thumbnail: scrim, kicker and the claim are already there and hold still.
+    tl.set(["#hk-scrim", "#hk-kicker", "#hk-title"], { opacity: 1 }, 0);
+    // "boleh approve" -> the claim gets marked
+    tl.fromTo("#hk-l2-bg", { scaleX: 0 }, { scaleX: 1, duration: 0.24, ease: "power3.out" }, 3.1);
+    tl.fromTo("#hk-l2-t", { color: "#ffffff" }, { color: "#0b0d10", duration: 0.08, ease: "none" }, 3.16);
+    // "kau kena hati-hati" -> warning lands on "kena", early enough to be read before the cut
     tl.fromTo(
-      "#hook-warn-pill",
-      { opacity: 0, scale: 1.7, rotation: -9 },
-      { opacity: 1, scale: 1, rotation: -3, duration: 0.32, ease: "back.out(1.6)" },
-      5.29,
+      "#hk-warn",
+      { opacity: 0, scale: 1.6, rotation: -9 },
+      { opacity: 1, scale: 1, rotation: -3, duration: 0.26, ease: "back.out(1.6)" },
+      5.46,
     );
-    // leave clean before the cut
-    tl.to(["#hook-card", "#hook-warn-pill"], { opacity: 0, y: -40, duration: 0.18, ease: "power3.in" }, 5.66);
+    // leave clean just before the take change
+    tl.to(["#hk-kicker", "#hk-title", "#hk-warn"], { opacity: 0, filter: "blur(8px)", duration: 0.1, ease: "power2.in", stagger: 0.01 }, 5.88);
+    tl.to("#hk-scrim", { opacity: 0, duration: 0.12, ease: "power2.in" }, 5.88);
     window.__timelines["hook"] = tl;
   </script>
 </template>

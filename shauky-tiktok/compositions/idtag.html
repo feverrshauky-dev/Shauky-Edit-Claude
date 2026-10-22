@@ -1,0 +1,62 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    /* under the chin, in the band the steps take over next: he leans into the top of frame */
+    #id-tag {
+      position: absolute;
+      left: 64px;
+      top: 1040px;
+      display: flex;
+      align-items: stretch;
+      gap: 18px;
+      padding: 14px 26px 16px 16px;
+      border-radius: 10px;
+      background: rgba(11, 13, 16, 0.8);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+      clip-path: inset(0 100% 0 0);
+    }
+    #id-bar {
+      width: 8px;
+      background: var(--lime, #c6e83a);
+      transform: skewX(-12deg);
+    }
+    #id-name {
+      font-family: "Oswald", sans-serif;
+      font-weight: 600;
+      font-size: 50px;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      color: #ffffff;
+    }
+    #id-role {
+      margin-top: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      color: #c9d0d7;
+    }
+  </style>
+  <div data-hf-id="hf-tx3e" id="root" data-composition-id="idtag" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-2sop" id="id-tag">
+      <div data-hf-id="hf-4lku" id="id-bar"></div>
+      <div data-hf-id="hf-yeow">
+        <div data-hf-id="hf-ob93" id="id-name">SHAUKY</div>
+        <div data-hf-id="hf-v3py" id="id-role">SALES ADVISOR · PERODUA</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Scene clock starts at 6.0 s of the film (take 2).
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // wipes on from its bar as he says "yang kerja di sini"
+    tl.fromTo("#id-tag", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.45, ease: "expo.out" }, 0.3);
+    tl.to("#id-tag", { clipPath: "inset(0 0% 0 100%)", duration: 0.24, ease: "power3.in" }, 3.25);
+    window.__timelines["idtag"] = tl;
+  </script>
+</template>

@@ -6,10 +6,8 @@
     <script src="assets/vendor/gsap.min.js"></script>
     <style>
       :root {
-        --ground: #0e1116;
-        --ink: #ffffff;
-        --lime: #c8ec3c;
-        --font-display: "Montserrat", sans-serif;
+        --ground: #0b0d10;
+        --lime: #c6e83a;
       }
       * {
         margin: 0;
@@ -29,7 +27,6 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        font-family: var(--font-display);
       }
       #cam {
         position: absolute;
@@ -44,104 +41,90 @@
         height: 1920px;
         object-fit: cover;
       }
-      #flash {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        background: #ffffff;
-        opacity: 0;
-        pointer-events: none;
-      }
     </style>
   </head>
   <body>
-    <div data-hf-id="hf-wotn" id="root" data-composition-id="main" data-start="0" data-duration="43.2" data-width="1080" data-height="1920">
-      <!-- A-roll: pauses and repeats already cut out (scripts/edl.py), punch-ins on #cam -->
+    <div data-hf-id="hf-ql9q" id="root" data-composition-id="main" data-start="0" data-duration="43.23" data-width="1080" data-height="1920">
+      <!-- A-roll: pauses cut out by scripts/edl.py; punch-ins and the one flash live on #cam / #aroll below -->
       <div data-hf-id="hf-ftaq" id="cam">
-        <video data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:0,&quot;contrast&quot;:0.08,&quot;highlights&quot;:-0.1,&quot;shadows&quot;:0.05,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.02,&quot;tint&quot;:0,&quot;vibrance&quot;:0.14,&quot;saturation&quot;:0},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-zqkt" id="aroll" class="clip" src="assets/aroll.mp4" data-start="0" data-duration="43.2" data-track-index="0" data-has-audio="true" playsinline></video>
+        <video data-color-grading="{&quot;preset&quot;:&quot;skin-soft&quot;,&quot;intensity&quot;:0.5,&quot;adjust&quot;:{&quot;exposure&quot;:-0.04,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.16,&quot;shadows&quot;:0.04,&quot;whites&quot;:-0.06,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0.02,&quot;vibrance&quot;:0.02,&quot;saturation&quot;:0.04},&quot;details&quot;:{&quot;vignette&quot;:0.04,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-kya6" id="aroll" class="clip" src="assets/aroll.mp4" data-start="0" data-duration="43.23" data-track-index="0" data-has-audio="true" playsinline></video>
       </div>
-      <div data-hf-id="hf-hmg5" id="flash"></div>
 
       <!-- Motion graphics, one scene per beat -->
-      <div data-hf-id="hf-utlt" id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="5.86" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
-      <div data-hf-id="hf-i377" id="steps" data-composition-id="steps" data-composition-src="compositions/steps.html" data-start="5.86" data-duration="13.01" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
-      <div data-hf-id="hf-j6nx" id="payoff" data-composition-id="payoff" data-composition-src="compositions/payoff.html" data-start="18.87" data-duration="5.33" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
-      <div data-hf-id="hf-1npd" id="verdict" data-composition-id="verdict" data-composition-src="compositions/verdict.html" data-start="24.2" data-duration="7.5" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
-      <div data-hf-id="hf-ohz5" id="palsu" data-composition-id="palsu" data-composition-src="compositions/palsu.html" data-start="31.7" data-duration="3.9" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
-      <div data-hf-id="hf-5m4w" id="cta" data-composition-id="cta" data-composition-src="compositions/cta.html" data-start="35.6" data-duration="7.6" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div data-hf-id="hf-rvvm" id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div data-hf-id="hf-vovi" id="idtag" data-composition-id="idtag" data-composition-src="compositions/idtag.html" data-start="6" data-duration="3.55" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div data-hf-id="hf-e2t5" id="steps" data-composition-id="steps" data-composition-src="compositions/steps.html" data-start="9.5667" data-duration="9.43" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div data-hf-id="hf-zf7c" id="payoff" data-composition-id="payoff" data-composition-src="compositions/payoff.html" data-start="19" data-duration="4.1666" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div data-hf-id="hf-wwlc" id="cta" data-composition-id="cta" data-composition-src="compositions/cta.html" data-start="35.7333" data-duration="7.4967" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
 
-      <!-- Word-by-word captions (scripts/build_captions.py) -->
-      <div data-hf-id="hf-o49h" id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="43.2" data-track-index="4" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index: 20"></div>
+      <!-- Phrase captions with the verdict chips (scripts/build_captions.py) -->
+      <div data-hf-id="hf-jwzv" id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="43.23" data-track-index="3" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index: 20"></div>
 
-      <!-- Sound effects: each placed so its peak lands one frame after its picture -->
-      <audio data-hf-id="hf-5t4h" id="sfx-hook-hit" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="0" data-duration="1.6" data-track-index="5" data-volume="0.28"></audio>
-      <audio data-hf-id="hf-xzzl" id="sfx-claim-pop" class="clip" src="assets/sfx/pop.mp3" data-start="2.79" data-duration="0.5" data-track-index="5" data-volume="0.8"></audio>
-      <audio data-hf-id="hf-qz3f" id="sfx-warn-hit" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="5.25" data-duration="1.2" data-track-index="5" data-volume="0.32"></audio>
-      <audio data-hf-id="hf-e0dk" id="sfx-cut-1" class="clip" src="assets/sfx/whoosh.mp3" data-start="5.73" data-duration="0.5" data-track-index="6" data-volume="0.55"></audio>
-      <audio data-hf-id="hf-ihql" id="sfx-steps-head" class="clip" src="assets/sfx/click-soft.mp3" data-start="6.12" data-duration="0.3" data-track-index="7" data-volume="0.7"></audio>
-      <audio data-hf-id="hf-xuwj" id="sfx-step-1" class="clip" src="assets/sfx/pop.mp3" data-start="9.86" data-duration="0.5" data-track-index="6" data-volume="0.8"></audio>
-      <audio data-hf-id="hf-ke3l" id="sfx-step-2" class="clip" src="assets/sfx/click-soft.mp3" data-start="11.51" data-duration="0.3" data-track-index="6" data-volume="0.8"></audio>
-      <audio data-hf-id="hf-qhx0" id="sfx-step-3" class="clip" src="assets/sfx/pop.mp3" data-start="15.27" data-duration="0.5" data-track-index="7" data-volume="0.8"></audio>
-      <audio data-hf-id="hf-g2tm" id="sfx-riser" class="clip" src="assets/sfx/riser.mp3" data-start="19.38" data-duration="3.5" data-track-index="7" data-volume="0.22" data-fade-in="0.6"></audio>
-      <audio data-hf-id="hf-thlf" id="sfx-bank-hit" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="22.78" data-duration="2" data-track-index="8" data-volume="0.42"></audio>
-      <audio data-hf-id="hf-vbrt" id="sfx-cut-2" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="22.76" data-media-start="2.2" data-duration="1.2" data-track-index="9" data-volume="0.35"></audio>
-      <audio data-hf-id="hf-vkc8" id="sfx-honest" class="clip" src="assets/sfx/pop.mp3" data-start="25.72" data-duration="0.5" data-track-index="8" data-volume="0.7"></audio>
-      <audio data-hf-id="hf-suda" id="sfx-layak" class="clip" src="assets/sfx/pop.mp3" data-start="27.8" data-duration="0.5" data-track-index="8" data-volume="0.85"></audio>
-      <audio data-hf-id="hf-odgc" id="sfx-tak-layak" class="clip" src="assets/sfx/click-soft.mp3" data-start="29.71" data-duration="0.3" data-track-index="9" data-volume="0.9"></audio>
-      <audio data-hf-id="hf-xqnw" id="sfx-tak-layak-hit" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="29.71" data-duration="1" data-track-index="10" data-volume="0.2"></audio>
-      <audio data-hf-id="hf-el2k" id="sfx-palsu-in" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="32.49" data-duration="0.5" data-track-index="9" data-volume="0.4"></audio>
-      <audio data-hf-id="hf-ngml" id="sfx-palsu-strike" class="clip" src="assets/sfx/glitch-1.mp3" data-start="32.73" data-duration="1.3" data-track-index="10" data-volume="0.22" data-fade-out="0.3"></audio>
-      <audio data-hf-id="hf-gcq2" id="sfx-cut-3" class="clip" src="assets/sfx/whoosh.mp3" data-start="35.47" data-duration="0.5" data-track-index="10" data-volume="0.5"></audio>
-      <audio data-hf-id="hf-l66g" id="sfx-cta-1" class="clip" src="assets/sfx/pop.mp3" data-start="37.75" data-duration="0.5" data-track-index="11" data-volume="0.75"></audio>
-      <audio data-hf-id="hf-ioxr" id="sfx-cta-2" class="clip" src="assets/sfx/click-soft.mp3" data-start="39.73" data-duration="0.3" data-track-index="11" data-volume="0.8"></audio>
-      <audio data-hf-id="hf-7mej" id="sfx-cta-card" class="clip" src="assets/sfx/sparkle.mp3" data-start="40.8" data-duration="1.8" data-track-index="11" data-volume="0.3"></audio>
+      <!-- Sound effects: each placed so its measured peak lands one frame after its picture -->
+      <audio data-hf-id="hf-pkx7" id="sfx-open" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="0" data-duration="1.4" data-track-index="4" data-volume="0.22"></audio>
+      <audio data-hf-id="hf-z5f1" id="sfx-claim" class="clip" src="assets/sfx/click-soft.mp3" data-start="3.107" data-duration="0.36" data-track-index="4" data-volume="0.6"></audio>
+      <audio data-hf-id="hf-f0o1" id="sfx-warn" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="5.441" data-duration="1.2" data-track-index="5" data-volume="0.36"></audio>
+      <audio data-hf-id="hf-7adh" id="sfx-cut-1" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="5.876" data-duration="0.57" data-track-index="4" data-volume="0.42"></audio>
+      <audio data-hf-id="hf-ntpc" id="sfx-id" class="clip" src="assets/sfx/click-soft.mp3" data-start="6.307" data-duration="0.36" data-track-index="6" data-volume="0.45"></audio>
+      <audio data-hf-id="hf-ngnx" id="sfx-step-1" class="clip" src="assets/sfx/pop.mp3" data-start="9.804" data-duration="0.72" data-track-index="4" data-volume="0.55"></audio>
+      <audio data-hf-id="hf-ecug" id="sfx-step-2" class="clip" src="assets/sfx/click-soft.mp3" data-start="11.714" data-duration="0.36" data-track-index="5" data-volume="0.6"></audio>
+      <audio data-hf-id="hf-6vwf" id="sfx-step-3" class="clip" src="assets/sfx/pop.mp3" data-start="16.444" data-duration="0.72" data-track-index="4" data-volume="0.55"></audio>
+      <audio data-hf-id="hf-aukk" id="sfx-riser" class="clip" src="assets/sfx/riser.mp3" data-start="20.08" data-media-start="1.3" data-duration="2.66" data-track-index="5" data-volume="0.2" data-fade-in="0.8"></audio>
+      <audio data-hf-id="hf-60xm" id="sfx-bank" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="22.691" data-duration="1.8" data-track-index="6" data-volume="0.5"></audio>
+      <audio data-hf-id="hf-jkt9" id="sfx-layak-1" class="clip" src="assets/sfx/pop.mp3" data-start="27.837" data-duration="0.72" data-track-index="4" data-volume="0.55"></audio>
+      <audio data-hf-id="hf-hzo5" id="sfx-layak-2" class="clip" src="assets/sfx/click-soft.mp3" data-start="28.907" data-duration="0.36" data-track-index="5" data-volume="0.5"></audio>
+      <audio data-hf-id="hf-gwmx" id="sfx-tak-1" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="29.711" data-duration="0.9" data-track-index="6" data-volume="0.2"></audio>
+      <audio data-hf-id="hf-hzjz" id="sfx-tak-1c" class="clip" src="assets/sfx/click-soft.mp3" data-start="29.737" data-duration="0.36" data-track-index="4" data-volume="0.6"></audio>
+      <audio data-hf-id="hf-9fe9" id="sfx-tak-2" class="clip" src="assets/sfx/click-soft.mp3" data-start="30.907" data-duration="0.36" data-track-index="5" data-volume="0.6"></audio>
+      <audio data-hf-id="hf-g7sb" id="sfx-strike" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="33.546" data-duration="0.57" data-track-index="4" data-volume="0.32"></audio>
+      <audio data-hf-id="hf-4hqg" id="sfx-cut-3" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="35.422" data-media-start="2.2" data-duration="1" data-track-index="5" data-volume="0.28" data-fade-out="0.4"></audio>
+      <audio data-hf-id="hf-7kcr" id="sfx-card" class="clip" src="assets/sfx/pop.mp3" data-start="40.94" data-duration="0.72" data-track-index="4" data-volume="0.6"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
+      const tl = gsap.timeline({ paused: true });
 
-      // Camera: hard punch-ins on the jump cuts so they read as intended,
-      // bigger on the words that matter. [time, scale, transformOrigin]
+      // Camera. Jump cuts inside a take alternate scale so each reads as a cut, and the
+      // words that matter get a bigger frame. Each take zooms about a point that keeps the
+      // chin clear of its caption band. [time, scale, transformOrigin]
       const CAM = [
-        [0, 1.0, "50% 74%"], // take 1 frames the face low: zoom about the face, gently
-        [2.03, 1.05],
-        [2.8, 1.12], //   "loan kau boleh approve"
-        [3.83, 1.04],
-        [5.86, 1.0, "50% 34%"], // take 2
-        [9.43, 1.1],
-        [11.13, 1.0],
-        [12.9, 1.1],
-        [15.27, 1.0],
-        [18.87, 1.1],
-        [19.93, 1.18], // "keputusan akhir"
-        [20.97, 1.28], // "terletak di tangan bank"
-        [23.03, 1.0, "50% 30%"], // take 3
-        [27.27, 1.1],
-        [29.13, 1.0],
-        [31.7, 1.08],
-        [35.6, 1.0, "50% 36%"], // take 4
-        [40.8, 1.12], // "nombor aku dekat bio"
+        [0, 1.0, "50% 57%"], //  take 1: face sits low, title above it
+        [2.0333, 1.05],
+        [2.8, 1.1], //           "loan kau boleh approve"
+        [3.8333, 1.0],
+        [6.0, 1.0, "50% 48%"], // take 2
+        [9.5667, 1.07],
+        [11.2667, 1.0],
+        [13.0333, 1.07],
+        [15.4, 1.0],
+        [19.0, 1.07], //         "tapi apa-apa pun"
+        [20.0667, 1.15], //      "keputusan akhir"
+        [21.1, 1.22], //         "terletak daripada tangan bank"
+        [23.1666, 1.0, "50% 63%"], // take 3: close, chin near the captions
+        [27.3999, 1.06],
+        [29.2666, 1.0],
+        [31.8333, 1.04],
+        [35.7333, 1.0, "50% 62%"], // take 4: room above the head stays clear for the CTA
       ];
       CAM.forEach(([t, s, origin]) => {
         const v = { scale: s };
         if (origin) v.transformOrigin = origin;
         tl.set("#cam", v, t);
       });
-      // quick emphasis punches inside a phrase
-      tl.fromTo("#cam", { scale: 1.04 }, { scale: 1.14, duration: 0.14, ease: "expo.out", immediateRender: false }, 5.29); //  "hati-hati"
-      tl.fromTo("#cam", { scale: 1.28 }, { scale: 1.36, duration: 0.14, ease: "expo.out", immediateRender: false }, 22.82); // "bank"
-      tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.2, duration: 0.14, ease: "expo.out", immediateRender: false }, 31.19); //  "sebab apa?"
-      tl.fromTo("#cam", { scale: 1.08 }, { scale: 1.18, duration: 0.14, ease: "expo.out", immediateRender: false }, 32.62); // "harapan palsu"
-
-      // Take changes: a short white flash and the new take settling in from slightly large.
-      [5.86, 23.03, 35.6].forEach((t) => {
-        tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.55, duration: 0.05, ease: "power4.in", immediateRender: false }, t - 0.05);
-        tl.to("#flash", { opacity: 0, duration: 0.22, ease: "power3.out" }, t);
-        tl.fromTo("#cam", { scale: 1.09 }, { scale: 1.0, duration: 0.4, ease: "expo.out", immediateRender: false }, t);
+      // the open and each take change settle in from slightly large
+      [[0, 1.06, 0.55], [6.0, 1.08, 0.42], [23.1666, 1.07, 0.4], [35.7333, 1.07, 0.4]].forEach(([t, from, d]) => {
+        tl.fromTo("#cam", { scale: from }, { scale: 1.0, duration: d, ease: "expo.out", immediateRender: false }, t);
       });
+      // quick punches on the word inside a phrase
+      tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.08, duration: 0.14, ease: "expo.out", immediateRender: false }, 5.46); //   "kena hati-hati"
+      tl.fromTo("#cam", { scale: 1.22 }, { scale: 1.28, duration: 0.14, ease: "expo.out", immediateRender: false }, 22.71); // "bank"
+      tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.1, duration: 0.14, ease: "expo.out", immediateRender: false }, 31.29); //   "sebab apa?"
+
+      // The one flash: hook -> explanation. Exposure peaks on the cut and falls back to the grade.
+      tl.fromTo("#aroll", { "--hf-color-grading-exposure": -0.04 }, { "--hf-color-grading-exposure": 0.8, duration: 0.16, ease: "power3.in", immediateRender: false }, 5.84);
+      tl.to("#aroll", { "--hf-color-grading-exposure": -0.04, duration: 0.26, ease: "power2.out" }, 6.0);
 
       window.__timelines["main"] = tl;
-      tl.seek(0);
     </script>
   </body>
 </html>

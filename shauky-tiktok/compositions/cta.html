@@ -4,105 +4,111 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      font-family: "Montserrat", sans-serif;
     }
-    #cta-q {
+    /* take 4 leaves the band above the head free: everything lives there */
+    #cta-scrim {
       position: absolute;
       left: 0;
-      width: 100%;
-      top: 205px;
-      text-align: center;
-    }
-    .cta-chip {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 12px 28px 14px;
-      border-radius: 999px;
-      background: rgba(14, 17, 22, 0.86);
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 50px;
-      line-height: 1;
+      right: 0;
+      top: 0;
+      height: 470px;
+      background: linear-gradient(180deg, rgba(11, 13, 16, 0.78) 0%, rgba(11, 13, 16, 0.5) 62%, rgba(11, 13, 16, 0) 100%);
       opacity: 0;
     }
-    .cta-chip b {
-      color: #c8ec3c;
+    .cta-line {
+      position: absolute;
+      left: 72px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: #ffffff;
+      opacity: 0;
+    }
+    .cta-line b {
+      color: var(--lime, #c6e83a);
+      font-weight: 700;
+    }
+    #cta-l1 {
+      top: 190px;
+      font-size: 76px;
+    }
+    #cta-l2 {
+      top: 280px;
+      font-size: 54px;
     }
     #cta-card {
       position: absolute;
-      left: 70px;
-      right: 70px;
-      top: 200px;
-      padding: 26px 30px 30px;
-      border-radius: 34px;
-      background: #c8ec3c;
-      color: #0e1116;
-      text-align: center;
-      opacity: 0;
-      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
-    }
-    #cta-row {
+      left: 56px;
+      right: 56px;
+      top: 186px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 22px;
+      gap: 24px;
+      padding: 20px 28px 22px 22px;
+      border-radius: 12px;
+      background: var(--lime, #c6e83a);
+      color: #0b0d10;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.3);
+      opacity: 0;
     }
     #cta-icon {
       flex: none;
-      width: 104px;
-      height: 104px;
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
-      background: #0e1116;
+      background: #0b0d10;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     #cta-icon svg {
-      width: 58px;
-      height: 58px;
+      width: 52px;
+      height: 52px;
     }
     #cta-big {
-      font-weight: 800;
-      font-size: 76px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 700;
+      font-size: 64px;
       line-height: 1;
-      text-align: left;
+      letter-spacing: 0.01em;
     }
     #cta-small {
-      margin-top: 16px;
-      font-weight: 800;
-      font-size: 36px;
-      letter-spacing: 0.05em;
-      line-height: 1;
+      margin-top: 10px;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.06em;
     }
   </style>
-  <div id="root" data-composition-id="cta" data-width="1080" data-height="1920">
-    <div id="cta-q">
-      <div class="cta-chip" id="cta-c1">NAK BELI <b>PERODUA?</b></div>
-      <br />
-      <div class="cta-chip" id="cta-c2">NAK TAHU PASAL <b>LOAN?</b></div>
-    </div>
-    <div id="cta-card">
-      <div id="cta-row">
-        <div id="cta-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#c8ec3c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
-          </svg>
-        </div>
-        <div id="cta-big">NOMBOR AKU<br />DEKAT BIO</div>
+  <div data-hf-id="hf-rebv" id="root" data-composition-id="cta" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-4868" id="cta-scrim"></div>
+    <div data-hf-id="hf-rrde" class="cta-line" id="cta-l1">CARI KERETA <b data-hf-id="hf-uubq">PERODUA?</b></div>
+    <div data-hf-id="hf-eyoz" class="cta-line" id="cta-l2">NAK TAHU TENTANG <b data-hf-id="hf-5x58">LOAN?</b></div>
+    <div data-hf-id="hf-duuo" id="cta-card">
+      <div data-hf-id="hf-i15x" id="cta-icon">
+        <svg data-hf-id="hf-dnez" viewBox="0 0 24 24" fill="none" stroke="#c6e83a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-a4xy" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
+        </svg>
       </div>
-      <div id="cta-small">CONTACT SA SHAUKY</div>
+      <div data-hf-id="hf-yeow">
+        <div data-hf-id="hf-rpf9" id="cta-big">NOMBOR AKU DEKAT BIO</div>
+        <div data-hf-id="hf-gr61" id="cta-small">SHAUKY · SALES ADVISOR PERODUA</div>
+      </div>
     </div>
   </div>
   <script>
-    // Scene clock starts at 35.6 s of the film.
+    // Scene clock starts at 35.7333 s of the film (take 4).
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#cta-c1", { opacity: 0, y: 24, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.36, ease: "back.out(1.5)" }, 2.24);
-    tl.fromTo("#cta-c2", { opacity: 0, y: 24, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.36, ease: "back.out(1.5)" }, 4.17);
-    tl.to(["#cta-c1", "#cta-c2"], { opacity: 0, y: -30, duration: 0.16, ease: "power3.in", stagger: 0.03 }, 5.0);
+    tl.fromTo("#cta-scrim", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 1.6);
+    // "kereta Perodua" / "tentang loan": the two questions, word-blur in
+    tl.fromTo("#cta-l1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power2.out" }, 1.93);
+    tl.fromTo("#cta-l2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power2.out" }, 3.58);
+    tl.to(["#cta-l1", "#cta-l2"], { opacity: 0, filter: "blur(8px)", duration: 0.14, ease: "power2.in", stagger: 0.02 }, 5.1);
     // "nombor aku dekat bio": the card lands and holds to the end
-    tl.fromTo("#cta-card", { opacity: 0, y: -40, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "expo.out" }, 5.19);
-    tl.fromTo("#cta-icon", { rotation: -18 }, { rotation: 0, duration: 0.6, ease: "elastic.out(1, 0.5)" }, 5.25);
+    tl.fromTo("#cta-card", { opacity: 0, y: -28, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 5.27);
+    tl.fromTo("#cta-icon", { rotation: -16 }, { rotation: 0, duration: 0.5, ease: "back.out(2)" }, 5.33);
     window.__timelines["cta"] = tl;
   </script>
 </template>
