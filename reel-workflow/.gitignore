@@ -1,0 +1,5 @@
+reel-output/
+*.mp4
+*.mov
+*.wav
+__pycache__/
