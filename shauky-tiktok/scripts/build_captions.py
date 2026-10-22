@@ -26,7 +26,7 @@ def top_for(seg):
         return 584  # take 1 frames the face low: between the hook title and the head
     if seg <= 11:
         return 1176
-    return 1222
+    return 1232  # takes 3-4 sit close: clear the beard, still above y 1330
 
 
 def clean(t):

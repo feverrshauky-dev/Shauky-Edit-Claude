@@ -79,7 +79,7 @@ dealership's green wall stripe), red #FF4A3D only for warnings; slanted bars as 
 Captions: 2–5-word phrases on real word timings, no per-word karaoke highlight; lime only on the
 point of each line (approve, hati-hati, semakan, bersesuaian, keputusan, awal-awal, Perodua, loan, bio).
 Placement follows each take's measured face position: above the head in take 1, under the chin in
-takes 2–4, all inside y 168–1330 (TikTok's UI-free band).
+takes 2–4 (y 1176 in take 2, 1232 in takes 3–4), all inside y 168–1330 (TikTok's UI-free band).
 
 Camera: jump cuts inside a take alternate 1.0 / 1.04–1.10 so each reads as a cut; each take zooms
 about a point that keeps the chin out of the captions.
