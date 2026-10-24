@@ -1,0 +1,83 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #e-t1,
+    #e-t2 {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-weight: 800;
+      line-height: 1;
+    }
+    #e-t1 {
+      top: 300px;
+      font-size: 120px;
+    }
+    #e-t1 b {
+      color: var(--lime);
+    }
+    #e-t2 {
+      top: 440px;
+      font-size: 62px;
+      line-height: 1.12;
+    }
+    #e-car {
+      position: absolute;
+      left: 170px;
+      width: 740px;
+      top: 700px;
+    }
+    #e-card {
+      top: 1110px;
+      padding: 36px 44px 40px;
+      text-align: center;
+      background: var(--lime);
+      color: var(--ground);
+      border: 0;
+    }
+    #e-card-1 {
+      font-weight: 700;
+      font-size: 42px;
+    }
+    #e-card-2 {
+      margin-top: 8px;
+      font-weight: 800;
+      font-size: 64px;
+      line-height: 1.05;
+    }
+    #e-note {
+      top: 1400px;
+      font-size: 28px;
+    }
+  </style>
+  <div id="root" data-composition-id="cta" data-width="1080" data-height="1920">
+    <div id="e-t1"><b>SAVE</b> &amp; SHARE</div>
+    <div id="e-t2">dekat geng fresh grad<br />yang nak beli kereta</div>
+    <div id="e-car" data-car="myvi" data-color="#c8ec3c"></div>
+    <div id="e-card" class="card">
+      <div id="e-card-1">Nak kira ansuran ikut gaji kau?</div>
+      <div id="e-card-2">NOMBOR AKU DI BIO</div>
+    </div>
+    <div id="e-note" class="note">Angka anggaran sahaja. Kelulusan pinjaman tertakluk kepada bank.</div>
+  </div>
+  <script>
+    // Scene clock starts at 51 s of the film; times below are film seconds.
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const s = kit.scene(tl, 51);
+    kit.cars(document.querySelector('[data-composition-id="cta"]'));
+    s.zoomIn("#e-t1", 51.05, 1.5);
+    s.fadeUp("#e-t2", 51.4);
+    tl.fromTo("#e-car", { x: -1100 }, { x: 0, duration: 1, ease: "expo.out" }, s.at(51.6));
+    s.spin("#e-car", 51.6, 1.2, 3);
+    tl.fromTo("#e-card", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, ...s.pop }, s.at(52.6));
+    tl.fromTo("#e-card", { scale: 1 }, { scale: 1.04, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, s.at(53.2));
+    s.fadeUp("#e-note", 53.2);
+    window.__timelines["cta"] = tl;
+  </script>
+</template>

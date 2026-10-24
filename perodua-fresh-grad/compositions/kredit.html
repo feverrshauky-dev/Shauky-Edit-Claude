@@ -1,0 +1,102 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #c-chips {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 470px;
+      text-align: center;
+    }
+    .c-chip {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 30px 14px;
+      border-radius: 999px;
+      background: var(--panel-2);
+      font-weight: 800;
+      font-size: 44px;
+      letter-spacing: 0.04em;
+    }
+    #c-gauge {
+      position: absolute;
+      left: 190px;
+      width: 700px;
+      top: 600px;
+    }
+    #c-gauge svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+    #c-warn {
+      top: 1060px;
+      padding: 36px 44px 40px;
+      background: #2b1517;
+      border-color: rgba(255, 77, 77, 0.4);
+    }
+    #c-warn-h {
+      font-weight: 800;
+      font-size: 50px;
+      line-height: 1.1;
+    }
+    #c-warn-h b {
+      color: var(--red);
+    }
+    #c-warn-b {
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 1.3;
+      color: var(--mute);
+    }
+    #c-warn-b b {
+      color: var(--lime);
+    }
+    #c-note {
+      top: 1390px;
+    }
+  </style>
+  <div id="root" data-composition-id="kredit" data-width="1080" data-height="1920">
+    <div id="c-step" class="step"><span>LANGKAH 4</span></div>
+    <div id="c-title" class="title">SEMAK <b>REKOD KREDIT</b></div>
+    <div id="c-chips"><span class="c-chip">CCRIS</span><span class="c-chip">CTOS</span></div>
+    <div id="c-gauge">
+      <svg viewBox="0 0 700 400">
+        <path d="M60 350 A290 290 0 0 1 157 134" fill="none" stroke="#ff4d4d" stroke-width="56" />
+        <path d="M175 118 A290 290 0 0 1 525 118" fill="none" stroke="#ffb43c" stroke-width="56" />
+        <path d="M543 134 A290 290 0 0 1 640 350" fill="none" stroke="#c8ec3c" stroke-width="56" />
+        <g id="c-needle">
+          <path d="M342 350 L350 110 L358 350 Z" fill="#ffffff" />
+          <circle cx="350" cy="350" r="30" fill="#ffffff" />
+          <circle cx="350" cy="350" r="12" fill="#0e1116" />
+        </g>
+      </svg>
+    </div>
+    <div id="c-warn" class="card">
+      <div id="c-warn-h">PTPTN tertunggak? <b>Loan boleh ditolak.</b></div>
+      <div id="c-warn-b">Settle tunggakan atau buat pelan bayaran <b>sebelum</b> mohon loan kereta.</div>
+    </div>
+    <div id="c-note" class="note">Semak laporan CCRIS percuma melalui eCCRIS Bank Negara.</div>
+  </div>
+  <script>
+    // Scene clock starts at 30 s of the film; times below are film seconds.
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const s = kit.scene(tl, 30);
+    s.fadeUp("#c-step", 30.05, -20);
+    s.zoomIn("#c-title", 30.15);
+    tl.fromTo("#c-chips .c-chip", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, stagger: 0.12, ...s.pop }, s.at(30.5));
+    s.fadeUp("#c-gauge", 30.7);
+    tl.fromTo("#c-needle", { rotation: -82, svgOrigin: "350 350" }, { rotation: 62, svgOrigin: "350 350", duration: 1.6, ease: "elastic.out(1, 0.5)" }, s.at(31.1));
+    s.fadeUp("#c-warn", 32.5);
+    s.fadeUp("#c-note", 32.8);
+    s.out(["#c-step", "#c-title", "#c-chips", "#c-gauge", "#c-warn", "#c-note"], 35.7);
+    window.__timelines["kredit"] = tl;
+  </script>
+</template>

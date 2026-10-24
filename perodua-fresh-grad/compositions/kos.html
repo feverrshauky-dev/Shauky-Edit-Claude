@@ -1,0 +1,113 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #r-paper {
+      position: absolute;
+      left: 150px;
+      width: 780px;
+      top: 470px;
+      padding: 40px 50px 44px;
+      border-radius: 28px 28px 10px 10px;
+      background: #f6f4ee;
+      color: #14171c;
+    }
+    #r-head {
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: 0.12em;
+      text-align: center;
+      color: #4b5260;
+    }
+    .r-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 22px;
+      font-weight: 700;
+      font-size: 40px;
+    }
+    .r-row small {
+      display: block;
+      font-size: 28px;
+      font-weight: 600;
+      color: #5b6270;
+    }
+    .r-row b {
+      font-weight: 800;
+    }
+    #r-sep {
+      margin-top: 26px;
+      border-top: 4px dashed #c3c6cc;
+    }
+    #r-total {
+      margin-top: 22px;
+      font-size: 50px;
+    }
+    #r-total b {
+      color: #c42d2d;
+      font-size: 60px;
+    }
+    #r-stamp {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 1300px;
+      text-align: center;
+    }
+    #r-stamp span {
+      display: inline-block;
+      padding: 16px 38px 20px;
+      border-radius: 22px;
+      background: var(--red);
+      font-weight: 800;
+      font-size: 64px;
+      line-height: 1;
+      box-shadow: 0 18px 44px rgba(255, 77, 77, 0.4);
+    }
+    #r-pct {
+      top: 1430px;
+      font-size: 38px;
+      color: var(--ink);
+    }
+    #r-pct b {
+      color: var(--lime);
+    }
+  </style>
+  <div id="root" data-composition-id="kos" data-width="1080" data-height="1920">
+    <div id="r-step" class="step"><span>LANGKAH 5</span></div>
+    <div id="r-title" class="title">KIRA <b>KOS TERSEMBUNYI</b></div>
+    <div id="r-paper">
+      <div id="r-head">KOS SEBULAN · BEZZA</div>
+      <div class="r-row r-item"><span>Ansuran</span><b>RM425</b></div>
+      <div class="r-row r-item"><span>Minyak</span><b>RM200</b></div>
+      <div class="r-row r-item"><span>Insurans<small>~RM1,200 setahun</small></span><b>RM100</b></div>
+      <div class="r-row r-item"><span>Tol &amp; parking</span><b>RM100</b></div>
+      <div class="r-row r-item"><span>Simpanan servis</span><b>RM40</b></div>
+      <div class="r-row r-item"><span>Cukai jalan<small>RM20–90 setahun</small></span><b>RM5</b></div>
+      <div id="r-sep"></div>
+      <div id="r-total" class="r-row"><span>JUMLAH</span><b>~RM870</b></div>
+    </div>
+    <div id="r-stamp"><span>BUKAN RM425 JE!</span></div>
+    <div id="r-pct" class="note">≈ <b>29%</b> daripada gaji RM3,000</div>
+  </div>
+  <script>
+    // Scene clock starts at 36 s of the film; times below are film seconds.
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const s = kit.scene(tl, 36);
+    s.fadeUp("#r-step", 36.05, -20);
+    s.zoomIn("#r-title", 36.15);
+    tl.fromTo("#r-paper", { opacity: 0, y: 200 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, s.at(36.5));
+    tl.fromTo("#r-paper .r-item", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.42, ease: "power2.out" }, s.at(37.2));
+    tl.fromTo("#r-sep", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, s.at(39.9));
+    tl.fromTo("#r-total", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, ...s.pop }, s.at(40.3));
+    tl.fromTo("#r-stamp span", { opacity: 0, scale: 2.2, rotation: -14 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.35, ease: "expo.out" }, s.at(41.2));
+    s.fadeUp("#r-pct", 42.0);
+    s.out(["#r-step", "#r-title", "#r-paper", "#r-stamp", "#r-pct"], 43.7);
+    window.__timelines["kos"] = tl;
+  </script>
+</template>

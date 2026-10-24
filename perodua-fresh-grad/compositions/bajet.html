@@ -1,0 +1,121 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #b-card {
+      top: 480px;
+      padding: 44px 50px 50px;
+    }
+    .b-lbl {
+      color: var(--mute);
+      font-weight: 700;
+      font-size: 36px;
+    }
+    #b-sal {
+      margin-top: 6px;
+      font-weight: 800;
+      font-size: 150px;
+      line-height: 1;
+    }
+    #b-bar {
+      position: relative;
+      margin-top: 44px;
+      height: 76px;
+      border-radius: 20px;
+      background: var(--panel-2);
+      overflow: hidden;
+    }
+    #b-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 20%;
+      background: var(--lime);
+    }
+    #b-mark {
+      position: absolute;
+      left: 15%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: rgba(14, 17, 22, 0.55);
+    }
+    #b-scale {
+      position: relative;
+      height: 40px;
+      margin-top: 14px;
+      color: var(--mute);
+      font-weight: 700;
+      font-size: 28px;
+    }
+    #b-scale span {
+      position: absolute;
+      top: 0;
+    }
+    #b-rule {
+      top: 1030px;
+      padding: 40px 50px 46px;
+      text-align: center;
+    }
+    #b-rule-1 {
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1.2;
+    }
+    #b-rule-1 b {
+      color: var(--lime);
+    }
+    #b-rule-2 {
+      margin-top: 18px;
+      font-weight: 800;
+      font-size: 92px;
+      line-height: 1;
+      color: var(--lime);
+    }
+    #b-rule-3 {
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--mute);
+    }
+    #b-note {
+      top: 1400px;
+    }
+  </style>
+  <div id="root" data-composition-id="bajet" data-width="1080" data-height="1920">
+    <div id="b-step" class="step"><span>LANGKAH 1</span></div>
+    <div id="b-title" class="title">KIRA <b>BAJET</b> DULU</div>
+    <div id="b-card" class="card">
+      <div class="b-lbl">Contoh gaji kasar sebulan</div>
+      <div id="b-sal">RM0</div>
+      <div id="b-bar"><div id="b-fill"></div><div id="b-mark"></div></div>
+      <div id="b-scale"><span style="left: 0">0%</span><span style="left: 12%">15%</span><span style="left: 20.5%">20%</span><span style="right: 0">100%</span></div>
+    </div>
+    <div id="b-rule" class="card">
+      <div id="b-rule-1">Ansuran kereta <b>maksimum 15–20%</b> gaji</div>
+      <div id="b-rule-2">RM450–600</div>
+      <div id="b-rule-3">sebulan, untuk gaji RM3,000</div>
+    </div>
+    <div id="b-note" class="note">Baki gaji untuk sewa, makan, PTPTN &amp; simpanan kecemasan.</div>
+  </div>
+  <script>
+    // Scene clock starts at 5 s of the film; times below are film seconds.
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const s = kit.scene(tl, 5);
+    s.fadeUp("#b-step", 5.05, -20);
+    s.zoomIn("#b-title", 5.15);
+    s.fadeUp("#b-card", 5.6);
+    s.counter("#b-sal", 3000, 5.8, 1.2, (v) => "RM" + Math.round(v).toLocaleString("en-US"));
+    tl.fromTo("#b-fill", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, s.at(7.4));
+    s.fadeUp("#b-rule", 9.2);
+    tl.fromTo("#b-rule-2", { scale: 0.6 }, { scale: 1, ...s.pop }, s.at(9.3));
+    s.fadeUp("#b-note", 10.4);
+    s.out(["#b-step", "#b-title", "#b-card", "#b-rule", "#b-note"], 12.7);
+    window.__timelines["bajet"] = tl;
+  </script>
+</template>

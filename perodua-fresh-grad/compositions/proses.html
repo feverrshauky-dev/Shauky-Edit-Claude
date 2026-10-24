@@ -1,0 +1,91 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #p-line {
+      position: absolute;
+      left: 155px;
+      top: 520px;
+      width: 8px;
+      height: 690px;
+      border-radius: 8px;
+      background: var(--lime);
+    }
+    .p-node {
+      position: absolute;
+      left: 100px;
+      right: 70px;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+    .p-dot {
+      flex: none;
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      background: var(--panel-2);
+      border: 6px solid var(--lime);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .p-dot svg {
+      width: 58px;
+      height: 58px;
+    }
+    .p-t {
+      font-weight: 800;
+      font-size: 50px;
+      line-height: 1.05;
+    }
+    .p-t small {
+      display: block;
+      margin-top: 6px;
+      color: var(--mute);
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+  </style>
+  <div id="root" data-composition-id="proses" data-width="1080" data-height="1920">
+    <div id="p-step" class="step"><span>LANGKAH 6</span></div>
+    <div id="p-title" class="title">DARI SHOWROOM KE <b>KUNCI</b></div>
+    <div id="p-line"></div>
+    <div id="p-1" class="p-node" style="top: 470px">
+      <div class="p-dot"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="22" fill="none" stroke="#c8ec3c" stroke-width="6" /><circle cx="32" cy="32" r="6" fill="#c8ec3c" /><path d="M32 38v16M26 30l-14-6M38 30l14-6" stroke="#c8ec3c" stroke-width="6" stroke-linecap="round" /></svg></div>
+      <div class="p-t">Test drive &amp; tempah<small>Bayar yuran tempahan, pilih warna</small></div>
+    </div>
+    <div id="p-2" class="p-node" style="top: 680px">
+      <div class="p-dot"><svg viewBox="0 0 64 64"><path d="M10 26 32 12l22 14z" fill="#c8ec3c" /><path d="M16 30v18M28 30v18M36 30v18M48 30v18" stroke="#c8ec3c" stroke-width="6" stroke-linecap="round" /><path d="M10 54h44" stroke="#c8ec3c" stroke-width="6" stroke-linecap="round" /></svg></div>
+      <div class="p-t">Mohon 2–3 bank<small>Banding kadar &amp; peluang lulus</small></div>
+    </div>
+    <div id="p-3" class="p-node" style="top: 890px">
+      <div class="p-dot"><svg viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="6" fill="none" stroke="#c8ec3c" stroke-width="6" /><path d="M23 33l7 7 12-14" fill="none" stroke="#c8ec3c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+      <div class="p-t">Loan lulus, sign<small>Baca perjanjian sebelum sign</small></div>
+    </div>
+    <div id="p-4" class="p-node" style="top: 1100px">
+      <div class="p-dot"><svg viewBox="0 0 64 64"><circle cx="28" cy="28" r="16" fill="none" stroke="#c8ec3c" stroke-width="6" /><path d="M40 40l14 14" stroke="#c8ec3c" stroke-width="7" stroke-linecap="round" /></svg></div>
+      <div class="p-t">Semak kereta (PDI)<small>Calar, kemek, aksesori — baru ambil kunci</small></div>
+    </div>
+  </div>
+  <script>
+    // Scene clock starts at 44 s of the film; times below are film seconds.
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const s = kit.scene(tl, 44);
+    s.fadeUp("#p-step", 44.05, -20);
+    s.zoomIn("#p-title", 44.15);
+    tl.fromTo("#p-line", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 2.8, ease: "none" }, s.at(45));
+    ["#p-1", "#p-2", "#p-3", "#p-4"].forEach((sel, i) => {
+      const t = 45 + i * 0.9;
+      tl.fromTo(`${sel} .p-dot`, { scale: 0 }, { scale: 1, ...s.pop }, s.at(t));
+      tl.fromTo(`${sel} .p-t`, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, s.at(t + 0.08));
+    });
+    s.out(["#p-step", "#p-title", "#p-line", "#p-1", "#p-2", "#p-3", "#p-4"], 50.7);
+    window.__timelines["proses"] = tl;
+  </script>
+</template>
