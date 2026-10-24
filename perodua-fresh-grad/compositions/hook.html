@@ -103,7 +103,7 @@
     <div id="h-sub" class="note">6 langkah ni kau wajib tahu</div>
   </div>
   <script>
-    // Scene clock starts at 0 s of the film.
+    // Scene clock starts at 0 s of the film; beats follow the voiceover.
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
     const s = kit.scene(tl, 0);
@@ -111,16 +111,18 @@
     // Title is already on screen at frame 0 (the thumbnail), then punches in.
     tl.fromTo(["#h-t1", "#h-t2"], { scale: 1.08 }, { scale: 1, duration: 0.5, ease: "expo.out", stagger: 0.1 }, 0);
     tl.fromTo("#h-cap-in", { y: -10 }, { y: 0, duration: 0.4, ease: "expo.out" }, 0);
-    tl.fromTo("#h-car", { x: -1100 }, { x: 0, duration: 1.1, ease: "expo.out" }, 0.8);
-    s.spin("#h-car", 0.8, 1.3, 3);
-    tl.fromTo("#h-car", { rotation: 0 }, { rotation: -2.5, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "80% 90%", immediateRender: false }, 1.55);
-    tl.fromTo("#h-lines i", { scaleX: 0, opacity: 0, transformOrigin: "100% 50%" }, { scaleX: 1, opacity: 1, duration: 0.3, stagger: 0.06, ease: "power2.out" }, 1.2);
-    tl.to("#h-lines i", { scaleX: 0, opacity: 0, duration: 0.4, stagger: 0.06, ease: "power2.in" }, 1.7);
-    tl.fromTo("#h-warn span", { opacity: 0, scale: 0.4, rotation: -8 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.45, ease: "back.out(2)" }, 2.5);
-    s.fadeUp("#h-sub", 3.2);
-    tl.to("#h-car", { x: 1150, duration: 0.6, ease: "power3.in" }, 4.45);
-    s.spin("#h-car", 4.45, 0.6, 2);
-    s.out(["#h-cap", "#h-t1", "#h-t2", "#h-warn", "#h-sub"], 4.7);
+    tl.fromTo("#h-t2", { scale: 1 }, { scale: 1.06, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 1.25); // "Perodua?"
+    tl.fromTo("#h-car", { x: -1100 }, { x: 0, duration: 1.0, ease: "expo.out" }, 1.4);
+    s.spin("#h-car", 1.4, 1.2, 3);
+    // brakes on "Tunggu dulu"
+    tl.fromTo("#h-car", { rotation: 0 }, { rotation: -2.5, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "80% 90%", immediateRender: false }, 2.25);
+    tl.fromTo("#h-lines i", { scaleX: 0, opacity: 0, transformOrigin: "100% 50%" }, { scaleX: 1, opacity: 1, duration: 0.3, stagger: 0.06, ease: "power2.out" }, 1.8);
+    tl.to("#h-lines i", { scaleX: 0, opacity: 0, duration: 0.4, stagger: 0.06, ease: "power2.in" }, 2.3);
+    tl.fromTo("#h-warn span", { opacity: 0, scale: 0.4, rotation: -8 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.45, ease: "back.out(2)" }, 3.0); // "Jangan sign"
+    s.fadeUp("#h-sub", 3.9); // "sebelum tahu enam benda ni"
+    tl.to("#h-car", { x: 1150, duration: 0.6, ease: "power3.in" }, 5.9);
+    s.spin("#h-car", 5.9, 0.6, 2);
+    s.out(["#h-cap", "#h-t1", "#h-t2", "#h-warn", "#h-sub"], 6.2);
     window.__timelines["hook"] = tl;
   </script>
 </template>

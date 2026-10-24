@@ -54,6 +54,7 @@
       font-size: 36px;
       line-height: 1.3;
       color: var(--mute);
+      opacity: 0;
     }
     #c-warn-b b {
       color: var(--lime);
@@ -80,23 +81,31 @@
     </div>
     <div id="c-warn" class="card">
       <div id="c-warn-h">PTPTN tertunggak? <b>Loan boleh ditolak.</b></div>
-      <div id="c-warn-b">Settle tunggakan atau buat pelan bayaran <b>sebelum</b> mohon loan kereta.</div>
+      <div id="c-warn-b"><b>Settle dulu</b> sebelum mohon loan kereta.</div>
     </div>
     <div id="c-note" class="note">Semak laporan CCRIS percuma melalui eCCRIS Bank Negara.</div>
   </div>
   <script>
-    // Scene clock starts at 30 s of the film; times below are film seconds.
+    // Scene clock starts at 47.45 s of the film; times below are film seconds, on the voiceover.
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    const s = kit.scene(tl, 30);
-    s.fadeUp("#c-step", 30.05, -20);
-    s.zoomIn("#c-title", 30.15);
-    tl.fromTo("#c-chips .c-chip", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, stagger: 0.12, ...s.pop }, s.at(30.5));
-    s.fadeUp("#c-gauge", 30.7);
-    tl.fromTo("#c-needle", { rotation: -82, svgOrigin: "350 350" }, { rotation: 62, svgOrigin: "350 350", duration: 1.6, ease: "elastic.out(1, 0.5)" }, s.at(31.1));
-    s.fadeUp("#c-warn", 32.5);
-    s.fadeUp("#c-note", 32.8);
-    s.out(["#c-step", "#c-title", "#c-chips", "#c-gauge", "#c-warn", "#c-note"], 35.7);
+    const s = kit.scene(tl, 47.45);
+    const needle = (rot, t, dur, ease) => tl.to("#c-needle", { rotation: rot, svgOrigin: "350 350", duration: dur, ease }, s.at(t));
+    s.fadeUp("#c-step", 47.73, -20); // "Empat."
+    s.zoomIn("#c-title", 48.72); //     "Semak CCRIS dan CTOS."
+    s.fadeUp("#c-gauge", 49.0);
+    tl.set("#c-needle", { rotation: -82, svgOrigin: "350 350" }, 0);
+    tl.fromTo("#c-chips .c-chip:nth-child(1)", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, ...s.pop }, s.at(49.36));
+    tl.fromTo("#c-chips .c-chip:nth-child(2)", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, ...s.pop }, s.at(50.41));
+    needle(62, 49.6, 1.6, "elastic.out(1, 0.5)");
+    s.fadeUp("#c-note", 50.6);
+    // "PTPTN tertunggak" drops the score into the red ...
+    s.fadeUp("#c-warn", 52.05);
+    needle(-62, 52.1, 0.7, "power3.out");
+    // ... "settle dulu" brings it back
+    s.fadeUp("#c-warn-b", 54.4, 20);
+    needle(62, 55.9, 1.2, "elastic.out(1, 0.5)");
+    s.out(["#c-step", "#c-title", "#c-chips", "#c-gauge", "#c-warn", "#c-note"], 56.7);
     window.__timelines["kredit"] = tl;
   </script>
 </template>

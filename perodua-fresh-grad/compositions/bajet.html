@@ -6,7 +6,7 @@
       pointer-events: none;
     }
     #b-card {
-      top: 480px;
+      top: 880px;
       padding: 44px 50px 50px;
     }
     .b-lbl {
@@ -57,7 +57,7 @@
       top: 0;
     }
     #b-rule {
-      top: 1030px;
+      top: 480px;
       padding: 40px 50px 46px;
       text-align: center;
     }
@@ -75,12 +75,14 @@
       font-size: 92px;
       line-height: 1;
       color: var(--lime);
+      opacity: 0;
     }
     #b-rule-3 {
       margin-top: 10px;
       font-weight: 700;
       font-size: 36px;
       color: var(--mute);
+      opacity: 0;
     }
     #b-note {
       top: 1400px;
@@ -89,33 +91,34 @@
   <div id="root" data-composition-id="bajet" data-width="1080" data-height="1920">
     <div id="b-step" class="step"><span>LANGKAH 1</span></div>
     <div id="b-title" class="title">KIRA <b>BAJET</b> DULU</div>
+    <div id="b-rule" class="card">
+      <div id="b-rule-1">Ansuran kereta <b>maksimum 15–20%</b> gaji</div>
+      <div id="b-rule-2">RM450–600</div>
+      <div id="b-rule-3">sebulan, untuk gaji RM3,000</div>
+    </div>
     <div id="b-card" class="card">
       <div class="b-lbl">Contoh gaji kasar sebulan</div>
       <div id="b-sal">RM0</div>
       <div id="b-bar"><div id="b-fill"></div><div id="b-mark"></div></div>
       <div id="b-scale"><span style="left: 0">0%</span><span style="left: 12%">15%</span><span style="left: 20.5%">20%</span><span style="right: 0">100%</span></div>
     </div>
-    <div id="b-rule" class="card">
-      <div id="b-rule-1">Ansuran kereta <b>maksimum 15–20%</b> gaji</div>
-      <div id="b-rule-2">RM450–600</div>
-      <div id="b-rule-3">sebulan, untuk gaji RM3,000</div>
-    </div>
     <div id="b-note" class="note">Baki gaji untuk sewa, makan, PTPTN &amp; simpanan kecemasan.</div>
   </div>
   <script>
-    // Scene clock starts at 5 s of the film; times below are film seconds.
+    // Scene clock starts at 6.5 s of the film; times below are film seconds, on the voiceover.
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    const s = kit.scene(tl, 5);
-    s.fadeUp("#b-step", 5.05, -20);
-    s.zoomIn("#b-title", 5.15);
-    s.fadeUp("#b-card", 5.6);
-    s.counter("#b-sal", 3000, 5.8, 1.2, (v) => "RM" + Math.round(v).toLocaleString("en-US"));
-    tl.fromTo("#b-fill", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, s.at(7.4));
-    s.fadeUp("#b-rule", 9.2);
-    tl.fromTo("#b-rule-2", { scale: 0.6 }, { scale: 1, ...s.pop }, s.at(9.3));
-    s.fadeUp("#b-note", 10.4);
-    s.out(["#b-step", "#b-title", "#b-card", "#b-rule", "#b-note"], 12.7);
+    const s = kit.scene(tl, 6.5);
+    s.fadeUp("#b-step", 6.77, -20); //               "Satu."
+    s.zoomIn("#b-title", 8.12); //                   "Kira bajet."
+    s.fadeUp("#b-rule", 9.29); //                    "Ansuran kereta jangan lebih..."
+    s.fadeUp("#b-card", 13.9); //                    "Kalau gaji"
+    s.counter("#b-sal", 3000, 14.3, 0.8, (v) => "RM" + Math.round(v).toLocaleString("en-US")); // "tiga ribu"
+    tl.fromTo("#b-fill", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, s.at(15.57)); // "maksimum"
+    tl.fromTo("#b-rule-2", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, ...s.pop }, s.at(16.42)); // "empat ratus lima puluh"
+    s.fadeUp("#b-rule-3", 16.6, 20);
+    s.fadeUp("#b-note", 17.0);
+    s.out(["#b-step", "#b-title", "#b-rule", "#b-card", "#b-note"], 20.3);
     window.__timelines["bajet"] = tl;
   </script>
 </template>

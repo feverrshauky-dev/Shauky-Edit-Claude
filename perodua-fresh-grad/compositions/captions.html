@@ -1,0 +1,397 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .cg {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 1530px;
+      padding: 0 70px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px 14px;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      overflow: visible;
+    }
+    .cg-in {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px 10px;
+      max-width: 940px;
+      padding: 12px 16px 14px;
+      border-radius: 26px;
+      background: rgba(8, 10, 14, 0.6);
+    }
+    .cw {
+      position: relative;
+      display: inline-block;
+      padding: 4px 14px 8px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 800;
+      font-size: inherit;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: #ffffff;
+      text-shadow:
+        0 0 2px rgba(0, 0, 0, 0.9),
+        0 4px 0 rgba(0, 0, 0, 0.55),
+        0 8px 22px rgba(0, 0, 0, 0.55);
+    }
+    .cw.kw .cw-t {
+      color: var(--lime, #c8ec3c);
+    }
+    .cw-t {
+      position: relative;
+      z-index: 1;
+    }
+    .cw-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: var(--lime, #c8ec3c);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+      transform-origin: 0% 50%;
+      opacity: 0;
+      z-index: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div class="cg" id="cap-g0" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w0"><span class="cw-bg"></span><span class="cw-t">BARU</span></span> <span class="cw" id="cap-w1"><span class="cw-bg"></span><span class="cw-t">GRAD</span></span></div></div>
+    <div class="cg" id="cap-g1" style="top: 1530px"><div class="cg-in" style="font-size: 68px"><span class="cw" id="cap-w2"><span class="cw-bg"></span><span class="cw-t">NAK</span></span> <span class="cw" id="cap-w3"><span class="cw-bg"></span><span class="cw-t">BELI</span></span> <span class="cw kw" id="cap-w4"><span class="cw-bg"></span><span class="cw-t">PERODUA?</span></span></div></div>
+    <div class="cg" id="cap-g2" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w5"><span class="cw-bg"></span><span class="cw-t">TUNGGU</span></span> <span class="cw" id="cap-w6"><span class="cw-bg"></span><span class="cw-t">DULU</span></span></div></div>
+    <div class="cg" id="cap-g3" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w7"><span class="cw-bg"></span><span class="cw-t">JANGAN</span></span> <span class="cw kw" id="cap-w8"><span class="cw-bg"></span><span class="cw-t">SIGN</span></span></div></div>
+    <div class="cg" id="cap-g4" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w9"><span class="cw-bg"></span><span class="cw-t">APA-APA</span></span> <span class="cw" id="cap-w10"><span class="cw-bg"></span><span class="cw-t">SEBELUM</span></span></div></div>
+    <div class="cg" id="cap-g5" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w11"><span class="cw-bg"></span><span class="cw-t">TAHU</span></span> <span class="cw kw" id="cap-w12"><span class="cw-bg"></span><span class="cw-t">6</span></span> <span class="cw" id="cap-w13"><span class="cw-bg"></span><span class="cw-t">BENDA</span></span> <span class="cw" id="cap-w14"><span class="cw-bg"></span><span class="cw-t">NI</span></span></div></div>
+    <div class="cg" id="cap-g6" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w15"><span class="cw-bg"></span><span class="cw-t">SATU</span></span></div></div>
+    <div class="cg" id="cap-g7" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w16"><span class="cw-bg"></span><span class="cw-t">KIRA</span></span> <span class="cw kw" id="cap-w17"><span class="cw-bg"></span><span class="cw-t">BAJET</span></span></div></div>
+    <div class="cg" id="cap-g8" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w18"><span class="cw-bg"></span><span class="cw-t">ANSURAN</span></span> <span class="cw" id="cap-w19"><span class="cw-bg"></span><span class="cw-t">KERETA</span></span></div></div>
+    <div class="cg" id="cap-g9" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w20"><span class="cw-bg"></span><span class="cw-t">JANGAN</span></span> <span class="cw" id="cap-w21"><span class="cw-bg"></span><span class="cw-t">LEBIH</span></span> <span class="cw kw" id="cap-w22"><span class="cw-bg"></span><span class="cw-t">15</span></span></div></div>
+    <div class="cg" id="cap-g10" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w24"><span class="cw-bg"></span><span class="cw-t">HINGGA</span></span> <span class="cw kw" id="cap-w25"><span class="cw-bg"></span><span class="cw-t">20%</span></span> <span class="cw" id="cap-w28"><span class="cw-bg"></span><span class="cw-t">GAJI</span></span></div></div>
+    <div class="cg" id="cap-g11" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w29"><span class="cw-bg"></span><span class="cw-t">KALAU</span></span> <span class="cw" id="cap-w30"><span class="cw-bg"></span><span class="cw-t">GAJI</span></span></div></div>
+    <div class="cg" id="cap-g12" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w31"><span class="cw-bg"></span><span class="cw-t">RM3,000</span></span></div></div>
+    <div class="cg" id="cap-g13" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w33"><span class="cw-bg"></span><span class="cw-t">MAKSIMUM</span></span> <span class="cw" id="cap-w34"><span class="cw-bg"></span><span class="cw-t">DALAM</span></span></div></div>
+    <div class="cg" id="cap-g14" style="top: 1530px"><div class="cg-in" style="font-size: 64px"><span class="cw kw" id="cap-w35"><span class="cw-bg"></span><span class="cw-t">RM450</span></span> <span class="cw" id="cap-w39"><span class="cw-bg"></span><span class="cw-t">HINGGA</span></span> <span class="cw kw" id="cap-w40"><span class="cw-bg"></span><span class="cw-t">RM600</span></span></div></div>
+    <div class="cg" id="cap-g15" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w43"><span class="cw-bg"></span><span class="cw-t">SEBULAN</span></span></div></div>
+    <div class="cg" id="cap-g16" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w44"><span class="cw-bg"></span><span class="cw-t">DUA</span></span></div></div>
+    <div class="cg" id="cap-g17" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w45"><span class="cw-bg"></span><span class="cw-t">PILIH</span></span> <span class="cw kw" id="cap-w46"><span class="cw-bg"></span><span class="cw-t">MODEL</span></span> <span class="cw" id="cap-w47"><span class="cw-bg"></span><span class="cw-t">IKUT</span></span></div></div>
+    <div class="cg" id="cap-g18" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w48"><span class="cw-bg"></span><span class="cw-t">POKET</span></span></div></div>
+    <div class="cg" id="cap-g19" style="top: 1530px"><div class="cg-in" style="font-size: 68px"><span class="cw kw" id="cap-w49"><span class="cw-bg"></span><span class="cw-t">AXIA</span></span> <span class="cw" id="cap-w50"><span class="cw-bg"></span><span class="cw-t">LEBIH</span></span> <span class="cw" id="cap-w51"><span class="cw-bg"></span><span class="cw-t">KURANG</span></span></div></div>
+    <div class="cg" id="cap-g20" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w52"><span class="cw-bg"></span><span class="cw-t">RM410</span></span> <span class="cw" id="cap-w55"><span class="cw-bg"></span><span class="cw-t">SEBULAN</span></span></div></div>
+    <div class="cg" id="cap-g21" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w56"><span class="cw-bg"></span><span class="cw-t">BEZZA</span></span> <span class="cw kw" id="cap-w57"><span class="cw-bg"></span><span class="cw-t">RM425</span></span></div></div>
+    <div class="cg" id="cap-g22" style="top: 1530px"><div class="cg-in" style="font-size: 68px"><span class="cw kw" id="cap-w62"><span class="cw-bg"></span><span class="cw-t">MYVI</span></span> <span class="cw" id="cap-w63"><span class="cw-bg"></span><span class="cw-t">DALAM</span></span> <span class="cw kw" id="cap-w64"><span class="cw-bg"></span><span class="cw-t">RM500</span></span></div></div>
+    <div class="cg" id="cap-g23" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w66"><span class="cw-bg"></span><span class="cw-t">UNTUK</span></span> <span class="cw" id="cap-w67"><span class="cw-bg"></span><span class="cw-t">GAJI</span></span></div></div>
+    <div class="cg" id="cap-g24" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w68"><span class="cw-bg"></span><span class="cw-t">RM3,000</span></span></div></div>
+    <div class="cg" id="cap-g25" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w70"><span class="cw-bg"></span><span class="cw-t">MYVI</span></span> <span class="cw" id="cap-w71"><span class="cw-bg"></span><span class="cw-t">DAH</span></span></div></div>
+    <div class="cg" id="cap-g26" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w72"><span class="cw-bg"></span><span class="cw-t">NGAM-NGAM</span></span></div></div>
+    <div class="cg" id="cap-g27" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w73"><span class="cw-bg"></span><span class="cw-t">TIGA</span></span></div></div>
+    <div class="cg" id="cap-g28" style="top: 1530px"><div class="cg-in" style="font-size: 68px"><span class="cw" id="cap-w74"><span class="cw-bg"></span><span class="cw-t">SEDIAKAN</span></span> <span class="cw kw" id="cap-w75"><span class="cw-bg"></span><span class="cw-t">DOKUMEN</span></span></div></div>
+    <div class="cg" id="cap-g29" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w76"><span class="cw-bg"></span><span class="cw-t">IC</span></span></div></div>
+    <div class="cg" id="cap-g30" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w77"><span class="cw-bg"></span><span class="cw-t">LESEN</span></span></div></div>
+    <div class="cg" id="cap-g31" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w78"><span class="cw-bg"></span><span class="cw-t">SLIP</span></span> <span class="cw" id="cap-w79"><span class="cw-bg"></span><span class="cw-t">GAJI</span></span> <span class="cw kw" id="cap-w80"><span class="cw-bg"></span><span class="cw-t">3</span></span></div></div>
+    <div class="cg" id="cap-g32" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w81"><span class="cw-bg"></span><span class="cw-t">BULAN</span></span></div></div>
+    <div class="cg" id="cap-g33" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w82"><span class="cw-bg"></span><span class="cw-t">PENYATA</span></span> <span class="cw" id="cap-w83"><span class="cw-bg"></span><span class="cw-t">KWSP</span></span></div></div>
+    <div class="cg" id="cap-g34" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w84"><span class="cw-bg"></span><span class="cw-t">PENYATA</span></span> <span class="cw" id="cap-w85"><span class="cw-bg"></span><span class="cw-t">BANK</span></span></div></div>
+    <div class="cg" id="cap-g35" style="top: 1530px"><div class="cg-in" style="font-size: 68px"><span class="cw" id="cap-w86"><span class="cw-bg"></span><span class="cw-t">DAN</span></span> <span class="cw" id="cap-w87"><span class="cw-bg"></span><span class="cw-t">SURAT</span></span> <span class="cw" id="cap-w88"><span class="cw-bg"></span><span class="cw-t">TAWARAN</span></span></div></div>
+    <div class="cg" id="cap-g36" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w89"><span class="cw-bg"></span><span class="cw-t">KERJA</span></span></div></div>
+    <div class="cg" id="cap-g37" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w90"><span class="cw-bg"></span><span class="cw-t">BARU</span></span> <span class="cw" id="cap-w91"><span class="cw-bg"></span><span class="cw-t">KERJA?</span></span></div></div>
+    <div class="cg" id="cap-g38" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w92"><span class="cw-bg"></span><span class="cw-t">ADA</span></span> <span class="cw" id="cap-w93"><span class="cw-bg"></span><span class="cw-t">BANK</span></span> <span class="cw" id="cap-w94"><span class="cw-bg"></span><span class="cw-t">YANG</span></span></div></div>
+    <div class="cg" id="cap-g39" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w95"><span class="cw-bg"></span><span class="cw-t">TERIMA</span></span> <span class="cw" id="cap-w96"><span class="cw-bg"></span><span class="cw-t">SLIP</span></span> <span class="cw" id="cap-w97"><span class="cw-bg"></span><span class="cw-t">GAJI</span></span></div></div>
+    <div class="cg" id="cap-g40" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w98"><span class="cw-bg"></span><span class="cw-t">PERTAMA</span></span></div></div>
+    <div class="cg" id="cap-g41" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w99"><span class="cw-bg"></span><span class="cw-t">ATAU</span></span> <span class="cw" id="cap-w100"><span class="cw-bg"></span><span class="cw-t">GUNA</span></span></div></div>
+    <div class="cg" id="cap-g42" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w101"><span class="cw-bg"></span><span class="cw-t">PENJAMIN</span></span></div></div>
+    <div class="cg" id="cap-g43" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w102"><span class="cw-bg"></span><span class="cw-t">EMPAT</span></span></div></div>
+    <div class="cg" id="cap-g44" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w103"><span class="cw-bg"></span><span class="cw-t">SEMAK</span></span> <span class="cw kw" id="cap-w104"><span class="cw-bg"></span><span class="cw-t">CCRIS</span></span> <span class="cw" id="cap-w105"><span class="cw-bg"></span><span class="cw-t">DAN</span></span></div></div>
+    <div class="cg" id="cap-g45" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w106"><span class="cw-bg"></span><span class="cw-t">CTOS</span></span></div></div>
+    <div class="cg" id="cap-g46" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w107"><span class="cw-bg"></span><span class="cw-t">PTPTN</span></span> <span class="cw" id="cap-w108"><span class="cw-bg"></span><span class="cw-t">TERTUNGGAK</span></span></div></div>
+    <div class="cg" id="cap-g47" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w109"><span class="cw-bg"></span><span class="cw-t">BOLEH</span></span> <span class="cw" id="cap-w110"><span class="cw-bg"></span><span class="cw-t">BUAT</span></span> <span class="cw" id="cap-w111"><span class="cw-bg"></span><span class="cw-t">LOAN</span></span></div></div>
+    <div class="cg" id="cap-g48" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w112"><span class="cw-bg"></span><span class="cw-t">KAU</span></span> <span class="cw kw" id="cap-w113"><span class="cw-bg"></span><span class="cw-t">DITOLAK</span></span></div></div>
+    <div class="cg" id="cap-g49" style="top: 1530px"><div class="cg-in" style="font-size: 64px"><span class="cw" id="cap-w114"><span class="cw-bg"></span><span class="cw-t">JADI</span></span> <span class="cw kw" id="cap-w115"><span class="cw-bg"></span><span class="cw-t">SETTLE</span></span> <span class="cw" id="cap-w116"><span class="cw-bg"></span><span class="cw-t">DULU</span></span></div></div>
+    <div class="cg" id="cap-g50" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w117"><span class="cw-bg"></span><span class="cw-t">LIMA</span></span></div></div>
+    <div class="cg" id="cap-g51" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w118"><span class="cw-bg"></span><span class="cw-t">KIRA</span></span> <span class="cw" id="cap-w119"><span class="cw-bg"></span><span class="cw-t">KOS</span></span></div></div>
+    <div class="cg" id="cap-g52" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w120"><span class="cw-bg"></span><span class="cw-t">TERSEMBUNYI</span></span></div></div>
+    <div class="cg" id="cap-g53" style="top: 1530px"><div class="cg-in" style="font-size: 56px"><span class="cw" id="cap-w121"><span class="cw-bg"></span><span class="cw-t">MINYAK</span></span> <span class="cw" id="cap-w122"><span class="cw-bg"></span><span class="cw-t">INSURANS</span></span> <span class="cw" id="cap-w123"><span class="cw-bg"></span><span class="cw-t">TOL</span></span></div></div>
+    <div class="cg" id="cap-g54" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w124"><span class="cw-bg"></span><span class="cw-t">SERVIS</span></span></div></div>
+    <div class="cg" id="cap-g55" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w125"><span class="cw-bg"></span><span class="cw-t">ANSURAN</span></span> <span class="cw kw" id="cap-w126"><span class="cw-bg"></span><span class="cw-t">RM425</span></span></div></div>
+    <div class="cg" id="cap-g56" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w131"><span class="cw-bg"></span><span class="cw-t">TAPI</span></span> <span class="cw" id="cap-w132"><span class="cw-bg"></span><span class="cw-t">KOS</span></span> <span class="cw" id="cap-w133"><span class="cw-bg"></span><span class="cw-t">SEBENAR</span></span></div></div>
+    <div class="cg" id="cap-g57" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w134"><span class="cw-bg"></span><span class="cw-t">HAMPIR</span></span> <span class="cw kw" id="cap-w135"><span class="cw-bg"></span><span class="cw-t">RM870</span></span></div></div>
+    <div class="cg" id="cap-g58" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w140"><span class="cw-bg"></span><span class="cw-t">SEBULAN</span></span></div></div>
+    <div class="cg" id="cap-g59" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w141"><span class="cw-bg"></span><span class="cw-t">ENAM</span></span></div></div>
+    <div class="cg" id="cap-g60" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w142"><span class="cw-bg"></span><span class="cw-t">TEST</span></span> <span class="cw" id="cap-w143"><span class="cw-bg"></span><span class="cw-t">DRIVE</span></span> <span class="cw" id="cap-w144"><span class="cw-bg"></span><span class="cw-t">DAN</span></span></div></div>
+    <div class="cg" id="cap-g61" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w145"><span class="cw-bg"></span><span class="cw-t">TEMPAH</span></span></div></div>
+    <div class="cg" id="cap-g62" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w146"><span class="cw-bg"></span><span class="cw-t">MOHON</span></span> <span class="cw kw" id="cap-w147"><span class="cw-bg"></span><span class="cw-t">2</span></span> <span class="cw" id="cap-w148"><span class="cw-bg"></span><span class="cw-t">HINGGA</span></span></div></div>
+    <div class="cg" id="cap-g63" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w149"><span class="cw-bg"></span><span class="cw-t">3</span></span> <span class="cw" id="cap-w150"><span class="cw-bg"></span><span class="cw-t">BANK</span></span></div></div>
+    <div class="cg" id="cap-g64" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w151"><span class="cw-bg"></span><span class="cw-t">BACA</span></span> <span class="cw" id="cap-w152"><span class="cw-bg"></span><span class="cw-t">PERJANJIAN</span></span></div></div>
+    <div class="cg" id="cap-g65" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w153"><span class="cw-bg"></span><span class="cw-t">DAN</span></span> <span class="cw" id="cap-w154"><span class="cw-bg"></span><span class="cw-t">SEMAK</span></span> <span class="cw" id="cap-w155"><span class="cw-bg"></span><span class="cw-t">KERETA</span></span></div></div>
+    <div class="cg" id="cap-g66" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w156"><span class="cw-bg"></span><span class="cw-t">BETUL-BETUL</span></span></div></div>
+    <div class="cg" id="cap-g67" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w157"><span class="cw-bg"></span><span class="cw-t">SEBELUM</span></span> <span class="cw" id="cap-w158"><span class="cw-bg"></span><span class="cw-t">AMBIL</span></span></div></div>
+    <div class="cg" id="cap-g68" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w159"><span class="cw-bg"></span><span class="cw-t">KUNCI</span></span></div></div>
+    <div class="cg" id="cap-g69" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw kw" id="cap-w160"><span class="cw-bg"></span><span class="cw-t">SAVE</span></span> <span class="cw" id="cap-w161"><span class="cw-bg"></span><span class="cw-t">VIDEO</span></span> <span class="cw" id="cap-w162"><span class="cw-bg"></span><span class="cw-t">NI</span></span></div></div>
+    <div class="cg" id="cap-g70" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w163"><span class="cw-bg"></span><span class="cw-t">DAN</span></span> <span class="cw kw" id="cap-w164"><span class="cw-bg"></span><span class="cw-t">SHARE</span></span> <span class="cw" id="cap-w165"><span class="cw-bg"></span><span class="cw-t">DENGAN</span></span></div></div>
+    <div class="cg" id="cap-g71" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w166"><span class="cw-bg"></span><span class="cw-t">KAWAN</span></span> <span class="cw" id="cap-w167"><span class="cw-bg"></span><span class="cw-t">KAU</span></span></div></div>
+    <div class="cg" id="cap-g72" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w168"><span class="cw-bg"></span><span class="cw-t">NAK</span></span> <span class="cw" id="cap-w169"><span class="cw-bg"></span><span class="cw-t">KIRA</span></span> <span class="cw" id="cap-w170"><span class="cw-bg"></span><span class="cw-t">ANSURAN</span></span></div></div>
+    <div class="cg" id="cap-g73" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w171"><span class="cw-bg"></span><span class="cw-t">IKUT</span></span> <span class="cw" id="cap-w172"><span class="cw-bg"></span><span class="cw-t">GAJI</span></span> <span class="cw" id="cap-w173"><span class="cw-bg"></span><span class="cw-t">KAU?</span></span></div></div>
+    <div class="cg" id="cap-g74" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w174"><span class="cw-bg"></span><span class="cw-t">NOMBOR</span></span> <span class="cw" id="cap-w175"><span class="cw-bg"></span><span class="cw-t">AKU</span></span> <span class="cw" id="cap-w176"><span class="cw-bg"></span><span class="cw-t">ADA</span></span></div></div>
+    <div class="cg" id="cap-g75" style="top: 1530px"><div class="cg-in" style="font-size: 70px"><span class="cw" id="cap-w177"><span class="cw-bg"></span><span class="cw-t">DEKAT</span></span> <span class="cw kw" id="cap-w178"><span class="cw-bg"></span><span class="cw-t">BIO</span></span></div></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    function group(sel, start, end) {
+      tl.set(sel, { visibility: "visible" }, start);
+      tl.fromTo(sel, { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: "expo.out" }, start);
+      tl.to(sel, { opacity: 0, duration: 0.1, ease: "power2.in" }, Math.max(end - 0.1, start + 0.17));
+      tl.set(sel, { opacity: 0, visibility: "hidden" }, end);
+    }
+    function word(sel, start, end) {
+      const bg = sel + " .cw-bg";
+      const t = sel + " .cw-t";
+      tl.fromTo(bg, { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.12, ease: "power3.out" }, start);
+      tl.fromTo(t, { color: "#ffffff", textShadow: "0 0 0 rgba(0,0,0,0)" }, { color: "#0e1116", textShadow: "0 0 0 rgba(0,0,0,0)", duration: 0.06 }, start);
+      tl.fromTo(sel, { scale: 1 }, { scale: 1.08, duration: 0.1, ease: "power2.out" }, start);
+      tl.to(sel, { scale: 1, duration: 0.14, ease: "power2.out" }, end);
+      tl.to(bg, { opacity: 0, duration: 0.1, ease: "power2.in" }, end);
+      tl.set(t, { clearProps: "color,textShadow" }, end + 0.06);
+    }
+  word("#cap-w0", 0.00, 0.27);
+  word("#cap-w1", 0.27, 0.54);
+  group("#cap-g0", 0.15, 0.84);
+  word("#cap-w2", 0.84, 1.02);
+  word("#cap-w3", 1.02, 1.25);
+  word("#cap-w4", 1.25, 1.64);
+  group("#cap-g1", 0.84, 1.99);
+  word("#cap-w5", 2.28, 2.59);
+  word("#cap-w6", 2.59, 2.81);
+  group("#cap-g2", 2.28, 3.01);
+  word("#cap-w7", 3.01, 3.45);
+  word("#cap-w8", 3.45, 3.76);
+  group("#cap-g3", 3.01, 3.76);
+  word("#cap-w9", 3.76, 4.20);
+  word("#cap-w10", 4.20, 4.71);
+  group("#cap-g4", 3.76, 4.71);
+  word("#cap-w11", 4.71, 5.01);
+  word("#cap-w12", 5.01, 5.32);
+  word("#cap-w13", 5.32, 5.69);
+  word("#cap-w14", 5.69, 5.86);
+  group("#cap-g5", 4.71, 6.21);
+  word("#cap-w15", 6.77, 7.14);
+  group("#cap-g6", 6.77, 7.49);
+  word("#cap-w16", 8.12, 8.38);
+  word("#cap-w17", 8.38, 8.68);
+  group("#cap-g7", 8.12, 9.03);
+  word("#cap-w18", 9.29, 9.76);
+  word("#cap-w19", 9.76, 10.16);
+  group("#cap-g8", 9.29, 10.16);
+  word("#cap-w20", 10.16, 10.57);
+  word("#cap-w21", 10.57, 10.91);
+  word("#cap-w22", 10.91, 11.54);
+  group("#cap-g9", 10.16, 11.54);
+  word("#cap-w24", 11.54, 11.95);
+  word("#cap-w25", 11.95, 12.98);
+  word("#cap-w28", 12.98, 13.26);
+  group("#cap-g10", 11.54, 13.61);
+  word("#cap-w29", 13.90, 14.26);
+  word("#cap-w30", 14.26, 14.55);
+  group("#cap-g11", 13.90, 14.55);
+  word("#cap-w31", 14.55, 15.15);
+  group("#cap-g12", 14.55, 15.50);
+  word("#cap-w33", 15.57, 16.08);
+  word("#cap-w34", 16.08, 16.42);
+  group("#cap-g13", 15.57, 16.42);
+  word("#cap-w35", 16.42, 17.69);
+  word("#cap-w39", 17.69, 18.60);
+  word("#cap-w40", 18.60, 20.02);
+  group("#cap-g14", 16.42, 20.02);
+  word("#cap-w43", 20.02, 20.47);
+  group("#cap-g15", 20.02, 20.82);
+  word("#cap-w44", 20.87, 21.12);
+  group("#cap-g16", 20.87, 21.47);
+  word("#cap-w45", 21.84, 22.13);
+  word("#cap-w46", 22.13, 22.42);
+  word("#cap-w47", 22.42, 22.66);
+  group("#cap-g17", 21.84, 22.66);
+  word("#cap-w48", 22.66, 22.95);
+  group("#cap-g18", 22.66, 23.30);
+  word("#cap-w49", 23.41, 23.64);
+  word("#cap-w50", 23.64, 23.92);
+  word("#cap-w51", 23.92, 24.26);
+  group("#cap-g19", 23.41, 24.26);
+  word("#cap-w52", 24.26, 25.48);
+  word("#cap-w55", 25.48, 25.87);
+  group("#cap-g20", 24.26, 26.22);
+  word("#cap-w56", 26.40, 26.73);
+  word("#cap-w57", 26.73, 28.17);
+  group("#cap-g21", 26.40, 28.52);
+  word("#cap-w62", 28.57, 28.84);
+  word("#cap-w63", 28.84, 29.62);
+  word("#cap-w64", 29.62, 30.24);
+  group("#cap-g22", 28.57, 30.59);
+  word("#cap-w66", 30.77, 31.07);
+  word("#cap-w67", 31.07, 31.30);
+  group("#cap-g23", 30.77, 31.30);
+  word("#cap-w68", 31.30, 31.78);
+  group("#cap-g24", 31.30, 32.13);
+  word("#cap-w70", 32.15, 32.44);
+  word("#cap-w71", 32.44, 32.67);
+  group("#cap-g25", 32.15, 32.67);
+  word("#cap-w72", 32.67, 33.23);
+  group("#cap-g26", 32.67, 33.58);
+  word("#cap-w73", 33.77, 34.08);
+  group("#cap-g27", 33.77, 34.43);
+  word("#cap-w74", 34.44, 34.90);
+  word("#cap-w75", 34.90, 35.30);
+  group("#cap-g28", 34.44, 35.65);
+  word("#cap-w76", 35.92, 36.27);
+  group("#cap-g29", 35.92, 36.62);
+  word("#cap-w77", 36.63, 37.21);
+  group("#cap-g30", 36.63, 37.49);
+  word("#cap-w78", 37.49, 37.77);
+  word("#cap-w79", 37.77, 38.05);
+  word("#cap-w80", 38.05, 38.33);
+  group("#cap-g31", 37.49, 38.33);
+  word("#cap-w81", 38.33, 38.66);
+  group("#cap-g32", 38.33, 39.02);
+  word("#cap-w82", 39.13, 39.72);
+  word("#cap-w83", 39.72, 40.08);
+  group("#cap-g33", 39.13, 40.08);
+  word("#cap-w84", 40.08, 40.67);
+  word("#cap-w85", 40.67, 41.03);
+  group("#cap-g34", 40.08, 41.03);
+  word("#cap-w86", 41.03, 41.31);
+  word("#cap-w87", 41.31, 41.75);
+  word("#cap-w88", 41.75, 42.34);
+  group("#cap-g35", 41.03, 42.34);
+  word("#cap-w89", 42.34, 42.78);
+  group("#cap-g36", 42.34, 43.12);
+  word("#cap-w90", 43.12, 43.35);
+  word("#cap-w91", 43.35, 43.63);
+  group("#cap-g37", 43.12, 43.98);
+  word("#cap-w92", 44.15, 44.32);
+  word("#cap-w93", 44.32, 44.55);
+  word("#cap-w94", 44.55, 44.77);
+  group("#cap-g38", 44.15, 44.77);
+  word("#cap-w95", 44.77, 45.09);
+  word("#cap-w96", 45.09, 45.32);
+  word("#cap-w97", 45.32, 45.54);
+  group("#cap-g39", 44.77, 45.54);
+  word("#cap-w98", 45.54, 45.91);
+  group("#cap-g40", 45.54, 46.26);
+  word("#cap-w99", 46.26, 46.50);
+  word("#cap-w100", 46.50, 46.75);
+  group("#cap-g41", 46.26, 46.75);
+  word("#cap-w101", 46.75, 47.22);
+  group("#cap-g42", 46.75, 47.57);
+  word("#cap-w102", 47.73, 48.01);
+  group("#cap-g43", 47.73, 48.36);
+  word("#cap-w103", 48.72, 49.36);
+  word("#cap-w104", 49.36, 49.99);
+  word("#cap-w105", 49.99, 50.41);
+  group("#cap-g44", 48.72, 50.41);
+  word("#cap-w106", 50.41, 50.93);
+  group("#cap-g45", 50.41, 51.28);
+  word("#cap-w107", 52.05, 52.38);
+  word("#cap-w108", 52.38, 53.02);
+  group("#cap-g46", 52.05, 53.02);
+  word("#cap-w109", 53.02, 53.61);
+  word("#cap-w110", 53.61, 53.89);
+  word("#cap-w111", 53.89, 54.16);
+  group("#cap-g47", 53.02, 54.16);
+  word("#cap-w112", 54.16, 54.38);
+  word("#cap-w113", 54.38, 54.84);
+  group("#cap-g48", 54.16, 55.19);
+  word("#cap-w114", 55.26, 55.53);
+  word("#cap-w115", 55.90, 56.51);
+  word("#cap-w116", 56.51, 56.93);
+  group("#cap-g49", 55.26, 57.28);
+  word("#cap-w117", 57.30, 57.66);
+  group("#cap-g50", 57.30, 58.01);
+  word("#cap-w118", 58.59, 58.89);
+  word("#cap-w119", 58.89, 59.13);
+  group("#cap-g51", 58.59, 59.13);
+  word("#cap-w120", 59.13, 59.90);
+  group("#cap-g52", 59.13, 60.15);
+  word("#cap-w121", 60.15, 60.45);
+  word("#cap-w122", 60.82, 61.48);
+  word("#cap-w123", 61.89, 62.19);
+  group("#cap-g53", 60.15, 62.48);
+  word("#cap-w124", 62.48, 63.04);
+  group("#cap-g54", 62.48, 63.39);
+  word("#cap-w125", 63.50, 63.90);
+  word("#cap-w126", 63.90, 65.21);
+  group("#cap-g55", 63.50, 65.56);
+  word("#cap-w131", 65.60, 65.92);
+  word("#cap-w132", 65.92, 66.17);
+  word("#cap-w133", 66.17, 66.69);
+  group("#cap-g56", 65.60, 66.69);
+  word("#cap-w134", 66.69, 67.40);
+  word("#cap-w135", 67.40, 69.90);
+  group("#cap-g57", 66.69, 69.90);
+  word("#cap-w140", 69.90, 70.43);
+  group("#cap-g58", 69.90, 70.78);
+  word("#cap-w141", 71.19, 71.52);
+  group("#cap-g59", 71.19, 71.87);
+  word("#cap-w142", 72.11, 72.37);
+  word("#cap-w143", 72.37, 72.67);
+  word("#cap-w144", 72.67, 72.87);
+  group("#cap-g60", 72.11, 72.87);
+  word("#cap-w145", 72.87, 73.23);
+  group("#cap-g61", 72.87, 73.53);
+  word("#cap-w146", 73.53, 73.84);
+  word("#cap-w147", 73.84, 74.05);
+  word("#cap-w148", 74.05, 74.42);
+  group("#cap-g62", 73.53, 74.42);
+  word("#cap-w149", 74.42, 74.68);
+  word("#cap-w150", 74.68, 74.94);
+  group("#cap-g63", 74.42, 75.29);
+  word("#cap-w151", 75.90, 76.19);
+  word("#cap-w152", 76.19, 76.88);
+  group("#cap-g64", 75.90, 77.22);
+  word("#cap-w153", 77.22, 77.44);
+  word("#cap-w154", 77.44, 77.78);
+  word("#cap-w155", 77.78, 78.19);
+  group("#cap-g65", 77.22, 78.19);
+  word("#cap-w156", 78.19, 78.84);
+  group("#cap-g66", 78.19, 78.84);
+  word("#cap-w157", 78.84, 79.31);
+  word("#cap-w158", 79.31, 79.65);
+  group("#cap-g67", 78.84, 79.65);
+  word("#cap-w159", 79.65, 79.99);
+  group("#cap-g68", 79.65, 80.34);
+  word("#cap-w160", 81.48, 81.75);
+  word("#cap-w161", 81.75, 82.08);
+  word("#cap-w162", 82.08, 82.23);
+  group("#cap-g69", 81.48, 82.23);
+  word("#cap-w163", 82.23, 82.45);
+  word("#cap-w164", 82.45, 82.78);
+  word("#cap-w165", 82.78, 83.17);
+  group("#cap-g70", 82.23, 83.17);
+  word("#cap-w166", 83.17, 83.50);
+  word("#cap-w167", 83.50, 83.71);
+  group("#cap-g71", 83.17, 84.06);
+  word("#cap-w168", 84.29, 84.50);
+  word("#cap-w169", 84.50, 84.77);
+  word("#cap-w170", 84.77, 85.22);
+  group("#cap-g72", 84.29, 85.22);
+  word("#cap-w171", 85.22, 85.49);
+  word("#cap-w172", 85.49, 85.76);
+  word("#cap-w173", 85.76, 85.97);
+  group("#cap-g73", 85.22, 86.32);
+  word("#cap-w174", 86.33, 86.71);
+  word("#cap-w175", 86.71, 86.92);
+  word("#cap-w176", 86.92, 87.13);
+  group("#cap-g74", 86.33, 87.13);
+  word("#cap-w177", 87.13, 87.46);
+  word("#cap-w178", 87.46, 87.67);
+  group("#cap-g75", 87.13, 88.02);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>

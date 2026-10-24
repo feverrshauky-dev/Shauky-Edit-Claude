@@ -94,21 +94,23 @@
     </div>
   </div>
   <script>
-    // Scene clock starts at 22 s of the film; times below are film seconds.
+    // Scene clock starts at 33.5 s of the film; times below are film seconds, on the voiceover.
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    const s = kit.scene(tl, 22);
-    s.fadeUp("#d-step", 22.05, -20);
-    s.zoomIn("#d-title", 22.15);
-    s.fadeUp("#d-card", 22.6);
+    const s = kit.scene(tl, 33.5);
+    s.fadeUp("#d-step", 33.77, -20); // "Tiga."
+    s.zoomIn("#d-title", 34.44); //     "Sediakan dokumen."
+    s.fadeUp("#d-card", 34.9);
+    // ticked as each document is named: IC, slip gaji, KWSP, penyata bank, surat
+    const ticks = [35.92, 37.49, 39.13, 40.08, 41.31];
     gsap.utils.toArray("#d-card .d-row").forEach((row, i) => {
-      const t = 23.2 + i * 0.5;
+      const t = ticks[i];
       tl.fromTo(row.querySelector(".d-bg"), { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, s.at(t));
       tl.to(row.querySelector(".d-tick"), { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, s.at(t + 0.1));
       tl.fromTo(row.querySelector(".d-t"), { x: 0 }, { x: 10, duration: 0.12, yoyo: true, repeat: 1, ease: "power1.out", immediateRender: false }, s.at(t));
     });
-    s.fadeUp("#d-tip", 25.5);
-    s.out(["#d-step", "#d-title", "#d-card", "#d-tip"], 29.7);
+    s.fadeUp("#d-tip", 43.12); //       "Baru kerja?"
+    s.out(["#d-step", "#d-title", "#d-card", "#d-tip"], 47.15);
     window.__timelines["dokumen"] = tl;
   </script>
 </template>

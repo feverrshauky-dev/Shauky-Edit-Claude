@@ -66,18 +66,18 @@
     <div id="e-note" class="note">Angka anggaran sahaja. Kelulusan pinjaman tertakluk kepada bank.</div>
   </div>
   <script>
-    // Scene clock starts at 51 s of the film; times below are film seconds.
+    // Scene clock starts at 81 s of the film; times below are film seconds, on the voiceover.
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    const s = kit.scene(tl, 51);
+    const s = kit.scene(tl, 81);
     kit.cars(document.querySelector('[data-composition-id="cta"]'));
-    s.zoomIn("#e-t1", 51.05, 1.5);
-    s.fadeUp("#e-t2", 51.4);
-    tl.fromTo("#e-car", { x: -1100 }, { x: 0, duration: 1, ease: "expo.out" }, s.at(51.6));
-    s.spin("#e-car", 51.6, 1.2, 3);
-    tl.fromTo("#e-card", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, ...s.pop }, s.at(52.6));
-    tl.fromTo("#e-card", { scale: 1 }, { scale: 1.04, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, s.at(53.2));
-    s.fadeUp("#e-note", 53.2);
+    s.zoomIn("#e-t1", 81.4, 1.5); //    "Save video ni"
+    s.fadeUp("#e-t2", 82.45); //        "share dengan kawan kau"
+    tl.fromTo("#e-car", { x: -1100 }, { x: 0, duration: 1, ease: "expo.out" }, s.at(82.0));
+    s.spin("#e-car", 82.0, 1.2, 3);
+    tl.fromTo("#e-card", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, ...s.pop }, s.at(84.29)); // "Nak kira ansuran"
+    tl.fromTo("#e-card", { scale: 1 }, { scale: 1.04, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, s.at(86.33)); // "Nombor aku"
+    s.fadeUp("#e-note", 86.5);
     window.__timelines["cta"] = tl;
   </script>
 </template>

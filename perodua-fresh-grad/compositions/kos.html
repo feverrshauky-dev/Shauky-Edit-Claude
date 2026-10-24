@@ -95,19 +95,25 @@
     <div id="r-pct" class="note">≈ <b>29%</b> daripada gaji RM3,000</div>
   </div>
   <script>
-    // Scene clock starts at 36 s of the film; times below are film seconds.
+    // Scene clock starts at 57 s of the film; times below are film seconds, on the voiceover.
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    const s = kit.scene(tl, 36);
-    s.fadeUp("#r-step", 36.05, -20);
-    s.zoomIn("#r-title", 36.15);
-    tl.fromTo("#r-paper", { opacity: 0, y: 200 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, s.at(36.5));
-    tl.fromTo("#r-paper .r-item", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.42, ease: "power2.out" }, s.at(37.2));
-    tl.fromTo("#r-sep", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, s.at(39.9));
-    tl.fromTo("#r-total", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, ...s.pop }, s.at(40.3));
-    tl.fromTo("#r-stamp span", { opacity: 0, scale: 2.2, rotation: -14 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.35, ease: "expo.out" }, s.at(41.2));
-    s.fadeUp("#r-pct", 42.0);
-    s.out(["#r-step", "#r-title", "#r-paper", "#r-stamp", "#r-pct"], 43.7);
+    const s = kit.scene(tl, 57);
+    s.fadeUp("#r-step", 57.3, -20); //  "Lima."
+    s.zoomIn("#r-title", 58.59); //     "Kira kos tersembunyi."
+    tl.fromTo("#r-paper", { opacity: 0, y: 200 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, s.at(58.9));
+    // Ansuran first, then each cost as it is named: minyak, insurans, tol, servis (cukai jalan rides with servis)
+    const rows = [59.3, 60.15, 60.82, 61.89, 62.48, 62.9];
+    gsap.utils.toArray("#r-paper .r-item").forEach((row, i) => {
+      tl.fromTo(row, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, s.at(rows[i]));
+    });
+    // "Ansuran empat ratus dua puluh lima" points back at the first row
+    tl.fromTo("#r-paper .r-item:nth-of-type(2)", { scale: 1 }, { scale: 1.06, duration: 0.2, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, s.at(63.9));
+    tl.fromTo("#r-sep", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, s.at(65.6)); // "tapi"
+    tl.fromTo("#r-total", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, ...s.pop }, s.at(65.92)); // "kos sebenar"
+    tl.fromTo("#r-stamp span", { opacity: 0, scale: 2.2, rotation: -14 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.35, ease: "expo.out" }, s.at(67.4)); // "lapan ratus tujuh puluh"
+    s.fadeUp("#r-pct", 68.2);
+    s.out(["#r-step", "#r-title", "#r-paper", "#r-stamp", "#r-pct"], 70.6);
     window.__timelines["kos"] = tl;
   </script>
 </template>
