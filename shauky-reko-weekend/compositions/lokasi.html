@@ -1,0 +1,128 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-family: "Montserrat", sans-serif;
+    }
+    #loc-card {
+      position: absolute;
+      left: 80px;
+      right: 80px;
+      top: 180px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      padding: 26px 34px 28px 28px;
+      border-radius: 34px;
+      background: rgba(14, 17, 22, 0.88);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+    }
+    #loc-pin {
+      flex: 0 0 auto;
+      width: 118px;
+      height: 118px;
+      border-radius: 30px;
+      background: #c8ec3c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #loc-pin svg {
+      width: 78px;
+      height: 78px;
+    }
+    #loc-text {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #loc-l1 {
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 66px;
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+    #loc-l2 {
+      color: #c8ec3c;
+      font-weight: 800;
+      font-size: 46px;
+      line-height: 1.05;
+      clip-path: inset(0 100% 0 0);
+    }
+    #loc-chips {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 430px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+    }
+    #loc-chips-label {
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 40px;
+      padding: 12px 22px 14px;
+      border-radius: 18px;
+      background: rgba(14, 17, 22, 0.82);
+      opacity: 0;
+    }
+    .loc-chip {
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      background: #c8ec3c;
+      color: #0e1116;
+      font-weight: 900;
+      font-size: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+    }
+  </style>
+  <div data-hf-id="hf-nuxq" id="root" data-composition-id="lokasi" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-jx2w" id="loc-card">
+      <div data-hf-id="hf-xfyb" id="loc-pin">
+        <svg data-hf-id="hf-8d3r" viewBox="0 0 24 24" fill="none" stroke="#0e1116" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-0pol" d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" />
+          <circle data-hf-id="hf-hamn" cx="12" cy="9.5" r="2.6" />
+        </svg>
+      </div>
+      <div data-hf-id="hf-li3v" id="loc-text">
+        <div data-hf-id="hf-thfv" id="loc-l1">PERODUA 3S</div>
+        <div data-hf-id="hf-ui7d" id="loc-l2">JALAN REKO, KAJANG</div>
+      </div>
+    </div>
+    <div data-hf-id="hf-se4j" id="loc-chips">
+      <div data-hf-id="hf-q4xi" id="loc-chips-label">PROGRAM</div>
+      <div data-hf-id="hf-y3uv" class="loc-chip" id="loc-c1">1</div>
+      <div data-hf-id="hf-18v3" class="loc-chip" id="loc-c2">2</div>
+      <div data-hf-id="hf-pjvz" class="loc-chip" id="loc-c3">3</div>
+      <div data-hf-id="hf-cl9b" class="loc-chip" id="loc-c4">4</div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // "di Perodua 3S" -> card slides down, pin drops in
+    tl.fromTo("#loc-card", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 0.0);
+    tl.fromTo("#loc-pin", { y: -90, scale: 0.6 }, { y: 0, scale: 1, duration: 0.42, ease: "bounce.out" }, 0.05);
+    // "Jalan Reko" -> address wipes on
+    tl.fromTo("#loc-l2", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.45, ease: "power2.out" }, 1.25);
+    // "beberapa program menarik" -> four numbered chips pop in a row
+    tl.fromTo("#loc-chips-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.2, ease: "power3.out" }, 2.69);
+    ["#loc-c1", "#loc-c2", "#loc-c3", "#loc-c4"].forEach((sel, i) => {
+      tl.fromTo(sel, { opacity: 0, scale: 0.3, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.26, ease: "back.out(2)" }, 3.29 + i * 0.1);
+    });
+    // out before the first program card
+    tl.to(["#loc-card", "#loc-chips"], { opacity: 0, y: -40, duration: 0.18, ease: "power3.in" }, 3.97);
+    window.__timelines["lokasi"] = tl;
+  </script>
+</template>

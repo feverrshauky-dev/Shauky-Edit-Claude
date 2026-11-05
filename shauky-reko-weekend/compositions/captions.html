@@ -1,0 +1,311 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .cg {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 1190px;
+      padding: 0 70px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px 14px;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      overflow: visible;
+    }
+    .cg-in {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px 10px;
+      max-width: 860px;
+      padding: 12px 16px 14px;
+      border-radius: 26px;
+      background: rgba(8, 10, 14, 0.46);
+    }
+    .cw {
+      position: relative;
+      display: inline-block;
+      padding: 4px 14px 8px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 800;
+      font-size: inherit;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: #ffffff;
+      text-shadow:
+        0 0 2px rgba(0, 0, 0, 0.9),
+        0 4px 0 rgba(0, 0, 0, 0.55),
+        0 8px 22px rgba(0, 0, 0, 0.55);
+    }
+    .cw.kw .cw-t {
+      color: var(--lime, #c8ec3c);
+    }
+    .cw-t {
+      position: relative;
+      z-index: 1;
+    }
+    .cw-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: var(--lime, #c8ec3c);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+      transform-origin: 0% 50%;
+      opacity: 0;
+      z-index: 0;
+    }
+  </style>
+  <div data-hf-id="hf-ov84" id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-3q3s" class="cg" id="cap-g0" style="top: 1390px"><div data-hf-id="hf-v45c" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-mwbp" class="cw" id="cap-w0"><span data-hf-id="hf-m9u5" class="cw-bg"></span><span data-hf-id="hf-ass7" class="cw-t">AKU</span></span> <span data-hf-id="hf-m4nw" class="cw" id="cap-w1"><span data-hf-id="hf-c2v5" class="cw-bg"></span><span data-hf-id="hf-dila" class="cw-t">NAK</span></span> <span data-hf-id="hf-usjr" class="cw" id="cap-w2"><span data-hf-id="hf-d9s8" class="cw-bg"></span><span data-hf-id="hf-vsq5" class="cw-t">BAGI</span></span></div></div>
+    <div data-hf-id="hf-6l9d" class="cg" id="cap-g1" style="top: 1390px"><div data-hf-id="hf-tl14" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-qufq" class="cw" id="cap-w3"><span data-hf-id="hf-cvh7" class="cw-bg"></span><span data-hf-id="hf-3w14" class="cw-t">TAHU</span></span> <span data-hf-id="hf-zibl" class="cw" id="cap-w4"><span data-hf-id="hf-avy2" class="cw-bg"></span><span data-hf-id="hf-j1f7" class="cw-t">SATU</span></span> <span data-hf-id="hf-yqns" class="cw" id="cap-w5"><span data-hf-id="hf-ahn1" class="cw-bg"></span><span data-hf-id="hf-pi5o" class="cw-t">INFO</span></span></div></div>
+    <div data-hf-id="hf-2ytm" class="cg" id="cap-g2" style="top: 1390px"><div data-hf-id="hf-se41" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-9m5f" class="cw" id="cap-w6"><span data-hf-id="hf-bok4" class="cw-bg"></span><span data-hf-id="hf-e9cl" class="cw-t">YANG</span></span> <span data-hf-id="hf-6d66" class="cw kw" id="cap-w7"><span data-hf-id="hf-ba93" class="cw-bg"></span><span data-hf-id="hf-0uy3" class="cw-t">PENTING</span></span></div></div>
+    <div data-hf-id="hf-d6b7" class="cg" id="cap-g3" style="top: 1390px"><div data-hf-id="hf-236u" class="cg-in" style="font-size: 63px"><span data-hf-id="hf-vgq5" class="cw" id="cap-w8"><span data-hf-id="hf-fnme" class="cw-bg"></span><span data-hf-id="hf-rpv1" class="cw-t">HUJUNG</span></span> <span data-hf-id="hf-shgk" class="cw" id="cap-w9"><span data-hf-id="hf-f9bd" class="cw-bg"></span><span data-hf-id="hf-f4xh" class="cw-t">MINGGU</span></span> <span data-hf-id="hf-e4zg" class="cw" id="cap-w10"><span data-hf-id="hf-3kpv" class="cw-bg"></span><span data-hf-id="hf-yux5" class="cw-t">NI</span></span></div></div>
+    <div data-hf-id="hf-1pss" class="cg" id="cap-g4" style="top: 1390px"><div data-hf-id="hf-ssf2" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-ewn9" class="cw" id="cap-w11"><span data-hf-id="hf-3z0w" class="cw-bg"></span><span data-hf-id="hf-xmba" class="cw-t">HARI</span></span> <span data-hf-id="hf-t4k2" class="cw kw" id="cap-w12"><span data-hf-id="hf-2s3t" class="cw-bg"></span><span data-hf-id="hf-nfzl" class="cw-t">SABTU</span></span> <span data-hf-id="hf-msvb" class="cw" id="cap-w13"><span data-hf-id="hf-36eu" class="cw-bg"></span><span data-hf-id="hf-a0ob" class="cw-t">DAN</span></span></div></div>
+    <div data-hf-id="hf-n32d" class="cg" id="cap-g5" style="top: 1390px"><div data-hf-id="hf-rlhz" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-9l6k" class="cw kw" id="cap-w14"><span data-hf-id="hf-1zhr" class="cw-bg"></span><span data-hf-id="hf-juos" class="cw-t">AHAD</span></span></div></div>
+    <div data-hf-id="hf-hpy6" class="cg" id="cap-g6" style="top: 1390px"><div data-hf-id="hf-rzt0" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-tq8x" class="cw" id="cap-w15"><span data-hf-id="hf-2dss" class="cw-bg"></span><span data-hf-id="hf-xbhr" class="cw-t">DI</span></span> <span data-hf-id="hf-gik6" class="cw kw" id="cap-w16"><span data-hf-id="hf-16vp" class="cw-bg"></span><span data-hf-id="hf-tew6" class="cw-t">PERODUA</span></span> <span data-hf-id="hf-kgo7" class="cw kw" id="cap-w17"><span data-hf-id="hf-1l6q" class="cw-bg"></span><span data-hf-id="hf-fx32" class="cw-t">3S</span></span></div></div>
+    <div data-hf-id="hf-b84n" class="cg" id="cap-g7" style="top: 1390px"><div data-hf-id="hf-qsvx" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-mpdw" class="cw" id="cap-w18"><span data-hf-id="hf-0e9n" class="cw-bg"></span><span data-hf-id="hf-u108" class="cw-t">JALAN</span></span> <span data-hf-id="hf-xquh" class="cw kw" id="cap-w19"><span data-hf-id="hf-0sko" class="cw-bg"></span><span data-hf-id="hf-dqsb" class="cw-t">REKO</span></span></div></div>
+    <div data-hf-id="hf-j9b4" class="cg" id="cap-g8" style="top: 1390px"><div data-hf-id="hf-lmwa" class="cg-in" style="font-size: 63px"><span data-hf-id="hf-jakt" class="cw" id="cap-w20"><span data-hf-id="hf-3f54" class="cw-bg"></span><span data-hf-id="hf-obi7" class="cw-t">KITA</span></span> <span data-hf-id="hf-iix0" class="cw" id="cap-w21"><span data-hf-id="hf-30u3" class="cw-bg"></span><span data-hf-id="hf-irv0" class="cw-t">ADA</span></span> <span data-hf-id="hf-teen" class="cw" id="cap-w22"><span data-hf-id="hf-2mj2" class="cw-bg"></span><span data-hf-id="hf-ml5i" class="cw-t">BEBERAPA</span></span></div></div>
+    <div data-hf-id="hf-ve55" class="cg" id="cap-g9" style="top: 1390px"><div data-hf-id="hf-ihcs" class="cg-in" style="font-size: 58px"><span data-hf-id="hf-vo4a" class="cw kw" id="cap-w23"><span data-hf-id="hf-2881" class="cw-bg"></span><span data-hf-id="hf-72do" class="cw-t">PROGRAM</span></span> <span data-hf-id="hf-cwel" class="cw kw" id="cap-w24"><span data-hf-id="hf-1tx0" class="cw-bg"></span><span data-hf-id="hf-pkjb" class="cw-t">MENARIK</span></span> <span data-hf-id="hf-xcio" class="cw" id="cap-w25"><span data-hf-id="hf-1flz" class="cw-bg"></span><span data-hf-id="hf-hfgl" class="cw-t">LAH</span></span></div></div>
+    <div data-hf-id="hf-sgk3" class="cg" id="cap-g10" style="top: 1390px"><div data-hf-id="hf-i9qa" class="cg-in" style="font-size: 67px"><span data-hf-id="hf-60ej" class="cw" id="cap-w26"><span data-hf-id="hf-11ay" class="cw-bg"></span><span data-hf-id="hf-jnng" class="cw-t">SEPERTI</span></span> <span data-hf-id="hf-22ai" class="cw" id="cap-w27"><span data-hf-id="hf-0mzx" class="cw-bg"></span><span data-hf-id="hf-yfjz" class="cw-t">KITA</span></span> <span data-hf-id="hf-aq6d" class="cw" id="cap-w28"><span data-hf-id="hf-6llc" class="cw-bg"></span><span data-hf-id="hf-kihw" class="cw-t">ADA</span></span></div></div>
+    <div data-hf-id="hf-3uqy" class="cg" id="cap-g11" style="top: 1390px"><div data-hf-id="hf-r76y" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-9yik" class="cw" id="cap-w29"><span data-hf-id="hf-67ab" class="cw-bg"></span><span data-hf-id="hf-m5pw" class="cw-t">BUAT</span></span> <span data-hf-id="hf-s4xa" class="cw kw" id="cap-w30"><span data-hf-id="hf-46sx" class="cw-bg"></span><span data-hf-id="hf-8bum" class="cw-t">FREE</span></span></div></div>
+    <div data-hf-id="hf-elvl" class="cg" id="cap-g12" style="top: 1390px"><div data-hf-id="hf-4xly" class="cg-in" style="font-size: 67px"><span data-hf-id="hf-w31b" class="cw kw" id="cap-w31"><span data-hf-id="hf-4l3y" class="cw-bg"></span><span data-hf-id="hf-q72q" class="cw-t">INSPECTION</span></span> <span data-hf-id="hf-h3co" class="cw" id="cap-w32"><span data-hf-id="hf-4zez" class="cw-bg"></span><span data-hf-id="hf-ch9t" class="cw-t">UNTUK</span></span></div></div>
+    <div data-hf-id="hf-xyfc" class="cg" id="cap-g13" style="top: 1390px"><div data-hf-id="hf-55ck" class="cg-in" style="font-size: 58px"><span data-hf-id="hf-hv0h" class="cw" id="cap-w33"><span data-hf-id="hf-5dq0" class="cw-bg"></span><span data-hf-id="hf-wxl7" class="cw-t">KERETA-KERETA</span></span> <span data-hf-id="hf-6ziu" class="cw" id="cap-w34"><span data-hf-id="hf-2lkt" class="cw-bg"></span><span data-hf-id="hf-lrxh" class="cw-t">LAMA</span></span></div></div>
+    <div data-hf-id="hf-errb" class="cg" id="cap-g14" style="top: 1390px"><div data-hf-id="hf-wd6b" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-d58n" class="cw" id="cap-w35"><span data-hf-id="hf-2zvu" class="cw-bg"></span><span data-hf-id="hf-y18y" class="cw-t">KITA</span></span> <span data-hf-id="hf-29r0" class="cw" id="cap-w36"><span data-hf-id="hf-3e6v" class="cw-bg"></span><span data-hf-id="hf-ddgp" class="cw-t">JUGA</span></span> <span data-hf-id="hf-31et" class="cw" id="cap-w37"><span data-hf-id="hf-3shw" class="cw-bg"></span><span data-hf-id="hf-jbkt" class="cw-t">ADA</span></span></div></div>
+    <div data-hf-id="hf-wtry" class="cg" id="cap-g15" style="top: 1390px"><div data-hf-id="hf-wrhc" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-udiy" class="cw" id="cap-w38"><span data-hf-id="hf-7d95" class="cw-bg"></span><span data-hf-id="hf-55sc" class="cw-t">BUAT</span></span> <span data-hf-id="hf-ybmz" class="cw" id="cap-w39"><span data-hf-id="hf-7rk6" class="cw-bg"></span><span data-hf-id="hf-obcs" class="cw-t">SEDIAKAN</span></span></div></div>
+    <div data-hf-id="hf-32zp" class="cg" id="cap-g16" style="top: 1390px"><div data-hf-id="hf-jxnc" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-u563" class="cw" id="cap-w40"><span data-hf-id="hf-5vpa" class="cw-bg"></span><span data-hf-id="hf-o8kl" class="cw-t">UNTUK</span></span></div></div>
+    <div data-hf-id="hf-mh30" class="cg" id="cap-g17" style="top: 1390px"><div data-hf-id="hf-jjcb" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-q722" class="cw" id="cap-w41"><span data-hf-id="hf-5he9" class="cw-bg"></span><span data-hf-id="hf-haac" class="cw-t">SUBMISSION</span></span> <span data-hf-id="hf-20wt" class="cw kw" id="cap-w42"><span data-hf-id="hf-6obc" class="cw-bg"></span><span data-hf-id="hf-ycwa" class="cw-t">LOAN</span></span></div></div>
+    <div data-hf-id="hf-c6kr" class="cg" id="cap-g18" style="top: 1390px"><div data-hf-id="hf-j51a" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-1990" class="cw kw" id="cap-w43"><span data-hf-id="hf-6a0b" class="cw-bg"></span><span data-hf-id="hf-kzzl" class="cw-t">FACE</span></span> <span data-hf-id="hf-hj67" class="cw" id="cap-w44"><span data-hf-id="hf-4ah6" class="cw-bg"></span><span data-hf-id="hf-hebd" class="cw-t">TO</span></span> <span data-hf-id="hf-ksmi" class="cw kw" id="cap-w45"><span data-hf-id="hf-3w65" class="cw-bg"></span><span data-hf-id="hf-hhd1" class="cw-t">FACE</span></span></div></div>
+    <div data-hf-id="hf-uav6" class="cg" id="cap-g19" style="top: 1390px"><div data-hf-id="hf-iqq9" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-9my5" class="cw" id="cap-w46"><span data-hf-id="hf-5338" class="cw-bg"></span><span data-hf-id="hf-ldlt" class="cw-t">SEBAB</span></span> <span data-hf-id="hf-6nok" class="cw" id="cap-w47"><span data-hf-id="hf-4os7" class="cw-bg"></span><span data-hf-id="hf-xmxx" class="cw-t">KITA</span></span> <span data-hf-id="hf-nsdf" class="cw" id="cap-w48"><span data-hf-id="hf-925i" class="cw-bg"></span><span data-hf-id="hf-jpvu" class="cw-t">ADA</span></span></div></div>
+    <div data-hf-id="hf-gj9q" class="cg" id="cap-g20" style="top: 1390px"><div data-hf-id="hf-icf8" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-hmnm" class="cw" id="cap-w49"><span data-hf-id="hf-8nuh" class="cw-bg"></span><span data-hf-id="hf-i9dx" class="cw-t">BAWA</span></span> <span data-hf-id="hf-o9ok" class="cw kw" id="cap-w50"><span data-hf-id="hf-nq6f" class="cw-bg"></span><span data-hf-id="hf-lag9" class="cw-t">BANKER</span></span></div></div>
+    <div data-hf-id="hf-ucgn" class="cg" id="cap-g21" style="top: 1390px"><div data-hf-id="hf-hy47" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-p1cd" class="cw kw" id="cap-w51"><span data-hf-id="hf-o4hg" class="cw-bg"></span><span data-hf-id="hf-tlq6" class="cw-t">PANEL</span></span> <span data-hf-id="hf-d7hm" class="cw" id="cap-w52"><span data-hf-id="hf-mxkd" class="cw-bg"></span><span data-hf-id="hf-dr7n" class="cw-t">SEKALI</span></span></div></div>
+    <div data-hf-id="hf-02x8" class="cg" id="cap-g22" style="top: 1390px"><div data-hf-id="hf-hjt6" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-h5ln" class="cw" id="cap-w53"><span data-hf-id="hf-nbve" class="cw-bg"></span><span data-hf-id="hf-0f34" class="cw-t">KITA</span></span> <span data-hf-id="hf-to44" class="cw" id="cap-w54"><span data-hf-id="hf-pbej" class="cw-bg"></span><span data-hf-id="hf-4h25" class="cw-t">JUGA</span></span> <span data-hf-id="hf-ufrx" class="cw" id="cap-w55"><span data-hf-id="hf-pppk" class="cw-bg"></span><span data-hf-id="hf-lpez" class="cw-t">ADA</span></span></div></div>
+    <div data-hf-id="hf-01v9" class="cg" id="cap-g23" style="top: 1390px"><div data-hf-id="hf-5bwz" class="cg-in" style="font-size: 67px"><span data-hf-id="hf-ydvy" class="cw" id="cap-w56"><span data-hf-id="hf-oish" class="cw-bg"></span><span data-hf-id="hf-pfho" class="cw-t">UNTUK</span></span> <span data-hf-id="hf-2bzz" class="cw" id="cap-w57"><span data-hf-id="hf-ox3i" class="cw-bg"></span><span data-hf-id="hf-w6t4" class="cw-t">SIAPA</span></span> <span data-hf-id="hf-zxbc" class="cw" id="cap-w58"><span data-hf-id="hf-qwmn" class="cw-bg"></span><span data-hf-id="hf-anm1" class="cw-t">YANG</span></span></div></div>
+    <div data-hf-id="hf-viyi" class="cg" id="cap-g24" style="top: 1390px"><div data-hf-id="hf-mbjh" class="cg-in" style="font-size: 60px"><span data-hf-id="hf-0oz5" class="cw" id="cap-w59"><span data-hf-id="hf-raxo" class="cw-bg"></span><span data-hf-id="hf-e7nm" class="cw-t">NAK</span></span> <span data-hf-id="hf-hlb5" class="cw" id="cap-w60"><span data-hf-id="hf-4cdo" class="cw-bg"></span><span data-hf-id="hf-ql25" class="cw-t">CEK</span></span> <span data-hf-id="hf-j17w" class="cw kw" id="cap-w61"><span data-hf-id="hf-3y2n" class="cw-bg"></span><span data-hf-id="hf-nr02" class="cw-t">KESIHATAN</span></span></div></div>
+    <div data-hf-id="hf-4wtf" class="cg" id="cap-g25" style="top: 1390px"><div data-hf-id="hf-m17b" class="cg-in" style="font-size: 63px"><span data-hf-id="hf-phj7" class="cw" id="cap-w62"><span data-hf-id="hf-3jrm" class="cw-bg"></span><span data-hf-id="hf-9fig" class="cw-t">BOLEH</span></span> <span data-hf-id="hf-ljf6" class="cw" id="cap-w63"><span data-hf-id="hf-35gl" class="cw-bg"></span><span data-hf-id="hf-1qov" class="cw-t">DATANG</span></span> <span data-hf-id="hf-2rph" class="cw" id="cap-w64"><span data-hf-id="hf-5xls" class="cw-bg"></span><span data-hf-id="hf-5nz8" class="cw-t">JUGA</span></span></div></div>
+    <div data-hf-id="hf-15nc" class="cg" id="cap-g26" style="top: 1390px"><div data-hf-id="hf-h5i5" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-201o" class="cw" id="cap-w65"><span data-hf-id="hf-5jar" class="cw-bg"></span><span data-hf-id="hf-hlpx" class="cw-t">DEKAT</span></span> <span data-hf-id="hf-anxj" class="cw" id="cap-w66"><span data-hf-id="hf-54zq" class="cw-bg"></span><span data-hf-id="hf-w77t" class="cw-t">SINI</span></span></div></div>
+    <div data-hf-id="hf-yo7l" class="cg" id="cap-g27" style="top: 1390px"><div data-hf-id="hf-mfic" class="cg-in" style="font-size: 63px"><span data-hf-id="hf-6pti" class="cw" id="cap-w67"><span data-hf-id="hf-4qop" class="cw-bg"></span><span data-hf-id="hf-bw0m" class="cw-t">ATAUPUN</span></span> <span data-hf-id="hf-ny3t" class="cw" id="cap-w68"><span data-hf-id="hf-15xg" class="cw-bg"></span><span data-hf-id="hf-00s3" class="cw-t">KITA</span></span> <span data-hf-id="hf-n6g0" class="cw" id="cap-w69"><span data-hf-id="hf-0rmf" class="cw-bg"></span><span data-hf-id="hf-59o7" class="cw-t">JUGA</span></span></div></div>
+    <div data-hf-id="hf-mz8m" class="cg" id="cap-g28" style="top: 1390px"><div data-hf-id="hf-n43k" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-dy92" class="cw" id="cap-w70"><span data-hf-id="hf-541h" class="cw-bg"></span><span data-hf-id="hf-ltei" class="cw-t">MENYEDIAKAN</span></span></div></div>
+    <div data-hf-id="hf-r06n" class="cg" id="cap-g29" style="top: 1390px"><div data-hf-id="hf-gty9" class="cg-in" style="font-size: 60px"><span data-hf-id="hf-k3yv" class="cw" id="cap-w71"><span data-hf-id="hf-5ici" class="cw-bg"></span><span data-hf-id="hf-kz29" class="cw-t">PERMAINAN</span></span> <span data-hf-id="hf-p0g0" class="cw kw" id="cap-w72"><span data-hf-id="hf-5wnj" class="cw-bg"></span><span data-hf-id="hf-x2sg" class="cw-t">VR</span></span> <span data-hf-id="hf-rzpl" class="cw kw" id="cap-w73"><span data-hf-id="hf-6ayk" class="cw-bg"></span><span data-hf-id="hf-snjm" class="cw-t">GAME</span></span></div></div>
+    <div data-hf-id="hf-xq55" class="cg" id="cap-g30" style="top: 1390px"><div data-hf-id="hf-5q80" class="cg-in" style="font-size: 67px"><span data-hf-id="hf-sruq" class="cw" id="cap-w74"><span data-hf-id="hf-6p9l" class="cw-bg"></span><span data-hf-id="hf-uiff" class="cw-t">DAN</span></span> <span data-hf-id="hf-l2bz" class="cw kw" id="cap-w75"><span data-hf-id="hf-73km" class="cw-bg"></span><span data-hf-id="hf-l7ev" class="cw-t">MAKANAN</span></span> <span data-hf-id="hf-o22w" class="cw" id="cap-w76"><span data-hf-id="hf-7hvn" class="cw-bg"></span><span data-hf-id="hf-6gla" class="cw-t">JUGA</span></span></div></div>
+    <div data-hf-id="hf-yihs" class="cg" id="cap-g31" style="top: 1390px"><div data-hf-id="hf-mpsj" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-otqp" class="cw" id="cap-w77"><span data-hf-id="hf-7w6o" class="cw-bg"></span><span data-hf-id="hf-h99n" class="cw-t">DISEDIAKAN</span></span></div></div>
+    <div data-hf-id="hf-jre3" class="cg" id="cap-g32" style="top: 1390px"><div data-hf-id="hf-2y2t" class="cg-in" style="font-size: 67px"><span data-hf-id="hf-mini" class="cw" id="cap-w78"><span data-hf-id="hf-1xl9" class="cw-bg"></span><span data-hf-id="hf-vncm" class="cw-t">JADI</span></span> <span data-hf-id="hf-qgrj" class="cw" id="cap-w79"><span data-hf-id="hf-2bwa" class="cw-bg"></span><span data-hf-id="hf-plid" class="cw-t">SIAPA-SIAPA</span></span></div></div>
+    <div data-hf-id="hf-zq8y" class="cg" id="cap-g33" style="top: 1390px"><div data-hf-id="hf-k383" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-7i7j" class="cw" id="cap-w80"><span data-hf-id="hf-jvrm" class="cw-bg"></span><span data-hf-id="hf-kyaj" class="cw-t">ORANG</span></span> <span data-hf-id="hf-3k3i" class="cw" id="cap-w81"><span data-hf-id="hf-jhgl" class="cw-bg"></span><span data-hf-id="hf-buj4" class="cw-t">YANG</span></span></div></div>
+    <div data-hf-id="hf-xrdp" class="cg" id="cap-g34" style="top: 1390px"><div data-hf-id="hf-mttd" class="cg-in" style="font-size: 63px"><span data-hf-id="hf-zlzh" class="cw" id="cap-w82"><span data-hf-id="hf-kodo" class="cw-bg"></span><span data-hf-id="hf-ge3x" class="cw-t">BERDEKATAN</span></span> <span data-hf-id="hf-yubo" class="cw" id="cap-w83"><span data-hf-id="hf-ka2n" class="cw-bg"></span><span data-hf-id="hf-gdwv" class="cw-t">DENGAN</span></span></div></div>
+    <div data-hf-id="hf-i0vo" class="cg" id="cap-g35" style="top: 1390px"><div data-hf-id="hf-khj4" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-jy3j" class="cw kw" id="cap-w84"><span data-hf-id="hf-lgzq" class="cw-bg"></span><span data-hf-id="hf-vcai" class="cw-t">KAJANG</span></span></div></div>
+    <div data-hf-id="hf-4y4f" class="cg" id="cap-g36" style="top: 1390px"><div data-hf-id="hf-jam1" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-idp6" class="cw" id="cap-w85"><span data-hf-id="hf-l2op" class="cw-bg"></span><span data-hf-id="hf-92gq" class="cw-t">ATAUPUN</span></span></div></div>
+    <div data-hf-id="hf-l8za" class="cg" id="cap-g37" style="top: 1390px"><div data-hf-id="hf-jox2" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-c7zd" class="cw" id="cap-w86"><span data-hf-id="hf-m9ls" class="cw-bg"></span><span data-hf-id="hf-o4t5" class="cw-t">SEKITARNYA</span></span></div></div>
+    <div data-hf-id="hf-aue9" class="cg" id="cap-g38" style="top: 1390px"><div data-hf-id="hf-ihzz" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-bgbk" class="cw" id="cap-w87"><span data-hf-id="hf-lvar" class="cw-bg"></span><span data-hf-id="hf-o23e" class="cw-t">KAMI</span></span></div></div>
+    <div data-hf-id="hf-17hk" class="cg" id="cap-g39" style="top: 1390px"><div data-hf-id="hf-iwb0" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-yxt3" class="cw" id="cap-w88"><span data-hf-id="hf-gpbe" class="cw-bg"></span><span data-hf-id="hf-2eq8" class="cw-t">MENGALU-ALUKAN</span></span></div></div>
+    <div data-hf-id="hf-wl50" class="cg" id="cap-g40" style="top: 1390px"><div data-hf-id="hf-3yfh" class="cg-in" style="font-size: 58px"><span data-hf-id="hf-uzp2" class="cw" id="cap-w89"><span data-hf-id="hf-gb0d" class="cw-bg"></span><span data-hf-id="hf-p16n" class="cw-t">UNTUK</span></span> <span data-hf-id="hf-62r8" class="cw" id="cap-w90"><span data-hf-id="hf-knff" class="cw-bg"></span><span data-hf-id="hf-7qj4" class="cw-t">KEDATANGAN</span></span> <span data-hf-id="hf-6uf1" class="cw" id="cap-w91"><span data-hf-id="hf-l1qg" class="cw-bg"></span><span data-hf-id="hf-mbdk" class="cw-t">ANDA</span></span></div></div>
+    <div data-hf-id="hf-bbe5" class="cg" id="cap-g41" style="top: 1390px"><div data-hf-id="hf-hpdx" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-asj2" class="cw" id="cap-w92"><span data-hf-id="hf-jutd" class="cw-bg"></span><span data-hf-id="hf-q83q" class="cw-t">UNTUK</span></span> <span data-hf-id="hf-eqn3" class="cw" id="cap-w93"><span data-hf-id="hf-k94e" class="cw-bg"></span><span data-hf-id="hf-sbtr" class="cw-t">DATANG</span></span> <span data-hf-id="hf-kwcw" class="cw" id="cap-w94"><span data-hf-id="hf-j27b" class="cw-bg"></span><span data-hf-id="hf-uqa4" class="cw-t">KE</span></span></div></div>
+    <div data-hf-id="hf-w70m" class="cg" id="cap-g42" style="top: 1390px"><div data-hf-id="hf-i3oy" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-z2b1" class="cw kw" id="cap-w95"><span data-hf-id="hf-jgic" class="cw-bg"></span><span data-hf-id="hf-flh2" class="cw-t">SHOWROOM</span></span> <span data-hf-id="hf-pm4q" class="cw" id="cap-w96"><span data-hf-id="hf-i9l9" class="cw-bg"></span><span data-hf-id="hf-hsji" class="cw-t">KAMI</span></span></div></div>
+    <div data-hf-id="hf-840f" class="cg" id="cap-g43" style="top: 1390px"><div data-hf-id="hf-gwrv" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-tk8r" class="cw" id="cap-w97"><span data-hf-id="hf-inwa" class="cw-bg"></span><span data-hf-id="hf-tday" class="cw-t">HARI</span></span> <span data-hf-id="hf-2c8o" class="cw kw" id="cap-w98"><span data-hf-id="hf-ntvn" class="cw-bg"></span><span data-hf-id="hf-hajp" class="cw-t">SABTU</span></span> <span data-hf-id="hf-ya0l" class="cw" id="cap-w99"><span data-hf-id="hf-o86o" class="cw-bg"></span><span data-hf-id="hf-u44e" class="cw-t">DAN</span></span></div></div>
+    <div data-hf-id="hf-zzcg" class="cg" id="cap-g44" style="top: 1390px"><div data-hf-id="hf-hb2w" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-y1hs" class="cw kw" id="cap-w100"><span data-hf-id="hf-ikbt" class="cw-bg"></span><span data-hf-id="hf-v7dg" class="cw-t">AHAD</span></span> <span data-hf-id="hf-x5gl" class="cw" id="cap-w101"><span data-hf-id="hf-iymu" class="cw-bg"></span><span data-hf-id="hf-a1h9" class="cw-t">NI</span></span></div></div>
+    <div data-hf-id="hf-4mnd" class="cg" id="cap-g45" style="top: 1390px"><div data-hf-id="hf-6lre" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-13km" class="cw" id="cap-w102"><span data-hf-id="hf-jcxv" class="cw-bg"></span><span data-hf-id="hf-67a6" class="cw-t">KALAU</span></span> <span data-hf-id="hf-79af" class="cw" id="cap-w103"><span data-hf-id="hf-jr8w" class="cw-bg"></span><span data-hf-id="hf-vkuo" class="cw-t">SIAPA</span></span> <span data-hf-id="hf-b7eg" class="cw" id="cap-w104"><span data-hf-id="hf-gz3p" class="cw-bg"></span><span data-hf-id="hf-elyn" class="cw-t">NAK</span></span></div></div>
+    <div data-hf-id="hf-24mq" class="cg" id="cap-g46" style="top: 1390px"><div data-hf-id="hf-67gd" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-bz29" class="cw" id="cap-w105"><span data-hf-id="hf-hdeq" class="cw-bg"></span><span data-hf-id="hf-rxiq" class="cw-t">DATANG</span></span></div></div>
+    <div data-hf-id="hf-zu63" class="cg" id="cap-g47" style="top: 1390px"><div data-hf-id="hf-i0vc" class="cg-in" style="font-size: 60px"><span data-hf-id="hf-fx6a" class="cw" id="cap-w106"><span data-hf-id="hf-hrpr" class="cw-bg"></span><span data-hf-id="hf-bs5c" class="cw-t">BOLEH</span></span> <span data-hf-id="hf-jvab" class="cw" id="cap-w107"><span data-hf-id="hf-i60s" class="cw-bg"></span><span data-hf-id="hf-be2v" class="cw-t">JUMPA</span></span> <span data-hf-id="hf-4y78" class="cw" id="cap-w108"><span data-hf-id="hf-fdvl" class="cw-bg"></span><span data-hf-id="hf-ar2n" class="cw-t">DENGAN</span></span></div></div>
+    <div data-hf-id="hf-h2zw" class="cg" id="cap-g48" style="top: 1390px"><div data-hf-id="hf-7edg" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-q8r5" class="cw kw" id="cap-w109"><span data-hf-id="hf-fs6m" class="cw-bg"></span><span data-hf-id="hf-hbrh" class="cw-t">SHAUKY</span></span></div></div>
+    <div data-hf-id="hf-d4lx" class="cg" id="cap-g49" style="top: 1390px"><div data-hf-id="hf-3cdu" class="cg-in" style="font-size: 67px"><span data-hf-id="hf-k8uv" class="cw" id="cap-w110"><span data-hf-id="hf-hso0" class="cw-bg"></span><span data-hf-id="hf-a6iq" class="cw-t">INSYA</span></span> <span data-hf-id="hf-gaqu" class="cw" id="cap-w111"><span data-hf-id="hf-hecz" class="cw-bg"></span><span data-hf-id="hf-65wq" class="cw-t">ALLAH</span></span> <span data-hf-id="hf-ccmt" class="cw" id="cap-w112"><span data-hf-id="hf-h01y" class="cw-bg"></span><span data-hf-id="hf-zmh2" class="cw-t">KITA</span></span></div></div>
+    <div data-hf-id="hf-e4in" class="cg" id="cap-g50" style="top: 1390px"><div data-hf-id="hf-702f" class="cg-in" style="font-size: 72px"><span data-hf-id="hf-bkz0" class="cw" id="cap-w113"><span data-hf-id="hf-glqx" class="cw-bg"></span><span data-hf-id="hf-5dev" class="cw-t">JUMPA</span></span> <span data-hf-id="hf-z2gj" class="cw" id="cap-w114"><span data-hf-id="hf-g7fw" class="cw-bg"></span><span data-hf-id="hf-ktgm" class="cw-t">NANTI</span></span></div></div>
+    <div data-hf-id="hf-opxy" class="cg" id="cap-g51" style="top: 1390px"><div data-hf-id="hf-3qov" class="cg-in" style="font-size: 67px"><span data-hf-id="hf-v4ci" class="cw" id="cap-w115"><span data-hf-id="hf-ft4v" class="cw-bg"></span><span data-hf-id="hf-vhdh" class="cw-t">ASSALAMUALAIKUM</span></span></div></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    function group(sel, start, end) {
+      tl.set(sel, { visibility: "visible" }, start);
+      tl.fromTo(sel, { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: "expo.out" }, start);
+      tl.to(sel, { opacity: 0, duration: 0.1, ease: "power2.in" }, Math.max(end - 0.1, start + 0.17));
+      tl.set(sel, { opacity: 0, visibility: "hidden" }, end);
+    }
+    function word(sel, start, end) {
+      const bg = sel + " .cw-bg";
+      const t = sel + " .cw-t";
+      tl.fromTo(bg, { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.12, ease: "power3.out" }, start);
+      tl.fromTo(t, { color: "#ffffff", textShadow: "0 0 0 rgba(0,0,0,0)" }, { color: "#0e1116", textShadow: "0 0 0 rgba(0,0,0,0)", duration: 0.06 }, start);
+      tl.fromTo(sel, { scale: 1 }, { scale: 1.08, duration: 0.1, ease: "power2.out" }, start);
+      tl.to(sel, { scale: 1, duration: 0.14, ease: "power2.out" }, end);
+      tl.to(bg, { opacity: 0, duration: 0.1, ease: "power2.in" }, end);
+      tl.set(t, { clearProps: "color,textShadow" }, end + 0.06);
+    }
+  word("#cap-w0", 0.00, 0.16);
+  word("#cap-w1", 0.16, 0.28);
+  word("#cap-w2", 0.28, 0.52);
+  group("#cap-g0", 0.15, 0.52);
+  word("#cap-w3", 0.52, 0.68);
+  word("#cap-w4", 0.68, 0.98);
+  word("#cap-w5", 0.98, 1.22);
+  group("#cap-g1", 0.52, 1.22);
+  word("#cap-w6", 1.22, 1.36);
+  word("#cap-w7", 1.36, 1.92);
+  group("#cap-g2", 1.22, 1.98);
+  word("#cap-w8", 1.98, 2.32);
+  word("#cap-w9", 2.32, 2.66);
+  word("#cap-w10", 2.66, 2.88);
+  group("#cap-g3", 1.98, 3.08);
+  word("#cap-w11", 3.08, 3.26);
+  word("#cap-w12", 3.26, 3.72);
+  word("#cap-w13", 3.72, 3.88);
+  group("#cap-g4", 3.08, 3.88);
+  word("#cap-w14", 3.88, 4.34);
+  group("#cap-g5", 3.88, 4.54);
+  word("#cap-w15", 4.54, 4.66);
+  word("#cap-w16", 4.60, 5.08);
+  word("#cap-w17", 5.08, 5.58);
+  group("#cap-g6", 4.54, 5.58);
+  word("#cap-w18", 5.58, 5.80);
+  word("#cap-w19", 5.80, 6.30);
+  group("#cap-g7", 5.58, 6.46);
+  word("#cap-w20", 6.46, 6.62);
+  word("#cap-w21", 6.62, 7.02);
+  word("#cap-w22", 7.02, 7.62);
+  group("#cap-g8", 6.46, 7.62);
+  word("#cap-w23", 7.62, 7.90);
+  word("#cap-w24", 7.90, 8.42);
+  word("#cap-w25", 8.42, 8.54);
+  group("#cap-g9", 7.62, 8.64);
+  word("#cap-w26", 8.64, 9.10);
+  word("#cap-w27", 9.10, 9.32);
+  word("#cap-w28", 9.32, 9.52);
+  group("#cap-g10", 8.64, 9.52);
+  word("#cap-w29", 9.52, 9.70);
+  word("#cap-w30", 9.70, 9.92);
+  group("#cap-g11", 9.52, 9.92);
+  word("#cap-w31", 9.92, 10.26);
+  word("#cap-w32", 10.26, 10.54);
+  group("#cap-g12", 9.92, 10.54);
+  word("#cap-w33", 10.54, 11.00);
+  word("#cap-w34", 11.00, 11.26);
+  group("#cap-g13", 10.54, 11.46);
+  word("#cap-w35", 11.46, 11.62);
+  word("#cap-w36", 11.62, 11.88);
+  word("#cap-w37", 11.88, 12.08);
+  group("#cap-g14", 11.46, 12.08);
+  word("#cap-w38", 12.08, 12.28);
+  word("#cap-w39", 12.28, 12.82);
+  group("#cap-g15", 12.08, 12.82);
+  word("#cap-w40", 12.82, 13.20);
+  group("#cap-g16", 12.82, 13.20);
+  word("#cap-w41", 13.20, 13.64);
+  word("#cap-w42", 13.64, 13.98);
+  group("#cap-g17", 13.20, 13.98);
+  word("#cap-w43", 13.98, 14.26);
+  word("#cap-w44", 14.26, 14.40);
+  word("#cap-w45", 14.40, 14.70);
+  group("#cap-g18", 13.98, 14.80);
+  word("#cap-w46", 14.80, 15.04);
+  word("#cap-w47", 15.04, 15.22);
+  word("#cap-w48", 15.22, 15.36);
+  group("#cap-g19", 14.80, 15.36);
+  word("#cap-w49", 15.36, 15.56);
+  word("#cap-w50", 15.56, 15.82);
+  group("#cap-g20", 15.36, 16.08);
+  word("#cap-w51", 16.08, 16.58);
+  word("#cap-w52", 16.58, 16.78);
+  group("#cap-g21", 16.08, 16.98);
+  word("#cap-w53", 16.98, 17.14);
+  word("#cap-w54", 17.14, 17.36);
+  word("#cap-w55", 17.36, 17.56);
+  group("#cap-g22", 16.98, 17.56);
+  word("#cap-w56", 17.56, 18.28);
+  word("#cap-w57", 18.28, 18.72);
+  word("#cap-w58", 18.72, 18.86);
+  group("#cap-g23", 17.56, 18.86);
+  word("#cap-w59", 18.86, 18.98);
+  word("#cap-w60", 18.96, 19.24);
+  word("#cap-w61", 19.24, 19.78);
+  group("#cap-g24", 18.86, 20.04);
+  word("#cap-w62", 20.04, 20.34);
+  word("#cap-w63", 20.34, 20.60);
+  word("#cap-w64", 20.60, 20.80);
+  group("#cap-g25", 20.04, 20.80);
+  word("#cap-w65", 20.80, 20.96);
+  word("#cap-w66", 20.96, 21.22);
+  group("#cap-g26", 20.80, 21.40);
+  word("#cap-w67", 21.40, 21.70);
+  word("#cap-w68", 21.70, 21.96);
+  word("#cap-w69", 21.96, 22.22);
+  group("#cap-g27", 21.40, 22.22);
+  word("#cap-w70", 22.22, 22.70);
+  group("#cap-g28", 22.22, 22.70);
+  word("#cap-w71", 22.70, 23.28);
+  word("#cap-w72", 23.28, 23.64);
+  word("#cap-w73", 23.64, 23.98);
+  group("#cap-g29", 22.70, 24.33);
+  word("#cap-w74", 24.38, 24.50);
+  word("#cap-w75", 24.46, 24.88);
+  word("#cap-w76", 24.88, 25.14);
+  group("#cap-g30", 24.38, 25.14);
+  word("#cap-w77", 25.14, 25.68);
+  group("#cap-g31", 25.14, 26.00);
+  word("#cap-w78", 26.00, 26.20);
+  word("#cap-w79", 26.20, 26.94);
+  group("#cap-g32", 26.00, 26.94);
+  word("#cap-w80", 26.94, 27.28);
+  word("#cap-w81", 27.28, 27.46);
+  group("#cap-g33", 26.94, 27.46);
+  word("#cap-w82", 27.46, 27.94);
+  word("#cap-w83", 27.94, 28.26);
+  group("#cap-g34", 27.46, 28.26);
+  word("#cap-w84", 28.26, 28.76);
+  group("#cap-g35", 28.26, 28.76);
+  word("#cap-w85", 28.76, 29.14);
+  group("#cap-g36", 28.76, 29.14);
+  word("#cap-w86", 29.14, 29.74);
+  group("#cap-g37", 29.14, 29.96);
+  word("#cap-w87", 29.96, 30.28);
+  group("#cap-g38", 29.96, 30.28);
+  word("#cap-w88", 30.28, 31.18);
+  group("#cap-g39", 30.28, 31.18);
+  word("#cap-w89", 31.18, 31.44);
+  word("#cap-w90", 31.44, 31.90);
+  word("#cap-w91", 31.90, 32.18);
+  group("#cap-g40", 31.18, 32.18);
+  word("#cap-w92", 32.18, 32.54);
+  word("#cap-w93", 32.54, 32.90);
+  word("#cap-w94", 32.90, 33.02);
+  group("#cap-g41", 32.18, 33.02);
+  word("#cap-w95", 33.02, 33.28);
+  word("#cap-w96", 33.28, 33.56);
+  group("#cap-g42", 33.02, 33.74);
+  word("#cap-w97", 33.74, 34.24);
+  word("#cap-w98", 34.24, 34.64);
+  word("#cap-w99", 34.64, 34.78);
+  group("#cap-g43", 33.74, 34.78);
+  word("#cap-w100", 34.78, 35.10);
+  word("#cap-w101", 35.10, 35.22);
+  group("#cap-g44", 34.78, 35.36);
+  word("#cap-w102", 35.36, 35.48);
+  word("#cap-w103", 35.46, 35.82);
+  word("#cap-w104", 35.82, 35.94);
+  group("#cap-g45", 35.36, 35.92);
+  word("#cap-w105", 35.92, 36.30);
+  group("#cap-g46", 35.92, 36.36);
+  word("#cap-w106", 36.36, 36.48);
+  word("#cap-w107", 36.46, 36.76);
+  word("#cap-w108", 36.76, 36.94);
+  group("#cap-g47", 36.36, 36.94);
+  word("#cap-w109", 36.94, 37.60);
+  group("#cap-g48", 36.94, 37.60);
+  word("#cap-w110", 37.60, 38.08);
+  word("#cap-w111", 38.08, 38.20);
+  word("#cap-w112", 38.18, 38.34);
+  group("#cap-g49", 37.60, 38.34);
+  word("#cap-w113", 38.34, 38.68);
+  word("#cap-w114", 38.68, 38.92);
+  group("#cap-g50", 38.34, 39.12);
+  word("#cap-w115", 39.12, 39.68);
+  group("#cap-g51", 39.12, 39.70);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>

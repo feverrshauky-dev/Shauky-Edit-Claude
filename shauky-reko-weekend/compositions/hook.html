@@ -1,0 +1,120 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-family: "Montserrat", sans-serif;
+    }
+    #hook-card {
+      position: absolute;
+      left: 70px;
+      right: 70px;
+      top: 170px;
+      padding: 28px 30px 32px;
+      border-radius: 34px;
+      background: rgba(14, 17, 22, 0.88);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      text-align: center;
+    }
+    #hook-l1 {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 58px;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+    }
+    #hook-l1 span {
+      display: inline-block;
+    }
+    #hook-l2 {
+      position: relative;
+      display: inline-block;
+      margin-top: 14px;
+      padding: 8px 24px 14px;
+      font-weight: 900;
+      font-size: 88px;
+      line-height: 1;
+      color: #0e1116;
+    }
+    #hook-l2-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: #c8ec3c;
+      transform-origin: 0% 50%;
+    }
+    #hook-l2-t {
+      position: relative;
+    }
+    #hook-stamp {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 470px;
+      text-align: center;
+    }
+    #hook-stamp-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 34px 16px 26px;
+      border-radius: 999px;
+      background: #ff3b3b;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 60px;
+      line-height: 1;
+      box-shadow: 0 16px 40px rgba(255, 59, 59, 0.45);
+      opacity: 0;
+    }
+    #hook-stamp-pill svg {
+      width: 58px;
+      height: 58px;
+    }
+  </style>
+  <div data-hf-id="hf-srfg" id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-v2mz" id="hook-card">
+      <div data-hf-id="hf-kak8" id="hook-l1"><span data-hf-id="hf-8cd9" id="hook-w1">SABTU</span><span data-hf-id="hf-m5fp">&amp;</span><span data-hf-id="hf-us8z" id="hook-w2">AHAD</span><span data-hf-id="hf-u4nw">NI</span></div>
+      <div data-hf-id="hf-v61v" id="hook-l2"><span data-hf-id="hf-rcqq" id="hook-l2-bg"></span><span data-hf-id="hf-83gg" id="hook-l2-t">4 PROGRAM MENARIK</span></div>
+    </div>
+    <div data-hf-id="hf-j1qa" id="hook-stamp">
+      <div data-hf-id="hf-8vtm" id="hook-stamp-pill">
+        <svg data-hf-id="hf-blkv" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-i3v8" d="M12 3 2.5 20h19L12 3Z" />
+          <path data-hf-id="hf-gfzk" d="M12 10v4.5" />
+          <path data-hf-id="hf-xj59" d="M12 17.4v.1" />
+        </svg>
+        <span data-hf-id="hf-8qxd">INFO PENTING!</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // Frame 0 is the thumbnail: the card is already there, fully lit, and holds still.
+    tl.fromTo("#hook-card", { opacity: 1, y: 0 }, { opacity: 1, y: 0, duration: 0.01 }, 0);
+    // a small breath on the headline so the first second is not frozen
+    tl.fromTo("#hook-l2", { scale: 1 }, { scale: 1.04, duration: 0.9, ease: "sine.inOut" }, 0.1);
+    tl.to("#hook-l2", { scale: 1, duration: 0.5, ease: "sine.inOut" }, 1.0);
+    // "info yang penting" -> warning stamp slams in
+    tl.fromTo(
+      "#hook-stamp-pill",
+      { opacity: 0, scale: 1.8, rotation: -10 },
+      { opacity: 1, scale: 1, rotation: -3, duration: 0.3, ease: "back.out(1.7)" },
+      1.36,
+    );
+    tl.to("#hook-stamp-pill", { opacity: 0, scale: 0.9, duration: 0.18, ease: "power2.in" }, 2.85);
+    // "hari Sabtu dan Ahad" -> the spoken day lights up
+    tl.fromTo("#hook-w1", { color: "#ffffff", scale: 1 }, { color: "#c8ec3c", scale: 1.12, duration: 0.14, ease: "power3.out" }, 3.26);
+    tl.to("#hook-w1", { scale: 1, duration: 0.2, ease: "power2.out" }, 3.5);
+    tl.fromTo("#hook-w2", { color: "#ffffff", scale: 1 }, { color: "#c8ec3c", scale: 1.12, duration: 0.14, ease: "power3.out" }, 3.88);
+    tl.to("#hook-w2", { scale: 1, duration: 0.2, ease: "power2.out" }, 4.1);
+    // leave clean before the location card
+    tl.to("#hook-card", { opacity: 0, y: -50, duration: 0.18, ease: "power3.in" }, 4.15);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

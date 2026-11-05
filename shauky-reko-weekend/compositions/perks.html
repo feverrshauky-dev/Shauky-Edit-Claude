@@ -1,0 +1,256 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-family: "Montserrat", sans-serif;
+    }
+    .pk-card {
+      position: absolute;
+      left: 70px;
+      right: 70px;
+      top: 170px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 26px 30px 28px 26px;
+      border-radius: 34px;
+      background: rgba(14, 17, 22, 0.9);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+    }
+    .pk-icon {
+      flex: 0 0 auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 34px;
+      background: #c8ec3c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pk-icon svg {
+      width: 96px;
+      height: 96px;
+    }
+    .pk-text {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+    .pk-tag {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #c8ec3c;
+      font-weight: 800;
+      font-size: 30px;
+      letter-spacing: 0.08em;
+    }
+    .pk-dots {
+      display: inline-flex;
+      gap: 7px;
+      margin-left: 6px;
+    }
+    .pk-dots i {
+      display: block;
+      width: 26px;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .pk-dots i.on {
+      background: #c8ec3c;
+    }
+    .pk-title {
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: 0.005em;
+    }
+    .pk-title .hl {
+      position: relative;
+      display: inline-block;
+      padding: 0 10px 4px;
+      margin-left: -10px;
+    }
+    .pk-title .hl b {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      background: #c8ec3c;
+      transform-origin: 0% 50%;
+      transform: scaleX(0);
+    }
+    .pk-title .hl span {
+      position: relative;
+    }
+    .pk-sub {
+      color: rgba(255, 255, 255, 0.82);
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 1.1;
+      opacity: 0;
+    }
+    .pk-pill {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 470px;
+      text-align: center;
+    }
+    .pk-pill-in {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px 16px 24px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1;
+      opacity: 0;
+    }
+    .pk-pill-in svg {
+      width: 56px;
+      height: 56px;
+    }
+    #pk-bank-in {
+      background: #ff3b3b;
+      color: #ffffff;
+      box-shadow: 0 16px 40px rgba(255, 59, 59, 0.45);
+    }
+    #pk-food-in {
+      background: #ffffff;
+      color: #0e1116;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+  <div data-hf-id="hf-vs2k" id="root" data-composition-id="perks" data-width="1080" data-height="1920">
+    <!-- 01 free inspection -->
+    <div data-hf-id="hf-bn58" class="pk-card" id="pk1">
+      <div data-hf-id="hf-cx0n" class="pk-icon">
+        <svg data-hf-id="hf-37fw" viewBox="0 0 24 24" fill="none" stroke="#0e1116" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <circle data-hf-id="hf-obyv" cx="10.5" cy="10.5" r="6.5" />
+          <path data-hf-id="hf-pv5z" d="m15.5 15.5 5 5" />
+          <path data-hf-id="hf-cfhi" d="m7.8 10.6 1.9 1.9 3.4-3.6" />
+        </svg>
+      </div>
+      <div data-hf-id="hf-ruep" class="pk-text">
+        <div data-hf-id="hf-n0rn" class="pk-tag">PROGRAM 1<span data-hf-id="hf-a1wb" class="pk-dots"><i data-hf-id="hf-l5u7" class="on"></i><i data-hf-id="hf-wt6k"></i><i data-hf-id="hf-zeb8"></i><i data-hf-id="hf-y7e5"></i></span></div>
+        <div data-hf-id="hf-oiv0" class="pk-title"><span data-hf-id="hf-7xlu" class="hl" id="pk1-hl"><b data-hf-id="hf-xujp"></b><span data-hf-id="hf-txkj" id="pk1-hlt">FREE</span></span> INSPECTION</div>
+        <div data-hf-id="hf-o23y" class="pk-sub" id="pk1-sub">untuk kereta-kereta lama</div>
+      </div>
+    </div>
+    <!-- 02 loan face to face -->
+    <div data-hf-id="hf-kb13" class="pk-card" id="pk2">
+      <div data-hf-id="hf-xkg7" class="pk-icon">
+        <svg data-hf-id="hf-x1xg" viewBox="0 0 24 24" fill="none" stroke="#0e1116" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-o28z" d="M6 3h8l4 4v14H6z" />
+          <path data-hf-id="hf-qg6h" d="M14 3v4h4" />
+          <path data-hf-id="hf-6x9b" d="M9 12h6" />
+          <path data-hf-id="hf-djmy" d="m9 16.4 1.7 1.6 3.3-3.4" />
+        </svg>
+      </div>
+      <div data-hf-id="hf-arol" class="pk-text">
+        <div data-hf-id="hf-mmgm" class="pk-tag">PROGRAM 2<span data-hf-id="hf-d17f" class="pk-dots"><i data-hf-id="hf-j2zz" class="on"></i><i data-hf-id="hf-iooy" class="on"></i><i data-hf-id="hf-ylp6"></i><i data-hf-id="hf-0l8b"></i></span></div>
+        <div data-hf-id="hf-ubvk" class="pk-title">LOAN <span data-hf-id="hf-zchj" class="hl" id="pk2-hl"><b data-hf-id="hf-ey49"></b><span data-hf-id="hf-hve3" id="pk2-hlt">FACE-TO-FACE</span></span></div>
+        <div data-hf-id="hf-o1w9" class="pk-sub" id="pk2-sub">submission terus kat showroom</div>
+      </div>
+    </div>
+    <div data-hf-id="hf-2l4b" class="pk-pill" id="pk-bank">
+      <div data-hf-id="hf-rf1n" class="pk-pill-in" id="pk-bank-in">
+        <svg data-hf-id="hf-9y5y" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-deo6" d="M3 9.5 12 4l9 5.5" />
+          <path data-hf-id="hf-qec1" d="M5 10v7M9.7 10v7M14.3 10v7M19 10v7" />
+          <path data-hf-id="hf-tmtn" d="M3 20h18" />
+        </svg>
+        <span data-hf-id="hf-b6yh">BANKER PANEL ADA!</span>
+      </div>
+    </div>
+    <!-- 03 cek kesihatan -->
+    <div data-hf-id="hf-gcx2" class="pk-card" id="pk3">
+      <div data-hf-id="hf-x656" class="pk-icon">
+        <svg data-hf-id="hf-vv0d" viewBox="0 0 24 24" fill="none" stroke="#0e1116" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-h55m" d="M12 20.5S3.5 15.3 3.5 9.2A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.5 2.8c0 6.1-8.5 11.3-8.5 11.3Z" />
+          <path data-hf-id="hf-wa86" d="M6.5 12h3l1.5-2.5 2 5 1.5-2.5h3" />
+        </svg>
+      </div>
+      <div data-hf-id="hf-bylo" class="pk-text">
+        <div data-hf-id="hf-m85l" class="pk-tag">PROGRAM 3<span data-hf-id="hf-cmwe" class="pk-dots"><i data-hf-id="hf-iadx" class="on"></i><i data-hf-id="hf-l2j4" class="on"></i><i data-hf-id="hf-ko83" class="on"></i><i data-hf-id="hf-0zjc"></i></span></div>
+        <div data-hf-id="hf-1ad3" class="pk-title">CEK <span data-hf-id="hf-cjy8" class="hl" id="pk3-hl"><b data-hf-id="hf-g51c"></b><span data-hf-id="hf-ttev" id="pk3-hlt">KESIHATAN</span></span></div>
+        <div data-hf-id="hf-wkoa" class="pk-sub" id="pk3-sub">datang terus ke sini</div>
+      </div>
+    </div>
+    <!-- 04 VR game + makanan -->
+    <div data-hf-id="hf-p0sx" class="pk-card" id="pk4">
+      <div data-hf-id="hf-wru5" class="pk-icon">
+        <svg data-hf-id="hf-w9be" viewBox="0 0 24 24" fill="none" stroke="#0e1116" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-gbm4" d="M3 9a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-3.2l-1.6-2.2h-2.4L9.2 18H6a3 3 0 0 1-3-3z" />
+          <circle data-hf-id="hf-wxi1" cx="8.3" cy="11.3" r="1.6" />
+          <circle data-hf-id="hf-cj37" cx="15.7" cy="11.3" r="1.6" />
+        </svg>
+      </div>
+      <div data-hf-id="hf-bkan" class="pk-text">
+        <div data-hf-id="hf-ltuk" class="pk-tag">PROGRAM 4<span data-hf-id="hf-c8ld" class="pk-dots"><i data-hf-id="hf-k9x2" class="on"></i><i data-hf-id="hf-jvm1" class="on"></i><i data-hf-id="hf-gaus" class="on"></i><i data-hf-id="hf-fwjr" class="on"></i></span></div>
+        <div data-hf-id="hf-cra6" class="pk-title"><span data-hf-id="hf-doed" class="hl" id="pk4-hl"><b data-hf-id="hf-fqqb"></b><span data-hf-id="hf-b20u" id="pk4-hlt">VR GAME</span></span></div>
+        <div data-hf-id="hf-d9mn" class="pk-sub" id="pk4-sub">disediakan kat showroom</div>
+      </div>
+    </div>
+    <div data-hf-id="hf-4kex" class="pk-pill" id="pk-food">
+      <div data-hf-id="hf-wpp5" class="pk-pill-in" id="pk-food-in">
+        <svg data-hf-id="hf-y8uj" viewBox="0 0 24 24" fill="none" stroke="#0e1116" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-42fj" d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10" />
+          <path data-hf-id="hf-0vhw" d="M17 21V3c-2.2 1.3-3.3 3.7-3.3 7v3.5H17" />
+        </svg>
+        <span data-hf-id="hf-hgyg">+ MAKANAN DISEDIAKAN</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // card in / out: slides from the right, leaves to the left
+    function card(sel, tIn, tOut) {
+      tl.fromTo(sel, { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.32, ease: "expo.out" }, tIn);
+      tl.fromTo(sel + " .pk-icon", { scale: 0.4, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2)" }, tIn + 0.06);
+      tl.to(sel, { opacity: 0, x: -140, duration: 0.2, ease: "power3.in" }, tOut);
+    }
+    // keyword lights up when it is said
+    function hl(id, t) {
+      tl.fromTo(`#${id}-hl b`, { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power3.out" }, t);
+      tl.fromTo(`#${id}-hlt`, { color: "#ffffff" }, { color: "#0e1116", duration: 0.06 }, t + 0.04);
+    }
+    function sub(id, t) {
+      tl.fromTo(`#${id}-sub`, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.24, ease: "power3.out" }, t);
+    }
+    function pill(sel, t, tOut) {
+      tl.fromTo(sel, { opacity: 0, scale: 1.8, rotation: -9 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.3, ease: "back.out(1.7)" }, t);
+      tl.to(sel, { opacity: 0, scale: 0.9, duration: 0.18, ease: "power2.in" }, tOut);
+    }
+
+    // local time = film time - 8.50
+    card("#pk1", 1.1, 2.72); //  9.60 "free inspection"
+    hl("pk1", 1.2); //            9.70 "free"
+    sub("pk1", 1.4); //          9.90 lands with the card so it can be read
+
+    card("#pk2", 2.96, 8.3); // 11.46 "kita juga ada buat sediakan"
+    sub("pk2", 4.7); //          13.20 "submission loan"
+    hl("pk2", 5.48); //          13.98 "face to face"
+    pill("#pk-bank-in", 6.86, 8.28); // 15.36 "bawa banker panel"
+
+    card("#pk3", 8.48, 12.72); // 16.98 "kita juga ada untuk siapa"
+    hl("pk3", 10.74); //          19.24 "kesihatan"
+    sub("pk3", 11.0); //          19.50 ahead of "boleh datang juga dekat sini"
+
+    card("#pk4", 13.72, 17.08); // 22.22 "menyediakan"
+    hl("pk4", 14.78); //           23.28 "VR game"
+    sub("pk4", 15.2);
+    pill("#pk-food-in", 15.96, 17.06); // 24.46 "makanan"
+
+    window.__timelines["perks"] = tl;
+  </script>
+</template>

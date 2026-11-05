@@ -1,0 +1,153 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-family: "Montserrat", sans-serif;
+    }
+    #kj-card {
+      position: absolute;
+      left: 80px;
+      right: 80px;
+      top: 170px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 26px 34px 28px 26px;
+      border-radius: 34px;
+      background: rgba(14, 17, 22, 0.9);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+    }
+    #kj-radar {
+      position: relative;
+      flex: 0 0 auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 34px;
+      background: #1b2230;
+      overflow: hidden;
+    }
+    .kj-ring {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 120px;
+      height: 120px;
+      margin: -60px 0 0 -60px;
+      border-radius: 50%;
+      border: 5px solid #c8ec3c;
+      opacity: 0;
+    }
+    #kj-dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 34px;
+      height: 34px;
+      margin: -17px 0 0 -17px;
+      border-radius: 50%;
+      background: #c8ec3c;
+      box-shadow: 0 0 0 8px rgba(200, 236, 60, 0.25);
+    }
+    #kj-text {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #kj-l0 {
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 800;
+      font-size: 36px;
+      letter-spacing: 0.06em;
+    }
+    #kj-l1 {
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 78px;
+      line-height: 1;
+    }
+    #kj-l2 {
+      color: #c8ec3c;
+      font-weight: 900;
+      font-size: 48px;
+      line-height: 1;
+      opacity: 0;
+    }
+    #kj-pill {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 470px;
+      text-align: center;
+    }
+    #kj-pill-in {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px 16px 24px;
+      border-radius: 999px;
+      background: #c8ec3c;
+      color: #0e1116;
+      font-weight: 900;
+      font-size: 54px;
+      line-height: 1;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+    }
+    #kj-pill-in svg {
+      width: 58px;
+      height: 58px;
+    }
+  </style>
+  <div data-hf-id="hf-hr2h" id="root" data-composition-id="kajang" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-09jh" id="kj-card">
+      <div data-hf-id="hf-0kkw" id="kj-radar" data-layout-allow-overflow>
+        <div data-hf-id="hf-2tij" class="kj-ring" id="kj-r1"></div>
+        <div data-hf-id="hf-ry0w" class="kj-ring" id="kj-r2"></div>
+        <div data-hf-id="hf-uxah" class="kj-ring" id="kj-r3"></div>
+        <div data-hf-id="hf-wnjk" id="kj-dot"></div>
+      </div>
+      <div data-hf-id="hf-p2p6" id="kj-text">
+        <div data-hf-id="hf-p8n3" id="kj-l0">ORANG BERDEKATAN</div>
+        <div data-hf-id="hf-0hks" id="kj-l1">KAJANG</div>
+        <div data-hf-id="hf-rjv6" id="kj-l2">&amp; SEKITARNYA</div>
+      </div>
+    </div>
+    <div data-hf-id="hf-56ja" id="kj-pill">
+      <div data-hf-id="hf-ixv6" id="kj-pill-in">
+        <svg data-hf-id="hf-37fw" viewBox="0 0 24 24" fill="none" stroke="#0e1116" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path data-hf-id="hf-y6d7" d="M3 10.5 12 4l9 6.5" />
+          <path data-hf-id="hf-kwql" d="M5 9.5V20h14V9.5" />
+          <path data-hf-id="hf-8oaz" d="M10 20v-5.5h4V20" />
+        </svg>
+        <span data-hf-id="hf-ey3u">JEMPUT DATANG SHOWROOM!</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // local time = film time - 25.80
+    // "berdekatan dengan Kajang" -> card in, the town name lands on the word
+    tl.fromTo("#kj-card", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 1.4);
+    tl.fromTo("#kj-l1", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "back.out(1.8)" }, 2.46);
+    // "ataupun sekitarnya"
+    tl.fromTo("#kj-l2", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.24, ease: "power3.out" }, 3.34);
+    // radar pulse: three staggered rings, laid out as plain tweens so every frame is seekable
+    for (let t = 1.6; t < 7.4; t += 0.9) {
+      ["#kj-r1", "#kj-r2", "#kj-r3"].forEach((sel, i) => {
+        const s = t + i * 0.3;
+        tl.fromTo(sel, { scale: 0.25, opacity: 0.9 }, { scale: 1.6, opacity: 0, duration: 0.9, ease: "power1.out", immediateRender: false }, s);
+      });
+    }
+    // "kami mengalu-alukan kedatangan anda" -> invitation stamp
+    tl.fromTo("#kj-pill-in", { opacity: 0, scale: 1.8, rotation: -9 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.3, ease: "back.out(1.7)" }, 4.44);
+    // "showroom kami" -> small nudge
+    tl.fromTo("#kj-pill-in", { scale: 1 }, { scale: 1.08, duration: 0.12, ease: "power2.out", immediateRender: false }, 7.22);
+    tl.to("#kj-pill-in", { scale: 1, duration: 0.16, ease: "power2.out" }, 7.34);
+    tl.to(["#kj-card", "#kj-pill-in"], { opacity: 0, y: -40, duration: 0.18, ease: "power3.in" }, 7.52);
+    window.__timelines["kajang"] = tl;
+  </script>
+</template>

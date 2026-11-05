@@ -1,0 +1,991 @@
+{
+ "segments": [
+  {
+   "start": 0.92,
+   "end": 7.38,
+   "text": "Assalamualaikum guys. So, aku nak bagi tahu satu info yang penting, yang dimana hujung minggu ni, Hari Satu dan Ahad",
+   "words": [
+    {
+     "id": "w0",
+     "text": "Assalamualaikum",
+     "start": 0.92,
+     "end": 1.42,
+     "p": 0.92
+    },
+    {
+     "id": "w1",
+     "text": "guys.",
+     "start": 1.42,
+     "end": 1.74,
+     "p": 0.59
+    },
+    {
+     "id": "w2",
+     "text": "So,",
+     "start": 1.82,
+     "end": 2.18,
+     "p": 0.63
+    },
+    {
+     "id": "w3",
+     "text": "aku",
+     "start": 2.28,
+     "end": 2.4,
+     "p": 0.98
+    },
+    {
+     "id": "w4",
+     "text": "nak",
+     "start": 2.4,
+     "end": 2.56,
+     "p": 1.0
+    },
+    {
+     "id": "w5",
+     "text": "bagi",
+     "start": 2.56,
+     "end": 2.8,
+     "p": 0.69
+    },
+    {
+     "id": "w6",
+     "text": "tahu",
+     "start": 2.8,
+     "end": 2.96,
+     "p": 0.77
+    },
+    {
+     "id": "w7",
+     "text": "satu",
+     "start": 2.96,
+     "end": 3.24,
+     "p": 0.97
+    },
+    {
+     "id": "w8",
+     "text": "info",
+     "start": 3.24,
+     "end": 3.52,
+     "p": 0.84
+    },
+    {
+     "id": "w9",
+     "text": "yang",
+     "start": 3.52,
+     "end": 3.62,
+     "p": 0.99
+    },
+    {
+     "id": "w10",
+     "text": "penting,",
+     "start": 3.62,
+     "end": 4.26,
+     "p": 1.0
+    },
+    {
+     "id": "w11",
+     "text": "yang",
+     "start": 4.36,
+     "end": 4.6,
+     "p": 0.77
+    },
+    {
+     "id": "w12",
+     "text": "dimana",
+     "start": 4.6,
+     "end": 5.04,
+     "p": 0.84
+    },
+    {
+     "id": "w13",
+     "text": "hujung",
+     "start": 5.04,
+     "end": 5.28,
+     "p": 0.7
+    },
+    {
+     "id": "w14",
+     "text": "minggu",
+     "start": 5.28,
+     "end": 5.62,
+     "p": 0.96
+    },
+    {
+     "id": "w15",
+     "text": "ni,",
+     "start": 5.62,
+     "end": 5.86,
+     "p": 0.76
+    },
+    {
+     "id": "w16",
+     "text": "Hari",
+     "start": 6.06,
+     "end": 6.22,
+     "p": 0.17
+    },
+    {
+     "id": "w17",
+     "text": "Satu",
+     "start": 6.22,
+     "end": 6.68,
+     "p": 0.7
+    },
+    {
+     "id": "w18",
+     "text": "dan",
+     "start": 6.68,
+     "end": 6.84,
+     "p": 0.92
+    },
+    {
+     "id": "w19",
+     "text": "Ahad",
+     "start": 6.84,
+     "end": 7.38,
+     "p": 0.74
+    }
+   ]
+  },
+  {
+   "start": 7.38,
+   "end": 15.02,
+   "text": "Di Perodua 3S Jalan Rekor, kita ada beberapa program menarik lah. Seperti kita ada buat free inspection untuk kereta-kereta lama.",
+   "words": [
+    {
+     "id": "w20",
+     "text": "Di",
+     "start": 7.38,
+     "end": 7.9,
+     "p": 0.1
+    },
+    {
+     "id": "w21",
+     "text": "Perodua",
+     "start": 7.9,
+     "end": 8.4,
+     "p": 0.31
+    },
+    {
+     "id": "w22",
+     "text": "3S",
+     "start": 8.4,
+     "end": 8.9,
+     "p": 0.8
+    },
+    {
+     "id": "w23",
+     "text": "Jalan",
+     "start": 8.9,
+     "end": 9.12,
+     "p": 0.93
+    },
+    {
+     "id": "w24",
+     "text": "Rekor,",
+     "start": 9.12,
+     "end": 9.6,
+     "p": 0.67
+    },
+    {
+     "id": "w25",
+     "text": "kita",
+     "start": 9.92,
+     "end": 10.14,
+     "p": 0.96
+    },
+    {
+     "id": "w26",
+     "text": "ada",
+     "start": 10.14,
+     "end": 10.54,
+     "p": 0.99
+    },
+    {
+     "id": "w27",
+     "text": "beberapa",
+     "start": 10.54,
+     "end": 11.08,
+     "p": 0.99
+    },
+    {
+     "id": "w28",
+     "text": "program",
+     "start": 11.08,
+     "end": 11.42,
+     "p": 0.91
+    },
+    {
+     "id": "w29",
+     "text": "menarik",
+     "start": 11.42,
+     "end": 11.92,
+     "p": 0.93
+    },
+    {
+     "id": "w30",
+     "text": "lah.",
+     "start": 11.92,
+     "end": 12.08,
+     "p": 0.69
+    },
+    {
+     "id": "w31",
+     "text": "Seperti",
+     "start": 12.38,
+     "end": 12.82,
+     "p": 0.91
+    },
+    {
+     "id": "w32",
+     "text": "kita",
+     "start": 12.82,
+     "end": 13.06,
+     "p": 0.99
+    },
+    {
+     "id": "w33",
+     "text": "ada",
+     "start": 13.06,
+     "end": 13.24,
+     "p": 0.99
+    },
+    {
+     "id": "w34",
+     "text": "buat",
+     "start": 13.24,
+     "end": 13.44,
+     "p": 0.99
+    },
+    {
+     "id": "w35",
+     "text": "free",
+     "start": 13.44,
+     "end": 13.64,
+     "p": 0.53
+    },
+    {
+     "id": "w36",
+     "text": "inspection",
+     "start": 13.64,
+     "end": 14.02,
+     "p": 0.44
+    },
+    {
+     "id": "w37",
+     "text": "untuk",
+     "start": 14.02,
+     "end": 14.28,
+     "p": 0.95
+    },
+    {
+     "id": "w38",
+     "text": "kereta",
+     "start": 14.28,
+     "end": 14.52,
+     "p": 0.94
+    },
+    {
+     "id": "w39",
+     "text": "-kereta",
+     "start": 14.52,
+     "end": 14.74,
+     "p": 0.91
+    },
+    {
+     "id": "w40",
+     "text": "lama.",
+     "start": 14.74,
+     "end": 15.02,
+     "p": 1.0
+    }
+   ]
+  },
+  {
+   "start": 15.44,
+   "end": 21.18,
+   "text": "Kita juga ada buat sediakan untuk submission loan face to face. Sebab kita ada bawa bankor, panel sekali.",
+   "words": [
+    {
+     "id": "w41",
+     "text": "Kita",
+     "start": 15.44,
+     "end": 15.62,
+     "p": 0.99
+    },
+    {
+     "id": "w42",
+     "text": "juga",
+     "start": 15.62,
+     "end": 15.88,
+     "p": 0.99
+    },
+    {
+     "id": "w43",
+     "text": "ada",
+     "start": 15.88,
+     "end": 16.08,
+     "p": 1.0
+    },
+    {
+     "id": "w44",
+     "text": "buat",
+     "start": 16.08,
+     "end": 16.3,
+     "p": 1.0
+    },
+    {
+     "id": "w45",
+     "text": "sediakan",
+     "start": 16.3,
+     "end": 16.86,
+     "p": 0.87
+    },
+    {
+     "id": "w46",
+     "text": "untuk",
+     "start": 16.86,
+     "end": 17.24,
+     "p": 0.98
+    },
+    {
+     "id": "w47",
+     "text": "submission",
+     "start": 17.24,
+     "end": 18.0,
+     "p": 0.68
+    },
+    {
+     "id": "w48",
+     "text": "loan",
+     "start": 18.0,
+     "end": 18.34,
+     "p": 0.96
+    },
+    {
+     "id": "w49",
+     "text": "face",
+     "start": 18.34,
+     "end": 18.6,
+     "p": 0.66
+    },
+    {
+     "id": "w50",
+     "text": "to",
+     "start": 18.6,
+     "end": 18.74,
+     "p": 0.75
+    },
+    {
+     "id": "w51",
+     "text": "face.",
+     "start": 18.74,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "id": "w52",
+     "text": "Sebab",
+     "start": 19.16,
+     "end": 19.38,
+     "p": 0.92
+    },
+    {
+     "id": "w53",
+     "text": "kita",
+     "start": 19.38,
+     "end": 19.58,
+     "p": 0.91
+    },
+    {
+     "id": "w54",
+     "text": "ada",
+     "start": 19.58,
+     "end": 19.7,
+     "p": 0.99
+    },
+    {
+     "id": "w55",
+     "text": "bawa",
+     "start": 19.7,
+     "end": 19.9,
+     "p": 0.78
+    },
+    {
+     "id": "w56",
+     "text": "bankor,",
+     "start": 19.9,
+     "end": 20.42,
+     "p": 0.5
+    },
+    {
+     "id": "w57",
+     "text": "panel",
+     "start": 20.58,
+     "end": 20.9,
+     "p": 0.93
+    },
+    {
+     "id": "w58",
+     "text": "sekali.",
+     "start": 20.9,
+     "end": 21.18,
+     "p": 0.97
+    }
+   ]
+  },
+  {
+   "start": 21.58,
+   "end": 27.72,
+   "text": "Hari Satu dan Ahad ni. Dan kita juga ada untuk siapa yang nak cek kasihatan, boleh datang juga dekat sini.",
+   "words": [
+    {
+     "id": "w59",
+     "text": "Hari",
+     "start": 21.58,
+     "end": 21.86,
+     "p": 0.98
+    },
+    {
+     "id": "w60",
+     "text": "Satu",
+     "start": 21.86,
+     "end": 22.18,
+     "p": 1.0
+    },
+    {
+     "id": "w61",
+     "text": "dan",
+     "start": 22.18,
+     "end": 22.3,
+     "p": 0.99
+    },
+    {
+     "id": "w62",
+     "text": "Ahad",
+     "start": 22.3,
+     "end": 22.56,
+     "p": 0.99
+    },
+    {
+     "id": "w63",
+     "text": "ni.",
+     "start": 22.56,
+     "end": 22.72,
+     "p": 0.98
+    },
+    {
+     "id": "w64",
+     "text": "Dan",
+     "start": 23.08,
+     "end": 23.26,
+     "p": 0.84
+    },
+    {
+     "id": "w65",
+     "text": "kita",
+     "start": 23.26,
+     "end": 23.44,
+     "p": 1.0
+    },
+    {
+     "id": "w66",
+     "text": "juga",
+     "start": 23.44,
+     "end": 23.66,
+     "p": 0.98
+    },
+    {
+     "id": "w67",
+     "text": "ada",
+     "start": 23.66,
+     "end": 23.86,
+     "p": 1.0
+    },
+    {
+     "id": "w68",
+     "text": "untuk",
+     "start": 23.86,
+     "end": 24.56,
+     "p": 0.6
+    },
+    {
+     "id": "w69",
+     "text": "siapa",
+     "start": 24.56,
+     "end": 25.0,
+     "p": 0.71
+    },
+    {
+     "id": "w70",
+     "text": "yang",
+     "start": 25.0,
+     "end": 25.16,
+     "p": 0.9
+    },
+    {
+     "id": "w71",
+     "text": "nak",
+     "start": 25.16,
+     "end": 25.28,
+     "p": 1.0
+    },
+    {
+     "id": "w72",
+     "text": "cek",
+     "start": 25.28,
+     "end": 25.56,
+     "p": 0.93
+    },
+    {
+     "id": "w73",
+     "text": "kasihatan,",
+     "start": 25.56,
+     "end": 26.3,
+     "p": 0.74
+    },
+    {
+     "id": "w74",
+     "text": "boleh",
+     "start": 26.52,
+     "end": 26.82,
+     "p": 0.96
+    },
+    {
+     "id": "w75",
+     "text": "datang",
+     "start": 26.82,
+     "end": 27.1,
+     "p": 0.99
+    },
+    {
+     "id": "w76",
+     "text": "juga",
+     "start": 27.1,
+     "end": 27.3,
+     "p": 0.95
+    },
+    {
+     "id": "w77",
+     "text": "dekat",
+     "start": 27.3,
+     "end": 27.48,
+     "p": 0.9
+    },
+    {
+     "id": "w78",
+     "text": "sini.",
+     "start": 27.48,
+     "end": 27.72,
+     "p": 1.0
+    }
+   ]
+  },
+  {
+   "start": 27.72,
+   "end": 35.72,
+   "text": "Ataupun kita juga menyedihkan pemainan VR game dan makanan juga disediakan. Jadi siapa-siapa orang yang berdekatan dengan kajang",
+   "words": [
+    {
+     "id": "w79",
+     "text": "Ataupun",
+     "start": 27.72,
+     "end": 28.22,
+     "p": 0.66
+    },
+    {
+     "id": "w80",
+     "text": "kita",
+     "start": 28.22,
+     "end": 28.46,
+     "p": 0.98
+    },
+    {
+     "id": "w81",
+     "text": "juga",
+     "start": 28.46,
+     "end": 28.7,
+     "p": 0.95
+    },
+    {
+     "id": "w82",
+     "text": "menyedihkan",
+     "start": 28.7,
+     "end": 29.22,
+     "p": 0.65
+    },
+    {
+     "id": "w83",
+     "text": "pemainan",
+     "start": 29.22,
+     "end": 30.06,
+     "p": 0.85
+    },
+    {
+     "id": "w84",
+     "text": "VR",
+     "start": 30.06,
+     "end": 30.44,
+     "p": 0.99
+    },
+    {
+     "id": "w85",
+     "text": "game",
+     "start": 30.44,
+     "end": 30.76,
+     "p": 0.74
+    },
+    {
+     "id": "w86",
+     "text": "dan",
+     "start": 30.76,
+     "end": 31.18,
+     "p": 0.73
+    },
+    {
+     "id": "w87",
+     "text": "makanan",
+     "start": 31.18,
+     "end": 31.66,
+     "p": 0.92
+    },
+    {
+     "id": "w88",
+     "text": "juga",
+     "start": 31.66,
+     "end": 31.9,
+     "p": 0.99
+    },
+    {
+     "id": "w89",
+     "text": "disediakan.",
+     "start": 31.9,
+     "end": 32.64,
+     "p": 0.72
+    },
+    {
+     "id": "w90",
+     "text": "Jadi",
+     "start": 32.66,
+     "end": 32.98,
+     "p": 0.92
+    },
+    {
+     "id": "w91",
+     "text": "siapa",
+     "start": 32.98,
+     "end": 33.24,
+     "p": 0.92
+    },
+    {
+     "id": "w92",
+     "text": "-siapa",
+     "start": 33.24,
+     "end": 33.94,
+     "p": 0.81
+    },
+    {
+     "id": "w93",
+     "text": "orang",
+     "start": 33.94,
+     "end": 34.22,
+     "p": 0.94
+    },
+    {
+     "id": "w94",
+     "text": "yang",
+     "start": 34.22,
+     "end": 34.4,
+     "p": 0.97
+    },
+    {
+     "id": "w95",
+     "text": "berdekatan",
+     "start": 34.4,
+     "end": 34.88,
+     "p": 0.87
+    },
+    {
+     "id": "w96",
+     "text": "dengan",
+     "start": 34.88,
+     "end": 35.2,
+     "p": 1.0
+    },
+    {
+     "id": "w97",
+     "text": "kajang",
+     "start": 35.2,
+     "end": 35.72,
+     "p": 0.91
+    }
+   ]
+  },
+  {
+   "start": 35.72,
+   "end": 41.18,
+   "text": "Ataupun sekitarnya kami mengalu-alukan untuk kedatangan anda untuk datang ke showroom kami.",
+   "words": [
+    {
+     "id": "w98",
+     "text": "Ataupun",
+     "start": 35.72,
+     "end": 36.06,
+     "p": 0.64
+    },
+    {
+     "id": "w99",
+     "text": "sekitarnya",
+     "start": 36.06,
+     "end": 36.7,
+     "p": 0.97
+    },
+    {
+     "id": "w100",
+     "text": "kami",
+     "start": 36.7,
+     "end": 37.82,
+     "p": 0.81
+    },
+    {
+     "id": "w101",
+     "text": "mengalu",
+     "start": 37.82,
+     "end": 38.42,
+     "p": 0.61
+    },
+    {
+     "id": "w102",
+     "text": "-alukan",
+     "start": 38.42,
+     "end": 38.74,
+     "p": 0.96
+    },
+    {
+     "id": "w103",
+     "text": "untuk",
+     "start": 38.74,
+     "end": 39.06,
+     "p": 0.96
+    },
+    {
+     "id": "w104",
+     "text": "kedatangan",
+     "start": 39.06,
+     "end": 39.48,
+     "p": 0.91
+    },
+    {
+     "id": "w105",
+     "text": "anda",
+     "start": 39.48,
+     "end": 39.8,
+     "p": 0.95
+    },
+    {
+     "id": "w106",
+     "text": "untuk",
+     "start": 39.8,
+     "end": 40.06,
+     "p": 0.84
+    },
+    {
+     "id": "w107",
+     "text": "datang",
+     "start": 40.06,
+     "end": 40.5,
+     "p": 1.0
+    },
+    {
+     "id": "w108",
+     "text": "ke",
+     "start": 40.5,
+     "end": 40.62,
+     "p": 0.99
+    },
+    {
+     "id": "w109",
+     "text": "showroom",
+     "start": 40.62,
+     "end": 40.88,
+     "p": 0.75
+    },
+    {
+     "id": "w110",
+     "text": "kami.",
+     "start": 40.88,
+     "end": 41.18,
+     "p": 1.0
+    }
+   ]
+  },
+  {
+   "start": 41.46,
+   "end": 48.72,
+   "text": "Jadi Hari Satu dan Ahad ni, kalau siapa nak datang boleh jumpa dengan S.H.O.K. Insya Allah kita jumpa nanti. Assalamualaikum.",
+   "words": [
+    {
+     "id": "w111",
+     "text": "Jadi",
+     "start": 41.46,
+     "end": 41.98,
+     "p": 0.19
+    },
+    {
+     "id": "w112",
+     "text": "Hari",
+     "start": 41.98,
+     "end": 43.3,
+     "p": 0.06
+    },
+    {
+     "id": "w113",
+     "text": "Satu",
+     "start": 43.3,
+     "end": 43.68,
+     "p": 0.69
+    },
+    {
+     "id": "w114",
+     "text": "dan",
+     "start": 43.68,
+     "end": 43.82,
+     "p": 0.91
+    },
+    {
+     "id": "w115",
+     "text": "Ahad",
+     "start": 43.82,
+     "end": 44.1,
+     "p": 0.54
+    },
+    {
+     "id": "w116",
+     "text": "ni,",
+     "start": 44.1,
+     "end": 44.26,
+     "p": 0.73
+    },
+    {
+     "id": "w117",
+     "text": "kalau",
+     "start": 44.4,
+     "end": 44.5,
+     "p": 0.84
+    },
+    {
+     "id": "w118",
+     "text": "siapa",
+     "start": 44.5,
+     "end": 44.84,
+     "p": 0.7
+    },
+    {
+     "id": "w119",
+     "text": "nak",
+     "start": 44.84,
+     "end": 44.98,
+     "p": 0.86
+    },
+    {
+     "id": "w120",
+     "text": "datang",
+     "start": 44.98,
+     "end": 45.32,
+     "p": 1.0
+    },
+    {
+     "id": "w121",
+     "text": "boleh",
+     "start": 45.32,
+     "end": 45.48,
+     "p": 0.87
+    },
+    {
+     "id": "w122",
+     "text": "jumpa",
+     "start": 45.48,
+     "end": 45.8,
+     "p": 0.99
+    },
+    {
+     "id": "w123",
+     "text": "dengan",
+     "start": 45.8,
+     "end": 45.98,
+     "p": 0.98
+    },
+    {
+     "id": "w124",
+     "text": "S",
+     "start": 45.98,
+     "end": 46.48,
+     "p": 0.37
+    },
+    {
+     "id": "w125",
+     "text": ".H",
+     "start": 46.48,
+     "end": 46.64,
+     "p": 0.59
+    },
+    {
+     "id": "w126",
+     "text": ".O",
+     "start": 46.64,
+     "end": 46.78,
+     "p": 0.42
+    },
+    {
+     "id": "w127",
+     "text": ".K.",
+     "start": 46.78,
+     "end": 46.88,
+     "p": 0.95
+    },
+    {
+     "id": "w128",
+     "text": "Insya",
+     "start": 46.94,
+     "end": 47.1,
+     "p": 0.93
+    },
+    {
+     "id": "w129",
+     "text": "Allah",
+     "start": 47.1,
+     "end": 47.22,
+     "p": 0.59
+    },
+    {
+     "id": "w130",
+     "text": "kita",
+     "start": 47.22,
+     "end": 47.4,
+     "p": 0.87
+    },
+    {
+     "id": "w131",
+     "text": "jumpa",
+     "start": 47.4,
+     "end": 47.72,
+     "p": 0.99
+    },
+    {
+     "id": "w132",
+     "text": "nanti.",
+     "start": 47.72,
+     "end": 47.94,
+     "p": 0.95
+    },
+    {
+     "id": "w133",
+     "text": "Assalamualaikum.",
+     "start": 48.08,
+     "end": 48.72,
+     "p": 0.94
+    }
+   ]
+  }
+ ]
+}
