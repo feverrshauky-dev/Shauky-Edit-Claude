@@ -91,7 +91,7 @@ fc += ("[ac]highpass=f=90,afftdn=nr=12:nf=-38,equalizer=f=3000:t=q:w=1.2:g=2.5,"
        "acompressor=threshold=-20dB:ratio=3:attack=8:release=120:makeup=2,"
        "loudnorm=I=-14:TP=-1.5:LRA=7,aresample=48000[aout]")
 cmd = ["ffmpeg", "-v", "error", "-y", "-i", src, "-filter_complex", fc,
-       "-map", "[vout]", "-map", "[aout]", "-c:v", "libx264", "-preset", "slow", "-crf", "16",
+       "-map", "[vout]", "-map", "[aout]", "-c:v", "libx264", "-preset", "slow", "-crf", "12",
        "-g", "30", "-keyint_min", "30", "-sc_threshold", "0", "-r", str(FPS), "-pix_fmt", "yuv420p",
        "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out_mp4]
 subprocess.run(cmd, check=True)
