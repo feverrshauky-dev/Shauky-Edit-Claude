@@ -1,0 +1,834 @@
+<title>Kiraan Loan Kereta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: phone-first stack (deposit card -> poster -> settings), two columns on wide screens with the poster sticky on the right. */
+:root {
+  --bg: #eef1f7;
+  --surface: #ffffff;
+  --surface-2: #f6f8fc;
+  --fg: #141c33;
+  --muted: #5b6580;
+  --line: #dce1ec;
+  --brand: #16244d;
+  --brand-fg: #ffffff;
+  --brand-soft: #e3e9f8;
+  --red: #c81f28;
+  --ok: #1d8a52;
+  --focus: #3b6cf2;
+  --font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Poster stays a printed white card in every theme */
+  --p-navy: #14224a;
+  --p-navy-2: #22346b;
+  --p-red: #d7262e;
+  --p-gold: #e8c468;
+  --p-gold-soft: #fbf1d2;
+  --p-ink: #1b1f2a;
+  --p-sub: #5d6475;
+  --p-line: #e7e9ef;
+  --p-white: #ffffff;
+  --p-wa: #25d366;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1222; --surface: #151d33; --surface-2: #1b2540; --fg: #e8ecf6; --muted: #9aa4bf;
+    --line: #29334f; --brand: #4565d8; --brand-fg: #ffffff; --brand-soft: #1f2c52; --red: #ff6b70;
+    --ok: #4fd08b; --focus: #8eaaff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1222; --surface: #151d33; --surface-2: #1b2540; --fg: #e8ecf6; --muted: #9aa4bf;
+  --line: #29334f; --brand: #4565d8; --brand-fg: #ffffff; --brand-soft: #1f2c52; --red: #ff6b70;
+  --ok: #4fd08b; --focus: #8eaaff; color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 120px;
+}
+.top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.top h1 { font-family: var(--font-display); font-weight: 800; font-size: 28px; letter-spacing: -.01em; margin: 0; color: var(--fg); text-wrap: balance; }
+.top p { margin: 0; color: var(--muted); font-size: 13px; }
+
+.grid { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "main" "poster" "settings"; align-items: start; }
+.col-main { grid-area: main; }
+.col-poster { grid-area: poster; }
+.col-settings { grid-area: settings; }
+@media (min-width: 900px) {
+  .grid { grid-template-columns: minmax(0, 1fr) 460px; grid-template-rows: auto 1fr; grid-template-areas: "main poster" "settings poster"; column-gap: 24px; }
+  .col-poster { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+}
+.col { display: grid; gap: 16px; min-width: 0; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: grid; gap: 16px; min-width: 0; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field > label, .lbl-row { font-weight: 700; font-size: 14px; }
+.lbl-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.lbl-row small { font-weight: 500; color: var(--muted); font-size: 12px; }
+.hint { color: var(--muted); font-size: 13px; margin: 0; }
+.hint b { color: var(--fg); }
+.warn { color: var(--red); }
+
+.input, select.input {
+  width: 100%; min-width: 0; background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; font-size: 16px; font-variant-numeric: tabular-nums;
+}
+select.input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 36px; }
+.money { position: relative; }
+.money span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); font-weight: 700; pointer-events: none; }
+.money .input { padding-left: 46px; }
+.dep .input { font-family: var(--font-display); font-size: 28px; font-weight: 700; padding-block: 14px; }
+.dep span { font-size: 18px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 14px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--brand); color: var(--brand-fg); border-color: var(--brand); }
+.chip:hover { border-color: var(--brand); }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 380px) { .two { grid-template-columns: 1fr; } }
+
+.result { background: var(--brand-soft); border-radius: 14px; padding: 14px; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: center; }
+.result .big { grid-row: span 3; padding-right: 16px; border-right: 1px solid var(--line); }
+.result .big small { display: block; font-size: 12px; color: var(--muted); font-weight: 600; }
+.result .big strong { font-family: var(--font-display); font-size: 34px; line-height: 1.05; font-weight: 800; font-variant-numeric: tabular-nums; }
+.result .big em { font-style: normal; font-size: 12px; font-weight: 700; color: var(--muted); }
+.result .row { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.result .row b { font-weight: 800; }
+
+.toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.toggle button { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 10px; font-weight: 700; cursor: pointer; }
+.toggle button[aria-pressed="true"] { background: var(--brand); color: var(--brand-fg); border-color: var(--brand); }
+
+details.card { padding: 0; gap: 0; }
+details.card > summary { list-style: none; cursor: pointer; padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-weight: 800; font-size: 15px; }
+details.card > summary::-webkit-details-marker { display: none; }
+details.card > summary small { font-weight: 500; color: var(--muted); font-size: 12px; text-align: right; }
+details.card > summary::after { content: ""; width: 9px; height: 9px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); flex: none; margin-top: -4px; }
+details.card[open] > summary::after { transform: rotate(-135deg); margin-top: 4px; }
+details.card > .body { padding: 0 18px 18px; display: grid; gap: 14px; }
+
+.swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+.sw { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--line); cursor: pointer; padding: 0; position: relative; }
+.sw[aria-pressed="true"] { outline: 3px solid var(--brand); outline-offset: 2px; }
+.btn {
+  border: 0; border-radius: 12px; padding: 12px 16px; font-weight: 800; cursor: pointer;
+  background: var(--brand); color: var(--brand-fg); display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn.ghost { background: var(--surface); color: var(--fg); border: 1px solid var(--line); }
+.btn:disabled { opacity: .6; cursor: progress; }
+.row-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.row-btns .btn { flex: 1 1 160px; }
+.file-btn { position: relative; overflow: hidden; }
+.file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+/* Poster preview frame */
+.preview { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 12px; display: grid; gap: 12px; min-width: 0; }
+.preview-head { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px 0; font-weight: 800; }
+.preview-head small { color: var(--muted); font-weight: 500; font-size: 12px; }
+.scaler { width: 100%; overflow: hidden; border-radius: 12px; }
+.scaler-inner { width: 540px; transform-origin: top left; }
+
+/* ===== Poster (fixed 540px, exported at 2x = 1080px) ===== */
+.poster {
+  width: 540px; background: var(--p-white); color: var(--p-ink); font-family: var(--font-body);
+  padding: 0 0 18px; position: relative; overflow: hidden; line-height: 1.3;
+}
+.p-head {
+  position: relative; padding: 26px 26px 0;
+  background:
+    linear-gradient(162deg, transparent 0 46%, rgba(255,255,255,.95) 46.2% 49%, transparent 49.2%),
+    linear-gradient(170deg, transparent 0 56%, rgba(255,255,255,.8) 56.2% 58%, transparent 58.2%),
+    linear-gradient(180deg, #ffffff 0%, #f1f2f5 55%, #e4e6eb 82%, #ffffff 100%);
+}
+.p-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .16em; color: var(--p-navy); }
+.p-title { font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 1.08; color: var(--p-navy); margin-top: 6px; letter-spacing: -.005em; }
+.p-title::before { content: ""; display: block; width: 36px; height: 4px; border-radius: 2px; background: var(--p-red); margin-bottom: 6px; }
+.p-car { height: 250px; margin: 6px -10px 0; background-repeat: no-repeat; background-position: center bottom; background-size: contain; }
+.p-hero {
+  margin: -8px 20px 0; position: relative; background: var(--p-white); border: 1px solid var(--p-line); border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(20,34,74,.12); display: grid; grid-template-columns: 1fr 1.15fr; align-items: center; padding: 14px 16px;
+}
+.p-low { padding-right: 12px; border-right: 1px solid var(--p-line); }
+.p-low .lbl { font-size: 12px; font-weight: 800; color: var(--p-ink); }
+.p-low .amt { display: flex; align-items: baseline; gap: 2px; color: var(--p-red); margin: 4px 0 2px; }
+.p-low .rm { font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+.p-low .val { font-family: var(--font-display); font-weight: 800; font-size: 50px; line-height: 1; letter-spacing: -.01em; }
+.p-low .per { font-size: 10px; color: var(--p-sub); font-weight: 600; margin-left: 6px; }
+.p-low .sub { font-size: 10px; font-weight: 700; color: var(--p-ink); }
+.p-agent { display: flex; align-items: center; gap: 10px; padding-left: 12px; min-width: 0; }
+.p-photo {
+  width: 70px; height: 70px; border-radius: 50%; flex: none; background: #dfe3ea center/cover no-repeat;
+  border: 3px solid var(--p-white); box-shadow: 0 0 0 1px var(--p-line);
+  display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 26px; color: var(--p-navy);
+}
+.p-name { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--p-ink); line-height: 1.1; text-transform: uppercase; }
+.p-role { font-size: 10.5px; color: var(--p-sub); margin-top: 2px; }
+.p-trust { font-size: 10.5px; color: var(--p-red); font-weight: 700; margin-top: 4px; text-transform: uppercase; line-height: 1.25; }
+.p-table { margin: 10px 20px 0; border: 1px solid var(--p-line); border-radius: 10px; overflow: hidden; }
+.p-tr { display: flex; justify-content: space-between; gap: 12px; padding: 7px 16px; font-size: 12px; border-top: 1px solid var(--p-line); }
+.p-tr:first-child { border-top: 0; }
+.p-tr span { color: var(--p-ink); }
+.p-tr b { font-weight: 800; font-variant-numeric: tabular-nums; }
+.p-ten { margin: 10px 20px 0; display: grid; gap: 6px; }
+.p-tn { display: grid; grid-template-columns: 150px 1fr; align-items: center; border: 1px solid var(--p-line); border-radius: 8px; overflow: hidden; height: 36px; }
+.p-tn.best { border: 2px solid var(--p-gold); height: 40px; }
+.p-tn .yr { height: 100%; background: linear-gradient(90deg, var(--p-navy), var(--p-navy-2)); color: #fff; display: flex; align-items: center; gap: 12px; padding: 0 14px; font-weight: 800; font-size: 14px; }
+.p-tn .yr svg { flex: none; }
+.p-tn .mo { display: flex; align-items: baseline; gap: 4px; padding: 0 12px 0 22px; color: var(--p-red); }
+.p-tn .mo .rm { font-weight: 800; font-size: 12px; }
+.p-tn .mo .v { font-family: var(--font-display); font-weight: 800; font-size: 22px; }
+.p-tn .mo .pb { color: var(--p-ink); font-size: 12px; font-weight: 700; }
+.p-tn .badge { margin-left: auto; align-self: center; background: var(--p-gold-soft); border: 1px solid var(--p-gold); color: var(--p-ink); border-radius: 999px; font-size: 10px; font-weight: 800; padding: 3px 10px; white-space: nowrap; }
+.p-for { margin: 10px 20px 0; text-align: center; font-size: 12px; color: var(--p-navy); font-weight: 700; }
+.p-for b { color: var(--p-red); }
+.p-note { margin: 8px 20px 0; text-align: center; font-size: 10.5px; font-weight: 800; font-style: italic; color: var(--p-ink); text-transform: uppercase; letter-spacing: .02em; }
+.p-wa {
+  margin: 8px 20px 0; background: var(--p-navy); border: 2px solid var(--p-gold); border-radius: 10px; color: #fff;
+  display: grid; grid-template-columns: auto auto 1px 1fr; align-items: center; gap: 12px; padding: 9px 16px;
+}
+.p-wa .ic { width: 28px; height: 28px; border-radius: 8px; background: var(--p-wa); display: flex; align-items: center; justify-content: center; }
+.p-wa .t { font-weight: 800; font-size: 15px; }
+.p-wa .sep { background: rgba(255,255,255,.4); height: 26px; }
+.p-wa .ph { font-family: var(--font-display); font-weight: 700; font-size: 28px; text-align: center; letter-spacing: .01em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.p-fine { margin: 8px 20px 0; text-align: center; font-size: 9px; color: var(--p-sub); }
+
+/* Sticky action bar */
+.bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--surface); border-top: 1px solid var(--line);
+  padding-top: 10px; padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.bar-in { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+.bar-low { white-space: nowrap; }
+.bar-low small { display: block; font-size: 12px; color: var(--muted); font-weight: 600; }
+.bar-low strong { font-family: var(--font-display); font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.bar .btn { margin-left: auto; flex: 0 1 260px; padding-block: 14px; }
+
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(92px + env(safe-area-inset-bottom, 0px)); z-index: 40;
+  background: var(--fg); color: var(--bg); padding: 10px 16px; border-radius: 10px; font-weight: 700; font-size: 14px; max-width: calc(100% - 32px);
+}
+.modal { position: fixed; inset: 0; z-index: 50; background: rgba(5,10,25,.7); display: grid; place-items: center; padding: 20px; }
+.modal-in { background: var(--surface); border-radius: 16px; padding: 14px; max-width: 460px; width: 100%; max-height: 100%; overflow: auto; display: grid; gap: 10px; }
+.modal-in img { width: 100%; border-radius: 8px; display: block; }
+.modal-in p { margin: 0; font-size: 14px; }
+@media (prefers-reduced-motion: no-preference) { .chip, .toggle button, .btn { transition: background-color .15s, border-color .15s; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>Kiraan Loan Kereta</h1>
+    <p>Pilih kereta, masuk deposit, poster siap.</p>
+  </header>
+
+  <div class="grid">
+    <div class="col col-main">
+      <section class="card" aria-label="Kereta dan deposit">
+        <div class="field">
+          <label for="car">Kereta</label>
+          <select id="car" class="input"></select>
+        </div>
+
+        <div class="field">
+          <div class="lbl-row"><label for="deposit">Deposit pelanggan (RM)</label><small>Duit tunai pelanggan</small></div>
+          <div class="money dep"><span>RM</span><input id="deposit" class="input" inputmode="numeric" autocomplete="off" placeholder="0"></div>
+          <div class="chips" id="depChips">
+            <button class="chip" type="button" data-dep="zero">Tiada deposit</button>
+            <button class="chip" type="button" data-dep="ten">DP 10%</button>
+            <button class="chip" type="button" data-dep="1000">RM1,000</button>
+            <button class="chip" type="button" data-dep="3000">RM3,000</button>
+            <button class="chip" type="button" data-dep="5000">RM5,000</button>
+          </div>
+          <p class="hint" id="depHint"></p>
+        </div>
+
+        <div class="result" aria-live="polite">
+          <div class="big"><small>Bulanan serendah</small><strong id="rLow">RM0</strong><br><em id="rLowYr">9 tahun</em></div>
+          <div class="row"><span>Jumlah loan</span><b id="rLoan">RM0</b></div>
+          <div class="row" id="rT2"></div>
+          <div class="row" id="rT3"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col col-settings">
+      <details class="card" id="dCar">
+        <summary>Butiran kereta <small id="sumCar"></small></summary>
+        <div class="body">
+          <div class="field">
+            <label for="title">Nama kereta di poster</label>
+            <input id="title" class="input" maxlength="40">
+          </div>
+          <div class="two">
+            <div class="field"><label for="price">Harga kereta (RM)</label><input id="price" class="input" inputmode="numeric"></div>
+            <div class="field"><label for="rebate">Rebat (RM)</label><input id="rebate" class="input" inputmode="numeric"></div>
+          </div>
+          <div class="field"><label for="ins">Insurans tahun pertama (RM)</label><input id="ins" class="input" inputmode="numeric"></div>
+          <div class="field">
+            <span class="lbl-row">Insurans masuk dalam loan?</span>
+            <div class="toggle" id="insFin">
+              <button type="button" data-v="1">Ya, masuk loan</button>
+              <button type="button" data-v="0">Tak, bayar tunai</button>
+            </div>
+          </div>
+          <p class="hint">Harga ialah anggaran. Ubah ikut harga promosi terkini — nilai yang anda ubah disimpan untuk kereta ini.</p>
+          <button class="btn ghost" type="button" id="resetCar">Pulihkan harga asal</button>
+        </div>
+      </details>
+
+      <details class="card" id="dTen">
+        <summary>Tempoh &amp; kadar faedah <small id="sumTen"></small></summary>
+        <div class="body">
+          <div class="field">
+            <div class="lbl-row"><label for="rate">Kadar faedah setahun (%)</label><small>Kadar rata (flat)</small></div>
+            <input id="rate" class="input" inputmode="decimal">
+          </div>
+          <div class="field">
+            <div class="lbl-row"><span>Tempoh di poster</span><small>Pilih 1 hingga 3</small></div>
+            <div class="chips" id="tenChips"></div>
+          </div>
+        </div>
+      </details>
+
+      <details class="card" id="dPic">
+        <summary>Gambar kereta <small id="sumPic"></small></summary>
+        <div class="body">
+          <div class="field" id="swField">
+            <span class="lbl-row">Warna ilustrasi</span>
+            <div class="swatches" id="swatches"></div>
+          </div>
+          <div class="row-btns">
+            <label class="btn ghost file-btn">Muat naik gambar kereta<input type="file" id="carPhoto" accept="image/*"></label>
+            <button class="btn ghost" type="button" id="carPhotoDel" hidden>Buang gambar</button>
+          </div>
+          <p class="hint">Guna gambar kereta berlatar putih atau PNG tanpa latar untuk hasil paling cantik. Gambar disimpan untuk model ini sahaja.</p>
+        </div>
+      </details>
+
+      <details class="card" id="dMe">
+        <summary>Profil anda <small id="sumMe"></small></summary>
+        <div class="body">
+          <div class="two">
+            <div class="field"><label for="name">Nama</label><input id="name" class="input" maxlength="24"></div>
+            <div class="field"><label for="phone">No. WhatsApp</label><input id="phone" class="input" inputmode="tel" maxlength="16"></div>
+          </div>
+          <div class="field"><label for="role">Jawatan</label><input id="role" class="input" maxlength="40"></div>
+          <div class="field"><label for="trust">Ayat kepercayaan</label><input id="trust" class="input" maxlength="60"></div>
+          <div class="field"><label for="note">Ayat bawah jadual</label><input id="note" class="input" maxlength="70"></div>
+          <div class="row-btns">
+            <label class="btn ghost file-btn">Muat naik gambar anda<input type="file" id="mePhoto" accept="image/*"></label>
+            <button class="btn ghost" type="button" id="mePhotoDel" hidden>Buang gambar</button>
+          </div>
+          <div class="field"><label for="cust">Nama pelanggan (tak wajib)</label><input id="cust" class="input" maxlength="38" placeholder="cth. En. Ahmad Faizal"></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="col col-poster">
+      <section class="preview" aria-label="Poster">
+        <div class="preview-head">Poster <small>1080 px lebar</small></div>
+        <div class="scaler" id="scaler">
+          <div class="scaler-inner" id="scalerInner">
+            <div class="poster" id="poster">
+              <div class="p-head">
+                <div class="p-eyebrow">KIRAAN LOAN KERETA</div>
+                <div class="p-title" id="pTitle"></div>
+                <div class="p-car" id="pCar"></div>
+              </div>
+              <div class="p-hero">
+                <div class="p-low">
+                  <div class="lbl">Bulanan Serendah</div>
+                  <div class="amt"><span class="rm">RM</span><span class="val" id="pLow"></span><span class="per">sebulan</span></div>
+                  <div class="sub">Lebih mudah dimiliki daripada yang anda sangka</div>
+                </div>
+                <div class="p-agent">
+                  <div class="p-photo" id="pPhoto"></div>
+                  <div style="min-width:0">
+                    <div class="p-name" id="pName"></div>
+                    <div class="p-role" id="pRole"></div>
+                    <div class="p-trust" id="pTrust"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-table" id="pTable"></div>
+              <div class="p-ten" id="pTen"></div>
+              <div class="p-for" id="pFor" hidden></div>
+              <div class="p-note" id="pNote"></div>
+              <div class="p-wa">
+                <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.3 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.1 14.6l-.3-.2-2.9.8.8-2.8-.2-.3A7.9 7.9 0 0 1 12 4.1Zm-3.3 3.8c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5 0 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3l-1.9-.9c-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.5.3-.5v-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.5Z"/></svg></span>
+                <span class="t">WhatsApp Saya Sekarang</span>
+                <span class="sep"></span>
+                <span class="ph" id="pPhone"></span>
+              </div>
+              <div class="p-fine" id="pFine"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row-btns">
+          <button class="btn" type="button" id="saveBtn2">Simpan poster</button>
+          <button class="btn ghost" type="button" id="copyBtn">Salin teks WhatsApp</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="bar-low"><small>Bulanan serendah</small><strong id="barLow">RM0</strong></div>
+    <button class="btn" type="button" id="saveBtn">Simpan poster</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<div class="modal" id="modal" hidden>
+  <div class="modal-in">
+    <p><b>Poster siap.</b> Tekan lama pada gambar dan pilih “Simpan imej” / “Save image”.</p>
+    <img id="modalImg" alt="Poster loan kereta">
+    <button class="btn ghost" type="button" id="modalClose">Tutup</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  // Anggaran harga Semenanjung (OTR tanpa insurans). Semua boleh diubah di "Butiran kereta".
+  const CARS = [
+    { id: "axia-e",  name: "Perodua Axia 1.0L E",   price: 22000 },
+    { id: "axia-g",  name: "Perodua Axia 1.0L G",   price: 35000 },
+    { id: "axia-x",  name: "Perodua Axia 1.0L X",   price: 38600 },
+    { id: "axia-se", name: "Perodua Axia 1.0L SE",  price: 44400, ins: 1353 },
+    { id: "axia-av", name: "Perodua Axia 1.0L AV",  price: 49440, rebate: 4900, ins: 1624 },
+    { id: "bezza-g", name: "Perodua Bezza 1.0L G",  price: 36580 },
+    { id: "bezza-x", name: "Perodua Bezza 1.3L X",  price: 43980 },
+    { id: "bezza-av",name: "Perodua Bezza 1.3L AV", price: 49980 },
+    { id: "myvi-g",  name: "Perodua Myvi 1.3L G",   price: 47500 },
+    { id: "myvi-x",  name: "Perodua Myvi 1.5L X",   price: 52000 },
+    { id: "myvi-h",  name: "Perodua Myvi 1.5L H",   price: 55000 },
+    { id: "myvi-av", name: "Perodua Myvi 1.5L AV",  price: 60305, ins: 1784 },
+    { id: "ativa-x", name: "Perodua Ativa 1.0T X",  price: 62500 },
+    { id: "ativa-h", name: "Perodua Ativa 1.0T H",  price: 67500 },
+    { id: "ativa-av",name: "Perodua Ativa 1.0T AV", price: 73400 },
+    { id: "alza-x",  name: "Perodua Alza 1.5L X",   price: 62500 },
+    { id: "alza-h",  name: "Perodua Alza 1.5L H",   price: 68000 },
+    { id: "alza-av", name: "Perodua Alza 1.5L AV",  price: 75500 },
+    { id: "aruz-x",  name: "Perodua Aruz 1.5L X",   price: 72000 },
+    { id: "aruz-av", name: "Perodua Aruz 1.5L AV",  price: 78000 },
+    { id: "custom",  name: "Kereta lain (isi sendiri)", title: "Model Kereta Anda", price: 50000 }
+  ];
+  const COLORS = [
+    ["Biru Laut", "#1c8fa6"], ["Putih", "#f1f1ec"], ["Perak", "#c2c6cc"], ["Kelabu", "#6c7179"],
+    ["Hitam", "#24272c"], ["Merah", "#b3161d"], ["Biru", "#2f6db0"]
+  ];
+  const TENURES = [9, 8, 7, 6, 5, 4, 3];
+  const KEY = "kiraan-loan-v1";
+
+  const DEFAULT = {
+    carId: "axia-av", deposit: 0, rate: 2.8, insFin: true, tenures: [9, 7, 5], color: "#1c8fa6", cust: "",
+    cars: {},
+    me: { name: "Shauky", role: "Perodua Sales Advisor", trust: "Penjual Kereta Terhebat Since 2016", phone: "0126888160", note: "Kejujuran dalam urusan diutamakan" }
+  };
+
+  // ---------- storage ----------
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+  let state;
+  try { state = Object.assign({}, DEFAULT, JSON.parse(lsGet(KEY) || "{}")); } catch (e) { state = Object.assign({}, DEFAULT); }
+  state.me = Object.assign({}, DEFAULT.me, state.me || {});
+  state.cars = state.cars || {};
+  if (!CARS.some(c => c.id === state.carId)) state.carId = DEFAULT.carId;
+  function persist() { lsSet(KEY, JSON.stringify(state)); }
+
+  // ---------- helpers ----------
+  const $ = id => document.getElementById(id);
+  const fmt = n => Math.round(n).toLocaleString("en-MY");
+  const num = v => { const n = parseFloat(String(v).replace(/[^0-9.]/g, "")); return isFinite(n) ? n : 0; };
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  function car() {
+    const base = CARS.find(c => c.id === state.carId);
+    const o = state.cars[base.id] || {};
+    const price = o.price != null ? o.price : base.price;
+    return {
+      id: base.id,
+      title: o.title != null && o.title !== "" ? o.title : (base.title || base.name),
+      price: price,
+      rebate: o.rebate != null ? o.rebate : (base.rebate || 0),
+      ins: o.ins != null ? o.ins : (base.ins != null ? base.ins : Math.round(price * 0.031))
+    };
+  }
+  function setCarField(k, v) {
+    const o = state.cars[state.carId] = state.cars[state.carId] || {};
+    o[k] = v;
+  }
+
+  // Kadar rata (flat) seperti sewa beli di Malaysia; bulanan dibundarkan ke atas.
+  function compute() {
+    const c = car();
+    const rate = state.rate;
+    const dep = state.deposit;
+    const loan = Math.max(0, c.price - c.rebate - dep + (state.insFin ? c.ins : 0));
+    const tens = state.tenures.slice().sort((a, b) => b - a);
+    const rows = tens.map(n => ({ n, m: loan > 0 ? Math.ceil(loan * (1 + rate / 100 * n) / (n * 12)) : 0 }));
+    return { c, loan, rows, dep, rate };
+  }
+
+  // ---------- car illustration ----------
+  function shade(hex, amt) {
+    const n = parseInt(hex.slice(1), 16);
+    const f = x => Math.max(0, Math.min(255, Math.round(x + amt)));
+    return "#" + [f(n >> 16), f((n >> 8) & 255), f(n & 255)].map(x => x.toString(16).padStart(2, "0")).join("");
+  }
+  function carSvg(color) {
+    const dark = shade(color, -45);
+    const wheel = cx => {
+      let s = "<circle cx='" + cx + "' cy='136' r='29' fill='#16181d'/><circle cx='" + cx + "' cy='136' r='19' fill='#cfd4db'/>";
+      for (let i = 0; i < 5; i++) s += "<rect x='" + (cx - 2.5) + "' y='119' width='5' height='17' rx='2' fill='#7d848f' transform='rotate(" + (i * 72) + " " + cx + " 136)'/>";
+      return s + "<circle cx='" + cx + "' cy='136' r='6' fill='#4b515b'/>";
+    };
+    const body = "M28 130 L28 112 Q30 96 48 92 L118 82 Q150 54 192 46 L282 44 Q306 45 322 66 L354 88 Q372 94 374 112 L374 128 Q374 136 366 136 L342 136 A36 36 0 0 0 270 136 L142 136 A36 36 0 0 0 70 136 L36 136 Q28 136 28 130 Z";
+    const svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 180'>" +
+      "<defs><linearGradient id='h' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#fff' stop-opacity='.45'/><stop offset='.42' stop-color='#fff' stop-opacity='0'/><stop offset='.7' stop-color='#000' stop-opacity='.08'/><stop offset='1' stop-color='#000' stop-opacity='.4'/></linearGradient>" +
+      "<linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#4a5568'/><stop offset='1' stop-color='#0e131c'/></linearGradient>" +
+      "<radialGradient id='s'><stop offset='0' stop-color='#000' stop-opacity='.38'/><stop offset='1' stop-color='#000' stop-opacity='0'/></radialGradient></defs>" +
+      "<ellipse cx='205' cy='164' rx='190' ry='13' fill='url(#s)'/>" +
+      "<path d='" + body + "' fill='" + color + "'/><path d='" + body + "' fill='url(#h)'/>" +
+      "<path d='" + body + "' fill='none' stroke='" + dark + "' stroke-width='1.2'/>" +
+      "<path d='M132 84 Q160 62 194 55 L236 54 L236 84 Z' fill='url(#g)'/>" +
+      "<path d='M244 54 L284 53 Q302 55 318 76 L320 84 L244 84 Z' fill='url(#g)'/>" +
+      "<path d='M150 70 Q170 60 190 57 L176 70 Z' fill='#fff' fill-opacity='.18'/>" +
+      "<path d='M240 88 L240 132 M150 90 L146 132' stroke='#000' stroke-opacity='.28' stroke-width='1.4' fill='none'/>" +
+      "<path d='M60 112 Q170 106 362 110' stroke='#fff' stroke-opacity='.25' stroke-width='1.5' fill='none'/>" +
+      "<rect x='206' y='96' width='18' height='4' rx='2' fill='#000' fill-opacity='.3'/><rect x='294' y='96' width='16' height='4' rx='2' fill='#000' fill-opacity='.3'/>" +
+      "<path d='M146 86 L162 83 L162 93 L149 94 Z' fill='" + dark + "'/>" +
+      "<path d='M33 101 Q40 94 64 92 L68 100 Q48 105 33 105 Z' fill='#eef3f9' stroke='#9aa3ae' stroke-width='.8'/>" +
+      "<path d='M30 118 L66 117' stroke='#111' stroke-opacity='.55' stroke-width='4' stroke-linecap='round'/>" +
+      "<path d='M358 90 L372 103 L363 107 Z' fill='#c4161c'/>" +
+      wheel(106) + wheel(306) + "</svg>";
+    return "url(\"data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg) + "\")";
+  }
+
+  // ---------- image upload (compressed) ----------
+  function readImage(file, maxW, keepPng) {
+    return new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onerror = () => reject(fr.error);
+      fr.onload = () => {
+        const img = new Image();
+        img.onerror = () => reject(new Error("Gambar tak dapat dibaca"));
+        img.onload = () => {
+          const s = Math.min(1, maxW / img.naturalWidth);
+          const cv = document.createElement("canvas");
+          cv.width = Math.round(img.naturalWidth * s); cv.height = Math.round(img.naturalHeight * s);
+          cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height);
+          const png = keepPng && /png|webp/i.test(file.type);
+          resolve(cv.toDataURL(png ? "image/png" : "image/jpeg", 0.88));
+        };
+        img.src = fr.result;
+      };
+      fr.readAsDataURL(file);
+    });
+  }
+  function carPhotoKey() { return KEY + ":car:" + state.carId; }
+  const ME_PHOTO = KEY + ":me";
+
+  // ---------- render ----------
+  function renderPoster(r) {
+    const c = r.c, me = state.me;
+    $("pTitle").textContent = c.title;
+    const photo = lsGet(carPhotoKey());
+    $("pCar").style.backgroundImage = photo ? "url(\"" + photo + "\")" : carSvg(state.color);
+    $("pLow").textContent = r.rows.length ? fmt(r.rows[0].m) : "0";
+    const mp = lsGet(ME_PHOTO);
+    const ph = $("pPhoto");
+    ph.style.backgroundImage = mp ? "url(\"" + mp + "\")" : "";
+    ph.textContent = mp ? "" : (me.name || "?").trim().charAt(0).toUpperCase();
+    $("pName").textContent = me.name;
+    $("pRole").textContent = me.role;
+    $("pTrust").textContent = me.trust;
+    $("pPhone").textContent = me.phone;
+    $("pNote").textContent = me.note;
+    $("pNote").hidden = !me.note;
+    $("pFine").textContent = "Anggaran sahaja. Kadar faedah rata " + r.rate + "% setahun. Tertakluk kepada kelulusan bank.";
+
+    const rows = [
+      ["Harga Kereta", "RM" + fmt(c.price)],
+      ["Rebat", "RM" + fmt(c.rebate)],
+      ["Deposit selepas Rebat", "RM" + fmt(r.dep)],
+      [state.insFin ? "Insurans (Anggaran)" : "Insurans (Bayar Tunai)", "RM" + fmt(c.ins)],
+      ["Jumlah Loan (Anggaran)", "RM" + fmt(r.loan)],
+      ["Kadar Faedah (Anggaran)", r.rate + "%"]
+    ];
+    $("pTable").innerHTML = rows.map(x => "<div class='p-tr'><span>" + esc(x[0]) + "</span><b>" + esc(x[1]) + "</b></div>").join("");
+
+    const cal = "<svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2' aria-hidden='true'><rect x='3' y='5' width='18' height='16' rx='2'/><path d='M3 10h18M8 3v4M16 3v4M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2'/></svg>";
+    $("pTen").innerHTML = r.rows.map((x, i) =>
+      "<div class='p-tn" + (i === 0 ? " best" : "") + "'><div class='yr'>" + cal + x.n + " Tahun</div>" +
+      "<div class='mo'><span class='rm'>RM</span><span class='v'>" + fmt(x.m) + "</span><span class='pb'>/bulan</span>" +
+      (i === 0 && r.rows.length > 1 ? "<span class='badge'>★ Bayaran paling rendah</span>" : "") + "</div></div>").join("");
+
+    const cust = state.cust.trim();
+    $("pFor").hidden = !cust;
+    $("pFor").innerHTML = cust ? "Disediakan khas untuk <b>" + esc(cust) + "</b>" : "";
+  }
+
+  function render() {
+    const r = compute(), c = r.c;
+    const low = r.rows.length ? r.rows[0] : { n: 0, m: 0 };
+    $("rLow").textContent = "RM" + fmt(low.m);
+    $("rLowYr").textContent = low.n + " tahun";
+    $("barLow").textContent = "RM" + fmt(low.m);
+    $("rLoan").textContent = "RM" + fmt(r.loan);
+    [$("rT2"), $("rT3")].forEach((el, i) => {
+      const x = r.rows[i + 1];
+      el.hidden = !x;
+      el.innerHTML = x ? "<span>" + x.n + " tahun</span><b>RM" + fmt(x.m) + "</b>" : "";
+    });
+
+    // deposit hint
+    const tenPct = Math.ceil(c.price * 0.1);
+    const tenCash = Math.max(0, tenPct - c.rebate);
+    let hint;
+    if (r.dep > c.price - c.rebate) {
+      hint = "<span class='warn'>Deposit lebih besar daripada harga selepas rebat (RM" + fmt(c.price - c.rebate) + ").</span>";
+    } else {
+      const margin = c.price ? Math.round((c.price - c.rebate - r.dep) / c.price * 100) : 0;
+      hint = "Loan kereta " + margin + "% daripada harga" + (state.insFin ? " + insurans RM" + fmt(c.ins) : "") + ". ";
+      hint += "DP 10% = RM" + fmt(tenPct) + (c.rebate ? ", tolak rebat RM" + fmt(c.rebate) + " = tunai <b>RM" + fmt(tenCash) + "</b>." : ".");
+    }
+    $("depHint").innerHTML = hint;
+
+    document.querySelectorAll("#depChips .chip").forEach(b => {
+      const k = b.dataset.dep;
+      const v = k === "zero" ? 0 : k === "ten" ? tenCash : num(k);
+      b.setAttribute("aria-pressed", String(r.dep === v));
+    });
+
+    $("sumCar").textContent = "RM" + fmt(c.price) + (c.rebate ? " · rebat RM" + fmt(c.rebate) : "");
+    $("sumTen").textContent = r.rate + "% · " + state.tenures.slice().sort((a, b) => b - a).join("·") + " thn";
+    $("sumMe").textContent = state.me.name;
+    const hasCarPhoto = !!lsGet(carPhotoKey());
+    $("sumPic").textContent = hasCarPhoto ? "Gambar sendiri" : (COLORS.find(x => x[1] === state.color) || ["Ilustrasi"])[0];
+    $("carPhotoDel").hidden = !hasCarPhoto;
+    $("swField").hidden = hasCarPhoto;
+    $("mePhotoDel").hidden = !lsGet(ME_PHOTO);
+    document.querySelectorAll("#swatches .sw").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.c === state.color)));
+    document.querySelectorAll("#tenChips .chip").forEach(b => b.setAttribute("aria-pressed", String(state.tenures.includes(+b.dataset.n))));
+    document.querySelectorAll("#insFin button").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.v === "1") === state.insFin)));
+
+    renderPoster(r);
+    fit();
+    persist();
+  }
+
+  // ---------- poster scaling ----------
+  function fit() {
+    const sc = $("scaler"), inner = $("scalerInner");
+    const s = sc.clientWidth / 540;
+    inner.style.transform = "scale(" + s + ")";
+    sc.style.height = Math.ceil($("poster").offsetHeight * s) + "px";
+  }
+  if (window.ResizeObserver) new ResizeObserver(fit).observe($("scaler"));
+  window.addEventListener("resize", fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+  // ---------- form wiring ----------
+  function fillCarFields() {
+    const c = car();
+    $("title").value = c.title;
+    $("price").value = fmt(c.price);
+    $("rebate").value = fmt(c.rebate);
+    $("ins").value = fmt(c.ins);
+  }
+  function moneyInput(el, onVal) {
+    el.addEventListener("input", () => {
+      const digits = el.value.replace(/[^0-9]/g, "");
+      el.value = digits ? Number(digits).toLocaleString("en-MY") : "";
+      onVal(digits ? Number(digits) : 0, digits === "");
+      render();
+    });
+  }
+
+  const sel = $("car");
+  sel.innerHTML = CARS.map(c => "<option value='" + c.id + "'>" + esc(c.name) + "</option>").join("");
+  sel.value = state.carId;
+  sel.addEventListener("change", () => { state.carId = sel.value; fillCarFields(); render(); });
+
+  const depEl = $("deposit");
+  depEl.value = state.deposit ? fmt(state.deposit) : "";
+  moneyInput(depEl, v => { state.deposit = v; });
+  $("depChips").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const c = car(), k = b.dataset.dep;
+    state.deposit = k === "zero" ? 0 : k === "ten" ? Math.max(0, Math.ceil(c.price * 0.1) - c.rebate) : num(k);
+    depEl.value = state.deposit ? fmt(state.deposit) : "";
+    render();
+  });
+
+  $("title").addEventListener("input", e => { setCarField("title", e.target.value); render(); });
+  moneyInput($("price"), (v, empty) => setCarField("price", empty ? null : v));
+  moneyInput($("rebate"), v => setCarField("rebate", v));
+  moneyInput($("ins"), (v, empty) => setCarField("ins", empty ? null : v));
+  $("insFin").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; state.insFin = b.dataset.v === "1"; render(); });
+  $("resetCar").addEventListener("click", () => { delete state.cars[state.carId]; fillCarFields(); render(); toast("Harga asal dipulihkan"); });
+
+  $("rate").value = state.rate;
+  $("rate").addEventListener("input", e => { state.rate = Math.min(20, num(e.target.value)); render(); });
+  $("tenChips").innerHTML = TENURES.map(n => "<button class='chip' type='button' data-n='" + n + "'>" + n + " tahun</button>").join("");
+  $("tenChips").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const n = +b.dataset.n, t = state.tenures;
+    if (t.includes(n)) { if (t.length > 1) state.tenures = t.filter(x => x !== n); else toast("Sekurang-kurangnya satu tempoh"); }
+    else if (t.length < 3) state.tenures = t.concat(n);
+    else toast("Maksimum 3 tempoh. Buang satu dulu.");
+    render();
+  });
+
+  $("swatches").innerHTML = COLORS.map(c => "<button class='sw' type='button' data-c='" + c[1] + "' title='" + c[0] + "' aria-label='" + c[0] + "' style='background:" + c[1] + "'></button>").join("");
+  $("swatches").addEventListener("click", e => { const b = e.target.closest(".sw"); if (!b) return; state.color = b.dataset.c; render(); });
+
+  $("carPhoto").addEventListener("change", async e => {
+    const f = e.target.files[0]; e.target.value = ""; if (!f) return;
+    try {
+      const url = await readImage(f, 1000, true);
+      if (!lsSet(carPhotoKey(), url)) { $("pCar").style.backgroundImage = "url(\"" + url + "\")"; toast("Gambar dipakai, tapi tak dapat disimpan untuk lain kali"); return; }
+      render(); toast("Gambar kereta dikemas kini");
+    } catch (err) { toast("Gambar tak dapat dibaca. Cuba JPG atau PNG."); }
+  });
+  $("carPhotoDel").addEventListener("click", () => { lsSet(carPhotoKey(), null); render(); });
+  $("mePhoto").addEventListener("change", async e => {
+    const f = e.target.files[0]; e.target.value = ""; if (!f) return;
+    try {
+      const url = await readImage(f, 320, false);
+      if (!lsSet(ME_PHOTO, url)) toast("Gambar tak dapat disimpan untuk lain kali");
+      render();
+      if (!lsGet(ME_PHOTO)) { $("pPhoto").style.backgroundImage = "url(\"" + url + "\")"; $("pPhoto").textContent = ""; }
+    } catch (err) { toast("Gambar tak dapat dibaca. Cuba JPG atau PNG."); }
+  });
+  $("mePhotoDel").addEventListener("click", () => { lsSet(ME_PHOTO, null); render(); });
+
+  ["name", "phone", "role", "trust", "note"].forEach(k => {
+    $(k).value = state.me[k];
+    $(k).addEventListener("input", e => { state.me[k] = e.target.value; render(); });
+  });
+  $("cust").value = state.cust;
+  $("cust").addEventListener("input", e => { state.cust = e.target.value; render(); });
+
+  // ---------- toast ----------
+  let tt;
+  function toast(msg) {
+    const t = $("toast"); t.textContent = msg; t.hidden = false;
+    clearTimeout(tt); tt = setTimeout(() => { t.hidden = true; }, 2600);
+  }
+
+  // ---------- export ----------
+  let downloads = null;
+  const inViewer = !!(window.claude && window.claude.use);
+  if (inViewer) window.claude.use("downloads").then(d => { downloads = d; }).catch(() => {});
+
+  async function makeBlob() {
+    if (!window.html2canvas) throw new Error("no-lib");
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const canvas = await window.html2canvas($("poster"), {
+      scale: 2, backgroundColor: "#ffffff", useCORS: true, logging: false,
+      onclone: doc => { const s = doc.getElementById("scalerInner"); if (s) s.style.transform = "none"; const sc = doc.getElementById("scaler"); if (sc) { sc.style.height = "auto"; sc.style.overflow = "visible"; } }
+    });
+    return new Promise((res, rej) => canvas.toBlob(b => b ? res(b) : rej(new Error("blob")), "image/png"));
+  }
+  function fileName() {
+    const r = compute();
+    const low = r.rows.length ? r.rows[0].m : 0;
+    return ("Loan " + r.c.title + " RM" + low).replace(/[^A-Za-z0-9.]+/g, "-").replace(/-+$/, "") + ".png";
+  }
+  function showModal(blob) {
+    const img = $("modalImg");
+    if (img.src && img.src.startsWith("blob:")) URL.revokeObjectURL(img.src);
+    img.src = URL.createObjectURL(blob);
+    $("modal").hidden = false;
+  }
+  $("modalClose").addEventListener("click", () => { $("modal").hidden = true; });
+  $("modal").addEventListener("click", e => { if (e.target === $("modal")) $("modal").hidden = true; });
+
+  async function savePoster(btn) {
+    const label = btn.textContent;
+    btn.disabled = true; btn.textContent = "Menyediakan…";
+    try {
+      const blob = await makeBlob();
+      if (downloads) {
+        try { await downloads.save({ filename: fileName(), data: blob }); toast("Poster disimpan"); }
+        catch (err) {
+          if (err && err.code === "declined") toast("Simpanan dibatalkan");
+          else if (err && err.code === "rate_limited") toast("Tunggu sekejap, kemudian cuba lagi");
+          else showModal(blob);
+        }
+      } else if (!inViewer) {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob); a.download = fileName();
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+        toast("Poster dimuat turun");
+      } else {
+        showModal(blob);
+      }
+    } catch (err) {
+      toast(err && err.message === "no-lib" ? "Penjana gambar belum dimuatkan. Semak internet dan cuba lagi." : "Poster tak dapat dijana. Cuba lagi.");
+    } finally {
+      btn.disabled = false; btn.textContent = label;
+    }
+  }
+  $("saveBtn").addEventListener("click", e => savePoster(e.currentTarget));
+  $("saveBtn2").addEventListener("click", e => savePoster(e.currentTarget));
+
+  $("copyBtn").addEventListener("click", () => {
+    const r = compute(), c = r.c, me = state.me;
+    const lines = [
+      "*" + c.title + "*" + (state.cust.trim() ? " — untuk " + state.cust.trim() : ""),
+      "",
+      "Harga kereta: RM" + fmt(c.price),
+      "Rebat: RM" + fmt(c.rebate),
+      "Deposit: RM" + fmt(r.dep),
+      "Insurans" + (state.insFin ? "" : " (tunai)") + ": RM" + fmt(c.ins),
+      "Jumlah loan: RM" + fmt(r.loan) + " (" + r.rate + "%)",
+      ""
+    ].concat(r.rows.map(x => x.n + " tahun: *RM" + fmt(x.m) + "*/bulan"), [
+      "",
+      me.name + " — " + me.phone,
+      "_Anggaran sahaja. Tertakluk kepada kelulusan bank._"
+    ]);
+    const text = lines.join("\n");
+    const done = () => toast("Teks disalin. Tampal dalam WhatsApp.");
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+      ta.remove(); ok ? done() : toast("Tak dapat salin di sini");
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
+    else fallback();
+  });
+
+  fillCarFields();
+  render();
+})();
+</script>
