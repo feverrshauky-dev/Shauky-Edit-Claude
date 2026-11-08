@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ms" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Edit Display";
+        src: url("assets/fonts/playfair-display-latin-500-normal.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+      }
+      :root {
+        --forest: #173328;
+        --forest-2: #1f4234;
+        --cream: #f1ebdf;
+        --gold: #c9ad5e;
+        --ink: #1a1a17;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--forest);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--forest);
+      }
+      /* paper ground: flat forest with a faint fixed grain */
+      #ground {
+        position: absolute;
+        inset: 0;
+        background-color: var(--forest);
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .07 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>");
+      }
+      /* footline under the plate (decoration, below the 1330 px reading band) */
+      #foot {
+        position: absolute;
+        left: 162px;
+        right: 162px;
+        top: 1528px;
+        display: flex;
+        justify-content: space-between;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500;
+        font-size: 22px;
+        letter-spacing: 0.18em;
+        color: rgba(241, 235, 223, 0.82);
+      }
+      #foot-rule {
+        position: absolute;
+        left: 162px;
+        right: 162px;
+        top: 1510px;
+        height: 2px;
+        background: rgba(201, 173, 94, 0.55);
+      }
+      /* the photo plate: footage framed like a magazine plate */
+      #plate {
+        position: absolute;
+        left: 162px;
+        top: 150px;
+        width: 756px;
+        height: 1344px;
+        border-radius: 6px;
+        overflow: hidden;
+        transform-origin: 50% 0%;
+        z-index: 2;
+        background: #0d1a14;
+      }
+      #cam {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 38%;
+      }
+      #aroll {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 756px;
+        height: 1344px;
+        object-fit: cover;
+      }
+      #plate-line {
+        position: absolute;
+        inset: 0;
+        border: 2px solid rgba(241, 235, 223, 0.85);
+        border-radius: 6px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-b0z0" id="root" data-composition-id="main" data-start="0" data-duration="26.37" data-width="1080" data-height="1920">
+      <div data-hf-id="hf-7hg0" id="ground"></div>
+      <div data-hf-id="hf-3rif" id="foot-rule" data-layout-ignore></div>
+      <div data-hf-id="hf-exek" id="foot" data-layout-ignore><span data-hf-id="hf-10or">NO. 01 — EDISI GRADUAN</span><span data-hf-id="hf-j3ad">KERETA PERTAMA</span></div>
+
+      <!-- A-roll (scripts/edl.py): hook moved to the front, stumble and pauses cut -->
+      <div data-hf-id="hf-oj6b" id="plate">
+        <div data-hf-id="hf-ftaq" id="cam">
+          <video data-hf-id="hf-237o" id="aroll" class="clip" src="assets/aroll.mp4" data-start="0" data-duration="26.37" data-track-index="0" data-has-audio="true" playsinline></video>
+        </div>
+        <div data-hf-id="hf-9kyq" id="plate-line"></div>
+      </div>
+
+      <!-- Scenes, one per beat -->
+      <div data-hf-id="hf-csex" id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="5.55" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div data-hf-id="hf-jpkl" id="cover" data-composition-id="cover" data-composition-src="compositions/cover.html" data-start="5.5" data-duration="1.9" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div data-hf-id="hf-edbo" id="who" data-composition-id="who" data-composition-src="compositions/who.html" data-start="7.33" data-duration="8.6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div data-hf-id="hf-cgkz" id="program" data-composition-id="program" data-composition-src="compositions/program.html" data-start="15.85" data-duration="3.45" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div data-hf-id="hf-swq2" id="cta" data-composition-id="cta" data-composition-src="compositions/cta.html" data-start="19.25" data-duration="7.12" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+
+      <!-- Captions (scripts/build_captions.py), only while the plate is full size -->
+      <div data-hf-id="hf-cd5w" id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="26.37" data-track-index="4" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index: 20"></div>
+
+      <!-- Music bed: "Lucky Acoustic" by Jesse Keller (CC BY, Jamendo), 0.14 under the voice, opens up on the sign-off -->
+      <audio data-hf-id="hf-dvbu" id="bgm" class="clip" src="assets/bgm/lucky-acoustic.mp3" data-start="0" data-duration="26.37" data-track-index="5" data-volume="1" data-fade-out="0.6"
+        data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.14},{&quot;t&quot;:17.1,&quot;v&quot;:0.14},{&quot;t&quot;:17.35,&quot;v&quot;:0.2},{&quot;t&quot;:18.6,&quot;v&quot;:0.14},{&quot;t&quot;:25.7,&quot;v&quot;:0.14},{&quot;t&quot;:26.0,&quot;v&quot;:0.32}]}]}"></audio>
+
+      <!-- Sound effects: each placed so its hit lands one frame after its picture -->
+      <audio data-hf-id="hf-aqfh" id="sfx-hook" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="0" data-duration="1.4" data-track-index="6" data-volume="0.12" data-fade-out="0.5"></audio>
+      <audio data-hf-id="hf-cp6s" id="sfx-layak" class="clip" src="assets/sfx/pop.mp3" data-start="2.72" data-duration="0.6" data-track-index="7" data-volume="0.7"></audio>
+      <audio data-hf-id="hf-pyzv" id="sfx-gold" class="clip" src="assets/sfx/sparkle.mp3" data-start="4.1" data-duration="1.4" data-track-index="8" data-volume="0.14" data-fade-out="0.5"></audio>
+      <audio data-hf-id="hf-1gt3" id="sfx-to-plate" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="5.2" data-media-start="2.0" data-duration="0.9" data-track-index="6" data-volume="0.3" data-fade-out="0.4"></audio>
+      <audio data-hf-id="hf-g9ky" id="sfx-masthead" class="clip" src="assets/sfx/click.mp3" data-start="6.62" data-duration="0.36" data-track-index="7" data-volume="0.9"></audio>
+      <audio data-hf-id="hf-8dic" id="sfx-card" class="clip" src="assets/sfx/whoosh.mp3" data-start="7.34" data-duration="0.57" data-track-index="8" data-volume="0.3" data-playback-rate="1.15"></audio>
+      <audio data-hf-id="hf-gh6k" id="sfx-tick-1" class="clip" src="assets/sfx/click-soft.mp3" data-start="10.34" data-duration="0.36" data-track-index="6" data-volume="0.9"></audio>
+      <audio data-hf-id="hf-f30s" id="sfx-tick-2" class="clip" src="assets/sfx/click-soft.mp3" data-start="14.5" data-duration="0.36" data-track-index="6" data-volume="0.9" data-playback-rate="0.9"></audio>
+      <audio data-hf-id="hf-o3p2" id="sfx-to-hero" class="clip" src="assets/sfx/whoosh.mp3" data-start="15.86" data-duration="0.57" data-track-index="7" data-volume="0.35" data-playback-rate="0.85"></audio>
+      <audio data-hf-id="hf-vozv" id="sfx-swell" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="15.25" data-duration="2.3" data-track-index="8" data-volume="0.22" data-fade-in="0.4" data-fade-out="0.25"></audio>
+      <audio data-hf-id="hf-z870" id="sfx-program" class="clip" src="assets/sfx/impact-bass-2.mp3" data-start="17.26" data-duration="1.6" data-track-index="6" data-volume="0.1" data-fade-out="0.6"></audio>
+      <audio data-hf-id="hf-f5j0" id="sfx-stamp" class="clip" src="assets/sfx/pop.mp3" data-start="18.02" data-duration="0.6" data-track-index="7" data-volume="0.75" data-playback-rate="0.8"></audio>
+      <audio data-hf-id="hf-wtc4" id="sfx-back" class="clip" src="assets/sfx/whoosh.mp3" data-start="19.12" data-duration="0.57" data-track-index="8" data-volume="0.28" data-playback-rate="1.1"></audio>
+      <audio data-hf-id="hf-c39w" id="sfx-to-cta" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="21.8" data-media-start="2.0" data-duration="0.9" data-track-index="6" data-volume="0.26" data-fade-out="0.4"></audio>
+      <audio data-hf-id="hf-80tl" id="sfx-pill" class="clip" src="assets/sfx/pop.mp3" data-start="22.22" data-duration="0.6" data-track-index="7" data-volume="0.6"></audio>
+      <audio data-hf-id="hf-ab3t" id="sfx-type" class="clip" src="assets/sfx/typing.mp3" data-start="22.62" data-media-start="0.42" data-duration="0.5" data-track-index="8" data-volume="1" data-fade-out="0.08"></audio>
+      <audio data-hf-id="hf-ib3t" id="sfx-send" class="clip" src="assets/sfx/click.mp3" data-start="23.04" data-duration="0.36" data-track-index="6" data-volume="0.9"></audio>
+      <audio data-hf-id="hf-o7zf" id="sfx-wa" class="clip" src="assets/sfx/pop.mp3" data-start="23.64" data-duration="0.6" data-track-index="7" data-volume="0.6" data-playback-rate="1.12"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Plate layouts. PLATE: full size, 162/150 px margins, captions under the face.
+      // HERO: scaled 0.886 and dropped to y = 700 so the top 530 px holds big type.
+      const HERO = { scale: 0.886, y: 550 };
+      const PLATE = { scale: 1, y: 0 };
+      tl.set("#plate", HERO, 0);
+      // the footline only shows while the plate is full size (the hero plate covers it)
+      const FOOT = ["#foot", "#foot-rule"];
+      tl.set(FOOT, { opacity: 0 }, 0);
+      tl.to(FOOT, { opacity: 1, duration: 0.3 }, 5.75);
+      tl.to(FOOT, { opacity: 0, duration: 0.2 }, 15.88);
+      tl.to(FOOT, { opacity: 1, duration: 0.3 }, 19.45);
+      tl.to(FOOT, { opacity: 0, duration: 0.2 }, 21.82);
+      tl.to("#plate", { ...PLATE, duration: 0.55, ease: "expo.inOut" }, 5.3); //  cut to "Kereta pertama untuk graduan"
+      tl.to("#plate", { ...HERO, duration: 0.6, ease: "expo.inOut" }, 15.88); // "Jadi, hari ini…" program reveal
+      tl.to("#plate", { ...PLATE, y: -96, duration: 0.55, ease: "expo.inOut" }, 19.0); // "Graduan-graduan yang inginkan info": this take sits lower, so the plate rides up 96 px to keep the caption under the chin
+      tl.to("#plate", { ...HERO, duration: 0.6, ease: "expo.inOut" }, 21.82); // "boleh komen FRESH…" CTA stack
+
+      // Camera inside the plate: punch-ins on the jump cuts so they read as intended.
+      [
+        [0, 1.0],
+        [1.9, 1.08], //  "mereka juga telah layak"
+        [4.2, 1.0], //   "kereta pertama mereka"
+        [5.5, 1.0],
+        [11.97, 1.07], // "dan mereka juga ada keinginan"
+        [13.53, 1.0], // "untuk memiliki kereta pertama"
+        [15.85, 1.0],
+        [19.17, 1.0], //  CTA take (no punch-in: the head sits low)
+        [22.1, 1.0],
+      ].forEach(([t, s]) => tl.set("#cam", { scale: s }, t));
+      // a slow push through the hook so frame 0 is not static
+      tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.04, duration: 1.85, ease: "none", immediateRender: false }, 0.02);
+      // the sign-off: a gentle settle on the last frames
+      tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.05, duration: 0.5, ease: "power2.out", immediateRender: false }, 25.86);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

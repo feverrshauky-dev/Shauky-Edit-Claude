@@ -1,0 +1,386 @@
+[
+{
+"text": "Baru",
+"start": 0,
+"end": 0.54,
+"id": "w0"
+},
+{
+"text": "satu",
+"start": 0.49,
+"end": 0.78,
+"id": "w1"
+},
+{
+"text": "hari",
+"start": 0.73,
+"end": 1.2,
+"id": "w2"
+},
+{
+"text": "bekerja.",
+"start": 1.15,
+"end": 1.88,
+"id": "w3"
+},
+{
+"text": "mereka",
+"start": 2.01,
+"end": 2.3,
+"id": "w4"
+},
+{
+"text": "juga",
+"start": 2.25,
+"end": 2.46,
+"id": "w5"
+},
+{
+"text": "telah",
+"start": 2.41,
+"end": 2.82,
+"id": "w6"
+},
+{
+"text": "layak",
+"start": 2.77,
+"end": 3.16,
+"id": "w7"
+},
+{
+"text": "untuk",
+"start": 3.11,
+"end": 3.54,
+"id": "w8"
+},
+{
+"text": "memiliki",
+"start": 3.49,
+"end": 4.14,
+"id": "w9"
+},
+{
+"text": "kereta",
+"start": 4.09,
+"end": 4.56,
+"id": "w10"
+},
+{
+"text": "pertama",
+"start": 4.51,
+"end": 5.16,
+"id": "w11"
+},
+{
+"text": "mereka.",
+"start": 5.11,
+"end": 5.5,
+"id": "w12"
+},
+{
+"text": "Kereta",
+"start": 5.67,
+"end": 6.02,
+"id": "w13"
+},
+{
+"text": "pertama",
+"start": 5.97,
+"end": 6.42,
+"id": "w14"
+},
+{
+"text": "untuk",
+"start": 6.37,
+"end": 6.74,
+"id": "w15"
+},
+{
+"text": "graduan.",
+"start": 6.69,
+"end": 7.32,
+"id": "w16"
+},
+{
+"text": "Tanya",
+"start": 7.4,
+"end": 7.57,
+"id": "w17"
+},
+{
+"text": "kepada",
+"start": 7.52,
+"end": 7.79,
+"id": "w18"
+},
+{
+"text": "graduan-graduan",
+"start": 7.74,
+"end": 8.87,
+"id": "w19"
+},
+{
+"text": "di",
+"start": 8.82,
+"end": 9.01,
+"id": "w20"
+},
+{
+"text": "luar",
+"start": 8.96,
+"end": 9.17,
+"id": "w21"
+},
+{
+"text": "sana",
+"start": 9.12,
+"end": 9.39,
+"id": "w22"
+},
+{
+"text": "yang",
+"start": 9.34,
+"end": 9.71,
+"id": "w23"
+},
+{
+"text": "baru",
+"start": 9.66,
+"end": 10.01,
+"id": "w24"
+},
+{
+"text": "sahaja",
+"start": 9.96,
+"end": 10.41,
+"id": "w25"
+},
+{
+"text": "tamatkan",
+"start": 10.36,
+"end": 11.03,
+"id": "w26"
+},
+{
+"text": "sesi",
+"start": 10.98,
+"end": 11.37,
+"id": "w27"
+},
+{
+"text": "pelajaran.",
+"start": 11.32,
+"end": 11.87,
+"id": "w28"
+},
+{
+"text": "dan",
+"start": 11.99,
+"end": 12.12,
+"id": "w29"
+},
+{
+"text": "mereka",
+"start": 12.08,
+"end": 12.53,
+"id": "w30"
+},
+{
+"text": "juga",
+"start": 12.48,
+"end": 12.73,
+"id": "w31"
+},
+{
+"text": "ada",
+"start": 12.68,
+"end": 12.95,
+"id": "w32"
+},
+{
+"text": "keinginan",
+"start": 12.9,
+"end": 13.57,
+"id": "w33"
+},
+{
+"text": "untuk",
+"start": 13.52,
+"end": 13.97,
+"id": "w34"
+},
+{
+"text": "memiliki",
+"start": 13.92,
+"end": 14.59,
+"id": "w35"
+},
+{
+"text": "kereta",
+"start": 14.54,
+"end": 14.95,
+"id": "w36"
+},
+{
+"text": "pertama",
+"start": 14.9,
+"end": 15.53,
+"id": "w37"
+},
+{
+"text": "mereka.",
+"start": 15.48,
+"end": 15.75,
+"id": "w38"
+},
+{
+"text": "Jadi",
+"start": 15.96,
+"end": 16.17,
+"id": "w39"
+},
+{
+"text": "hari",
+"start": 16.12,
+"end": 16.45,
+"id": "w40"
+},
+{
+"text": "ini",
+"start": 16.4,
+"end": 16.59,
+"id": "w41"
+},
+{
+"text": "kita",
+"start": 16.54,
+"end": 16.79,
+"id": "w42"
+},
+{
+"text": "ada",
+"start": 16.74,
+"end": 17.01,
+"id": "w43"
+},
+{
+"text": "satu",
+"start": 16.96,
+"end": 17.29,
+"id": "w44"
+},
+{
+"text": "program",
+"start": 17.24,
+"end": 17.69,
+"id": "w45"
+},
+{
+"text": "khas",
+"start": 17.64,
+"end": 18.23,
+"id": "w46"
+},
+{
+"text": "untuk",
+"start": 18.18,
+"end": 18.61,
+"id": "w47"
+},
+{
+"text": "graduan.",
+"start": 18.56,
+"end": 19.25,
+"id": "w48"
+},
+{
+"text": "graduan-graduan",
+"start": 19.28,
+"end": 20.17,
+"id": "w49"
+},
+{
+"text": "yang",
+"start": 20.12,
+"end": 20.39,
+"id": "w50"
+},
+{
+"text": "inginkan",
+"start": 20.34,
+"end": 21.27,
+"id": "w51"
+},
+{
+"text": "info",
+"start": 21.22,
+"end": 21.59,
+"id": "w52"
+},
+{
+"text": "lebih",
+"start": 21.54,
+"end": 21.81,
+"id": "w53"
+},
+{
+"text": "lanjut.",
+"start": 21.76,
+"end": 22.17,
+"id": "w54"
+},
+{
+"text": "boleh",
+"start": 22.24,
+"end": 22.55,
+"id": "w55"
+},
+{
+"text": "komen",
+"start": 22.5,
+"end": 22.71,
+"id": "w56"
+},
+{
+"text": "FRESH",
+"start": 22.66,
+"end": 23.13,
+"id": "w57"
+},
+{
+"text": "ataupun",
+"start": 23.08,
+"end": 23.75,
+"id": "w58"
+},
+{
+"text": "WhatsApp",
+"start": 23.7,
+"end": 24.35,
+"id": "w59"
+},
+{
+"text": "saya,",
+"start": 24.3,
+"end": 24.79,
+"id": "w60"
+},
+{
+"text": "nombor",
+"start": 24.86,
+"end": 25.23,
+"id": "w61"
+},
+{
+"text": "di",
+"start": 25.18,
+"end": 25.37,
+"id": "w62"
+},
+{
+"text": "bio.",
+"start": 25.32,
+"end": 25.61,
+"id": "w63"
+}
+]

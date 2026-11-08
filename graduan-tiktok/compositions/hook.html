@@ -1,0 +1,135 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Edit Display";
+      src: url("assets/fonts/playfair-display-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Edit Display";
+      src: url("assets/fonts/playfair-display-latin-500-italic.woff2") format("woff2");
+      font-weight: 500;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: "Edit Serif";
+      src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hk-line {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
+      color: #f1ebdf;
+      font-family: "Edit Display", serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .hk-gold {
+      font-family: "Edit Serif", serif;
+      font-style: italic;
+      font-weight: 400;
+      color: #c9ad5e;
+      letter-spacing: -0.01em;
+    }
+    #hk-kicker {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 196px;
+      text-align: center;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 500;
+      font-size: 28px;
+      letter-spacing: 0.22em;
+      color: #c9ad5e;
+    }
+    #hk-a1 {
+      top: 262px;
+      font-size: 146px;
+    }
+    #hk-a2 {
+      top: 420px;
+      font-size: 146px;
+    }
+    #hk-1hari {
+      position: relative;
+      display: inline-block;
+      font-family: "Edit Display", serif;
+      font-weight: 500;
+      font-size: 146px;
+    }
+    #hk-uline {
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      bottom: -6px;
+      height: 3px;
+      background: #c9ad5e;
+      transform-origin: 0% 50%;
+    }
+    #hk-b1 {
+      top: 250px;
+      font-family: "Edit Display", serif;
+      font-weight: 500;
+      font-size: 60px;
+      color: rgba(241, 235, 223, 0.72);
+    }
+    #hk-b2 {
+      top: 336px;
+      font-size: 150px;
+    }
+    #hk-b3 {
+      top: 500px;
+      font-size: 132px;
+    }
+    .hk-w {
+      display: inline-block;
+    }
+  </style>
+  <div data-hf-id="hf-srfg" id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-binh" id="hk-kicker">— NOTA UNTUK GRADUAN —</div>
+    <div data-hf-id="hf-8w7a" class="hk-line" id="hk-a1">Baru <span data-hf-id="hf-r2tn" class="hk-gold" id="hk-1hari">1 hari<span data-hf-id="hf-vc5d" id="hk-uline"></span></span></div>
+    <div data-hf-id="hf-koym" class="hk-line" id="hk-a2">kerja.</div>
+    <div data-hf-id="hf-rrar" class="hk-line hk-gold" id="hk-b1">Baru 1 hari kerja —</div>
+    <div data-hf-id="hf-t000" class="hk-line" id="hk-b2"><span data-hf-id="hf-9bd8" class="hk-w" id="hk-dah">Dah</span> <span data-hf-id="hf-azt8" class="hk-w" id="hk-layak">layak</span></div>
+    <div data-hf-id="hf-bz77" class="hk-line hk-gold" id="hk-b3"><span data-hf-id="hf-5dgk" class="hk-w" id="hk-kereta">kereta</span> <span data-hf-id="hf-bqjq" class="hk-w" id="hk-pertama">pertama.</span></div>
+  </div>
+  <script>
+    // Scene clock = film clock (host starts at 0).
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Frame 0 is the thumbnail: the claim is already on screen, settling in.
+    tl.fromTo("#hk-a1", { scale: 1.06, y: 10 }, { scale: 1, y: 0, duration: 1.3, ease: "expo.out" }, 0);
+    tl.fromTo("#hk-a2", { scale: 1.06, y: 22 }, { scale: 1, y: 0, duration: 1.3, ease: "expo.out" }, 0);
+    tl.fromTo("#hk-kicker", { y: -10 }, { y: 0, duration: 0.6, ease: "power2.out" }, 0);
+    // "hari": the gold rule draws under 1 hari
+    tl.fromTo("#hk-uline", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 0.74);
+
+    // "mereka juga…": the claim steps back to a line of context
+    tl.to(["#hk-a1", "#hk-a2"], { opacity: 0, y: -36, duration: 0.3, ease: "power2.in", stagger: 0.04 }, 1.86);
+    tl.fromTo("#hk-b1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.0);
+    // "layak"
+    tl.fromTo("#hk-dah", { opacity: 0, yPercent: 40 }, { opacity: 1, yPercent: 0, duration: 0.35, ease: "expo.out" }, 2.6);
+    tl.fromTo("#hk-layak", { opacity: 0, yPercent: 40 }, { opacity: 1, yPercent: 0, duration: 0.35, ease: "expo.out" }, 2.77);
+    tl.fromTo("#hk-b2", { scale: 1.08 }, { scale: 1, duration: 0.5, ease: "expo.out" }, 2.77);
+    // "kereta" "pertama"
+    tl.fromTo("#hk-kereta", { opacity: 0, y: 30, rotation: -3 }, { opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "expo.out" }, 4.09);
+    tl.fromTo("#hk-pertama", { opacity: 0, y: 30, rotation: -3 }, { opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "expo.out" }, 4.5);
+
+    // out on the cut to the plate
+    tl.to(["#hk-kicker", "#hk-b1", "#hk-b2", "#hk-b3"], { opacity: 0, y: -40, duration: 0.28, ease: "power2.in", stagger: 0.03 }, 5.18);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

@@ -1,0 +1,262 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Edit Display";
+      src: url("assets/fonts/playfair-display-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Edit Serif";
+      src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .ct-mono {
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+    }
+    /* phase A: a small tab on the plate's ceiling */
+    #ct-tab {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 184px;
+      text-align: center;
+    }
+    #ct-tab span {
+      display: inline-block;
+      padding: 12px 22px 11px;
+      border-radius: 6px;
+      background: #173328;
+      color: #f1ebdf;
+      font-size: 28px;
+    }
+    /* phase B: the CTA stack above the hero plate */
+    #ct-head {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 196px;
+      text-align: center;
+      white-space: nowrap;
+      font-family: "Edit Display", serif;
+      font-weight: 500;
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: #f1ebdf;
+    }
+    #ct-head em {
+      font-family: "Edit Serif", serif;
+      font-style: italic;
+      font-size: 76px;
+      color: #c9ad5e;
+    }
+    #ct-box {
+      position: absolute;
+      left: 140px;
+      width: 800px;
+      top: 300px;
+      height: 98px;
+      border-radius: 49px;
+      background: #fbf8f1;
+      display: flex;
+      align-items: center;
+      padding: 0 16px 0 18px;
+      gap: 18px;
+    }
+    #ct-avatar {
+      flex: none;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #d9d1bf;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ct-field {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 44px;
+      color: #1a1a17;
+      height: 62px;
+    }
+    #ct-ph {
+      position: absolute;
+      left: 98px;
+      font-weight: 400;
+      color: #9a9384;
+      font-size: 36px;
+    }
+    .ct-ch {
+      display: inline-block;
+    }
+    #ct-caret {
+      display: inline-block;
+      width: 3px;
+      height: 46px;
+      margin-left: 4px;
+      background: #173328;
+    }
+    #ct-send {
+      flex: none;
+      position: relative;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: #173328;
+    }
+    #ct-send svg {
+      position: absolute;
+      inset: 0;
+    }
+    #ct-sent {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 412px;
+      text-align: center;
+      font-size: 28px;
+      color: #c9ad5e;
+    }
+    #ct-or {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 450px;
+      text-align: center;
+      font-size: 28px;
+      color: rgba(241, 235, 223, 0.75);
+    }
+    #ct-wa {
+      position: absolute;
+      left: 140px;
+      width: 800px;
+      top: 494px;
+      height: 140px;
+      border-radius: 8px;
+      background: #1f4234;
+      border: 2px solid rgba(241, 235, 223, 0.75);
+      display: flex;
+      align-items: center;
+      padding: 0 28px 0 24px;
+      gap: 24px;
+    }
+    #ct-wa-icon {
+      flex: none;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #c9ad5e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ct-wa-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    #ct-wa-text {
+      font-family: "Edit Display", serif;
+      font-weight: 500;
+      font-size: 56px;
+      line-height: 1;
+      color: #f1ebdf;
+      white-space: nowrap;
+    }
+    #ct-bio {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 28px;
+      color: #c9ad5e;
+    }
+    #ct-arrow {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+  <div data-hf-id="hf-rebv" id="root" data-composition-id="cta" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-tphu" id="ct-tab"><span data-hf-id="hf-l4nx" class="ct-mono">INFO LEBIH LANJUT ↓</span></div>
+
+    <div data-hf-id="hf-n390" id="ct-head">Komen <em data-hf-id="hf-tp1m">“FRESH”</em> untuk info</div>
+    <div data-hf-id="hf-425k" id="ct-box">
+      <div data-hf-id="hf-fl8i" id="ct-avatar">
+        <svg data-hf-id="hf-48vv" width="34" height="34" viewBox="0 0 24 24" fill="#f1ebdf"><circle data-hf-id="hf-41vc" cx="12" cy="8.5" r="4.2" /><path data-hf-id="hf-fvij" d="M3.5 21c.8-4.4 4.2-6.6 8.5-6.6s7.7 2.2 8.5 6.6z" /></svg>
+      </div>
+      <div data-hf-id="hf-55lf" id="ct-field">
+        <span data-hf-id="hf-masj" id="ct-ph">Tambah komen…</span>
+        <span data-hf-id="hf-2hxl" class="ct-ch" id="ct-c0">F</span><span data-hf-id="hf-h3mi" class="ct-ch" id="ct-c1">R</span><span data-hf-id="hf-lzdi" class="ct-ch" id="ct-c2">E</span><span data-hf-id="hf-4vzj" class="ct-ch" id="ct-c3">S</span><span data-hf-id="hf-3eu3" class="ct-ch" id="ct-c4">H</span><span data-hf-id="hf-zi8t" id="ct-caret"></span>
+      </div>
+      <div data-hf-id="hf-970r" id="ct-send">
+        <svg data-hf-id="hf-nst2" id="ct-up" viewBox="0 0 66 66"><path data-hf-id="hf-a72i" d="M33 46 V21 M22 31 L33 20 L44 31" fill="none" stroke="#f1ebdf" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <svg data-hf-id="hf-nr6n" id="ct-ok" viewBox="0 0 66 66"><path data-hf-id="hf-r7i2" d="M21 34 L29.5 42.5 L46 25" fill="none" stroke="#c9ad5e" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </div>
+    </div>
+    <div data-hf-id="hf-p5qj" id="ct-sent" class="ct-mono">✓ KOMEN DIHANTAR</div>
+    <div data-hf-id="hf-w4nc" id="ct-or" class="ct-mono">— ATAUPUN —</div>
+    <div data-hf-id="hf-f0yp" id="ct-wa">
+      <div data-hf-id="hf-5apx" id="ct-wa-icon">
+        <svg data-hf-id="hf-is24" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#173328" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-ef8b" d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5z" /><path data-hf-id="hf-8cez" d="M9 9.5c.2 2.6 2.4 4.8 5 5l1.2-1.3-1.9-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-1.9z" fill="#173328" stroke="none" /></svg>
+      </div>
+      <div data-hf-id="hf-bny8" id="ct-wa-col">
+        <div data-hf-id="hf-0pjm" id="ct-wa-text">WhatsApp aku</div>
+        <div data-hf-id="hf-w67x" id="ct-bio" class="ct-mono">
+          <span data-hf-id="hf-n4vt">NOMBOR DI BIO</span>
+          <svg data-hf-id="hf-u1qo" id="ct-arrow" viewBox="0 0 30 30"><path data-hf-id="hf-w8pv" d="M15 5 V24 M7 16 L15 24 L23 16" fill="none" stroke="#c9ad5e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Scene clock starts at 19.25 s. Phase A (plate full size): "Graduan-graduan yang inginkan info lebih lanjut".
+    // Phase B (hero plate from 21.82 s): "boleh komen FRESH ataupun WhatsApp saya, nombor di bio."
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#ct-tab", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.15); // "inginkan info"
+    tl.to("#ct-tab", { opacity: 0, y: -16, duration: 0.2, ease: "power2.in" }, 2.5);
+
+    // initial states of phase B
+    tl.set(["#ct-c0", "#ct-c1", "#ct-c2", "#ct-c3", "#ct-c4", "#ct-ok", "#ct-sent"], { opacity: 0 }, 0);
+    tl.set("#ct-bio", { opacity: 0 }, 0);
+
+    // "boleh komen": the header and the comment box
+    tl.fromTo("#ct-head", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 2.97);
+    tl.fromTo("#ct-box", { opacity: 0, y: 30, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 3.05);
+    // "FRESH" typed letter by letter
+    tl.set("#ct-ph", { opacity: 0 }, 3.4);
+    ["#ct-c0", "#ct-c1", "#ct-c2", "#ct-c3", "#ct-c4"].forEach((id, i) => tl.set(id, { opacity: 1 }, 3.41 + i * 0.075));
+    // caret blink (deterministic: sets on the clock)
+    for (let t = 3.05; t < 3.4; t += 0.5) tl.set("#ct-caret", { opacity: 0 }, t + 0.25).set("#ct-caret", { opacity: 1 }, t + 0.5);
+    // send
+    tl.fromTo("#ct-send", { scale: 1 }, { scale: 0.84, duration: 0.07, ease: "power2.in", yoyo: true, repeat: 1, immediateRender: false }, 3.79);
+    tl.set("#ct-up", { opacity: 0 }, 3.86);
+    tl.set("#ct-ok", { opacity: 1 }, 3.86);
+    tl.set("#ct-caret", { opacity: 0 }, 3.86);
+    tl.fromTo("#ct-sent", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 3.9);
+    tl.to("#ct-sent", { opacity: 0, duration: 0.2 }, 4.3);
+    // "ataupun"
+    tl.fromTo("#ct-or", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 4.32);
+    // "WhatsApp saya"
+    tl.fromTo("#ct-wa", { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "expo.out" }, 4.42);
+    tl.fromTo("#ct-wa-icon", { rotation: -25, scale: 0.6 }, { rotation: 0, scale: 1, duration: 0.6, ease: "back.out(2.2)" }, 4.5);
+    // "nombor di bio"
+    tl.fromTo("#ct-bio", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.9);
+    tl.fromTo("#ct-arrow", { y: 0 }, { y: 7, duration: 0.22, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 6.05);
+    window.__timelines["cta"] = tl;
+  </script>
+</template>

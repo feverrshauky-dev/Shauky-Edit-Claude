@@ -1,0 +1,139 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Edit Display";
+      src: url("assets/fonts/playfair-display-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Edit Serif";
+      src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #pg-kicker {
+      position: absolute;
+      left: 140px;
+      top: 214px;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 500;
+      font-size: 28px;
+      letter-spacing: 0.22em;
+      color: #c9ad5e;
+    }
+    #pg-rule {
+      position: absolute;
+      left: 140px;
+      top: 252px;
+      width: 300px;
+      height: 2px;
+      background: #c9ad5e;
+      transform-origin: 0% 50%;
+    }
+    .pg-line {
+      position: absolute;
+      left: 140px;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    #pg-pre {
+      top: 290px;
+      font-family: "Edit Serif", serif;
+      font-style: italic;
+      font-size: 62px;
+      color: rgba(241, 235, 223, 0.8);
+    }
+    #pg-l1 {
+      top: 282px;
+      font-family: "Edit Display", serif;
+      font-weight: 500;
+      font-size: 142px;
+      letter-spacing: -0.02em;
+      color: #f1ebdf;
+    }
+    #pg-l2 {
+      top: 420px;
+      font-family: "Edit Serif", serif;
+      font-style: italic;
+      font-size: 156px;
+      color: #c9ad5e;
+    }
+    #pg-l3 {
+      top: 590px;
+      font-family: "Edit Serif", serif;
+      font-style: italic;
+      font-size: 64px;
+      color: #f1ebdf;
+    }
+    #pg-stamp {
+      position: absolute;
+      left: 742px;
+      top: 452px;
+      width: 214px;
+      height: 214px;
+    }
+    #pg-ring {
+      position: absolute;
+      inset: 0;
+    }
+    #pg-core {
+      position: absolute;
+      inset: 0;
+    }
+  </style>
+  <div data-hf-id="hf-tpk5" id="root" data-composition-id="program" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-zlac" id="pg-kicker">HARI INI</div>
+    <div data-hf-id="hf-ddq5" id="pg-rule"></div>
+    <div data-hf-id="hf-su77" class="pg-line" id="pg-pre">kita ada satu —</div>
+    <div data-hf-id="hf-z27z" class="pg-line" id="pg-l1">Program</div>
+    <div data-hf-id="hf-wqjd" class="pg-line" id="pg-l2">khas</div>
+    <div data-hf-id="hf-ch5e" class="pg-line" id="pg-l3">untuk graduan.</div>
+    <div data-hf-id="hf-8xwo" id="pg-stamp">
+      <svg data-hf-id="hf-ru22" id="pg-ring" data-layout-ignore viewBox="0 0 214 214">
+        <defs data-hf-id="hf-mh0t">
+          <path data-hf-id="hf-u724" id="pg-arc" d="M107 107 m-80 0 a80 80 0 1 1 160 0 a80 80 0 1 1 -160 0" />
+        </defs>
+        <circle data-hf-id="hf-3cwy" cx="107" cy="107" r="104" fill="#f1ebdf" />
+        <circle data-hf-id="hf-at3m" cx="107" cy="107" r="97" fill="none" stroke="#173328" stroke-width="2" />
+        <text data-hf-id="hf-jjz3" font-family="JetBrains Mono" font-weight="500" font-size="17" letter-spacing="3.1" fill="#173328">
+          <textPath data-hf-id="hf-36jb" href="#pg-arc">LAYAK · BARU 1 HARI KERJA · LAYAK · BARU 1 HARI KERJA ·</textPath>
+        </text>
+      </svg>
+      <svg data-hf-id="hf-v5mq" id="pg-core" viewBox="0 0 214 214">
+        <circle data-hf-id="hf-pk3k" cx="107" cy="107" r="56" fill="#173328" />
+        <path data-hf-id="hf-p5km" d="M84 108 L100 124 L131 90" fill="none" stroke="#c9ad5e" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+  </div>
+  <script>
+    // Scene clock starts at 15.85 s: "Jadi, hari ini kita ada satu program khas untuk graduan."
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // "hari ini"
+    tl.fromTo("#pg-kicker", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.27);
+    tl.fromTo("#pg-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 0.33);
+    // "kita ada satu"
+    tl.fromTo("#pg-pre", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.72);
+    tl.to("#pg-pre", { opacity: 0, y: -16, duration: 0.18, ease: "power2.in" }, 1.25);
+    // "program"
+    tl.fromTo("#pg-l1", { opacity: 0, yPercent: 50, clipPath: "inset(0 0 100% 0)" }, { opacity: 1, yPercent: 0, clipPath: "inset(0 0 0% 0)", duration: 0.5, ease: "expo.out" }, 1.39);
+    // "khas"
+    tl.fromTo("#pg-l2", { opacity: 0, x: -40, scale: 1.12, transformOrigin: "0% 50%" }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "expo.out" }, 1.79);
+    // "untuk graduan"
+    tl.fromTo("#pg-l3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.33);
+    // the stamp lands
+    tl.fromTo("#pg-stamp", { opacity: 0, scale: 1.6, rotation: -24 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.32, ease: "power4.in" }, 1.85);
+    tl.fromTo("#pg-stamp", { scale: 1 }, { scale: 1.04, duration: 0.08, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 2.17);
+    tl.fromTo("#pg-ring", { rotation: 0 }, { rotation: 40, duration: 1.4, ease: "none" }, 1.85);
+    // out before the plate grows back (19.0 s)
+    tl.to(["#pg-kicker", "#pg-rule", "#pg-l1", "#pg-l2", "#pg-l3"], { opacity: 0, y: -36, duration: 0.24, ease: "power2.in", stagger: 0.025 }, 2.92);
+    tl.to("#pg-stamp", { opacity: 0, scale: 0.8, duration: 0.22, ease: "power2.in" }, 2.98);
+    window.__timelines["program"] = tl;
+  </script>
+</template>
