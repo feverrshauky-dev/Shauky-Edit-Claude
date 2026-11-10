@@ -191,6 +191,29 @@
   body.skrin #hook { top: 1000px; }
   #card, #headline, #cta { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 
+  /* FOCUS backdrop: one model featured, for phone Green Screen (switch photo per model) */
+  #focus { display: none; position: absolute; left: 30px; right: 30px; top: 770px; height: 420px;
+    border-radius: 26px; overflow: hidden; background: linear-gradient(180deg, #f6f8fc, #dfe6f0);
+    box-shadow: 0 0 0 6px var(--yellow), 0 24px 60px rgba(0,0,0,.5); color: var(--ink); }
+  body.focus #focus { display: flex; }
+  body.focus #miniGrid { display: none; }
+  #focus .fimg { width: 58%; position: relative; }
+  #focus .fimg img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 60%; display: block; }
+  #focus .fimg::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 60px;
+    background: linear-gradient(90deg, transparent, #eaeff6); }
+  #focus .ftxt { flex: 1; padding: 22px 26px 20px 14px; display: flex; flex-direction: column; }
+  #focus .fname { font: 400 84px/0.95 Anton; color: var(--navy-2); }
+  #focus .fup { font: 800 20px Montserrat; color: #4a5670; letter-spacing: .06em; margin-top: 4px; }
+  #focus .fbig { align-self: flex-start; font: 400 70px/1 Anton; color: #fff; background: var(--red);
+    padding: 4px 18px 8px; border-radius: 12px; transform: skewX(-6deg); box-shadow: 0 7px 0 var(--red-d); margin: 4px 0 14px; }
+  #focus .frows { display: grid; gap: 6px; margin-top: auto; }
+  #focus .frow { display: flex; justify-content: space-between; background: #fff; border-radius: 9px; padding: 4px 12px;
+    font: 800 24px Montserrat; color: var(--navy-2); box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+  #focus .frow span { font: 900 italic 26px Montserrat; color: var(--red); }
+  #focus .frow.top { outline: 3px solid var(--yellow); }
+  #focus .fnote { margin-top: auto; font: 700 22px/1.3 Montserrat; color: #4a5670; }
+  body.focus #vcta { display: block; top: 1225px; }
+
   /* VIDEO mode: backdrop with seamless 30s loop, rendered to MP4 for phone Green Screen */
   body.video #backdrop .rays { transform-origin: 50% 40%; animation: spin 30s linear infinite; }
   @keyframes spin { to { transform: rotate(36deg); } }
@@ -208,7 +231,7 @@
     17%  { transform: translateY(-6px) scale(1.07); box-shadow: 0 0 0 6px var(--yellow), 0 20px 40px rgba(0,0,0,.5); }
     20%, 100% { transform: none; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
   }
-  body.video #vcta { display: block; }
+  body.backdrop #vcta { display: block; }
   #vcta { display: none; position: absolute; left: 0; right: 0; top: 1060px; text-align: center; }
   #vcta span { display: inline-block; background: var(--yellow); color: var(--ink); font: 400 52px/1 Anton;
     padding: 12px 28px 14px; border-radius: 16px; box-shadow: 0 8px 0 #b89600; animation: vnudge 3s ease-in-out infinite; }
@@ -269,6 +292,7 @@
     </div>
   </div>
 
+  <div id="focus"></div>
   <div id="vcta"><span>KOMEN <em>"STOK"</em> + NAMA MODEL</span></div>
 
   <div id="hook">
@@ -305,6 +329,17 @@ if (q.has("preview")) document.body.classList.add("preview");
 if (q.get("mode") === "backdrop") document.body.classList.add("backdrop", "static");
 if (q.has("static")) document.body.classList.add("static");
 if (q.get("mode") === "skrin") document.body.classList.add("skrin");
+const focusIdx = MODELS.findIndex(m => m.id === q.get("focus"));
+if (focusIdx >= 0) {
+  document.body.classList.add("backdrop", "static", "focus");
+  const m = MODELS[focusIdx], top = Math.max(...m.rows.map(r => r[1]));
+  $("focus").innerHTML = `<div class="fimg"><img src="${m.img.replace("cars/", "cars/full-")}" alt=""></div><div class="ftxt">
+    <div class="fname">${m.name}</div><div class="fup">REBATE SEHINGGA</div><div class="fbig">${rm(top)}</div>
+    ${m.rows.length > 1
+      ? `<div class="frows">${m.rows.map(r => `<div class="frow${r[1] === top ? " top" : ""}"><b>${r[0]}</b><span>${rm(r[1])}</span></div>`).join("")}</div>`
+      : `<div class="fnote">Komen "STOK ${m.name}" untuk semak varian &amp; warna</div>`}
+  </div>`;
+}
 if (q.get("mode") === "video") document.body.classList.add("backdrop", "static", "video");
 if (q.has("noterms")) document.body.classList.add("noterms");
 

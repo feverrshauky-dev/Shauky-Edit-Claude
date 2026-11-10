@@ -8,7 +8,8 @@ Overlay 1080×1920 (9:16) untuk live jual kereta. Rebate diambil dari poster pro
 |---|---|
 | `overlay.html` | Overlay bergerak: countdown masa sebenar, kad model bertukar setiap 8 saat, ticker, banner "JANGAN SCROLL DULU!" |
 | `png/overlay-<model>.png` | Overlay lutsinar (PNG statik), satu fail untuk setiap model |
-| `png/latar-green-screen.png` | Latar belakang untuk effect Green Screen bila live dari telefon |
+| `png/latar/0-umum.png` … `5-myvi.png` | 6 gambar latar Green Screen untuk live dari telefon: satu umum dan satu untuk setiap model |
+| `video/latar-green-screen-bergerak.mp4` | Latar bergerak (untuk akaun yang Green Screen-nya terima video, atau untuk video promo) |
 
 ## Cara guna
 
@@ -27,11 +28,16 @@ Overlay 1080×1920 (9:16) untuk live jual kereta. Rebate diambil dari poster pro
 ### B. Live dari telefon sahaja
 Overlay tak boleh dilekat terus atas live telefon. Ada dua cara lain:
 
-**Cara 1: Green Screen (cuma perlu satu telefon)**
-1. Simpan `video/latar-green-screen-bergerak.mp4` (bergerak, 30 saat berulang) dalam galeri telefon. Kalau Green Screen dalam LIVE cuma terima gambar, guna `png/latar-green-screen.png` (pegun).
-2. Buka LIVE, tekan **Effects**, pilih **Green Screen**, dan pilih gambar tadi.
-3. Berdiri supaya badan kau di bahagian bawah. Tajuk, countdown tarikh dan rebate 5 model ada di atas kepala kau.
-4. Cuba dulu dalam preview sebelum tekan Go LIVE. Kalau Green Screen tiada dalam LIVE, rakam video biasa dengan Green Screen untuk promo sebelum live.
+**Cara 1: Green Screen + tukar gambar ikut model (cuma perlu satu telefon)**
+1. Simpan keenam-enam gambar dalam `png/latar/` ke galeri telefon:
+   `0-umum` · `1-ativa` · `2-axia` · `3-bezza` · `4-aruz` · `5-myvi`
+2. Buka LIVE, tekan **Effects**, pilih **Green Screen**, kemudian pilih **0-umum**. Tekan Go LIVE.
+3. Bila kau nak cerita pasal satu model, tekan **Effects → Green Screen** dan pilih gambar model tu. Latar terus bertukar.
+4. Habis cerita model tu, pilih **0-umum** semula, atau terus ke model seterusnya.
+5. Berdiri supaya badan kau di bahagian bawah. Kad model dan rebate ada di atas kepala kau.
+
+Susunan nombor ikut susunan cerita yang dicadangkan (rebate paling tinggi dulu): Ativa → Axia → Bezza → Aruz → Myvi.
+Kalau Green Screen dalam LIVE kau terima video, `video/latar-green-screen-bergerak.mp4` pun boleh dipakai.
 
 **Cara 2: Skrin kedua di belakang kau (lebih "hidup")**
 Guna tablet, laptop, TV atau telefon lama sebagai papan iklan bergerak di belakang kau.
