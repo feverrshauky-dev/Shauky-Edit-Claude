@@ -24,9 +24,25 @@ Overlay 1080×1920 (9:16) untuk live jual kereta. Rebate diambil dari poster pro
 
 > Kalau LIVE Studio tak boleh buka fail HTML, guna PNG dalam `png/` sebagai source **Gambar**.
 
-### B. Live dari telefon
-- Guna effect **Green Screen** dan pilih `png/latar-green-screen.png`. Berdiri di tengah atau bawah; tajuk dan senarai rebate ada di bahagian atas.
-- Atau tunjuk poster asal pada skrin kedua / tablet di belakang kau.
+### B. Live dari telefon sahaja
+Overlay tak boleh dilekat terus atas live telefon. Ada dua cara lain:
+
+**Cara 1: Green Screen (cuma perlu satu telefon)**
+1. Simpan `png/latar-green-screen.png` dalam galeri telefon.
+2. Buka LIVE, tekan **Effects**, pilih **Green Screen**, dan pilih gambar tadi.
+3. Berdiri supaya badan kau di bahagian bawah. Tajuk, countdown tarikh dan rebate 5 model ada di atas kepala kau.
+4. Cuba dulu dalam preview sebelum tekan Go LIVE. Kalau Green Screen tiada dalam LIVE, rakam video biasa dengan Green Screen untuk promo sebelum live.
+
+**Cara 2: Skrin kedua di belakang kau (lebih "hidup")**
+Guna tablet, laptop, TV atau telefon lama sebagai papan iklan bergerak di belakang kau.
+1. Hantar `overlay-satu-fail.html` ke peranti itu (WhatsApp ke diri sendiri, Telegram atau Google Drive). Fail ini satu saja; gambar dan font dah ada di dalamnya.
+2. Buka dengan Chrome. Tambah `?mode=skrin` di hujung alamat untuk versi skrin penuh dengan latar biru.
+3. Kawal dengan **sentuh**:
+   - Sentuh **kad model**: tukar ke model seterusnya
+   - Sentuh dua kali **kad model**: kembali bertukar sendiri
+   - Sentuh **tajuk RM7,500**: banner "JANGAN SCROLL DULU!"
+   - Sentuh **CTA kuning**: CTA bergoyang
+4. Telefon live di depan, skrin kedua di belakang bahu kau. Matikan auto-lock dan naikkan cerah skrin.
 
 ## Susun atur (kenapa begini)
 - **Atas (y 170–700):** tajuk, countdown dan ticker. Ia di bawah bar profil TikTok, jadi tak tertutup.

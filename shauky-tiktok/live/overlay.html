@@ -183,6 +183,15 @@
   body.preview #help { display: block; }
   body.backdrop #top .chip.live, body.backdrop #spot, body.backdrop #cta, body.backdrop #hook, body.backdrop #help { display: none; }
   body.static .chip.live i, body.static #spot .bar { display: none; }
+
+  /* SKRIN mode: full-screen animated version for a tablet/laptop/TV behind you */
+  body.skrin { background: #050c24; }
+  body.skrin #backdrop { display: block; }
+  body.skrin #miniGrid, body.skrin #help { display: none; }
+  body.skrin #spot { right: auto; left: 50%; top: 790px; transform: translateX(-50%) scale(1.2); transform-origin: 50% 0; }
+  body.skrin #cta { right: auto; left: 50%; top: 1665px; transform: translateX(-50%) scale(1.2); }
+  body.skrin #hook { top: 1000px; }
+  #card, #headline, #cta { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 </style>
 </head>
 <body>
@@ -247,7 +256,8 @@
   <div id="help">
     <b>Kawalan papan kekunci</b><br>
     1 Aruz · 2 Ativa · 3 Myvi · 4 Bezza · 5 Axia · 0 auto<br>
-    H = banner "Jangan scroll" · C = goyang CTA · T = tutup/buka T&amp;S
+    H = banner "Jangan scroll" · C = goyang CTA · T = tutup/buka T&amp;S<br>
+    Sentuh: kad = model seterusnya · tajuk = banner · CTA = goyang
   </div>
 </div>
 
@@ -270,6 +280,7 @@ const $ = id => document.getElementById(id);
 if (q.has("preview")) document.body.classList.add("preview");
 if (q.get("mode") === "backdrop") document.body.classList.add("backdrop", "static");
 if (q.has("static")) document.body.classList.add("static");
+if (q.get("mode") === "skrin") document.body.classList.add("skrin");
 if (q.has("noterms")) document.body.classList.add("noterms");
 
 // scale 1080x1920 stage to fit the source
@@ -344,6 +355,12 @@ if (!document.body.classList.contains("static")) {
   setInterval(hook, HOOK_EVERY_MS);
   setInterval(ctaHot, 30000);
 }
+
+// sentuh / klik (untuk tablet atau telefon kedua)
+$("card").addEventListener("click", () => { locked = (idx + 1) % MODELS.length; show(locked); auto(); });
+$("headline").addEventListener("click", hook);
+$("cta").addEventListener("click", ctaHot);
+$("card").addEventListener("dblclick", () => { locked = null; show(idx); auto(); });
 
 addEventListener("keydown", e => {
   const k = e.key.toLowerCase();
