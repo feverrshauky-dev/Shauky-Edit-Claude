@@ -49,9 +49,7 @@
     display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   #backdrop .mini { background: linear-gradient(180deg, #f3f6fb, #d6dee9); border-radius: 18px; overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,.45); text-align: center; padding-bottom: 10px; }
-  #backdrop .mini img { width: 100%; height: 120px; object-fit: cover;
-    -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 60%, transparent 100%);
-            mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 60%, transparent 100%); }
+  #backdrop .mini img { display: block; width: 100%; height: 120px; object-fit: cover; margin-bottom: 6px; }
   #backdrop .mini b { display: block; font: 400 34px Anton, sans-serif; color: var(--navy-2); line-height: 1; }
   #backdrop .mini span { display: inline-block; margin-top: 6px; background: var(--red); color: #fff;
     font: 900 italic 22px Montserrat; padding: 3px 10px; border-radius: 6px; }
@@ -112,10 +110,10 @@
   #spot .head .n { color: var(--yellow); }
   #spot .bar { height: 6px; background: rgba(255,255,255,.15); }
   #spot .bar i { display: block; height: 100%; width: 0; background: var(--yellow); }
-  #spot .img { height: 225px; padding-top: 6px; display: grid; place-items: center; overflow: hidden; }
-  #spot .img img { width: 100%; height: 100%; object-fit: contain;
-    -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 62%, transparent 100%);
-            mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 62%, transparent 100%); }
+  #spot .img { position: relative; height: 235px; overflow: hidden; }
+  #spot .img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+  #spot .img::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 36px;
+    background: linear-gradient(180deg, transparent, #eef2f8); }
   #spot .name { font: 400 64px/1 Anton; color: var(--navy-2); margin-top: -4px; }
   #spot .body { padding: 6px 18px 18px; }
   #spot .upto { font: 800 20px Montserrat; color: #4a5670; letter-spacing: .06em; }
