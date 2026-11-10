@@ -28,7 +28,7 @@ Overlay 1080×1920 (9:16) untuk live jual kereta. Rebate diambil dari poster pro
 Overlay tak boleh dilekat terus atas live telefon. Ada dua cara lain:
 
 **Cara 1: Green Screen (cuma perlu satu telefon)**
-1. Simpan `png/latar-green-screen.png` dalam galeri telefon.
+1. Simpan `video/latar-green-screen-bergerak.mp4` (bergerak, 30 saat berulang) dalam galeri telefon. Kalau Green Screen dalam LIVE cuma terima gambar, guna `png/latar-green-screen.png` (pegun).
 2. Buka LIVE, tekan **Effects**, pilih **Green Screen**, dan pilih gambar tadi.
 3. Berdiri supaya badan kau di bahagian bawah. Tajuk, countdown tarikh dan rebate 5 model ada di atas kepala kau.
 4. Cuba dulu dalam preview sebelum tekan Go LIVE. Kalau Green Screen tiada dalam LIVE, rakam video biasa dengan Green Screen untuk promo sebelum live.
@@ -92,3 +92,11 @@ Susunan model yang dicadangkan: **Ativa → Axia → Bezza → Aruz → Myvi** (
 > "Rebate untuk stok tahun 2026 dan pendaftaran 1 Nov hingga 31 Dis 2026. Tertakluk kepada terma, syarat dan stok."
 
 Jangan janji harga atau rebate yang tiada dalam poster rasmi.
+
+---
+
+## Untuk bina semula video latar
+```
+node tools/render_video_frames.js overlay.html <folder-frame> 30 30
+ffmpeg -framerate 30 -i <folder-frame>/f%04d.png -c:v libx264 -pix_fmt yuv420p -crf 20 video/latar-green-screen-bergerak.mp4
+```

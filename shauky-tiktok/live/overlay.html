@@ -45,7 +45,7 @@
     background: repeating-conic-gradient(from 0deg at 50% 40%, rgba(255,255,255,.05) 0 6deg, transparent 6deg 18deg); }
   #backdrop .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 620px;
     background: linear-gradient(180deg, transparent, rgba(0,0,0,.55)); }
-  #backdrop .grid { position: absolute; left: 30px; right: 30px; top: 740px;
+  #backdrop .grid { position: absolute; left: 30px; right: 30px; top: 770px;
     display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   #backdrop .mini { background: linear-gradient(180deg, #f3f6fb, #d6dee9); border-radius: 18px; overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,.45); text-align: center; padding-bottom: 10px; }
@@ -190,6 +190,30 @@
   body.skrin #cta { right: auto; left: 50%; top: 1665px; transform: translateX(-50%) scale(1.2); }
   body.skrin #hook { top: 1000px; }
   #card, #headline, #cta { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+
+  /* VIDEO mode: backdrop with seamless 30s loop, rendered to MP4 for phone Green Screen */
+  body.video #backdrop .rays { transform-origin: 50% 40%; animation: spin 30s linear infinite; }
+  @keyframes spin { to { transform: rotate(36deg); } }
+  body.video #headline .band::after { animation-duration: 3s; }
+  body.video #headline .l2 { animation-duration: 1.5s; }
+  body.video #ticker .track { animation-duration: 30s; }
+  body.video #backdrop .mini { animation: hl 15s infinite both; transform-origin: 50% 100%; }
+  body.video #backdrop .mini:nth-child(2) { animation-delay: 3s; }
+  body.video #backdrop .mini:nth-child(3) { animation-delay: 6s; }
+  body.video #backdrop .mini:nth-child(4) { animation-delay: 9s; }
+  body.video #backdrop .mini:nth-child(5) { animation-delay: 12s; }
+  @keyframes hl {
+    0%   { transform: none; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+    3%   { transform: translateY(-6px) scale(1.07); box-shadow: 0 0 0 6px var(--yellow), 0 20px 40px rgba(0,0,0,.5); }
+    17%  { transform: translateY(-6px) scale(1.07); box-shadow: 0 0 0 6px var(--yellow), 0 20px 40px rgba(0,0,0,.5); }
+    20%, 100% { transform: none; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+  }
+  body.video #vcta { display: block; }
+  #vcta { display: none; position: absolute; left: 0; right: 0; top: 1060px; text-align: center; }
+  #vcta span { display: inline-block; background: var(--yellow); color: var(--ink); font: 400 52px/1 Anton;
+    padding: 12px 28px 14px; border-radius: 16px; box-shadow: 0 8px 0 #b89600; animation: vnudge 3s ease-in-out infinite; }
+  #vcta span em { font-style: normal; color: var(--red); }
+  @keyframes vnudge { 0%,70%,100% { transform: none; } 78% { transform: scale(1.08) rotate(-2deg); } 86% { transform: scale(1.08) rotate(2deg); } 93% { transform: none; } }
 </style>
 </head>
 <body>
@@ -245,6 +269,8 @@
     </div>
   </div>
 
+  <div id="vcta"><span>KOMEN <em>"STOK"</em> + NAMA MODEL</span></div>
+
   <div id="hook">
     <div class="s1">JANGAN SCROLL DULU!</div>
     <div class="s2">REBATE SEHINGGA <b>RM7,500</b> · SAMPAI 31 DIS JE</div>
@@ -279,6 +305,7 @@ if (q.has("preview")) document.body.classList.add("preview");
 if (q.get("mode") === "backdrop") document.body.classList.add("backdrop", "static");
 if (q.has("static")) document.body.classList.add("static");
 if (q.get("mode") === "skrin") document.body.classList.add("skrin");
+if (q.get("mode") === "video") document.body.classList.add("backdrop", "static", "video");
 if (q.has("noterms")) document.body.classList.add("noterms");
 
 // scale 1080x1920 stage to fit the source
