@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Rebate Overlay</title>
+<style>
+  @font-face { font-family: "Anton"; src: url(assets/fonts/anton-normal.woff2) format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Montserrat"; src: url(assets/fonts/montserrat-normal.woff2) format("woff2"); font-weight: 100 900; font-style: normal; }
+  @font-face { font-family: "Montserrat"; src: url(assets/fonts/montserrat-italic.woff2) format("woff2"); font-weight: 100 900; font-style: italic; }
+
+  :root {
+    --navy: #06102b;
+    --navy-2: #0b1d4d;
+    --red: #e3122b;
+    --red-d: #a50a1d;
+    --yellow: #ffd60a;
+    --white: #ffffff;
+    --ink: #0a0f1f;
+    --card: #e9eef5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: transparent; }
+  body.preview { background: #2b3446 url() center/cover; }
+  body.preview::before {
+    content: "KAMERA DI SINI"; position: fixed; inset: 0; display: grid; place-items: center;
+    font: 800 28px Montserrat, sans-serif; color: rgba(255,255,255,.25); letter-spacing: .3em;
+    background: radial-gradient(ellipse at 40% 45%, #56627a 0%, #2b3446 60%, #1a2030 100%);
+  }
+
+  /* fixed 1080x1920 stage, scaled to whatever size the source is */
+  #stage {
+    position: absolute; left: 50%; top: 50%; width: 1080px; height: 1920px;
+    transform-origin: 50% 50%;
+    font-family: Montserrat, sans-serif; color: var(--white);
+  }
+
+  /* ---------- BACKDROP MODE (green-screen background for phone) ---------- */
+  #backdrop { display: none; position: absolute; inset: 0; overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 38%, rgba(60,110,230,.55), transparent 70%),
+      linear-gradient(180deg, #071640 0%, #0a1f5c 45%, #050c24 100%); }
+  body.backdrop #backdrop { display: block; }
+  #backdrop .rays { position: absolute; inset: -20%;
+    background: repeating-conic-gradient(from 0deg at 50% 40%, rgba(255,255,255,.05) 0 6deg, transparent 6deg 18deg); }
+  #backdrop .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 620px;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,.55)); }
+  #backdrop .grid { position: absolute; left: 30px; right: 30px; top: 740px;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  #backdrop .mini { background: linear-gradient(180deg, #f3f6fb, #d6dee9); border-radius: 18px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.45); text-align: center; padding-bottom: 10px; }
+  #backdrop .mini img { width: 100%; height: 120px; object-fit: cover;
+    -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 60%, transparent 100%);
+            mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 60%, transparent 100%); }
+  #backdrop .mini b { display: block; font: 400 34px Anton, sans-serif; color: var(--navy-2); line-height: 1; }
+  #backdrop .mini span { display: inline-block; margin-top: 6px; background: var(--red); color: #fff;
+    font: 900 italic 22px Montserrat; padding: 3px 10px; border-radius: 6px; }
+  #backdrop .mini small { display: block; font: 700 14px Montserrat; color: #4a5670; margin-bottom: 2px; }
+
+  /* ---------- TOP: live chip + headline ---------- */
+  #top { position: absolute; left: 0; right: 0; top: 168px; text-align: center; }
+  .chips { display: flex; justify-content: center; gap: 12px; }
+  .chip { font: 800 26px Montserrat; letter-spacing: .06em; padding: 8px 18px 9px; border-radius: 10px;
+    background: rgba(6,16,43,.82); box-shadow: 0 6px 18px rgba(0,0,0,.3); }
+  .chip.live { background: var(--red); display: inline-flex; align-items: center; gap: 10px; }
+  .chip.live i { width: 14px; height: 14px; border-radius: 50%; background: #fff; animation: blink 1s infinite; }
+  @keyframes blink { 50% { opacity: .2; } }
+
+  #headline { position: relative; margin: 14px auto 0; width: 960px; transform: rotate(-2deg); }
+  #headline .band { position: relative; overflow: hidden; background: linear-gradient(90deg, var(--red-d), var(--red) 30%, var(--red) 70%, var(--red-d));
+    clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); padding: 10px 0 18px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+  #headline .band::after { content: ""; position: absolute; top: 0; bottom: 0; width: 220px; left: -260px;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+    animation: shine 3.2s ease-in-out infinite; }
+  @keyframes shine { 0%,55% { left: -260px; } 100% { left: 1100px; } }
+  #headline .l1 { font: 900 italic 44px Montserrat; letter-spacing: .04em; }
+  #headline .l2 { font: 400 150px/1 Anton, sans-serif; color: var(--yellow); letter-spacing: .01em;
+    text-shadow: 0 6px 0 var(--red-d), 0 10px 24px rgba(0,0,0,.35); animation: thump 1.6s ease-in-out infinite; display: inline-block; }
+  #headline .l2 sup { font-size: 60px; vertical-align: top; position: relative; top: 14px; }
+  @keyframes thump { 0%,100% { transform: scale(1); } 8% { transform: scale(1.07); } 16% { transform: scale(1); } }
+
+  #countdown { display: inline-flex; align-items: center; gap: 14px; margin-top: 18px;
+    background: rgba(6,16,43,.88); border: 3px solid var(--yellow); border-radius: 14px; padding: 8px 20px 10px; }
+  #until { display: none; margin-top: 18px; font: 400 44px/1 Anton; letter-spacing: .02em;
+    background: rgba(6,16,43,.88); border: 3px solid var(--yellow); border-radius: 14px; padding: 12px 24px; color: #fff; }
+  #until b { color: var(--yellow); font-weight: 400; }
+  body.static #countdown { display: none; }
+  body.static #until { display: inline-block; }
+  #countdown .lbl { font: 800 24px Montserrat; color: var(--yellow); letter-spacing: .05em; }
+  #countdown .t { display: flex; gap: 8px; }
+  #countdown .u { min-width: 74px; text-align: center; }
+  #countdown .u b { display: block; font: 400 44px/1 Anton; }
+  #countdown .u small { font: 700 14px Montserrat; opacity: .75; letter-spacing: .1em; }
+
+  /* ---------- TICKER ---------- */
+  #ticker { position: absolute; left: 0; right: 0; top: 640px; height: 58px; overflow: hidden;
+    background: rgba(255,255,255,.95); transform: rotate(-2deg) scaleX(1.05); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+  #ticker .track { display: inline-flex; white-space: nowrap; animation: scroll 38s linear infinite; }
+  #ticker span { font: 900 italic 30px/58px Montserrat; color: var(--navy-2); padding: 0 26px; }
+  #ticker span em { font-style: italic; color: var(--red); }
+  #ticker span.dot { color: var(--red); padding: 0; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ---------- SPOTLIGHT CARD (right column) ---------- */
+  #spot { position: absolute; right: 26px; top: 740px; width: 470px; }
+  #spot .card { position: relative; border-radius: 26px; overflow: hidden;
+    background: linear-gradient(180deg, #f6f8fc 0%, #dfe6f0 100%);
+    box-shadow: 0 24px 60px rgba(0,0,0,.45), 0 0 0 4px rgba(255,255,255,.9); color: var(--ink); }
+  #spot .head { display: flex; justify-content: space-between; align-items: center;
+    background: var(--navy-2); color: #fff; padding: 10px 18px; font: 800 20px Montserrat; letter-spacing: .08em; }
+  #spot .head .n { color: var(--yellow); }
+  #spot .bar { height: 6px; background: rgba(255,255,255,.15); }
+  #spot .bar i { display: block; height: 100%; width: 0; background: var(--yellow); }
+  #spot .img { height: 225px; padding-top: 6px; display: grid; place-items: center; overflow: hidden; }
+  #spot .img img { width: 100%; height: 100%; object-fit: contain;
+    -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 62%, transparent 100%);
+            mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 62%, transparent 100%); }
+  #spot .name { font: 400 64px/1 Anton; color: var(--navy-2); margin-top: -4px; }
+  #spot .body { padding: 6px 18px 18px; }
+  #spot .upto { font: 800 20px Montserrat; color: #4a5670; letter-spacing: .06em; }
+  #spot .big { display: inline-block; font: 400 76px/1 Anton; color: #fff; background: var(--red);
+    padding: 4px 18px 8px; border-radius: 12px; margin: 4px 0 12px; transform: skewX(-6deg);
+    box-shadow: 0 8px 0 var(--red-d); }
+  #spot .rows { display: grid; gap: 8px; }
+  #spot .row { display: flex; justify-content: space-between; align-items: center;
+    background: #fff; border-radius: 10px; padding: 5px 14px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  #spot .row b { font: 800 26px Montserrat; color: var(--navy-2); }
+  #spot .row span { font: 900 italic 30px Montserrat; color: var(--red); }
+  #spot .note { font: 700 20px Montserrat; color: #4a5670; }
+  #spot .row.top { outline: 3px solid var(--yellow); }
+  #spot .row.top b::after { content: "TERTINGGI"; margin-left: 10px; font: 900 13px Montserrat; vertical-align: middle;
+    background: var(--yellow); color: var(--ink); padding: 3px 7px; border-radius: 5px; letter-spacing: .06em; }
+
+  /* card swap animation */
+  .in .img img { animation: carIn .7s cubic-bezier(.2,.9,.2,1.1) both; }
+  .in .name { animation: slideL .5s .1s cubic-bezier(.2,.9,.2,1) both; }
+  .in .big { animation: pop .5s .25s cubic-bezier(.2,1.6,.4,1) both; }
+  .in .row { animation: slideUp .4s cubic-bezier(.2,.9,.2,1) both; }
+  @keyframes carIn { from { transform: translateX(120%) scale(.9); } to { transform: none; } }
+  @keyframes slideL { from { transform: translateX(-40px); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes pop { from { transform: skewX(-6deg) scale(.3); opacity: 0; } to { transform: skewX(-6deg) scale(1); opacity: 1; } }
+  @keyframes slideUp { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+  /* ---------- CTA ---------- */
+  #cta { position: absolute; right: 26px; width: 470px; top: 1480px; text-align: center; }
+  #cta .box { background: var(--yellow); color: var(--ink); border-radius: 18px; padding: 12px 14px 14px;
+    box-shadow: 0 10px 0 #b89600, 0 20px 40px rgba(0,0,0,.4); animation: nudge 2.4s ease-in-out infinite; }
+  #cta .a { font: 800 22px Montserrat; letter-spacing: .05em; }
+  #cta .b { font: 400 64px/1.05 Anton; }
+  #cta .c { font: 800 20px Montserrat; letter-spacing: .04em; margin-top: 2px; }
+  #cta .b em { font-style: normal; color: var(--red); }
+  @keyframes nudge { 0%,80%,100% { transform: none; } 85% { transform: rotate(-3deg) scale(1.05); } 90% { transform: rotate(3deg) scale(1.05); } 95% { transform: rotate(-2deg); } }
+  #cta.hot .box { animation: hot .45s ease-in-out 6; }
+  @keyframes hot { 50% { transform: scale(1.12); box-shadow: 0 10px 0 #b89600, 0 0 0 16px rgba(255,214,10,.35); } }
+
+  #terms { position: absolute; left: 0; right: 0; top: 590px; text-align: center;
+    font: 600 17px Montserrat; color: rgba(255,255,255,.9); text-shadow: 0 1px 4px rgba(0,0,0,.8); }
+  body.noterms #terms { display: none; }
+
+  /* ---------- HOOK BANNER (stop-scroll) ---------- */
+  #hook { position: absolute; left: -40px; right: -40px; top: 860px; pointer-events: none;
+    transform: rotate(-6deg) translateX(-120%); }
+  #hook.show { animation: hookIn 4.6s cubic-bezier(.2,.9,.2,1) both; }
+  @keyframes hookIn {
+    0% { transform: rotate(-6deg) translateX(-120%); }
+    10% { transform: rotate(-6deg) translateX(0); }
+    13% { transform: rotate(-6deg) translateX(-2%) scale(1.04); }
+    16%, 86% { transform: rotate(-6deg) translateX(0); }
+    100% { transform: rotate(-6deg) translateX(120%); }
+  }
+  #hook .s1 { background: var(--yellow); color: var(--ink); font: 400 96px/1 Anton; text-align: center; padding: 14px 0 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+  #hook .s2 { background: var(--red); font: 900 italic 40px Montserrat; white-space: nowrap; text-align: center; padding: 12px 0 16px; }
+  #hook .s2 b { color: var(--yellow); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+  #flash.go { animation: flash .5s ease-out; }
+  @keyframes flash { 0% { opacity: .65; } 100% { opacity: 0; } }
+
+  /* help */
+  #help { position: absolute; left: 20px; bottom: 20px; display: none; font: 600 18px/1.5 Montserrat;
+    background: rgba(0,0,0,.75); padding: 14px 18px; border-radius: 12px; }
+  body.preview #help { display: block; }
+  body.backdrop #top .chip.live, body.backdrop #spot, body.backdrop #cta, body.backdrop #hook, body.backdrop #help { display: none; }
+  body.static .chip.live i, body.static #spot .bar { display: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="backdrop"><div class="rays"></div><div class="floor"></div><div class="grid" id="miniGrid"></div></div>
+
+  <div id="top">
+    <div class="chips">
+      <div class="chip live"><i></i>LIVE</div>
+      <div class="chip">PROMOSI AKHIR TAHUN · NOV–DIS 2026</div>
+    </div>
+    <div id="headline">
+      <div class="band">
+        <div class="l1">REBATE SEHINGGA</div>
+        <div class="l2">RM7,500<sup>*</sup></div>
+      </div>
+    </div>
+    <div id="until">SAMPAI <b>31 DISEMBER 2026</b> SAHAJA</div>
+    <div id="countdown">
+      <span class="lbl">TAMAT DALAM</span>
+      <div class="t">
+        <div class="u"><b id="cd-d">00</b><small>HARI</small></div>
+        <div class="u"><b id="cd-h">00</b><small>JAM</small></div>
+        <div class="u"><b id="cd-m">00</b><small>MINIT</small></div>
+        <div class="u"><b id="cd-s">00</b><small>SAAT</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="terms">*Stok 2026. Daftar 1 Nov – 31 Dis 2026. Tertakluk T&amp;S dan stok.</div>
+
+  <div id="ticker"><div class="track" id="tickerTrack"></div></div>
+
+  <div id="spot">
+    <div class="card" id="card">
+      <div class="head"><span>🔥 REBATE MODEL</span><span class="n" id="spotN">1/5</span></div>
+      <div class="bar"><i id="spotBar"></i></div>
+      <div class="img"><img id="spotImg" alt=""></div>
+      <div class="body">
+        <div class="name" id="spotName"></div>
+        <div class="upto">REBATE SEHINGGA</div>
+        <div class="big" id="spotBig"></div>
+        <div class="rows" id="spotRows"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cta">
+    <div class="box">
+      <div class="a">NAK SEMAK STOK &amp; QUOTATION?</div>
+      <div class="b">KOMEN <em>"STOK"</em></div>
+      <div class="c">+ NAMA MODEL · AKU SEMAK TERUS</div>
+    </div>
+  </div>
+
+  <div id="hook">
+    <div class="s1">JANGAN SCROLL DULU!</div>
+    <div class="s2">REBATE SEHINGGA <b>RM7,500</b> · SAMPAI 31 DIS JE</div>
+  </div>
+  <div id="flash"></div>
+
+  <div id="help">
+    <b>Kawalan papan kekunci</b><br>
+    1 Aruz · 2 Ativa · 3 Myvi · 4 Bezza · 5 Axia · 0 auto<br>
+    H = banner "Jangan scroll" · C = goyang CTA · T = tutup/buka T&amp;S
+  </div>
+</div>
+
+<script>
+const MODELS = [
+  { id: "aruz",  name: "ARUZ",  img: "assets/cars/aruz.jpg",  rows: [["Rebate", 4000]] },
+  { id: "ativa", name: "ATIVA", img: "assets/cars/ativa.jpg", rows: [["X", 6500], ["H", 7000], ["AV", 7500]] },
+  { id: "myvi",  name: "MYVI",  img: "assets/cars/myvi.jpg",  rows: [["Rebate", 1500]] },
+  { id: "bezza", name: "BEZZA", img: "assets/cars/bezza.jpg", rows: [["1.3 AV", 5000], ["1.3 X", 4000], ["1.0 G", 1000]] },
+  { id: "axia",  name: "AXIA",  img: "assets/cars/axia.jpg",  rows: [["G", 500], ["X", 3900], ["SE", 4300], ["AV", 4900]] },
+];
+const DEADLINE = new Date("2026-12-31T23:59:59+08:00").getTime();
+const SPOT_MS = 8000;        // tempoh setiap model
+const HOOK_EVERY_MS = 75000; // banner "jangan scroll" automatik
+
+const q = new URLSearchParams(location.search);
+const rm = n => "RM" + n.toLocaleString("en-MY");
+const $ = id => document.getElementById(id);
+
+if (q.has("preview")) document.body.classList.add("preview");
+if (q.get("mode") === "backdrop") document.body.classList.add("backdrop", "static");
+if (q.has("static")) document.body.classList.add("static");
+if (q.has("noterms")) document.body.classList.add("noterms");
+
+// scale 1080x1920 stage to fit the source
+function fit() {
+  const s = Math.min(innerWidth / 1080, innerHeight / 1920);
+  $("stage").style.transform = `translate(-50%,-50%) scale(${s})`;
+}
+addEventListener("resize", fit); fit();
+
+// countdown
+function tick() {
+  let t = Math.max(0, DEADLINE - Date.now()) / 1000;
+  const d = Math.floor(t / 86400); t -= d * 86400;
+  const h = Math.floor(t / 3600);  t -= h * 3600;
+  const m = Math.floor(t / 60);    const s = Math.floor(t - m * 60);
+  const p = n => String(n).padStart(2, "0");
+  $("cd-d").textContent = p(d); $("cd-h").textContent = p(h);
+  $("cd-m").textContent = p(m); $("cd-s").textContent = p(s);
+}
+setInterval(tick, 1000); tick();
+
+// ticker (duplicated so the loop is seamless)
+const tickerHtml = MODELS.map(m => {
+  const top = Math.max(...m.rows.map(r => r[1]));
+  return `<span>${m.name} <em>${m.rows.length > 1 ? "SEHINGGA " : ""}${rm(top)}</em></span><span class="dot">◆</span>`;
+}).join("") + `<span>KOMEN <em>"STOK"</em> UNTUK SEMAK</span><span class="dot">◆</span>`;
+$("tickerTrack").innerHTML = tickerHtml + tickerHtml;
+
+// backdrop mini grid
+$("miniGrid").innerHTML = MODELS.map(m => {
+  const top = Math.max(...m.rows.map(r => r[1]));
+  return `<div class="mini"><img src="${m.img}" alt=""><b>${m.name}</b><small>${m.rows.length > 1 ? "SEHINGGA" : "REBATE"}</small><span>${rm(top)}</span></div>`;
+}).join("");
+
+// spotlight
+let idx = 0, locked = null, timer = null, barAnim = null;
+function show(i) {
+  idx = (i + MODELS.length) % MODELS.length;
+  const m = MODELS[idx];
+  const top = Math.max(...m.rows.map(r => r[1]));
+  const card = $("card");
+  card.classList.remove("in"); void card.offsetWidth;
+  $("spotImg").src = m.img;
+  $("spotName").textContent = m.name;
+  $("spotBig").textContent = rm(top);
+  $("spotN").textContent = `${idx + 1}/${MODELS.length}`;
+  $("spotRows").innerHTML = m.rows.length > 1
+    ? m.rows.map((r, k) => `<div class="row${r[1] === top ? " top" : ""}" style="animation-delay:${.35 + k * .1}s"><b>${r[0]}</b><span>${rm(r[1])}</span></div>`).join("")
+    : `<div class="note row" style="animation-delay:.35s">Komen "STOK ${m.name}" — aku semak varian &amp; warna</div>`;
+  card.classList.add("in");
+  if (barAnim) barAnim.cancel();
+  barAnim = $("spotBar").animate([{ width: "0%" }, { width: locked === null ? "100%" : "0%" }], { duration: SPOT_MS, fill: "forwards" });
+}
+function auto() {
+  clearInterval(timer);
+  if (locked === null) timer = setInterval(() => show(idx + 1), SPOT_MS);
+}
+const startModel = MODELS.findIndex(m => m.id === q.get("model"));
+if (startModel >= 0) locked = startModel;
+show(startModel >= 0 ? startModel : 0); auto();
+
+// hook banner
+function hook() {
+  const h = $("hook"); h.classList.remove("show"); void h.offsetWidth; h.classList.add("show");
+  const f = $("flash"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go");
+}
+function ctaHot() {
+  const c = $("cta"); c.classList.remove("hot"); void c.offsetWidth; c.classList.add("hot");
+}
+if (!document.body.classList.contains("static")) {
+  setTimeout(hook, 1500);
+  setInterval(hook, HOOK_EVERY_MS);
+  setInterval(ctaHot, 30000);
+}
+
+addEventListener("keydown", e => {
+  const k = e.key.toLowerCase();
+  if (k >= "1" && k <= "5") { locked = +k - 1; show(locked); auto(); }
+  else if (k === "0") { locked = null; show(idx + 1); auto(); }
+  else if (k === "h") hook();
+  else if (k === "c") ctaHot();
+  else if (k === "t") document.body.classList.toggle("noterms");
+});
+</script>
+</body>
+</html>
