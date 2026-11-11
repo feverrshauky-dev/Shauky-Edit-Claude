@@ -1,0 +1,174 @@
+"""Generate compositions/quest1..3.html from one card template.
+
+Each card sits where that take has no face (see README in the commit):
+  shot 1 sweeper  -> left, under the burned-in POV line, above his head
+  shot 2 car wipe -> left, low over the car's rear (his face is mid-right)
+  shot 3 mopping  -> left, high over the ceiling (he stands centre)
+Times are local to the scene host (index.html sets each host's data-start).
+Re-run after edits: python3 scripts/build_quests.py
+"""
+import html
+import pathlib
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+
+QUESTS = [
+    # id, number, title, top px, tick (local s), exit (local s), level-up (local s) or None
+    ("quest1", "01", "SAPU DEPAN SHOWROOM", 812, 3.3, 4.05, None),
+    ("quest2", "02", "LAP KERETA YANG DAH BERKILAT", 1060, 3.65, 5.9, None),
+    ("quest3", "03", "MOP LANTAI (ROUND KE-7)", 340, 2.75, 3.85, 3.28),
+]
+
+TEMPLATE = """<template>
+  <style>
+    #root {{
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }}
+    #{p}-card {{
+      position: absolute;
+      left: 48px;
+      top: {top}px;
+      width: 620px;
+      padding: 22px 26px 24px 38px;
+      border-radius: 18px;
+      background: rgba(11, 11, 11, 0.9);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+      overflow: visible;
+    }}
+    #{p}-stripe {{
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 12px;
+      border-radius: 18px 0 0 18px;
+      background: #ffd400;
+    }}
+    #{p}-head {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 30px;
+      letter-spacing: 0.1em;
+      color: #ffd400;
+    }}
+    #{p}-box {{
+      position: relative;
+      width: 46px;
+      height: 46px;
+      border: 4px solid #ffd400;
+      border-radius: 8px;
+    }}
+    #{p}-fill {{
+      position: absolute;
+      inset: 0;
+      background: #ffd400;
+      transform-origin: 50% 50%;
+    }}
+    #{p}-check {{
+      position: absolute;
+      inset: 4px;
+    }}
+    #{p}-title {{
+      margin-top: 10px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 48px;
+      line-height: 1.04;
+      color: #ffffff;
+    }}
+    #{p}-title .w {{
+      display: inline-block;
+    }}
+    #{p}-reward {{
+      margin-top: 12px;
+      font-family: "Space Mono", monospace;
+      font-weight: 400;
+      font-size: 28px;
+      color: rgba(255, 255, 255, 0.72);
+    }}
+    #{p}-xp {{
+      position: absolute;
+      right: -44px;
+      top: 118px;
+      white-space: nowrap;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 40px;
+      color: #0b0b0b;
+      background: #ffd400;
+      border-radius: 999px;
+      padding: 4px 18px 6px;
+      opacity: 0;
+    }}
+    #{p}-lvl {{
+      position: absolute;
+      left: 690px;
+      top: 28px;
+      white-space: nowrap;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 40px;
+      letter-spacing: 0.02em;
+      color: #0b0b0b;
+      background: #ffd400;
+      border: 5px solid #0b0b0b;
+      border-radius: 14px;
+      padding: 6px 22px 8px;
+      opacity: 0;
+    }}
+  </style>
+  <div id="root" data-composition-id="{p}" data-width="1080" data-height="1920">
+    <div id="{p}-card" data-layout-allow-overflow data-layout-allow-overlap>
+      <div id="{p}-stripe"></div>
+      <div id="{p}-head"><span>SIDE QUEST {num}</span><span id="{p}-box"><span id="{p}-fill"></span><svg id="{p}-check" viewBox="0 0 30 30"><path id="{p}-tick" d="M5 16 L12 23 L25 8" fill="none" stroke="#0b0b0b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" stroke-dashoffset="40"/></svg></span></div>
+      <div id="{p}-title">{words}</div>
+      {reward_html}
+      <div id="{p}-xp">+10 XP</div>{lvl_html}
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {{}};
+    const tl = gsap.timeline({{ paused: true }});
+    const P = "#{p}";
+    // in: the stripe lands, the card unrolls from it, the title arrives word by word
+    tl.fromTo(P + "-card", {{ clipPath: "inset(0% 100% 0% 0% round 18px)" }}, {{ clipPath: "inset(0% 0% 0% 0% round 18px)", duration: 0.42, ease: "expo.out" }}, 0.05);
+    tl.fromTo(P + "-card", {{ x: -40 }}, {{ x: 0, duration: 0.5, ease: "expo.out" }}, 0.0);
+    tl.fromTo(P + "-title .w", {{ opacity: 0, filter: "blur(6px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.07, ease: "power2.out" }}, 0.22);
+    {reward_js}
+    tl.set(P + "-card", {{ clipPath: "none" }}, 0.5);
+    // done: the box fills, the tick draws, +10 XP pops up off the card
+    tl.fromTo(P + "-fill", {{ scale: 0 }}, {{ scale: 1, duration: 0.14, ease: "back.out(2)" }}, {tick});
+    tl.fromTo(P + "-tick", {{ strokeDashoffset: 40 }}, {{ strokeDashoffset: 0, duration: 0.16, ease: "power2.out" }}, {tick} + 0.06);
+    tl.fromTo(P + "-title", {{ opacity: 1 }}, {{ opacity: 0.55, duration: 0.2 }}, {tick} + 0.1);
+    tl.fromTo(P + "-xp", {{ opacity: 0, y: 24, scale: 0.6 }}, {{ opacity: 1, y: -6, scale: 1, duration: 0.3, ease: "back.out(1.8)" }}, {tick} + 0.18);
+    tl.to(P + "-xp", {{ opacity: 0, y: -30, duration: 0.25, ease: "power2.in" }}, {tick} + 0.85);{lvl_js}
+    // out: one clean move left
+    tl.to(P + "-card", {{ x: -80, opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power3.in" }}, {exit});
+    window.__timelines["{p}"] = tl;
+  </script>
+</template>
+"""
+
+LVL_HTML = '\n      <div id="{p}-lvl">LEVEL UP!</div>'
+LVL_JS = """
+    // level up: a badge slams out under the card
+    tl.fromTo(P + "-lvl", {{ opacity: 0, scale: 1.6, rotation: -2 }}, {{ opacity: 1, scale: 1, rotation: -3, duration: 0.18, ease: "back.out(2.4)" }}, {lvl});"""
+
+for pid, num, title, top, tick, exit_, lvl in QUESTS:
+    words = " ".join(f'<span class="w">{html.escape(w)}</span>' for w in title.split())
+    out = TEMPLATE.format(
+        p=pid,
+        num=num,
+        top=top,
+        words=words,
+        tick=tick,
+        exit=exit_,
+        reward_html="" if lvl else f'<div id="{pid}-reward">Reward: +10 XP</div>',
+        reward_js="" if lvl else 'tl.fromTo(P + "-reward", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.5);',
+        lvl_html=LVL_HTML.format(p=pid) if lvl else "",
+        lvl_js=LVL_JS.format(lvl=lvl) if lvl else "",
+    )
+    (ROOT / "compositions" / f"{pid}.html").write_text(out)
+    print(f"{pid}: tick {tick}s, exit {exit_}s{', level-up ' + str(lvl) + 's' if lvl else ''}")

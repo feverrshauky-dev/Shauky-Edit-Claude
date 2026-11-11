@@ -1,0 +1,102 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    /* Hazard-tape wipe: a yellow slab with tape edges sweeps right to left and covers each cut for a frame. */
+    .wipe {
+      position: absolute;
+      left: 0;
+      top: -200px;
+      width: 2600px;
+      height: 2320px;
+      background: #ffd400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wipe-edge {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 90px;
+      background: repeating-linear-gradient(45deg, #0b0b0b 0 34px, #ffd400 34px 68px);
+    }
+    .wipe-edge.l {
+      left: 0;
+    }
+    .wipe-edge.r {
+      right: 0;
+    }
+    .wipe-text {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 110px;
+      line-height: 0.95;
+      text-align: center;
+      color: #0b0b0b;
+      white-space: nowrap;
+    }
+    .star {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      opacity: 0;
+    }
+    #sweat {
+      position: absolute;
+      left: 842px;
+      top: 752px;
+      width: 46px;
+      height: 66px;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1080" data-height="1920">
+    <div class="wipe" id="wipe-1" data-layout-ignore>
+      <div class="wipe-edge l"></div>
+      <div class="wipe-text">SIDE QUEST<br />SETERUSNYA</div>
+      <div class="wipe-edge r"></div>
+    </div>
+    <div class="wipe" id="wipe-2" data-layout-ignore>
+      <div class="wipe-edge l"></div>
+      <div class="wipe-text">AWAS!<br />LANTAI BASAH</div>
+      <div class="wipe-edge r"></div>
+    </div>
+
+    <!-- shine on the rear glass he just wiped (shot 2, his face is right of x 700) -->
+    <svg class="star" id="star-1" viewBox="0 0 40 40" style="left: 104px; top: 884px"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z" fill="#ffffff" /></svg>
+    <svg class="star" id="star-2" viewBox="0 0 40 40" style="left: 300px; top: 852px; width: 96px; height: 96px"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z" fill="#fff6c2" /></svg>
+    <svg class="star" id="star-3" viewBox="0 0 40 40" style="left: 498px; top: 930px"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z" fill="#ffffff" /></svg>
+    <svg class="star" id="star-4" viewBox="0 0 40 40" style="left: 214px; top: 978px; width: 52px; height: 52px"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z" fill="#fff6c2" /></svg>
+
+    <!-- second facepalm: a comic sweat drop off the side of his head -->
+    <svg id="sweat" viewBox="0 0 46 66"><path d="M23 2 C23 2 4 30 4 43 C4 55 12 63 23 63 C34 63 42 55 42 43 C42 30 23 2 23 2Z" fill="#7fd3ff" stroke="#0b0b0b" stroke-width="4" /><ellipse cx="16" cy="44" rx="4" ry="7" fill="#ffffff" opacity="0.8" /></svg>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // Wipes: a 2600 px slab skewed 12 deg travels 1326 -> -2846 px. It covers the whole frame
+    // while x is in [-1274, -246] (about 4 frames at sine.inOut); the midpoint (-760) sits on the cut.
+    [
+      ["#wipe-1", 6.667],
+      ["#wipe-2", 13.967],
+    ].forEach(([sel, cut]) => {
+      tl.set(sel, { skewX: -12 }, 0);
+      tl.fromTo(sel, { x: 1326 }, { x: -2846, duration: 0.75, ease: "sine.inOut", immediateRender: true }, cut - 0.375);
+    });
+    // shine: stars pop on the glass one after another, then fade
+    ["#star-1", "#star-2", "#star-3", "#star-4"].forEach((sel, i) => {
+      const t = 10.42 + i * 0.13;
+      tl.fromTo(sel, { opacity: 0, scale: 0, rotation: -30 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.22, ease: "back.out(2.6)" }, t);
+      tl.to(sel, { opacity: 0, scale: 0.4, rotation: 25, duration: 0.25, ease: "power2.in" }, 11.55 + i * 0.06);
+    });
+    // sweat drop: appears, slides down the temple, gone before the cut
+    tl.fromTo("#sweat", { opacity: 0, y: -10, scale: 0.5 }, { opacity: 1, y: 0, scale: 1, duration: 0.2, ease: "back.out(2)" }, 12.25);
+    tl.to("#sweat", { y: 46, duration: 0.8, ease: "power2.in" }, 12.5);
+    tl.to("#sweat", { opacity: 0, duration: 0.15 }, 13.2);
+    window.__timelines["fx"] = tl;
+  </script>
+</template>

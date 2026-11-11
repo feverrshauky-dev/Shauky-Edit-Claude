@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ms" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      /* "Side Quest" look: hazard yellow + ink black arcade HUD, serif lyric line. */
+      :root {
+        --ground: #0b0b0b;
+        --hazard: #ffd400;
+        --ink: #0b0b0b;
+        --alarm: #ff2e2e;
+        --paper: #ffffff;
+        --font-display: "Archivo Black", sans-serif;
+        --font-hud: "Space Mono", monospace;
+        --font-lyric: "Playfair Display", serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #cam {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+      #aroll,
+      #hold {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="21.8" data-width="1080" data-height="1920">
+      <!-- A-roll: the skit as shot, song kept as its own soundtrack. Punch-ins live on #cam. -->
+      <div id="cam">
+        <video id="aroll" class="clip" src="assets/aroll.mp4" data-start="0" data-duration="20.3" data-track-index="0" data-has-audio="true" data-volume="1" data-fade-out="0.2" playsinline></video>
+        <!-- after the song: the last frame holds in silence for the punchline -->
+        <img id="hold" class="clip" src="assets/last-frame.jpg" alt="" data-start="20.3" data-duration="1.5" data-track-index="0" />
+      </div>
+
+      <!-- Graphics, one scene per beat -->
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="2.4" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="quest1" data-composition-id="quest1" data-composition-src="compositions/quest1.html" data-start="2.3" data-duration="4.3" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="quest2" data-composition-id="quest2" data-composition-src="compositions/quest2.html" data-start="7.75" data-duration="6.1" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="quest3" data-composition-id="quest3" data-composition-src="compositions/quest3.html" data-start="14.45" data-duration="4.05" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="hud" data-composition-id="hud" data-composition-src="compositions/hud.html" data-start="1.4" data-duration="20.4" data-track-index="4" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 12"></div>
+      <div id="fx" data-composition-id="fx" data-composition-src="compositions/fx.html" data-start="0" data-duration="21.8" data-track-index="5" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 14"></div>
+
+      <!-- Karaoke lyric line (scripts/build_lyrics.py) -->
+      <div id="lyrics" data-composition-id="lyrics" data-composition-src="compositions/lyrics.html" data-start="0" data-duration="20.3" data-track-index="6" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index: 11"></div>
+
+      <!-- Sound effects: each peak lands one frame after its picture -->
+      <!-- hook: the job-title reel ticks, then stamps on TUKANG SAPU -->
+      <audio id="sfx-reel-1" class="clip" src="assets/sfx/tick.mp3" data-start="0.49" data-duration="0.2" data-track-index="7" data-volume="0.3"></audio>
+      <audio id="sfx-reel-2" class="clip" src="assets/sfx/tick.mp3" data-start="0.63" data-duration="0.2" data-track-index="8" data-volume="0.3"></audio>
+      <audio id="sfx-reel-3" class="clip" src="assets/sfx/tick.mp3" data-start="0.76" data-duration="0.2" data-track-index="7" data-volume="0.3"></audio>
+      <audio id="sfx-reel-4" class="clip" src="assets/sfx/tick.mp3" data-start="0.89" data-duration="0.2" data-track-index="8" data-volume="0.3"></audio>
+      <audio id="sfx-reel-5" class="clip" src="assets/sfx/tick.mp3" data-start="1.02" data-duration="0.2" data-track-index="7" data-volume="0.3"></audio>
+      <audio id="sfx-stamp" class="clip" src="assets/sfx/stamp.mp3" data-start="1.13" data-duration="0.6" data-track-index="9" data-volume="0.75"></audio>
+      <audio id="sfx-hud-in" class="clip" src="assets/sfx/swoosh-soft.mp3" data-start="1.42" data-duration="0.5" data-track-index="10" data-volume="0.28"></audio>
+      <!-- quest 1 -->
+      <audio id="sfx-q1-in" class="clip" src="assets/sfx/quest-chime.mp3" data-start="2.33" data-duration="0.9" data-track-index="8" data-volume="0.2" data-fade-out="0.15"></audio>
+      <audio id="sfx-q1-done" class="clip" src="assets/sfx/task-done.mp3" data-start="5.59" data-duration="0.34" data-track-index="9" data-volume="0.45"></audio>
+      <audio id="sfx-q1-xp" class="clip" src="assets/sfx/coin.mp3" data-start="5.78" data-duration="0.3" data-track-index="10" data-volume="0.3"></audio>
+      <!-- cut 1: the hazard-tape wipe -->
+      <audio id="sfx-wipe-1" class="clip" src="assets/sfx/whoosh-stick.mp3" data-start="6.65" data-duration="0.37" data-track-index="7" data-volume="0.5"></audio>
+      <!-- quest 2 -->
+      <audio id="sfx-q2-in" class="clip" src="assets/sfx/quest-chime.mp3" data-start="7.78" data-duration="0.9" data-track-index="8" data-volume="0.18" data-fade-out="0.15"></audio>
+      <audio id="sfx-shine" class="clip" src="assets/sfx/sparkle.mp3" data-start="10.38" data-duration="2.2" data-track-index="9" data-volume="0.26" data-fade-out="0.5"></audio>
+      <audio id="sfx-q2-done" class="clip" src="assets/sfx/task-done.mp3" data-start="11.39" data-duration="0.34" data-track-index="10" data-volume="0.45"></audio>
+      <audio id="sfx-q2-xp" class="clip" src="assets/sfx/coin.mp3" data-start="11.58" data-duration="0.3" data-track-index="7" data-volume="0.3"></audio>
+      <!-- cut 2: the wet-floor tape wipe -->
+      <audio id="sfx-wipe-2" class="clip" src="assets/sfx/swoosh-soft.mp3" data-start="13.93" data-duration="0.5" data-track-index="8" data-volume="0.45"></audio>
+      <!-- quest 3, level up, and the empty showroom -->
+      <audio id="sfx-q3-in" class="clip" src="assets/sfx/quest-chime.mp3" data-start="14.48" data-duration="0.9" data-track-index="9" data-volume="0.18" data-fade-out="0.15"></audio>
+      <audio id="sfx-q3-done" class="clip" src="assets/sfx/task-done.mp3" data-start="17.19" data-duration="0.34" data-track-index="10" data-volume="0.45"></audio>
+      <audio id="sfx-q3-xp" class="clip" src="assets/sfx/coin.mp3" data-start="17.38" data-duration="0.3" data-track-index="7" data-volume="0.3"></audio>
+      <audio id="sfx-levelup" class="clip" src="assets/sfx/level-up.mp3" data-start="17.7" data-duration="1.1" data-track-index="8" data-volume="0.4"></audio>
+      <audio id="sfx-outro" class="clip" src="assets/sfx/whoosh-stick.mp3" data-start="18.44" data-duration="0.37" data-track-index="9" data-volume="0.35"></audio>
+      <audio id="sfx-crickets" class="clip" src="assets/sfx/crickets.mp3" data-start="18.6" data-media-start="4.0" data-duration="3.2" data-track-index="10" data-volume="0.5" data-fade-in="0.3" data-fade-out="0.4"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Camera: hard punch-ins on the beats, origin on each take's face so it never leaves frame.
+      // [time, scale, transformOrigin]
+      const CAM = [
+        [0, 1.0, "74% 64%"], //   shot 1: sweeper, face low right
+        [4.55, 1.16], //           "Tuhan"
+        [6.67, 1.0, "64% 46%"], // shot 2: car wiper, face mid
+        [7.15, 1.14], //           hand to head
+        [8.4, 1.0],
+        [12.1, 1.22, "62% 46%"], // second facepalm
+        [13.97, 1.0, "50% 51%"], // shot 3: mopping in the showroom
+        [16.69, 1.1], //           "jangan"
+      ];
+      CAM.forEach(([t, s, origin]) => {
+        const v = { scale: s };
+        if (origin) v.transformOrigin = origin;
+        tl.set("#cam", v, t);
+      });
+      // reel lands on TUKANG SAPU: a short punch
+      tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.08, duration: 0.16, ease: "expo.out", immediateRender: false }, 1.18);
+      // each take arrives slightly large and settles behind the tape wipe
+      [6.67, 13.97].forEach((t) => {
+        tl.fromTo("#cam", { scale: 1.1 }, { scale: 1.0, duration: 0.5, ease: "expo.out", immediateRender: false }, t);
+      });
+      // outro: ease back to the full showroom so the empty floor reads
+      tl.to("#cam", { scale: 1.0, duration: 0.6, ease: "power2.inOut" }, 18.4);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

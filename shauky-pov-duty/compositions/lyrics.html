@@ -1,0 +1,91 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .ln {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 706px;
+      padding: 0 48px;
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      overflow: visible;
+    }
+    .ln-center {
+      justify-content: center;
+    }
+    .ln-left {
+      justify-content: flex-start;
+    }
+    .ln-center .ln-in {
+      max-width: 984px;
+    }
+    .ln-in {
+      display: inline-flex;
+      align-items: center;
+      gap: 0 12px;
+      max-width: 640px;
+      padding: 6px 20px 10px 16px;
+      border-radius: 999px;
+      background: rgba(11, 11, 11, 0.5);
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+    .note {
+      width: 30px;
+      height: 30px;
+      flex: none;
+    }
+    .lw {
+      display: inline-block;
+      color: rgba(255, 255, 255, 0.62);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+  <div id="root" data-composition-id="lyrics" data-width="1080" data-height="1920">
+    <div class="ln ln-center" id="ly-l0"><div class="ln-in"><svg class="note" viewBox="0 0 24 24"><path d="M9 3 L21 1 L21 15.5 A3.5 3.5 0 1 1 19 12.4 L19 6.2 L11 7.6 L11 18.5 A3.5 3.5 0 1 1 9 15.4 Z" fill="#ffd400"/></svg><span class="lw" id="ly-w0">Kuatkan</span> <span class="lw" id="ly-w1">aku,</span> <span class="lw" id="ly-w2">ya</span> <span class="lw" id="ly-w3">Tuhan</span></div></div>
+    <div class="ln ln-left" id="ly-l1"><div class="ln-in"><svg class="note" viewBox="0 0 24 24"><path d="M9 3 L21 1 L21 15.5 A3.5 3.5 0 1 1 19 12.4 L19 6.2 L11 7.6 L11 18.5 A3.5 3.5 0 1 1 9 15.4 Z" fill="#ffd400"/></svg><span class="lw" id="ly-w4">Di</span> <span class="lw" id="ly-w5">dalam</span> <span class="lw" id="ly-w6">setiap</span> <span class="lw" id="ly-w7">perjalanan</span></div></div>
+    <div class="ln ln-center" id="ly-l2"><div class="ln-in"><svg class="note" viewBox="0 0 24 24"><path d="M9 3 L21 1 L21 15.5 A3.5 3.5 0 1 1 19 12.4 L19 6.2 L11 7.6 L11 18.5 A3.5 3.5 0 1 1 9 15.4 Z" fill="#ffd400"/></svg><span class="lw" id="ly-w8">Pegang</span> <span class="lw" id="ly-w9">tanganku,</span> <span class="lw" id="ly-w10">jangan</span> <span class="lw" id="ly-w11">lepaskan</span></div></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    function line(sel, show, hide) {
+      tl.set(sel, { visibility: "visible" }, show);
+      tl.fromTo(sel, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power2.out" }, show);
+      if (hide < 20.3) {
+        tl.to(sel, { opacity: 0, filter: "blur(8px)", duration: 0.14, ease: "power2.in" }, hide - 0.14);
+        tl.set(sel, { opacity: 0, visibility: "hidden" }, hide);
+      }
+    }
+    function word(sel, t) {
+      tl.fromTo(sel, { color: "rgba(255,255,255,0.62)", scale: 1 }, { color: "#ffd400", scale: 1.08, duration: 0.12, ease: "power2.out" }, t);
+      tl.to(sel, { scale: 1, duration: 0.25, ease: "power2.out" }, t + 0.12);
+    }
+    word("#ly-w0", 2.30);
+    word("#ly-w1", 2.30);
+    word("#ly-w2", 3.90);
+    word("#ly-w3", 4.55);
+    line("#ly-l0", 2.30, 6.60);
+    word("#ly-w4", 6.78);
+    word("#ly-w5", 6.81);
+    word("#ly-w6", 8.33);
+    word("#ly-w7", 10.14);
+    line("#ly-l1", 6.78, 13.90);
+    word("#ly-w8", 14.08);
+    word("#ly-w9", 14.48);
+    word("#ly-w10", 16.69);
+    word("#ly-w11", 18.19);
+    line("#ly-l2", 14.08, 20.28);
+    window.__timelines["lyrics"] = tl;
+  </script>
+</template>

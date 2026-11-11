@@ -1,0 +1,174 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #hud-panel {
+      position: absolute;
+      left: 682px;
+      top: 180px;
+      width: 350px;
+      padding: 14px 16px 16px;
+      border-radius: 18px;
+      border: 4px solid #ffd400;
+      background: rgba(11, 11, 11, 0.9);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      transform-origin: 50% 50%;
+    }
+    #hud-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0;
+      color: #ffffff;
+    }
+    #hud-dot {
+      flex: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #ff2e2e;
+    }
+    #hud-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-top: 4px;
+    }
+    #hud-count {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 84px;
+      line-height: 1;
+      color: #ff2e2e;
+      min-width: 64px;
+      text-align: center;
+    }
+    #hud-xp {
+      flex: 1;
+    }
+    #hud-xp-top {
+      display: flex;
+      justify-content: space-between;
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 28px;
+      color: #ffd400;
+    }
+    #hud-lv {
+      position: relative;
+      display: inline-block;
+      height: 34px;
+      overflow: hidden;
+    }
+    #hud-lv span {
+      display: block;
+      height: 34px;
+      line-height: 34px;
+    }
+    #hud-bar {
+      position: relative;
+      margin-top: 8px;
+      height: 22px;
+      border-radius: 11px;
+      background: rgba(255, 255, 255, 0.18);
+      overflow: hidden;
+    }
+    #hud-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      background: #ffd400;
+      transform-origin: 0% 50%;
+    }
+    #hud-outro {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 512px;
+      display: flex;
+      justify-content: center;
+    }
+    #hud-outro-in {
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 32px;
+      color: #0b0b0b;
+      background: #ffd400;
+      border-radius: 10px;
+      padding: 6px 18px 8px;
+      opacity: 0;
+    }
+    .krik {
+      position: absolute;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 40px;
+      color: #ffffff;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+    }
+    #krik-1 {
+      left: 150px;
+      top: 196px;
+    }
+    #krik-2 {
+      left: 760px;
+      top: 188px;
+    }
+  </style>
+  <div id="root" data-composition-id="hud" data-width="1080" data-height="1920">
+    <div id="hud-panel" data-layout-allow-overflow>
+      <div id="hud-label"><span id="hud-dot"></span><span>CUSTOMER HARI NI</span></div>
+      <div id="hud-row">
+        <div id="hud-count">0</div>
+        <div id="hud-xp">
+          <div id="hud-xp-top"><span>XP</span><span id="hud-lv"><span>LV 1</span><span>LV 2</span></span></div>
+          <div id="hud-bar"><div id="hud-fill"></div></div>
+        </div>
+      </div>
+    </div>
+    <div id="hud-outro"><div id="hud-outro-in">Showroom dah berkilat. Jom singgah!</div></div>
+    <div class="krik" id="krik-1">krik...</div>
+    <div class="krik" id="krik-2">krik...</div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.set("#hud-fill", { scaleX: 0 }, 0);
+    tl.set("#hud-count", { x: 0, scale: 1 }, 0);
+    // Local clock: host starts at 1.4 s. Global -> local: subtract 1.4.
+    tl.fromTo("#hud-panel", { x: 70, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "expo.out" }, 0.02);
+    // XP fills on each quest's coin (5.78, 11.58, 17.38 global)
+    const XP = [
+      [4.38, 0.34],
+      [10.18, 0.67],
+      [15.98, 1.0],
+    ];
+    XP.forEach(([t, v], i) => {
+      tl.fromTo("#hud-fill", { scaleX: i === 0 ? 0 : XP[i - 1][1] }, { scaleX: v, duration: 0.35, ease: "power3.out" }, t);
+    });
+    // level up (17.75 global): LV 1 rolls to LV 2, bar empties for the next level
+    tl.fromTo("#hud-lv span", { y: 0 }, { y: -34, duration: 0.2, ease: "back.out(2)" }, 16.35);
+    tl.fromTo("#hud-fill", { scaleX: 1 }, { scaleX: 0.04, duration: 0.3, ease: "power2.inOut" }, 16.5);
+    // the customer count never moves: when XP lands, the zero flinches
+    [4.5, 10.3].forEach((t) => {
+      tl.fromTo("#hud-count", { x: 0 }, { x: -6, duration: 0.05, ease: "none", yoyo: true, repeat: 3 }, t);
+    });
+    // outro (18.45 global): the HUD itself becomes the punchline, centre stage
+    tl.to("#hud-panel", { x: -317, y: 110, scale: 1.6, duration: 0.5, ease: "power3.inOut" }, 17.05);
+    tl.fromTo("#hud-count", { scale: 1 }, { scale: 1.25, duration: 0.18, ease: "back.out(3)" }, 17.5);
+    tl.fromTo("#hud-outro-in", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 17.6);
+    tl.fromTo("#krik-1", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, 17.4);
+    tl.fromTo("#krik-2", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, 17.95);
+    window.__timelines["hud"] = tl;
+  </script>
+</template>

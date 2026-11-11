@@ -1,0 +1,112 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #hook-wrap {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 752px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    #hook-label {
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      background: #0b0b0b;
+      padding: 8px 20px 10px;
+      border-radius: 6px;
+    }
+    #hook-window {
+      position: relative;
+      width: 880px;
+      height: 132px;
+      overflow: hidden;
+      background: #ffd400;
+      border: 6px solid #0b0b0b;
+      border-radius: 14px;
+      box-shadow: 0 14px 0 #0b0b0b, 0 22px 40px rgba(0, 0, 0, 0.35);
+    }
+    #hook-strip {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+    .reel-item {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 80px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: #0b0b0b;
+      white-space: nowrap;
+    }
+    #hook-stamp {
+      position: absolute;
+      right: 74px;
+      top: 40px;
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: 0.12em;
+      color: #d0101a;
+      border: 5px solid #d0101a;
+      border-radius: 8px;
+      padding: 2px 14px 4px;
+      background: #ffffff;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-wrap" data-layout-allow-overflow>
+      <div id="hook-label">JAWATAN AKU HARI NI:</div>
+      <div id="hook-window">
+        <div id="hook-strip">
+          <div class="reel-item">SALES ADVISOR</div>
+          <div class="reel-item">MANAGER</div>
+          <div class="reel-item">CASHIER</div>
+          <div class="reel-item">DRIVER</div>
+          <div class="reel-item">JAGA PARKING</div>
+          <div class="reel-item">TUKANG LAP</div>
+          <div class="reel-item">TUKANG SAPU</div>
+        </div>
+      </div>
+      <div id="hook-stamp">SAH!</div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const ROW = 120;
+    // Window is 132 tall with a 6 px border: centre a 120 px row inside.
+    tl.set("#hook-strip", { y: 0 }, 0);
+    // frame 0 already reads "SALES ADVISOR"; it settles in place
+    tl.fromTo("#hook-window", { scale: 1.04 }, { scale: 1, duration: 0.35, ease: "expo.out" }, 0);
+    // the reel: each roll arrives on its tick, fast with a smear, the last one lands with overshoot
+    const ARRIVE = [0.5, 0.64, 0.77, 0.9, 1.03];
+    tl.fromTo("#hook-strip", { filter: "blur(0px)" }, { filter: "blur(3px)", duration: 0.05 }, 0.41);
+    ARRIVE.forEach((t, i) => {
+      tl.to("#hook-strip", { y: -(i + 1) * ROW, duration: 0.09, ease: "none" }, t - 0.09);
+    });
+    tl.to("#hook-strip", { y: -6 * ROW, duration: 0.15, ease: "back.out(2.2)" }, 1.03);
+    tl.to("#hook-strip", { filter: "blur(0px)", duration: 0.08 }, 1.1);
+    // the stamp slams on the landing
+    tl.fromTo("#hook-stamp", { opacity: 0, scale: 1.9, rotation: -4 }, { opacity: 1, scale: 1, rotation: -9, duration: 0.14, ease: "power4.in" }, 1.04);
+    tl.fromTo("#hook-window", { x: 0 }, { x: 8, duration: 0.04, ease: "none", yoyo: true, repeat: 3 }, 1.18);
+    // leave: blur out with the line
+    tl.to("#hook-wrap", { opacity: 0, filter: "blur(10px)", y: -20, duration: 0.2, ease: "power3.in" }, 2.08);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>
