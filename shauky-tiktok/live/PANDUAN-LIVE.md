@@ -106,3 +106,26 @@ Jangan janji harga atau rebate yang tiada dalam poster rasmi.
 node tools/render_video_frames.js overlay.html <folder-frame> 30 30
 ffmpeg -framerate 30 -i <folder-frame>/f%04d.png -c:v libx264 -pix_fmt yuv420p -crf 20 video/latar-green-screen-bergerak.mp4
 ```
+
+---
+
+# Versi Eksklusif (hitam & emas)
+
+Rekaan premium: kiri kosong untuk muka kau, kanan untuk maklumat rebate.
+
+| Fail | Guna untuk |
+|---|---|
+| `png/eksklusif/0-umum.png` … `5-myvi.png` | 6 gambar latar Green Screen untuk telefon: satu umum dan satu untuk setiap model |
+| `eksklusif.html` | Versi bergerak untuk PC atau skrin kedua: bertukar sendiri setiap 9 saat, dengan kilauan emas |
+
+**Telefon (Green Screen):**
+1. Simpan keenam-enam gambar dari `png/eksklusif/` ke galeri.
+2. LIVE → **Effects → Green Screen** → pilih `0-umum`.
+3. Duduk di **sebelah kiri** frame kamera, supaya badan kau berada dalam ruang gelap di kiri dan tak menutup tulisan di kanan.
+4. Tukar ke gambar model bila cerita pasal model tu.
+
+**PC / skrin kedua (`eksklusif.html`):**
+- `?overlay=1`: kiri lutsinar, untuk letak atas kamera dalam OBS atau LIVE Studio
+- `?preview=1`: tunjuk garis "MUKA KAU DI SINI"
+- `?view=ativa`: kunci satu paparan
+- Kekunci: `0` umum · `1` Ativa · `2` Axia · `3` Bezza · `4` Aruz · `5` Myvi · `A` auto. Sentuh atau klik bahagian kanan untuk paparan seterusnya.

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Eksklusif</title>
+<style>
+  @font-face { font-family: "Playfair"; src: url(assets/fonts/playfair-normal.woff2) format("woff2"); font-weight: 400 900; font-style: normal; }
+  @font-face { font-family: "Playfair"; src: url(assets/fonts/playfair-italic.woff2) format("woff2"); font-weight: 400 900; font-style: italic; }
+  @font-face { font-family: "Montserrat"; src: url(assets/fonts/montserrat-normal.woff2) format("woff2"); font-weight: 100 900; }
+
+  :root {
+    --bg: #09090b;
+    --bg-2: #141317;
+    --gold: #d6b26a;
+    --gold-hi: #f5e2ae;
+    --gold-lo: #9c7432;
+    --ivory: #f4efe6;
+    --muted: #a49d90;
+    --line: rgba(214, 178, 106, .45);
+    --goldtext: linear-gradient(100deg, #9c7432 0%, #e9cd8a 22%, #fff3cc 38%, #d6b26a 52%, #f5e2ae 68%, #9c7432 100%);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+  body.overlay { background: transparent; }
+
+  #stage { position: absolute; left: 50%; top: 50%; width: 1080px; height: 1920px; transform-origin: 50% 50%;
+    font-family: Montserrat, sans-serif; color: var(--ivory); overflow: hidden; }
+
+  /* ---------- background ---------- */
+  #bg { position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 46% 34% at 26% 46%, rgba(255, 240, 210, .10), transparent 70%),
+      radial-gradient(ellipse 60% 45% at 85% 30%, rgba(214, 178, 106, .16), transparent 70%),
+      radial-gradient(ellipse 80% 50% at 80% 100%, rgba(214, 178, 106, .10), transparent 70%),
+      linear-gradient(180deg, #0d0c10 0%, var(--bg) 55%, #050506 100%); }
+  #bg::before { content: ""; position: absolute; inset: 0; opacity: .5;
+    background: repeating-linear-gradient(115deg, transparent 0 140px, rgba(214,178,106,.05) 140px 141px); }
+  body.overlay #bg { background: linear-gradient(90deg, transparent 0 470px, rgba(9,9,11,.82) 560px, rgba(9,9,11,.94) 100%); }
+  body.overlay #bg::before { display: none; }
+
+  /* thin gold frame */
+  #frame { position: absolute; inset: 22px; border: 1.5px solid var(--line); border-radius: 6px; pointer-events: none; }
+  #frame i { position: absolute; width: 34px; height: 34px; border: 3px solid var(--gold); }
+  #frame i:nth-child(1) { left: -6px; top: -6px; border-right: 0; border-bottom: 0; }
+  #frame i:nth-child(2) { right: -6px; top: -6px; border-left: 0; border-bottom: 0; }
+  #frame i:nth-child(3) { left: -6px; bottom: -6px; border-right: 0; border-top: 0; }
+  #frame i:nth-child(4) { right: -6px; bottom: -6px; border-left: 0; border-top: 0; }
+  body.overlay #frame { display: none; }
+
+  /* divider between face zone and content */
+  #split { position: absolute; left: 532px; top: 170px; bottom: 170px; width: 1.5px;
+    background: linear-gradient(180deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent); opacity: .55; }
+  #split::after { content: ""; position: absolute; left: -7px; top: 50%; width: 15px; height: 15px; background: var(--gold);
+    transform: translateY(-50%) rotate(45deg); box-shadow: 0 0 18px rgba(245,226,174,.7); }
+
+  /* ---------- right column ---------- */
+  #col { position: absolute; left: 572px; right: 50px; top: 0; bottom: 0; }
+  .view { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease, transform .9s ease; transform: translateY(18px); }
+  .view.on { opacity: 1; transform: none; }
+
+  .eyebrow { position: absolute; top: 168px; left: 0; right: 0; font: 600 17px Montserrat; letter-spacing: .38em; color: var(--gold); }
+  .eyebrow b { color: var(--ivory); font-weight: 600; }
+
+  .amt, .rm, .menu .r span { font-variant-numeric: lining-nums; white-space: nowrap; left: 0; right: 0; }
+  .gold { background: var(--goldtext); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: sheen 6s ease-in-out infinite; }
+  @keyframes sheen { 0%, 100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
+  body.static .gold { animation: none; background-position: 30% 0; }
+
+  .rule { display: flex; align-items: center; gap: 14px; color: var(--gold); }
+  .rule::before, .rule::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .rule span { width: 9px; height: 9px; background: var(--gold); transform: rotate(45deg); }
+
+  .label { font: 600 18px Montserrat; letter-spacing: .32em; color: var(--muted); text-transform: uppercase; }
+
+  /* overview */
+  #v-umum .t1 { position: absolute; top: 214px; font: italic 500 66px/1 Playfair; color: var(--ivory); }
+  #v-umum .t2 { position: absolute; top: 284px; font: 700 70px/1.02 Playfair; letter-spacing: .01em; }
+  #v-umum .upto { position: absolute; top: 470px; }
+  #v-umum .amt { position: absolute; top: 500px; font: 800 130px/1.1 Playfair; letter-spacing: -.01em; }
+  #v-umum .rule { position: absolute; top: 676px; left: 0; right: 0; }
+  #list { position: absolute; top: 718px; left: 0; right: 0; display: grid; gap: 14px; }
+  .item { display: grid; grid-template-columns: 128px 1fr auto; align-items: center; gap: 18px; padding: 10px 14px 10px 10px;
+    border: 1px solid rgba(214,178,106,.28); border-radius: 14px; background: linear-gradient(90deg, rgba(255,255,255,.045), rgba(255,255,255,.015)); }
+  .item img { width: 128px; height: 80px; object-fit: cover; border-radius: 9px; display: block; }
+  .item .nm { font: 600 40px/1 Playfair; color: var(--ivory); }
+  .item .nm small { display: block; font: 600 13px Montserrat; letter-spacing: .26em; color: var(--muted); margin-top: 8px; }
+  .item .rm { font: 700 42px/1 Playfair; text-align: right; }
+
+  /* model view */
+  .mv .name { position: absolute; top: 204px; font: italic 600 112px/1 Playfair; }
+  .mv .arch { position: absolute; top: 352px; left: 10px; right: 10px; height: 480px; }
+  .mv .arch::before { content: ""; position: absolute; inset: -14px -14px 14px 14px; border: 1.5px solid var(--gold);
+    border-radius: 230px 230px 14px 14px; opacity: .7; }
+  .mv .arch .ph { position: absolute; inset: 0; border-radius: 230px 230px 14px 14px; overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0,0,0,.6); background: #1b1a1f; }
+  .mv .arch img { width: 100%; height: 100%; object-fit: cover; object-position: 42% 65%; display: block; }
+  .mv .arch .ph::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 62%, rgba(9,9,11,.55)); }
+  .mv .upto { position: absolute; top: 872px; }
+  .mv .amt { position: absolute; top: 900px; font: 800 120px/1.1 Playfair; }
+  .menu { position: absolute; top: 1050px; left: 0; right: 0; display: grid; gap: 4px; }
+  .menu .r { display: flex; align-items: baseline; gap: 12px; padding: 8px 2px; }
+  .menu .r b { font: 600 26px Montserrat; letter-spacing: .08em; color: var(--ivory); white-space: nowrap; }
+  .menu .r i { flex: 1; border-bottom: 2px dotted rgba(214,178,106,.5); transform: translateY(-6px); }
+  .menu .r span { font: 700 38px/1 Playfair; color: var(--gold-hi); }
+  .menu .r.top b::after { content: "TERTINGGI"; margin-left: 12px; font: 700 12px Montserrat; letter-spacing: .2em;
+    color: var(--bg); background: var(--gold); padding: 4px 8px; border-radius: 3px; vertical-align: middle; }
+  .menu .note { font: italic 400 30px/1.35 Playfair; color: var(--muted); padding-top: 6px; }
+
+  /* consult box (shared) */
+  #consult { position: absolute; left: 572px; right: 50px; top: 1458px; text-align: center; padding: 26px 20px 24px;
+    border: 1.5px solid var(--gold); border-radius: 6px; background: linear-gradient(180deg, rgba(214,178,106,.12), rgba(214,178,106,.03)); }
+  #consult::before { content: "PRIVATE CONSULTATION"; position: absolute; left: 50%; top: -12px; transform: translateX(-50%);
+    background: var(--bg); padding: 0 14px; font: 600 15px Montserrat; letter-spacing: .32em; color: var(--gold); white-space: nowrap; }
+  body.overlay #consult::before { background: #0e0d10; }
+  #consult .c1 { font: italic 500 31px/1.15 Playfair; color: var(--ivory); }
+  #consult .c2 { margin-top: 12px; font: 700 25px Montserrat; letter-spacing: .1em; white-space: nowrap; }
+  #consult .c3 { margin-top: 10px; font: 500 16px Montserrat; letter-spacing: .2em; color: var(--muted); }
+
+  #terms { position: absolute; left: 572px; right: 50px; top: 1690px; text-align: center; font: 500 14px/1.5 Montserrat;
+    color: rgba(244,239,230,.55); letter-spacing: .04em; }
+
+  /* sparkles */
+  .spark { position: absolute; width: 6px; height: 6px; background: var(--gold-hi); transform: rotate(45deg);
+    box-shadow: 0 0 12px 3px rgba(245,226,174,.6); opacity: 0; animation: tw 4s ease-in-out infinite; }
+  @keyframes tw { 0%, 100% { opacity: 0; transform: rotate(45deg) scale(.4); } 50% { opacity: .9; transform: rotate(45deg) scale(1); } }
+  body.static .spark { animation: none; opacity: .55; }
+
+  /* preview helper for the empty face zone */
+  body.preview #face { display: grid; }
+  #face { display: none; position: absolute; left: 60px; top: 520px; width: 440px; height: 760px; place-items: center;
+    border: 2px dashed rgba(244,239,230,.25); border-radius: 220px 220px 30px 30px; font: 600 20px Montserrat; letter-spacing: .3em; color: rgba(244,239,230,.35); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="frame"><i></i><i></i><i></i><i></i></div>
+  <div id="split"></div>
+  <div id="face">MUKA KAU DI SINI</div>
+
+  <div id="col">
+    <div class="view" id="v-umum">
+      <div class="eyebrow">PROMOSI <b>AKHIR TAHUN</b> · 2026</div>
+      <div class="t1">Year-End</div>
+      <div class="t2 gold">Rebate<br>Eksklusif</div>
+      <div class="label upto">Sehingga</div>
+      <div class="amt gold">RM7,500</div>
+      <div class="rule"><span></span></div>
+      <div id="list"></div>
+    </div>
+  </div>
+
+  <div id="consult">
+    <div class="c1">Semak stok &amp; quotation<br>secara peribadi</div>
+    <div class="c2 gold" id="consultCta">KOMEN “STOK” + MODEL</div>
+    <div class="c3">TEMPAHAN SEHINGGA 31 · 12 · 2026</div>
+  </div>
+  <div id="terms">*Untuk stok tahun 2026. Pendaftaran 1 Nov – 31 Dis 2026.<br>Tertakluk kepada terma, syarat dan ketersediaan stok.</div>
+</div>
+
+<script>
+const MODELS = [
+  { id: "ativa", name: "Ativa", pos: "12% 60%", img: "assets/cars/full-ativa.jpg", thumb: "assets/cars/ativa.jpg", rows: [["X", 6500], ["H", 7000], ["AV", 7500]] },
+  { id: "axia",  name: "Axia",  pos: "10% 60%", img: "assets/cars/full-axia.jpg",  thumb: "assets/cars/axia.jpg",  rows: [["G", 500], ["X", 3900], ["SE", 4300], ["AV", 4900]] },
+  { id: "bezza", name: "Bezza", img: "assets/cars/full-bezza.jpg", thumb: "assets/cars/bezza.jpg", rows: [["1.3 AV", 5000], ["1.3 X", 4000], ["1.0 G", 1000]] },
+  { id: "aruz",  name: "Aruz",  img: "assets/cars/full-aruz.jpg",  thumb: "assets/cars/aruz.jpg",  rows: [["Rebate", 4000]] },
+  { id: "myvi",  name: "Myvi",  pos: "6% 60%", img: "assets/cars/full-myvi.jpg",  thumb: "assets/cars/myvi.jpg",  rows: [["Rebate", 1500]] },
+];
+const VIEW_MS = 9000;
+
+const q = new URLSearchParams(location.search);
+const $ = id => document.getElementById(id);
+const rm = n => "RM" + n.toLocaleString("en-MY");
+const best = m => Math.max(...m.rows.map(r => r[1]));
+if (q.has("overlay")) document.body.classList.add("overlay");
+if (q.has("preview")) document.body.classList.add("preview");
+if (q.has("view")) document.body.classList.add("static");
+
+function fit() {
+  const s = Math.min(innerWidth / 1080, innerHeight / 1920);
+  $("stage").style.transform = `translate(-50%,-50%) scale(${s})`;
+}
+addEventListener("resize", fit); fit();
+
+// overview list
+$("list").innerHTML = MODELS.map(m => `
+  <div class="item"><img src="${m.thumb}" alt="">
+    <div class="nm">${m.name}<small>${m.rows.length > 1 ? "SEHINGGA" : "REBATE"}</small></div>
+    <div class="rm gold">${rm(best(m))}</div></div>`).join("");
+
+// one view per model
+$("col").insertAdjacentHTML("beforeend", MODELS.map(m => {
+  const top = best(m);
+  const menu = m.rows.length > 1
+    ? m.rows.map(r => `<div class="r${r[1] === top ? " top" : ""}"><b>${r[0]}</b><i></i><span>${rm(r[1])}</span></div>`).join("")
+    : `<div class="note">Pilihan varian &amp; warna terhad. Komen “STOK ${m.name.toUpperCase()}” untuk semakan peribadi.</div>`;
+  return `<div class="view mv" id="v-${m.id}">
+    <div class="eyebrow">PROMOSI <b>AKHIR TAHUN</b> · 2026</div>
+    <div class="name gold">${m.name}</div>
+    <div class="arch"><div class="ph"><img src="${m.img}" alt="" style="${m.pos ? `object-position:${m.pos}` : ""}"></div></div>
+    <div class="label upto">Rebate sehingga</div>
+    <div class="amt gold">${rm(top)}</div>
+    <div class="menu">${menu}</div>
+  </div>`;
+}).join(""));
+
+// sparkles (fixed positions so stills are repeatable)
+[[600,150,0],[1000,250,1.2],[930,700,2.4],[620,1000,.6],[1010,1180,3],[700,1420,1.8],[980,1640,.9],[560,600,2.9]].forEach(([x,y,d]) => {
+  const s = document.createElement("div"); s.className = "spark";
+  s.style.cssText = `left:${x}px;top:${y}px;animation-delay:${d}s`; $("stage").appendChild(s);
+});
+
+const ORDER = ["umum", ...MODELS.map(m => m.id)];
+let cur = 0, timer = null;
+function show(id) {
+  cur = Math.max(0, ORDER.indexOf(id));
+  document.querySelectorAll(".view").forEach(v => v.classList.toggle("on", v.id === "v-" + ORDER[cur]));
+  const m = MODELS.find(m => m.id === ORDER[cur]);
+  $("consultCta").textContent = m ? `KOMEN “STOK ${m.name.toUpperCase()}”` : "KOMEN “STOK” + MODEL";
+}
+function auto() { clearInterval(timer); timer = setInterval(() => show(ORDER[(cur + 1) % ORDER.length]), VIEW_MS); }
+
+// shrink any price that is wider than the column
+function fitAll() {
+  document.querySelectorAll(".amt").forEach(el => {
+    let fs = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth > el.clientWidth && fs > 40) { fs -= 2; el.style.fontSize = fs + "px"; }
+  });
+}
+document.fonts.ready.then(fitAll);
+
+if (q.has("view")) {
+  show(q.get("view"));
+  document.querySelectorAll(".view").forEach(v => v.style.transition = "none");
+} else { show("umum"); auto(); }
+
+// controls: 0 overview, 1-5 models, A auto; tap the right column for next
+addEventListener("keydown", e => {
+  if (e.key === "0") { show("umum"); clearInterval(timer); }
+  else if (e.key >= "1" && e.key <= "5") { show(MODELS[+e.key - 1].id); clearInterval(timer); }
+  else if (e.key.toLowerCase() === "a") { show(ORDER[(cur + 1) % ORDER.length]); auto(); }
+});
+$("col").addEventListener("click", () => { show(ORDER[(cur + 1) % ORDER.length]); clearInterval(timer); });
+</script>
+</body>
+</html>
