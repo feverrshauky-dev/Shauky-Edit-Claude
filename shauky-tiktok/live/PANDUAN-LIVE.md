@@ -124,6 +124,12 @@ Rekaan premium: kiri kosong untuk muka kau, kanan untuk maklumat rebate.
 3. Duduk di **sebelah kiri** frame kamera, supaya badan kau berada dalam ruang gelap di kiri dan tak menutup tulisan di kanan.
 4. Tukar ke gambar model bila cerita pasal model tu.
 
+**Versi bergerak di skrin kedua (`eksklusif-satu-fail.html`):**
+1. Hantar `eksklusif-satu-fail.html` ke tablet, laptop atau telefon lama (WhatsApp ke diri sendiri pun boleh). Gambar dan font dah ada di dalamnya.
+2. Buka dengan **Chrome**. Sentuh skrin sekali: ia akan jadi skrin penuh dan skrin tak akan tidur.
+3. Letak peranti tu di belakang bahu kau, supaya masuk dalam kamera telefon live.
+4. Paparan bertukar sendiri setiap 9 saat. Sentuh bahagian kanan untuk lompat ke model seterusnya; ia akan bertukar sendiri semula selepas 20 saat.
+
 **PC / skrin kedua (`eksklusif.html`):**
 - `?overlay=1`: kiri lutsinar, untuk letak atas kamera dalam OBS atau LIVE Studio
 - `?preview=1`: tunjuk garis "MUKA KAU DI SINI"

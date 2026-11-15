@@ -243,7 +243,20 @@ addEventListener("keydown", e => {
   else if (e.key >= "1" && e.key <= "5") { show(MODELS[+e.key - 1].id); clearInterval(timer); }
   else if (e.key.toLowerCase() === "a") { show(ORDER[(cur + 1) % ORDER.length]); auto(); }
 });
-$("col").addEventListener("click", () => { show(ORDER[(cur + 1) % ORDER.length]); clearInterval(timer); });
+// Sentuh kanan = paparan seterusnya (auto sambung semula selepas 20 saat).
+// Sentuhan pertama juga buka skrin penuh dan halang skrin tablet/telefon daripada tidur.
+let resume = null, wake = null;
+async function keepAwake() {
+  try { if (!document.fullscreenElement) await document.documentElement.requestFullscreen(); } catch (e) {}
+  try { if ("wakeLock" in navigator && !wake) { wake = await navigator.wakeLock.request("screen"); wake.addEventListener("release", () => wake = null); } } catch (e) {}
+}
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") wake = null; });
+$("stage").addEventListener("click", e => {
+  keepAwake();
+  if (!e.target.closest("#col, #consult")) return;
+  show(ORDER[(cur + 1) % ORDER.length]); clearInterval(timer);
+  clearTimeout(resume); if (!q.has("view")) resume = setTimeout(auto, 20000);
+});
 </script>
 </body>
 </html>
