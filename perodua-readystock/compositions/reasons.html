@@ -1,0 +1,180 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #q {
+      position: absolute;
+      left: 0;
+      top: 280px;
+      width: 100%;
+      text-align: center;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 72px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .q-layer {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      opacity: 0;
+    }
+    #q-r {
+      color: #ff5b1f;
+    }
+    #q-y {
+      color: #ffd43b;
+    }
+    #q-main {
+      position: relative;
+      color: #ffffff;
+      text-shadow: 0 8px 0 #0a1630;
+      opacity: 0;
+    }
+    #q-main b {
+      color: #ff5b1f;
+      font-weight: 400;
+    }
+    .card {
+      position: absolute;
+      left: 120px;
+      width: 840px;
+      border-radius: 30px;
+      background: #fff6ea;
+      box-shadow: 0 12px 0 rgba(0, 0, 0, 0.35);
+      opacity: 0;
+    }
+    #r1 {
+      top: 376px;
+      height: 148px;
+    }
+    #r2 {
+      top: 544px;
+      height: 182px;
+    }
+    .num {
+      position: absolute;
+      left: 22px;
+      top: 50%;
+      width: 104px;
+      height: 104px;
+      margin-top: -52px;
+      border-radius: 50%;
+      background: #0a1630;
+      color: #ffd43b;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 50px;
+      line-height: 104px;
+      text-align: center;
+    }
+    .lbl {
+      position: absolute;
+      left: 150px;
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      letter-spacing: 0.14em;
+      color: #d23c06;
+    }
+    .big {
+      position: absolute;
+      left: 148px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 58px;
+      line-height: 1;
+      color: #0a1630;
+      white-space: nowrap;
+    }
+    #r1 .lbl { top: 28px; }
+    #r1 .big { top: 66px; }
+    #r2 .lbl { top: 28px; }
+    #r2 .big { top: 66px; }
+    #r2 .big2 {
+      position: absolute;
+      left: 150px;
+      top: 132px;
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      letter-spacing: 0.06em;
+      color: #0a1630;
+    }
+    #bars {
+      position: absolute;
+      right: 30px;
+      bottom: 28px;
+      width: 130px;
+      height: 120px;
+    }
+    .bar {
+      position: absolute;
+      bottom: 0;
+      width: 34px;
+      border-radius: 8px 8px 4px 4px;
+      transform-origin: 50% 100%;
+      transform: scaleY(0);
+    }
+    #b1 { left: 0; height: 40px; background: #0a1630; }
+    #b2 { left: 46px; height: 74px; background: #0a1630; }
+    #b3 { left: 92px; height: 120px; background: #ff5b1f; }
+    #arrow {
+      position: absolute;
+      right: 24px;
+      top: -66px;
+      width: 60px;
+      height: 60px;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="reasons" data-width="1080" data-height="1920">
+    <div id="q" data-layout-allow-overlap>
+      <div id="q-r" class="q-layer">SEBABNYA APA?</div>
+      <div id="q-y" class="q-layer">SEBABNYA APA?</div>
+      <div id="q-main">SEBABNYA APA<b>?</b></div>
+    </div>
+    <div id="r1" class="card">
+      <div class="num">1</div>
+      <div class="lbl">PERTAMA</div>
+      <div class="big">READY STOCK</div>
+    </div>
+    <div id="r2" class="card">
+      <div class="num">2</div>
+      <div class="lbl">KEDUA</div>
+      <div class="big">REBATE</div>
+      <div class="big2">SANGAT-SANGAT TINGGI</div>
+      <div id="bars">
+        <div id="b1" class="bar"></div>
+        <div id="b2" class="bar"></div>
+        <div id="b3" class="bar"></div>
+        <svg id="arrow" viewBox="0 0 24 24" fill="none" stroke="#ff5b1f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5" /><path d="m5.5 11 6.5-6.5 6.5 6.5" /></svg>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const S = 19.63;
+    const at = (t) => t - S;
+    // "Sebabnya apa?": colour-split glitch that snaps into register
+    tl.set(["#q-r", "#q-y", "#q-main"], { opacity: 1 }, at(19.74));
+    tl.fromTo("#q-r", { x: -26, y: 6 }, { x: 0, y: 0, duration: 0.24, ease: "steps(5)", immediateRender: false }, at(19.74));
+    tl.fromTo("#q-y", { x: 22, y: 6 }, { x: 0, y: 0, duration: 0.24, ease: "steps(5)", immediateRender: false }, at(19.74));
+    tl.fromTo("#q-main", { skewX: -14 }, { skewX: 0, duration: 0.24, ease: "steps(4)", immediateRender: false }, at(19.74));
+    // "Yang pertama"
+    tl.fromTo("#r1", { opacity: 0, y: 70, rotation: 2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.42, ease: "expo.out", immediateRender: false }, at(20.55));
+    // "Dan yang kedua"
+    tl.fromTo("#r2", { opacity: 0, y: 70, rotation: -2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.42, ease: "expo.out", immediateRender: false }, at(22.03));
+    // "sangat-sangat tinggi": bars climb, the tallest lands on "tinggi"
+    tl.to("#b1", { scaleY: 1, duration: 0.25, ease: "power3.out" }, at(23.69));
+    tl.to("#b2", { scaleY: 1, duration: 0.3, ease: "power3.out" }, at(23.87));
+    tl.to("#b3", { scaleY: 1, duration: 0.36, ease: "back.out(1.6)" }, at(24.0));
+    tl.fromTo("#arrow", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out", immediateRender: false }, at(24.26));
+    // clear out upward as the footage grows back
+    tl.to(["#q", "#r1", "#r2"], { y: -80, opacity: 0, duration: 0.18, ease: "power3.in", stagger: 0.03 }, at(24.44));
+    window.__timelines["reasons"] = tl;
+  </script>
+</template>

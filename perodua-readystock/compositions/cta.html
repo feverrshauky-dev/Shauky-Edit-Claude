@@ -1,0 +1,129 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #card {
+      position: absolute;
+      left: 120px;
+      top: 272px;
+      width: 840px;
+      height: 140px;
+      border-radius: 34px;
+      background: #fff6ea;
+      box-shadow: 0 12px 0 #ff5b1f;
+      opacity: 0;
+    }
+    #phone {
+      position: absolute;
+      left: 20px;
+      top: 18px;
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      background: #ff5b1f;
+    }
+    #phone svg {
+      position: absolute;
+      left: 24px;
+      top: 24px;
+      width: 56px;
+      height: 56px;
+    }
+    #c-lbl {
+      position: absolute;
+      left: 150px;
+      top: 22px;
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      letter-spacing: 0.2em;
+      color: #d23c06;
+    }
+    #c-name {
+      position: absolute;
+      left: 146px;
+      top: 56px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 66px;
+      line-height: 1;
+      color: #0a1630;
+    }
+    #bio {
+      position: absolute;
+      left: 0;
+      top: 432px;
+      width: 100%;
+      text-align: center;
+    }
+    #bio-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 32px 14px 36px;
+      border-radius: 999px;
+      background: #0a1630;
+      box-shadow: inset 0 0 0 4px #ffd43b;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 40px;
+      line-height: 1;
+      color: #ffd43b;
+      opacity: 0;
+    }
+    #bio-pill svg {
+      width: 44px;
+      height: 44px;
+    }
+    .spark {
+      position: absolute;
+      width: 46px;
+      height: 46px;
+      opacity: 0;
+    }
+    #s1 { left: 96px; top: 246px; }
+    #s2 { left: 930px; top: 252px; }
+    #s3 { left: 912px; top: 392px; width: 30px; height: 30px; }
+    #s4 { left: 132px; top: 400px; width: 30px; height: 30px; }
+  </style>
+  <div id="root" data-composition-id="cta" data-width="1080" data-height="1920">
+    <div id="card">
+      <div id="phone">
+        <svg viewBox="0 0 24 24" fill="#fff6ea"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z" /></svg>
+      </div>
+      <div id="c-lbl">CONTACT</div>
+      <div id="c-name">SHAUKY</div>
+    </div>
+    <div id="bio">
+      <div id="bio-pill">
+        <span>NOMBOR DI BIO</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffd43b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg>
+      </div>
+    </div>
+    <svg id="s1" class="spark" viewBox="0 0 24 24" fill="#ffd43b"><path d="M12 0c.8 6.4 3.6 9.2 12 12-8.4 2.8-11.2 5.6-12 12-.8-6.4-3.6-9.2-12-12C8.4 9.2 11.2 6.4 12 0Z" /></svg>
+    <svg id="s2" class="spark" viewBox="0 0 24 24" fill="#ffd43b"><path d="M12 0c.8 6.4 3.6 9.2 12 12-8.4 2.8-11.2 5.6-12 12-.8-6.4-3.6-9.2-12-12C8.4 9.2 11.2 6.4 12 0Z" /></svg>
+    <svg id="s3" class="spark" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 0c.8 6.4 3.6 9.2 12 12-8.4 2.8-11.2 5.6-12 12-.8-6.4-3.6-9.2-12-12C8.4 9.2 11.2 6.4 12 0Z" /></svg>
+    <svg id="s4" class="spark" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 0c.8 6.4 3.6 9.2 12 12-8.4 2.8-11.2 5.6-12 12-.8-6.4-3.6-9.2-12-12C8.4 9.2 11.2 6.4 12 0Z" /></svg>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const S = 26.9;
+    const at = (t) => t - S;
+    // "contact": the card swings up into place
+    tl.fromTo("#card", { opacity: 0, y: -120, rotation: -4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "back.out(1.3)", immediateRender: false }, at(29.42));
+    // the phone rings twice on "Shauky"
+    [0, 1, 2, 3, 4, 5].forEach((i) => {
+      tl.to("#phone", { rotation: i % 2 ? -12 : 12, duration: 0.05, ease: "none" }, at(29.95) + i * 0.05);
+    });
+    tl.to("#phone", { rotation: 0, duration: 0.08, ease: "power2.out" }, at(30.25));
+    // "nombor saya di bio"
+    tl.fromTo("#bio-pill", { opacity: 0, scale: 0.6, y: -20 }, { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(1.8)", immediateRender: false }, at(30.05));
+    // "InsyaAllah": a single sparkle pass
+    ["#s1", "#s2", "#s3", "#s4"].forEach((id, i) => {
+      tl.fromTo(id, { opacity: 0, scale: 0, rotation: -45 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.22, ease: "back.out(2)", immediateRender: false }, at(31.16) + i * 0.05);
+    });
+    window.__timelines["cta"] = tl;
+  </script>
+</template>

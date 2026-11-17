@@ -1,0 +1,77 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #loc {
+      position: absolute;
+      left: 124px;
+      top: 272px;
+      height: 112px;
+    }
+    #loc-card {
+      position: absolute;
+      left: 46px;
+      top: 6px;
+      height: 100px;
+      padding: 12px 30px 0 64px;
+      border-radius: 20px;
+      background: #fff6ea;
+      box-shadow: 0 10px 0 rgba(10, 22, 48, 0.4);
+      white-space: nowrap;
+      clip-path: inset(0 100% 0 0 round 20px);
+    }
+    #loc-t1 {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 42px;
+      line-height: 1;
+      color: #0a1630;
+    }
+    #loc-t2 {
+      margin-top: 6px;
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      letter-spacing: 0.14em;
+      color: #d23c06;
+    }
+    #loc-pin {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 96px;
+      height: 112px;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="place" data-width="1080" data-height="1920">
+    <div id="loc">
+      <div id="loc-card">
+        <div id="loc-t1">PERODUA 3S</div>
+        <div id="loc-t2">JALAN KAJANG</div>
+      </div>
+      <svg id="loc-pin" viewBox="0 0 96 112" fill="none">
+        <path d="M48 106C48 106 12 66 12 42a36 36 0 0 1 72 0c0 24-36 64-36 64Z" fill="#ff5b1f" stroke="#0a1630" stroke-width="5" stroke-linejoin="round" />
+        <circle cx="48" cy="42" r="13" fill="#fff6ea" />
+      </svg>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const S = 5.34; // host start; times below are on the film clock
+    const at = (t) => t - S;
+    // "Perodua": the pin drops in, then the label unrolls from it
+    tl.fromTo("#loc-pin", { opacity: 0, y: -90, scaleY: 1 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.in", immediateRender: false }, at(5.42));
+    tl.to("#loc-pin", { scaleY: 0.86, transformOrigin: "50% 100%", duration: 0.06, ease: "power2.out" }, at(5.72));
+    tl.to("#loc-pin", { scaleY: 1, duration: 0.3, ease: "elastic.out(1, 0.5)" }, at(5.78));
+    tl.to("#loc-card", { clipPath: "inset(0 0% 0 0 round 20px)", duration: 0.45, ease: "expo.out" }, at(5.76));
+    // "Jalan Kajang": the second line lights
+    tl.fromTo("#loc-t2", { opacity: 0.25 }, { opacity: 1, duration: 0.2, ease: "power2.out", immediateRender: false }, at(6.51));
+    // leave to the left as the wipe arrives
+    tl.to("#loc", { x: -700, duration: 0.28, ease: "power3.in" }, at(9.45));
+    window.__timelines["place"] = tl;
+  </script>
+</template>

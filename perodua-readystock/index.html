@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ms" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      /* "Showroom Signal": navy + signal orange + sun yellow, Archivo Black titles, Inter 900 captions.
+         Text lives in the top of the TikTok/Reels safe band (270-520 px) above the face; the face sits ~520-1500 px. */
+      :root {
+        --navy: #0a1630;
+        --orange: #ff5b1f;
+        --sun: #ffd43b;
+        --cream: #fff6ea;
+        --ink: #ffffff;
+        --font-display: "Archivo Black", sans-serif;
+        --font-text: "Inter", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--navy);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: var(--font-text);
+      }
+      /* stage behind the a-roll, seen only when the a-roll shrinks into a card */
+      #stage {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          radial-gradient(circle at 50% 38%, rgba(255, 91, 31, 0.28), rgba(255, 91, 31, 0) 55%),
+          repeating-linear-gradient(-35deg, rgba(255, 255, 255, 0.045) 0 26px, rgba(255, 255, 255, 0) 26px 64px),
+          #0a1630;
+      }
+      #cardshadow {
+        position: absolute;
+        left: 244px;
+        top: 798px;
+        width: 626px;
+        height: 1114px;
+        border-radius: 44px;
+        background: var(--orange);
+        z-index: 1;
+        opacity: 0;
+      }
+      #cam {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        z-index: 2;
+        overflow: hidden;
+      }
+      #aroll,
+      #endhold {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+      }
+      /* full-frame wipes that carry the cuts into and out of the car-lot b-roll */
+      .wipe {
+        position: absolute;
+        left: -200px;
+        top: -200px;
+        width: 1480px;
+        height: 2320px;
+        z-index: 5;
+        transform: translateX(1600px) skewX(-12deg);
+      }
+      #wipe-in {
+        background: linear-gradient(90deg, #ff5b1f 0 82%, #ffd43b 82% 100%);
+      }
+      #wipe-out {
+        background: linear-gradient(90deg, #ffd43b 0 14%, #0a1630 14% 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="32.5" data-width="1080" data-height="1920">
+      <div id="stage"></div>
+      <div id="cardshadow"></div>
+
+      <!-- A-roll: hook moved to the front, repeats and dead air removed (scripts/edl.py). Camera moves on #cam. -->
+      <div id="cam">
+        <video id="aroll" class="clip" src="assets/aroll.mp4" data-start="0" data-duration="31.73" data-track-index="0" data-has-audio="true" playsinline></video>
+        <!-- end hold: last frame frozen so the CTA reads for 2 s before the loop -->
+        <img id="endhold" class="clip" src="assets/endframe.jpg" alt="" data-start="31.73" data-duration="0.77" data-track-index="0" />
+      </div>
+
+      <div id="wipe-in" class="wipe"></div>
+      <div id="wipe-out" class="wipe"></div>
+
+      <!-- Motion graphics, one scene per beat -->
+      <div id="hook" class="clip" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="5.34" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="place" class="clip" data-composition-id="place" data-composition-src="compositions/place.html" data-start="5.34" data-duration="4.53" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="stock" class="clip" data-composition-id="stock" data-composition-src="compositions/stock.html" data-start="9.87" data-duration="5.1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="sesuai" class="clip" data-composition-id="sesuai" data-composition-src="compositions/sesuai.html" data-start="14.97" data-duration="4.66" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="reasons" class="clip" data-composition-id="reasons" data-composition-src="compositions/reasons.html" data-start="19.63" data-duration="5.04" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="rugi" class="clip" data-composition-id="rugi" data-composition-src="compositions/rugi.html" data-start="24.67" data-duration="2.23" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="cta" class="clip" data-composition-id="cta" data-composition-src="compositions/cta.html" data-start="26.9" data-duration="5.6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+
+      <!-- Spoken captions in the top band (scripts/build_captions.py) -->
+      <div id="captions" class="clip" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="32.5" data-track-index="3" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index: 20"></div>
+
+      <!-- Music bed: "Good Mood Dance Song" by Sunsearcher (CC BY 3.0), entered so its full section drops on the READY STOCK wipe at 9.87 s.
+           Sits ~16 dB under the voice and steps out for the beat before GRAB SEKARANG. -->
+      <audio id="music" class="clip" src="assets/music/bed.mp3" data-start="0" data-duration="32.5" data-track-index="4" data-volume="0.15" data-fade-out="1.3"
+        data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:1},{&quot;t&quot;:9.7,&quot;v&quot;:1},{&quot;t&quot;:9.87,&quot;v&quot;:1.25},{&quot;t&quot;:14.9,&quot;v&quot;:1.25},{&quot;t&quot;:15.1,&quot;v&quot;:1},{&quot;t&quot;:25.95,&quot;v&quot;:1},{&quot;t&quot;:26.1,&quot;v&quot;:0.15},{&quot;t&quot;:26.33,&quot;v&quot;:0.15},{&quot;t&quot;:26.36,&quot;v&quot;:1.15},{&quot;t&quot;:32.5,&quot;v&quot;:1.15}]}]}"></audio>
+
+      <!-- Sound effects: each placed so its measured peak lands one frame after its picture -->
+      <audio id="sfx-hook-hit" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="0" data-duration="1.6" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-harini" class="clip" src="assets/sfx/pop-hi.mp3" data-start="1.81" data-duration="0.5" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-drive" class="clip" src="assets/sfx/whoosh-low.mp3" data-start="2.42" data-duration="0.6" data-track-index="5" data-volume="0.4"></audio>
+      <audio id="sfx-minggu" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="3.2" data-duration="0.5" data-track-index="5" data-volume="0.38"></audio>
+      <audio id="sfx-tick" class="clip" src="assets/sfx/pop.mp3" data-start="4.92" data-duration="0.6" data-track-index="5" data-volume="0.6"></audio>
+      <audio id="sfx-hook-out" class="clip" src="assets/sfx/whoosh.mp3" data-start="5.06" data-duration="0.5" data-track-index="6" data-volume="0.3"></audio>
+      <audio id="sfx-pin" class="clip" src="assets/sfx/pop-lo.mp3" data-start="5.6" data-duration="0.7" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-wipe-in" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="7.4" data-media-start="0" data-duration="3.2" data-track-index="5" data-volume="0.32" data-fade-in="0.4"></audio>
+      <audio id="sfx-stock-hit" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="10.04" data-duration="1.6" data-track-index="6" data-volume="0.32"></audio>
+      <audio id="sfx-car-1" class="clip" src="assets/sfx/pop.mp3" data-start="10.99" data-duration="0.5" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-car-2" class="clip" src="assets/sfx/pop-hi.mp3" data-start="11.5" data-duration="0.5" data-track-index="5" data-volume="0.5"></audio>
+      <audio id="sfx-car-3" class="clip" src="assets/sfx/pop-lo.mp3" data-start="12.08" data-duration="0.6" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-car-4" class="clip" src="assets/sfx/pop.mp3" data-start="12.77" data-duration="0.5" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-car-5" class="clip" src="assets/sfx/pop-hi.mp3" data-start="13.34" data-duration="0.5" data-track-index="5" data-volume="0.5"></audio>
+      <audio id="sfx-car-6" class="clip" src="assets/sfx/pop-lo.mp3" data-start="13.88" data-duration="0.6" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-lagi" class="clip" src="assets/sfx/sparkle.mp3" data-start="14.38" data-duration="1.4" data-track-index="6" data-volume="0.22" data-fade-out="0.4"></audio>
+      <audio id="sfx-wipe-out" class="clip" src="assets/sfx/whoosh.mp3" data-start="14.78" data-duration="0.5" data-track-index="5" data-volume="0.4"></audio>
+      <audio id="sfx-type" class="clip" src="assets/sfx/typing.mp3" data-start="15.58" data-media-start="0.4" data-duration="0.75" data-track-index="5" data-volume="0.4" data-fade-out="0.12"></audio>
+      <audio id="sfx-sesuai" class="clip" src="assets/sfx/click.mp3" data-start="17.27" data-duration="0.35" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-q" class="clip" src="assets/sfx/glitch-3.mp3" data-start="18.55" data-media-start="0.6" data-duration="1.6" data-track-index="5" data-volume="0.2" data-fade-out="0.3"></audio>
+      <audio id="sfx-card-in" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="20.2" data-duration="0.5" data-track-index="5" data-volume="0.38"></audio>
+      <audio id="sfx-r1" class="clip" src="assets/sfx/pop.mp3" data-start="20.5" data-duration="0.5" data-track-index="6" data-volume="0.6"></audio>
+      <audio id="sfx-r2" class="clip" src="assets/sfx/pop-lo.mp3" data-start="21.96" data-duration="0.6" data-track-index="5" data-volume="0.6"></audio>
+      <audio id="sfx-bar" class="clip" src="assets/sfx/ping.mp3" data-start="24.0" data-duration="1.0" data-track-index="6" data-volume="0.22" data-fade-out="0.3"></audio>
+      <audio id="sfx-riser" class="clip" src="assets/sfx/riser.mp3" data-start="23.8" data-media-start="1.45" data-duration="2.55" data-track-index="5" data-volume="0.26"></audio>
+      <audio id="sfx-card-out" class="clip" src="assets/sfx/whoosh-low.mp3" data-start="24.5" data-duration="0.6" data-track-index="8" data-volume="0.38"></audio>
+      <audio id="sfx-rugi" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="24.97" data-duration="1.2" data-track-index="9" data-volume="0.22"></audio>
+      <audio id="sfx-grab" class="clip" src="assets/sfx/impact-bass-2.mp3" data-start="24.4" data-duration="2.5" data-track-index="7" data-volume="0.5"></audio>
+      <audio id="sfx-cta-in" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="29.42" data-duration="0.5" data-track-index="5" data-volume="0.35"></audio>
+      <audio id="sfx-cta-pop" class="clip" src="assets/sfx/pop-hi.mp3" data-start="29.5" data-duration="0.5" data-track-index="6" data-volume="0.5"></audio>
+      <audio id="sfx-bio" class="clip" src="assets/sfx/click.mp3" data-start="30.01" data-duration="0.35" data-track-index="5" data-volume="0.6"></audio>
+      <audio id="sfx-end" class="clip" src="assets/sfx/sparkle.mp3" data-start="31.15" data-duration="0.58" data-track-index="5" data-volume="0.22"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ---- Camera. Zoom about the top edge so the face drops below the text band (safe band starts at y 270). ----
+      const O = "50% 0%";
+      tl.set("#cam", { scale: 1.12, transformOrigin: O, x: 0, y: 0 }, 0);
+      // hook: push in on the promise
+      tl.to("#cam", { scale: 1.17, duration: 0.18, ease: "expo.out" }, 1.43); //   "dokumen"
+      tl.to("#cam", { scale: 1.22, duration: 0.18, ease: "expo.out" }, 3.32); //   "minggu depan"
+      // jump cut into the showroom intro, settle from slightly large
+      tl.fromTo("#cam", { scale: 1.14 }, { scale: 1.06, duration: 0.5, ease: "expo.out", immediateRender: false }, 5.34);
+      tl.to("#cam", { scale: 1.12, duration: 0.16, ease: "expo.out" }, 8.47); //   "banyak sangat"
+      // car-lot b-roll (behind the wipe): alternate framings on the inner jump cuts
+      tl.set("#cam", { scale: 1.06 }, 9.87);
+      tl.set("#cam", { scale: 1.14 }, 12.83);
+      tl.set("#cam", { scale: 1.06 }, 13.33);
+      tl.set("#cam", { scale: 1.12 }, 14.33);
+      // back on the face
+      tl.set("#cam", { scale: 1.06 }, 14.97);
+      tl.fromTo("#cam", { scale: 1.06 }, { scale: 1.13, duration: 0.16, ease: "expo.out", immediateRender: false }, 15.93); // "masa yang sangat-sangat"
+      tl.to("#cam", { scale: 1.07, duration: 0.3, ease: "power2.out" }, 18.0);
+      tl.to("#cam", { scale: 1.16, duration: 0.14, ease: "expo.out" }, 19.72); //   "Sebabnya apa?"
+      // a-roll becomes a card for the two reasons
+      tl.to("#cam", { scale: 0.58, y: 780, x: 0, borderRadius: 76, duration: 0.55, ease: "power3.inOut" }, 20.12);
+      tl.fromTo("#cardshadow", { opacity: 0, x: -18, y: -18 }, { opacity: 1, x: 0, y: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, 20.42);
+      // and grows back to full frame for the payoff
+      tl.to("#cardshadow", { opacity: 0, duration: 0.15, ease: "power2.in" }, 24.45);
+      tl.to("#cam", { scale: 1.1, y: 0, borderRadius: 0, duration: 0.5, ease: "power3.inOut" }, 24.5);
+      // "RUGI": hit and a short, decaying shake
+      tl.to("#cam", { scale: 1.2, duration: 0.12, ease: "expo.out" }, 25.01);
+      [[-14, 8], [12, -6], [-8, 4], [5, -2], [0, 0]].forEach(([x, r], i) => {
+        tl.to("#cam", { x, rotation: r * 0.12, duration: 0.05, ease: "none" }, 25.03 + i * 0.05);
+      });
+      tl.set("#cam", { scale: 1.12 }, 26.0); //                                       jump cut
+      tl.to("#cam", { scale: 1.26, duration: 0.12, ease: "expo.out" }, 26.35); //  "GRAB SEKARANG"
+      [[18, 10], [-14, -8], [10, 5], [-6, -3], [3, 1], [0, 0]].forEach(([x, yy], i) => {
+        tl.to("#cam", { x, y: yy, duration: 0.045, ease: "none" }, 26.37 + i * 0.045);
+      });
+      // CTA
+      tl.set("#cam", { scale: 1.06, x: 0, y: 0, rotation: 0 }, 26.9);
+      tl.set("#cam", { scale: 1.12 }, 28.2); //                                       jump cut
+      tl.to("#cam", { scale: 1.07, duration: 0.5, ease: "power3.out" }, 29.5);
+
+      // ---- Wipes over the cut into the car lot and back ----
+      tl.fromTo("#wipe-in", { x: 1600 }, { x: 0, duration: 0.24, ease: "power3.in", immediateRender: false }, 9.63);
+      tl.to("#wipe-in", { x: -1700, duration: 0.3, ease: "power3.out" }, 9.87);
+      tl.fromTo("#wipe-out", { x: -1700 }, { x: 0, duration: 0.22, ease: "power3.in", immediateRender: false }, 14.75);
+      tl.to("#wipe-out", { x: 1700, duration: 0.3, ease: "power3.out" }, 14.97);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

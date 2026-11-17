@@ -1,0 +1,105 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #t-row {
+      position: absolute;
+      left: 0;
+      top: 272px;
+      width: 100%;
+      text-align: center;
+    }
+    #t-pill {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      height: 96px;
+      padding: 0 30px 0 18px;
+      border-radius: 24px;
+      background: #fff6ea;
+      box-shadow: 0 10px 0 rgba(10, 22, 48, 0.45);
+      clip-path: inset(0 100% 0 0 round 24px);
+    }
+    #clock {
+      width: 64px;
+      height: 64px;
+    }
+    #t-text {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 50px;
+      line-height: 1;
+      color: #0a1630;
+      white-space: nowrap;
+    }
+    #t-hl {
+      position: relative;
+      display: inline-block;
+    }
+    #t-hl-bg {
+      position: absolute;
+      left: -8px;
+      right: -8px;
+      top: 6px;
+      bottom: -2px;
+      border-radius: 8px;
+      background: #ffd43b;
+      transform-origin: 0% 50%;
+      transform: scaleX(0);
+    }
+    #t-hl-t {
+      position: relative;
+    }
+    .ch {
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="sesuai" data-width="1080" data-height="1920">
+    <div id="t-row">
+      <div id="t-pill">
+        <svg id="clock" viewBox="0 0 70 70" fill="none">
+          <circle cx="35" cy="37" r="28" fill="#ff5b1f" stroke="#0a1630" stroke-width="5" />
+          <rect x="29" y="2" width="12" height="8" rx="3" fill="#0a1630" />
+          <line id="hand" x1="35" y1="37" x2="35" y2="18" stroke="#fff6ea" stroke-width="5" stroke-linecap="round" />
+          <circle cx="35" cy="37" r="4.5" fill="#fff6ea" />
+        </svg>
+        <div id="t-text"><span id="t-a">MASA PALING </span><span id="t-hl"><span id="t-hl-bg"></span><span id="t-hl-t">SESUAI</span></span></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const S = 14.97;
+    const at = (t) => t - S;
+    // split the title into letters for a typed reveal (built once, before any tween)
+    const letters = [];
+    ["#t-a", "#t-hl-t"].forEach((sel) => {
+      const el = document.querySelector(sel);
+      const txt = el.textContent;
+      el.textContent = "";
+      for (const c of txt) {
+        const s = document.createElement("span");
+        s.className = "ch";
+        s.textContent = c;
+        el.appendChild(s);
+        letters.push(s);
+      }
+    });
+    // "masa": the pill opens and the letters type in
+    tl.to("#t-pill", { clipPath: "inset(0 0% 0 0 round 24px)", duration: 0.32, ease: "expo.out" }, at(15.55));
+    letters.forEach((s, i) => tl.set(s, { opacity: 1 }, at(15.64) + i * 0.04));
+    // the clock hand sweeps once while he talks about timing
+    tl.fromTo("#hand", { rotation: 0, svgOrigin: "35 37" }, { rotation: 360, svgOrigin: "35 37", duration: 3.6, ease: "none", immediateRender: false }, at(15.55));
+    // "sesuai": marker sweep
+    tl.to("#t-hl-bg", { scaleX: 1, duration: 0.24, ease: "power3.out" }, at(17.31));
+    tl.fromTo("#t-pill", { scale: 1 }, { scale: 1.06, duration: 0.08, ease: "power2.out", immediateRender: false }, at(17.31));
+    tl.to("#t-pill", { scale: 1, duration: 0.3, ease: "power3.out" }, at(17.39));
+    // out before "Sebabnya apa?"
+    tl.to("#t-row", { y: -40, opacity: 0, duration: 0.16, ease: "power3.in" }, at(19.4));
+    window.__timelines["sesuai"] = tl;
+  </script>
+</template>

@@ -1,0 +1,89 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-family: "Archivo Black", sans-serif;
+    }
+    #rugi {
+      position: absolute;
+      left: 0;
+      top: 272px;
+      width: 100%;
+      text-align: center;
+    }
+    #rugi-t {
+      display: inline-block;
+      font-size: 170px;
+      line-height: 1;
+      color: #ff5b1f;
+      -webkit-text-stroke: 10px #0a1630;
+      paint-order: stroke fill;
+      text-shadow: 0 14px 0 #0a1630;
+      opacity: 0;
+    }
+    #grab {
+      position: absolute;
+      left: 0;
+      top: 276px;
+      width: 100%;
+      text-align: center;
+      line-height: 1;
+    }
+    #ring {
+      position: absolute;
+      left: 390px;
+      top: 236px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 22px solid #ffd43b;
+      opacity: 0;
+    }
+    #grab-1 {
+      display: inline-block;
+      padding: 6px 30px 14px;
+      border-radius: 18px;
+      background: #ffd43b;
+      color: #0a1630;
+      font-size: 96px;
+      transform: rotate(-3deg);
+      box-shadow: 0 12px 0 #0a1630;
+      opacity: 0;
+    }
+    #grab-2 {
+      margin-top: 16px;
+      font-size: 80px;
+      color: #ffffff;
+      -webkit-text-stroke: 9px #0a1630;
+      paint-order: stroke fill;
+      text-shadow: 0 10px 0 #0a1630;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="rugi" data-width="1080" data-height="1920">
+    <div id="rugi"><div id="rugi-t">RUGI!</div></div>
+    <div id="ring"></div>
+    <div id="grab">
+      <div id="grab-1">GRAB</div>
+      <div id="grab-2">SEKARANG!</div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const S = 24.67;
+    const at = (t) => t - S;
+    // "rugi": slams in from big
+    tl.fromTo("#rugi-t", { opacity: 0, scale: 2.2, rotation: -6 }, { opacity: 1, scale: 1, rotation: -2, duration: 0.16, ease: "power4.in", immediateRender: false }, at(24.86));
+    // "grab sekarang": RUGI is knocked out, the order lands with a ring burst
+    tl.to("#rugi-t", { opacity: 0, scale: 0.7, duration: 0.1, ease: "power3.in" }, at(26.24));
+    tl.fromTo("#grab-1", { opacity: 0, scale: 2, rotation: 8 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.14, ease: "power4.in", immediateRender: false }, at(26.24));
+    tl.fromTo("#grab-2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out", immediateRender: false }, at(26.4));
+    tl.fromTo("#ring", { opacity: 1, scale: 0.2 }, { opacity: 0, scale: 2.4, duration: 0.5, ease: "power2.out", immediateRender: false }, at(26.36));
+    // out before the CTA
+    tl.to("#grab", { y: -50, opacity: 0, duration: 0.14, ease: "power3.in" }, at(26.74));
+    window.__timelines["rugi"] = tl;
+  </script>
+</template>

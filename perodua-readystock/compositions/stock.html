@@ -1,0 +1,144 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #head {
+      position: absolute;
+      left: 0;
+      top: 272px;
+      width: 100%;
+      text-align: center;
+    }
+    #head-l {
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 30px;
+      letter-spacing: 0.2em;
+      color: #ffd43b;
+      text-shadow: 0 3px 0 #0a1630;
+      opacity: 0;
+    }
+    #stamp {
+      position: relative;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 32px 18px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 80px;
+      line-height: 1;
+      color: #ffffff;
+      white-space: nowrap;
+      opacity: 0;
+    }
+    #stamp-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: #ff5b1f;
+      box-shadow: 0 14px 0 #0a1630;
+    }
+    #stamp-t {
+      position: relative;
+    }
+    .chip {
+      position: absolute;
+      width: 400px;
+      height: 136px;
+      border-radius: 26px;
+      background: rgba(10, 22, 48, 0.86);
+      box-shadow:
+        inset 0 0 0 3px rgba(255, 255, 255, 0.16),
+        0 10px 0 rgba(255, 91, 31, 0.9);
+      opacity: 0;
+    }
+    .chip-n {
+      position: absolute;
+      left: 30px;
+      top: 16px;
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      letter-spacing: 0.08em;
+      color: #ff5b1f;
+    }
+    .chip-t {
+      position: absolute;
+      left: 30px;
+      top: 54px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 58px;
+      line-height: 1;
+      color: #ffffff;
+    }
+    .chip-ok {
+      position: absolute;
+      right: 26px;
+      top: 44px;
+      width: 52px;
+      height: 52px;
+    }
+    #c1 { left: 130px; top: 478px; }
+    #c2 { left: 550px; top: 478px; }
+    #c3 { left: 130px; top: 636px; }
+    #c4 { left: 550px; top: 636px; }
+    #c5 { left: 130px; top: 794px; }
+    #c6 { left: 550px; top: 794px; }
+    #more {
+      position: absolute;
+      left: 0;
+      top: 962px;
+      width: 100%;
+      text-align: center;
+    }
+    #more-pill {
+      display: inline-block;
+      padding: 14px 40px 18px;
+      border-radius: 999px;
+      background: #ffd43b;
+      color: #0a1630;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 50px;
+      line-height: 1;
+      box-shadow: 0 10px 0 #0a1630;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="stock" data-width="1080" data-height="1920">
+    <div id="head">
+      <div id="head-l">SEKARANG ADA</div>
+      <div id="stamp"><span id="stamp-bg"></span><span id="stamp-t">READY STOCK</span></div>
+    </div>
+    <div id="c1" class="chip"><div class="chip-n">01</div><div class="chip-t">BEZZA</div><svg class="chip-ok" viewBox="0 0 24 24" fill="none" stroke="#ffd43b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg></div>
+    <div id="c2" class="chip"><div class="chip-n">02</div><div class="chip-t">ATIVA</div><svg class="chip-ok" viewBox="0 0 24 24" fill="none" stroke="#ffd43b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg></div>
+    <div id="c3" class="chip"><div class="chip-n">03</div><div class="chip-t">ALZA</div><svg class="chip-ok" viewBox="0 0 24 24" fill="none" stroke="#ffd43b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg></div>
+    <div id="c4" class="chip"><div class="chip-n">04</div><div class="chip-t">ARUZ</div><svg class="chip-ok" viewBox="0 0 24 24" fill="none" stroke="#ffd43b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg></div>
+    <div id="c5" class="chip"><div class="chip-n">05</div><div class="chip-t">MYVI</div><svg class="chip-ok" viewBox="0 0 24 24" fill="none" stroke="#ffd43b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg></div>
+    <div id="c6" class="chip"><div class="chip-n">06</div><div class="chip-t">AXIA</div><svg class="chip-ok" viewBox="0 0 24 24" fill="none" stroke="#ffd43b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg></div>
+    <div id="more"><div id="more-pill">+ BANYAK LAGI</div></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const S = 9.87;
+    const at = (t) => t - S;
+    // the wipe clears, the stamp slams down on the music's drop
+    tl.fromTo("#stamp", { opacity: 0, scale: 1.7, rotation: -8 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.22, ease: "power4.in", immediateRender: false }, at(9.88));
+    tl.fromTo("#head-l", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out", immediateRender: false }, at(10.12));
+    // each model lands on its name (Bezza, Ativa, Alza, Aruz, Myvi, Axia)
+    const hits = [11.08, 11.57, 12.19, 12.86, 13.41, 13.99];
+    hits.forEach((t, i) => {
+      const id = "#c" + (i + 1);
+      const fromX = i % 2 ? 60 : -60;
+      tl.fromTo(id, { opacity: 0, x: fromX, scale: 0.8 }, { opacity: 1, x: 0, scale: 1, duration: 0.34, ease: "back.out(1.4)", immediateRender: false }, at(t) - 0.04);
+      tl.fromTo(id + " .chip-ok", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.28, ease: "back.out(2)", immediateRender: false }, at(t) + 0.12);
+    });
+    // "dan banyak lagi"
+    tl.fromTo("#more-pill", { opacity: 0, y: 40, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(1.6)", immediateRender: false }, at(14.37));
+    // out under the wipe
+    tl.to(["#head", ".chip", "#more"], { opacity: 0, duration: 0.12, ease: "power2.in" }, at(14.84));
+    window.__timelines["stock"] = tl;
+  </script>
+</template>
