@@ -1,0 +1,232 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    /* Infographic band above the camera card (card top is y 700, captions at y 576) */
+    #rb-ticket {
+      position: absolute;
+      left: 56px;
+      top: 214px;
+      width: 400px;
+      height: 300px;
+      opacity: 0;
+    }
+    #rb-ticket-body {
+      position: absolute;
+      inset: 0;
+      border: 6px solid #141414;
+      border-radius: 26px;
+      background: #ffc93c;
+      box-shadow: 12px 12px 0 #141414;
+      text-align: center;
+      padding-top: 30px;
+    }
+    .rb-notch {
+      position: absolute;
+      top: 118px;
+      width: 52px;
+      height: 52px;
+      border: 6px solid #141414;
+      border-radius: 50%;
+      background: #fff1da;
+    }
+    #rb-perf {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      top: 141px;
+      border-top: 5px dashed #141414;
+      opacity: 0.35;
+    }
+    .rb-mono {
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: 0.12em;
+      color: #141414;
+    }
+    #rb-reb {
+      font-family: "League Gothic", sans-serif;
+      font-size: 150px;
+      line-height: 0.86;
+      color: #141414;
+      margin: 8px 0 6px;
+    }
+    #rb-loan {
+      position: absolute;
+      left: 620px;
+      top: 214px;
+      width: 404px;
+      height: 300px;
+      border: 6px solid #141414;
+      border-radius: 26px;
+      background: #fff1da;
+      box-shadow: 12px 12px 0 #141414;
+      overflow: hidden;
+      opacity: 0;
+    }
+    #rb-loan-head {
+      background: #ee3d22;
+      border-bottom: 6px solid #141414;
+      padding: 18px 0 16px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 34px;
+      line-height: 1;
+      text-align: center;
+      color: #fff1da;
+    }
+    #rb-loan-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 26px 30px 0;
+    }
+    #rb-loan-val {
+      font-family: "League Gothic", sans-serif;
+      font-size: 64px;
+      line-height: 1;
+      color: #ee3d22;
+    }
+    #rb-loan-val {
+      position: relative;
+    }
+    #rb-v1 {
+      display: inline-block;
+    }
+    #rb-v2 {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: inline-block;
+      color: #141414;
+      opacity: 0;
+    }
+    #rb-track {
+      position: relative;
+      margin: 14px 30px 0;
+      height: 62px;
+      border: 6px solid #141414;
+      border-radius: 31px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+    #rb-bar {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(135deg, #ee3d22 0 20px, #d93219 20px 40px);
+      transform-origin: 0% 50%;
+    }
+    #rb-arrow {
+      position: absolute;
+      left: 452px;
+      top: 300px;
+      width: 176px;
+      height: 120px;
+      overflow: visible;
+    }
+    .rb-coin {
+      position: absolute;
+      left: 440px;
+      top: 333px;
+      width: 54px;
+      height: 54px;
+      border: 5px solid #141414;
+      border-radius: 50%;
+      background: #ffc93c;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 22px;
+      line-height: 44px;
+      text-align: center;
+      color: #141414;
+      opacity: 0;
+    }
+    #rb-stamp {
+      position: absolute;
+      left: 668px;
+      top: 404px;
+      width: 310px;
+      padding: 10px 0 14px;
+      border: 7px solid #141414;
+      border-radius: 20px;
+      background: #2ed19a;
+      box-shadow: 9px 9px 0 #141414;
+      font-family: "League Gothic", sans-serif;
+      font-size: 120px;
+      line-height: 0.9;
+      text-align: center;
+      color: #141414;
+      opacity: 0;
+    }
+  </style>
+  <div data-hf-id="hf-4gx0" id="root" data-composition-id="rebate" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-mdt4" id="rb-loan">
+      <div data-hf-id="hf-f252" id="rb-loan-head">LOAN KERETA LAMA</div>
+      <div data-hf-id="hf-r8wn" id="rb-loan-row">
+        <span data-hf-id="hf-6lmq" class="rb-mono">BAKI</span>
+        <span data-hf-id="hf-1vyn" id="rb-loan-val"><span data-hf-id="hf-rlxo" id="rb-v1">TINGGI</span><span data-hf-id="hf-a0dm" id="rb-v2">RM0</span></span>
+      </div>
+      <div data-hf-id="hf-mpsf" id="rb-track"><div data-hf-id="hf-qhph" id="rb-bar"></div></div>
+    </div>
+
+    <div data-hf-id="hf-pnhy" id="rb-ticket">
+      <div data-hf-id="hf-qlsf" id="rb-ticket-body">
+        <div data-hf-id="hf-wqma" class="rb-mono">DUIT</div>
+        <div data-hf-id="hf-gy0u" id="rb-reb">REBATE</div>
+        <div data-hf-id="hf-c1je" class="rb-mono">KERETA</div>
+      </div>
+      <div data-hf-id="hf-r854" class="rb-notch" style="left: -32px"></div>
+      <div data-hf-id="hf-hv1p" class="rb-notch" style="right: -32px"></div>
+      <div data-hf-id="hf-mb77" id="rb-perf"></div>
+    </div>
+
+    <svg data-hf-id="hf-1dw7" id="rb-arrow" viewBox="0 0 176 120" aria-hidden="true">
+      <path data-hf-id="hf-c2wo" id="rb-arrow-line" d="M10 60 C 60 10, 110 10, 150 52" fill="none" stroke="#141414" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+      <path data-hf-id="hf-r697" id="rb-arrow-head" d="M128 44 L156 58 L140 84" fill="none" stroke="#141414" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0" />
+    </svg>
+
+    <div data-hf-id="hf-r1hy" class="rb-coin" id="rb-coin1">RM</div>
+    <div data-hf-id="hf-y22d" class="rb-coin" id="rb-coin2">RM</div>
+    <div data-hf-id="hf-j1bs" class="rb-coin" id="rb-coin3">RM</div>
+
+    <div data-hf-id="hf-niso" id="rb-stamp" data-layout-allow-overlap>TUTUP!</div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // Scene clock: 0 = film 6.90 s
+
+    // "Abang Akak boleh" (film 7.45): the old loan card drops in on the right, still red
+    tl.fromTo("#rb-loan", { opacity: 0, y: -160, rotation: 6 }, { opacity: 1, y: 0, rotation: 2, duration: 0.55, ease: "back.out(1.5)" }, 0.55);
+    // "duit rebate" (film 8.55): the rebate voucher pops in on the left
+    tl.fromTo("#rb-ticket", { opacity: 0, scale: 0.4, rotation: -14 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.42, ease: "back.out(1.9)" }, 1.62);
+    // "sebagai duit untuk" (film 9.7): the arrow draws from voucher to loan
+    tl.to("#rb-arrow-line", { attr: { "stroke-dashoffset": 0 }, duration: 0.42, ease: "power3.inOut" }, 2.8);
+    tl.fromTo("#rb-arrow-head", { attr: { opacity: 0 } }, { attr: { opacity: 1 }, duration: 0.06 }, 3.18);
+    // coins travel along the arrow into the loan card
+    ["#rb-coin1", "#rb-coin2", "#rb-coin3"].forEach((c, i) => {
+      const t0 = 3.2 + i * 0.2;
+      tl.fromTo(c, { opacity: 0, x: 0, y: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.1 }, t0);
+      tl.to(c, { x: 175, y: -6, duration: 0.36, ease: "power2.in" }, t0);
+      tl.to(c, { opacity: 0, scale: 0.4, duration: 0.08 }, t0 + 0.3);
+    });
+    // "tutup" (film 10.9): the balance drains to nothing
+    tl.to("#rb-bar", { scaleX: 0.02, duration: 0.42, ease: "power3.in" }, 4.0);
+    tl.to("#rb-v1", { opacity: 0, y: -20, duration: 0.14, ease: "power2.in" }, 4.24);
+    tl.fromTo("#rb-v2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.18, ease: "power3.out" }, 4.36);
+    tl.to("#rb-loan-head", { backgroundColor: "#141414", duration: 0.2 }, 4.4);
+    // "loan" (film 11.36): stamp slams over the card (riser lands here)
+    tl.fromTo("#rb-stamp", { opacity: 0, scale: 2.4, rotation: -24 }, { opacity: 1, scale: 1, rotation: -9, duration: 0.2, ease: "power4.in" }, 4.26);
+    tl.fromTo("#rb-loan", { y: 0 }, { y: 14, duration: 0.06, ease: "power2.out", immediateRender: false }, 4.46);
+    tl.to("#rb-loan", { y: 0, duration: 0.3, ease: "back.out(2)" }, 4.52);
+
+    // "Jadi" (film 12.55): the band clears upward just before the camera grows back
+    tl.to(["#rb-ticket", "#rb-arrow", "#rb-loan", "#rb-stamp"], { y: -520, filter: "blur(12px)", duration: 0.3, ease: "power3.in", stagger: 0.03 }, 5.5);
+    tl.set(["#rb-ticket", "#rb-arrow", "#rb-loan", "#rb-stamp"], { opacity: 0 }, 6.1);
+
+    window.__timelines["rebate"] = tl;
+  </script>
+</template>

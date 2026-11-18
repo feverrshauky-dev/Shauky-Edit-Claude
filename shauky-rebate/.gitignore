@@ -1,0 +1,5 @@
+node_modules/
+.hyperframes/
+renders/
+# 64 MB enhanced a-roll; rebuild with: python3 scripts/edl.py <source.mp4> transcript/edl.json assets/aroll.mp4
+assets/aroll.mp4

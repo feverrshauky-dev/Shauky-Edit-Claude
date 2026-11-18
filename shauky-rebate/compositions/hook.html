@@ -1,0 +1,201 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    /* Neo-brutalist sticker card above the head (face starts ~y 540) */
+    #hk-card {
+      position: absolute;
+      left: 64px;
+      top: 192px;
+      width: 952px;
+      padding: 22px 34px 26px;
+      border: 6px solid #141414;
+      border-radius: 28px;
+      background: #fff1da;
+      box-shadow: 14px 14px 0 #ee3d22;
+      overflow: hidden;
+    }
+    #hk-kick {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 40px;
+      line-height: 1;
+      color: #141414;
+    }
+    #hk-kick svg {
+      width: 46px;
+      height: 46px;
+      flex: none;
+    }
+    #hk-h {
+      margin-top: 12px;
+      font-family: "League Gothic", sans-serif;
+      font-size: 124px;
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      color: #141414;
+      text-transform: uppercase;
+    }
+    #hk-l2 {
+      position: relative;
+      display: inline-block;
+      padding: 0 16px;
+      margin-left: -16px;
+      color: #fff1da;
+    }
+    #hk-mark {
+      position: absolute;
+      inset: 4px 0 2px 0;
+      background: #ee3d22;
+      border-radius: 10px;
+      transform-origin: 0% 50%;
+    }
+    #hk-l2-t {
+      position: relative;
+      display: inline-block;
+    }
+    #hk-sheen {
+      position: absolute;
+      top: -40px;
+      bottom: -40px;
+      left: -260px;
+      width: 160px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+      opacity: 0;
+    }
+    /* Loan-balance meter in the free strip left of the face */
+    #hk-meter {
+      position: absolute;
+      left: 52px;
+      top: 700px;
+      width: 190px;
+      height: 600px;
+      opacity: 0;
+    }
+    #hk-meter-label {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 190px;
+      padding: 8px 0 10px;
+      border: 5px solid #141414;
+      border-radius: 14px;
+      background: #fff1da;
+      box-shadow: 7px 7px 0 #141414;
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1;
+      text-align: center;
+      color: #141414;
+    }
+    #hk-tube {
+      position: absolute;
+      left: 45px;
+      top: 92px;
+      width: 100px;
+      height: 470px;
+      border: 6px solid #141414;
+      border-radius: 50px;
+      background: #fff1da;
+      overflow: hidden;
+      box-shadow: 8px 8px 0 #141414;
+    }
+    #hk-fill {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      background: repeating-linear-gradient(135deg, #ee3d22 0 22px, #d93219 22px 44px);
+      transform-origin: 50% 100%;
+    }
+    .hk-tick {
+      position: absolute;
+      left: 0;
+      width: 26px;
+      height: 5px;
+      background: #141414;
+    }
+    #hk-tag {
+      position: absolute;
+      left: 6px;
+      top: 104px;
+      padding: 10px 16px 12px;
+      border: 5px solid #141414;
+      border-radius: 14px;
+      background: #ee3d22;
+      box-shadow: 6px 6px 0 #141414;
+      font-family: "League Gothic", sans-serif;
+      font-size: 64px;
+      line-height: 0.9;
+      color: #fff1da;
+      opacity: 0;
+    }
+  </style>
+  <div data-hf-id="hf-srfg" id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-kd2d" id="hk-card">
+      <div data-hf-id="hf-dee5" id="hk-kick">
+        <svg data-hf-id="hf-iwz0" viewBox="0 0 48 48" aria-hidden="true">
+          <path data-hf-id="hf-cn4k" d="M24 4 L46 43 H2 Z" fill="#ffc93c" stroke="#141414" stroke-width="4" stroke-linejoin="round" />
+          <rect data-hf-id="hf-osx9" x="21.5" y="16" width="5" height="15" rx="2" fill="#141414" />
+          <circle data-hf-id="hf-7zv3" cx="24" cy="36.5" r="3" fill="#141414" />
+        </svg>
+        <span data-hf-id="hf-7xs9">NAK JUAL KERETA LAMA?</span>
+      </div>
+      <div data-hf-id="hf-o0ml" id="hk-h">
+        <div data-hf-id="hf-vu6f" id="hk-l1">BAKI LOAN</div>
+        <div data-hf-id="hf-gd9d" id="hk-l2"><span data-hf-id="hf-7r9x" id="hk-mark"></span><span data-hf-id="hf-hhqi" id="hk-l2-t">MASIH TINGGI?</span></div>
+      </div>
+      <div data-hf-id="hf-bgci" id="hk-sheen"></div>
+    </div>
+
+    <div data-hf-id="hf-qtdi" id="hk-meter">
+      <div data-hf-id="hf-pwms" id="hk-meter-label">BAKI LOAN</div>
+      <div data-hf-id="hf-6wid" id="hk-tube">
+        <div data-hf-id="hf-h9uw" id="hk-fill"></div>
+        <div data-hf-id="hf-5et3" class="hk-tick" style="top: 90px"></div>
+        <div data-hf-id="hf-rmsq" class="hk-tick" style="top: 190px"></div>
+        <div data-hf-id="hf-e081" class="hk-tick" style="top: 290px"></div>
+        <div data-hf-id="hf-nwi4" class="hk-tick" style="top: 390px"></div>
+      </div>
+      <div data-hf-id="hf-ae8w" id="hk-tag">TINGGI!</div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Frame 0 is the thumbnail: the card is already landed, tilted like a sticker.
+    tl.set("#hk-card", { rotation: -1.5, transformOrigin: "50% 50%" }, 0);
+    // a glint crosses the card so the opening frame is alive without moving the type
+    tl.fromTo("#hk-sheen", { x: 0, opacity: 0.9 }, { x: 1450, opacity: 0.9, duration: 0.7, ease: "power2.inOut" }, 0.1);
+    tl.set("#hk-sheen", { opacity: 0 }, 0.8);
+    // "jual kereta lama" (2.9 s): the kicker nudges forward
+    tl.fromTo("#hk-kick", { x: 0 }, { x: 10, duration: 0.18, ease: "power3.out" }, 2.9);
+    tl.to("#hk-kick", { x: 0, duration: 0.3, ease: "power2.out" }, 3.08);
+
+    // "baki loan" (3.86): meter slams in from the left
+    tl.fromTo("#hk-meter", { x: -300, opacity: 1 }, { x: 0, opacity: 1, duration: 0.45, ease: "expo.out" }, 3.82);
+    tl.fromTo("#hk-fill", { scaleY: 0.08 }, { scaleY: 0.9, duration: 0.55, ease: "power4.out" }, 4.25);
+    // "masih lagi tinggi": the red marker re-sweeps under the line
+    tl.fromTo("#hk-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.32, ease: "power3.out", immediateRender: false }, 4.28);
+    tl.fromTo("#hk-l2-t", { color: "#141414" }, { color: "#fff1da", duration: 0.12, immediateRender: false }, 4.36);
+    // "tinggi" (4.85): tag stamps, the line kicks
+    tl.fromTo("#hk-tag", { opacity: 0, scale: 2.1, rotation: -18 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.24, ease: "back.out(2)" }, 4.83);
+    tl.fromTo("#hk-l2", { scale: 1 }, { scale: 1.07, duration: 0.08, ease: "power2.out", transformOrigin: "0% 60%" }, 4.85);
+    tl.to("#hk-l2", { scale: 1, duration: 0.22, ease: "power2.out" }, 4.93);
+
+    // "Tapi" (5.12): everything whips off left
+    tl.to("#hk-card", { x: -1250, rotation: -7, filter: "blur(14px)", duration: 0.32, ease: "power3.in" }, 5.06);
+    tl.to("#hk-meter", { x: -360, filter: "blur(10px)", duration: 0.26, ease: "power3.in" }, 5.04);
+    tl.set(["#hk-card", "#hk-meter"], { opacity: 0 }, 5.4);
+
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

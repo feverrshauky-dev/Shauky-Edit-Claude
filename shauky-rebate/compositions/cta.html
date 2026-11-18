@@ -1,0 +1,154 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    /* Call to action above the camera card, on the cobalt ground */
+    #ct-btn {
+      position: absolute;
+      left: 80px;
+      top: 214px;
+      width: 920px;
+      height: 168px;
+      opacity: 0;
+    }
+    #ct-btn-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      padding: 0 34px;
+      border: 7px solid #141414;
+      border-radius: 84px;
+      background: #ffc93c;
+      box-shadow: 0 14px 0 #141414;
+    }
+    #ct-ico {
+      flex: none;
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: #141414;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ct-ico svg {
+      width: 62px;
+      height: 62px;
+    }
+    #ct-btn-t {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 60px;
+      line-height: 1;
+      color: #141414;
+      white-space: nowrap;
+    }
+    #ct-cursor {
+      position: absolute;
+      left: 760px;
+      top: 300px;
+      width: 96px;
+      height: 120px;
+      opacity: 0;
+    }
+    #ct-bio {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 418px;
+      text-align: center;
+      opacity: 0;
+    }
+    #ct-bio-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 30px 12px 22px;
+      border: 6px solid #141414;
+      border-radius: 18px;
+      background: #fff1da;
+      box-shadow: 8px 8px 0 #141414;
+      font-family: "League Gothic", sans-serif;
+      font-size: 82px;
+      line-height: 0.95;
+      color: #141414;
+    }
+    #ct-bio-pill svg {
+      width: 54px;
+      height: 64px;
+    }
+    #ct-stamp {
+      position: absolute;
+      left: 150px;
+      top: 232px;
+      width: 780px;
+      padding: 14px 0 18px;
+      border: 8px solid #141414;
+      border-radius: 24px;
+      background: #2ed19a;
+      box-shadow: 14px 14px 0 #141414;
+      font-family: "League Gothic", sans-serif;
+      font-size: 172px;
+      line-height: 0.9;
+      text-align: center;
+      color: #141414;
+      opacity: 0;
+    }
+  </style>
+  <div data-hf-id="hf-rebv" id="root" data-composition-id="cta" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-u99z" id="ct-btn">
+      <div data-hf-id="hf-nuij" id="ct-btn-face">
+        <div data-hf-id="hf-c3ws" id="ct-ico">
+          <svg data-hf-id="hf-35ls" viewBox="0 0 24 24" aria-hidden="true">
+            <path data-hf-id="hf-tb3q" fill="#ffc93c" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" />
+          </svg>
+        </div>
+        <div data-hf-id="hf-1iei" id="ct-btn-t">KLIK NOMBOR SAYA</div>
+      </div>
+    </div>
+
+    <svg data-hf-id="hf-2z9u" id="ct-cursor" viewBox="0 0 48 60" aria-hidden="true">
+      <path data-hf-id="hf-lbrn" d="M4 3 L4 47 L15 37 L23 56 L31 52 L23 34 L38 33 Z" fill="#ffffff" stroke="#141414" stroke-width="4" stroke-linejoin="round" />
+    </svg>
+
+    <div data-hf-id="hf-f931" id="ct-bio">
+      <span data-hf-id="hf-az5v" id="ct-bio-pill">
+        <svg data-hf-id="hf-aaxd" viewBox="0 0 36 44" aria-hidden="true">
+          <path data-hf-id="hf-kuo4" d="M18 40 V8 M5 20 L18 6 L31 20" fill="none" stroke="#141414" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        DI BIO
+      </span>
+    </div>
+
+    <div data-hf-id="hf-acmk" id="ct-stamp" data-layout-allow-overlap>SAMPAI JADI!</div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // Scene clock: 0 = film 15.20 s
+
+    // "klik" (film 15.36): the button springs up
+    tl.fromTo("#ct-btn", { opacity: 0, scale: 0.55, y: 60 }, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "back.out(1.7)" }, 0.12);
+    // the cursor glides in and presses it (film 15.62)
+    tl.fromTo("#ct-cursor", { opacity: 0, x: 220, y: 260 }, { opacity: 1, x: 0, y: 0, duration: 0.3, ease: "power3.out" }, 0.14);
+    tl.to("#ct-btn-face", { y: 12, boxShadow: "0 2px 0 #141414", duration: 0.06, ease: "power2.in" }, 0.42);
+    tl.to("#ct-cursor", { scale: 0.88, duration: 0.06, ease: "power2.in", transformOrigin: "10% 5%" }, 0.42);
+    tl.to("#ct-btn-face", { y: 0, boxShadow: "0 14px 0 #141414", duration: 0.24, ease: "back.out(2.5)" }, 0.5);
+    tl.to("#ct-cursor", { scale: 1, duration: 0.2, ease: "power2.out" }, 0.5);
+    tl.to("#ct-cursor", { x: 160, y: 220, opacity: 0, duration: 0.28, ease: "power3.in" }, 0.9);
+    // "di bio" (film 16.2): the pill pops and its arrow points up to the profile
+    tl.fromTo("#ct-bio", { opacity: 0, y: 40, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(2)" }, 0.98);
+    tl.fromTo("#ct-bio-pill svg", { y: 10 }, { y: -6, duration: 0.18, ease: "power2.out" }, 1.2);
+    tl.to("#ct-bio-pill svg", { y: 0, duration: 0.22, ease: "power2.inOut" }, 1.38);
+
+    // "sampai jadi" (film 18.24): the green stamp lands over the button
+    tl.to(["#ct-btn", "#ct-bio"], { scale: 0.94, opacity: 0.35, duration: 0.2, ease: "power2.out" }, 3.0);
+    tl.fromTo("#ct-stamp", { opacity: 0, scale: 2.3, rotation: -20 }, { opacity: 1, scale: 1, rotation: -5, duration: 0.22, ease: "power4.in" }, 2.84);
+
+    window.__timelines["cta"] = tl;
+  </script>
+</template>
