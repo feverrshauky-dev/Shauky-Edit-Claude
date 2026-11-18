@@ -1,0 +1,140 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    /* The yellow NO DI BIO button grows into the whole frame (same rect, same radius) */
+    #ot-world {
+      position: absolute;
+      inset: 0;
+      background: #ffc93c;
+      clip-path: inset(214px 80px 1538px 80px round 84px);
+      overflow: hidden;
+    }
+    #ot-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(20, 20, 20, 0.14) 3px, transparent 3.5px);
+      background-size: 36px 36px;
+      opacity: 0;
+    }
+    .ot-burst {
+      position: absolute;
+      width: 1500px;
+      height: 1500px;
+      left: -210px;
+      top: 110px;
+      opacity: 0;
+    }
+    #ot-name {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 470px;
+      text-align: center;
+    }
+    #ot-crown {
+      display: block;
+      width: 190px;
+      height: 130px;
+      margin: 0 auto 6px;
+      opacity: 0;
+    }
+    #ot-brand {
+      font-family: "League Gothic", sans-serif;
+      font-size: 150px;
+      line-height: 0.9;
+      letter-spacing: 0.16em;
+      padding-left: 0.16em;
+      color: #141414;
+    }
+    #ot-brand span {
+      display: inline-block;
+      opacity: 0;
+    }
+    #ot-shauky {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: "League Gothic", sans-serif;
+      font-size: 330px;
+      line-height: 0.86;
+      color: #fff1da;
+      -webkit-text-stroke: 10px #141414;
+      paint-order: stroke fill;
+      text-shadow: 16px 16px 0 #2b59ff;
+      opacity: 0;
+    }
+    #ot-tag {
+      display: inline-flex;
+      margin-top: 40px;
+      padding: 16px 30px 20px;
+      border: 7px solid #141414;
+      border-radius: 22px;
+      background: #2b59ff;
+      box-shadow: 10px 10px 0 #141414;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 58px;
+      line-height: 1;
+      color: #fff1da;
+      white-space: nowrap;
+      opacity: 0;
+    }
+    #ot-tag span {
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="outro" data-width="1080" data-height="1920">
+    <div id="ot-world">
+      <div id="ot-dots"></div>
+      <svg class="ot-burst" id="ot-burst" viewBox="-100 -100 200 200" aria-hidden="true">
+        <g fill="#ffd96e">
+          <path d="M0 0 L-6 -100 L6 -100 Z" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(20)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(40)" />
+          <path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(60)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(80)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(100)" />
+          <path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(120)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(140)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(160)" />
+          <path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(180)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(200)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(220)" />
+          <path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(240)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(260)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(280)" />
+          <path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(300)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(320)" /><path d="M0 0 L-6 -100 L6 -100 Z" transform="rotate(340)" />
+        </g>
+      </svg>
+      <div id="ot-name">
+        <svg id="ot-crown" viewBox="0 0 190 130" aria-hidden="true">
+          <path d="M14 112 L6 34 L52 70 L95 10 L138 70 L184 34 L176 112 Z" fill="#fff1da" stroke="#141414" stroke-width="9" stroke-linejoin="round" />
+          <circle cx="95" cy="10" r="0" fill="#141414" />
+          <rect x="14" y="96" width="162" height="16" fill="#2b59ff" stroke="#141414" stroke-width="6" />
+        </svg>
+        <div id="ot-brand"><span>P</span><span>E</span><span>R</span><span>O</span><span>D</span><span>U</span><span>A</span></div>
+        <div id="ot-shauky">SHAUKY</div>
+        <div><div id="ot-tag"><span>#</span><span>P</span><span>e</span><span>n</span><span>j</span><span>u</span><span>a</span><span>l</span><span>K</span><span>e</span><span>r</span><span>e</span><span>t</span><span>a</span><span>T</span><span>e</span><span>r</span><span>h</span><span>e</span><span>b</span><span>a</span><span>t</span></div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // Scene clock: 0 = film 19.55 s, right after "Assalamualaikum"
+
+    // the button becomes the world
+    tl.to("#ot-world", { clipPath: "inset(0px 0px 0px 0px round 0px)", duration: 0.5, ease: "power3.inOut" }, 0);
+    tl.to("#ot-dots", { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.4);
+    tl.set("#ot-burst", { transformOrigin: "50% 50%" }, 0);
+    tl.fromTo("#ot-burst", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 0.5);
+    // slow constant turn of the rays behind the name
+    tl.fromTo("#ot-burst", { rotation: 0 }, { rotation: 45, duration: 2.95, ease: "none" }, 0.5);
+
+    // PERODUA: letters drop in, a frame apart
+    tl.fromTo("#ot-brand span", { opacity: 0, y: -90 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)", stagger: 0.035 }, 0.3);
+    // SHAUKY slams down (impact lands ~0.72)
+    tl.fromTo("#ot-shauky", { opacity: 0, scale: 2.3, rotation: -8 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.22, ease: "power4.in" }, 0.5);
+    tl.fromTo("#ot-name", { y: 0 }, { y: 16, duration: 0.05, ease: "power2.out", immediateRender: false }, 0.72);
+    tl.to("#ot-name", { y: 0, duration: 0.3, ease: "back.out(2.5)" }, 0.77);
+    // the crown drops onto the name
+    tl.fromTo("#ot-crown", { opacity: 0, y: -260, rotation: -16 }, { opacity: 1, y: 0, rotation: 6, duration: 0.38, ease: "back.out(1.8)" }, 0.74);
+    // hashtag pill opens, then types letter by letter
+    tl.fromTo("#ot-tag", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.24, ease: "back.out(2)" }, 0.86);
+    tl.fromTo("#ot-tag span", { opacity: 0 }, { opacity: 1, duration: 0.01, stagger: 0.026 }, 0.94);
+
+    window.__timelines["outro"] = tl;
+  </script>
+</template>

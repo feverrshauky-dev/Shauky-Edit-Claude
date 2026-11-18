@@ -18,7 +18,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 W = {w["id"]: w for w in json.loads((ROOT / "transcript" / "words.json").read_text())}
 DURATION = 20.03
 TOP, SLOT = 318, 576
-KEYWORDS = {"CARA", "REBATE", "TUTUP", "LOAN", "CARANYA?", "BANTU", "SATU"}
+KEYWORDS = {"CARA", "REBATE", "TUTUP", "LOAN", "CARANYA?", "BANTU", "SATU", "SAMPAI", "JADI"}
 
 # (first word, last word, position, hold-until override)
 GROUPS = [
@@ -35,8 +35,9 @@ GROUPS = [
     (43, 44, TOP, None),    # NAK TAHU
     (45, 47, TOP, 15.3),    # MACAM MANA CARANYA?
     (53, 55, SLOT, None),   # INSYAALLAH SAYA AKAN
-    (56, 58, SLOT, 18.22),  # BANTU ABANG AKAK
-    (61, 61, SLOT, DURATION),  # ASSALAMUALAIKUM
+    (56, 58, SLOT, None),   # BANTU ABANG AKAK
+    (59, 60, SLOT, None),   # SAMPAI JADI (replaces the old stamp)
+    (61, 61, SLOT, 19.66),  # ASSALAMUALAIKUM, then the outro takes the frame
 ]
 
 
