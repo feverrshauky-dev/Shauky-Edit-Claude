@@ -1,0 +1,90 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; overflow: hidden; font-family: "Archivo Black", sans-serif; }
+    #bg { position: absolute; inset: 0; background: #0f0f12; }
+    #stripes { position: absolute; inset: -400px; opacity: 0.12;
+      background: repeating-linear-gradient(-45deg, #ffd60a 0 30px, rgba(0, 0, 0, 0) 30px 90px); }
+    #rays { position: absolute; left: 540px; top: 560px; width: 1700px; height: 1700px; margin: -850px 0 0 -850px; opacity: 0.22;
+      background: repeating-conic-gradient(from 0deg, #ffd60a 0deg 8deg, rgba(0, 0, 0, 0) 8deg 20deg); border-radius: 50%; }
+    #glow { position: absolute; left: 540px; top: 560px; width: 760px; height: 760px; margin: -380px 0 0 -380px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 214, 10, 0.45) 0%, rgba(255, 59, 48, 0.18) 45%, rgba(0, 0, 0, 0) 70%); }
+    /* avatar: a still of Shauky from this video in a ringed badge */
+    #av { position: absolute; left: 360px; top: 380px; width: 360px; height: 360px; }
+    #av img { position: absolute; inset: 18px; width: 324px; height: 324px; border-radius: 50%; object-fit: cover; border: 8px solid #0f0f12; }
+    #ring { position: absolute; inset: 0; border-radius: 50%; background: #ffd60a; }
+    #dash { position: absolute; inset: -22px; overflow: visible; }
+    #badge { position: absolute; right: -14px; bottom: 18px; width: 92px; height: 92px; border-radius: 50%; background: #ff3b30; border: 6px solid #0f0f12;
+      display: flex; align-items: center; justify-content: center; }
+    #badge svg { width: 54px; height: 54px; }
+    .name { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; }
+    #n1 { top: 790px; font-size: 76px; line-height: 1; color: #fff8e7; letter-spacing: 0.08em; }
+    #n2 { top: 868px; font-size: 156px; line-height: 1; color: #ffd60a; -webkit-text-stroke: 8px #0f0f12; paint-order: stroke fill;
+      text-shadow: 10px 12px 0 #ff3b30; }
+    .ch { display: inline-block; }
+    #n2 .wrap { position: relative; overflow: hidden; padding: 0 18px 22px; }
+    #shine { position: absolute; top: -10%; left: 0; width: 26%; height: 120%; transform: translateX(-200%) skewX(-18deg);
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%); mix-blend-mode: overlay; }
+    #tag { top: 1060px; }
+    #tag .t { font-size: 46px; line-height: 1; color: #fff; padding: 14px 26px 18px; background: #ff3b30; border: 7px solid #fff8e7; border-radius: 18px;
+      box-shadow: 9px 10px 0 #ffd60a; transform: rotate(-2deg); --rx: 0px;
+      text-shadow: var(--rx) 0 0 rgba(0, 210, 255, 0.9), calc(var(--rx) * -1) 0 0 rgba(255, 214, 10, 0.9); }
+    #cta { top: 1170px; }
+    #cta .t { display: flex; align-items: center; gap: 12px; font-size: 30px; line-height: 1; color: #0f0f12; padding: 10px 22px 12px; background: #25d366; border: 5px solid #fff8e7; border-radius: 999px; }
+    #cta svg { width: 34px; height: 34px; }
+    .cf { position: absolute; left: 540px; top: 1090px; width: 18px; height: 28px; margin: -14px 0 0 -9px; border-radius: 4px; border: 3px solid #0f0f12; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="outro" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="bg"></div>
+    <div id="stripes"></div>
+    <div id="rays"></div>
+    <div id="glow"></div>
+    <div id="av">
+      <div id="ring"></div>
+      <svg id="dash" viewBox="0 0 404 404" aria-hidden="true"><circle cx="202" cy="202" r="196" fill="none" stroke="#ff3b30" stroke-width="8" stroke-dasharray="26 18" stroke-linecap="round"/></svg>
+      <img id="av-img" src="assets/img/shauky-avatar.jpg" alt="Shauky" />
+      <div id="badge"><svg viewBox="0 0 54 54" aria-hidden="true"><path d="M27 6l6.2 13 14.3 1.7-10.5 9.8 2.8 14.1L27 37.6 14.2 44.6 17 30.5 6.5 20.7 20.8 19z" fill="#ffd60a" stroke="#0f0f12" stroke-width="3.5" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="name" id="n1"><span class="ch">P</span><span class="ch">E</span><span class="ch">R</span><span class="ch">O</span><span class="ch">D</span><span class="ch">U</span><span class="ch">A</span></div>
+    <div class="name" id="n2"><div class="wrap"><span class="ch">S</span><span class="ch">H</span><span class="ch">A</span><span class="ch">U</span><span class="ch">K</span><span class="ch">Y</span><span id="shine"></span></div></div>
+    <div class="name" id="tag"><div class="t">#PenjualKeretaTerhebat</div></div>
+    <div class="name" id="cta"><div class="t">
+      <svg viewBox="0 0 92 92" aria-hidden="true"><path d="M46 8C24 8 8 23 8 43c0 8 3 15 7 21l-5 19 20-6c5 3 10 4 16 4 22 0 38-16 38-37S68 8 46 8z" fill="#fff" stroke="#0f0f12" stroke-width="7" stroke-linejoin="round"/></svg>
+      WHATSAPP SAYA SEKARANG</div></div>
+    <div id="burst"><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // background in behind the stripe wipe, slow drift for the hold
+    tl.fromTo("#stripes", { x: 0 }, { x: -254, duration: 3.5, ease: "none", immediateRender: true }, 0);
+    tl.fromTo("#rays", { rotation: 0, scale: 0.6 }, { rotation: 56, scale: 1, duration: 3.5, ease: "power1.out", immediateRender: true }, 0);
+    tl.fromTo("#glow", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "power2.out", immediateRender: true }, 0.1);
+    // avatar badge pops, rings spin
+    tl.fromTo("#av", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.42, ease: "back.out(2.2)", immediateRender: true }, 0.12);
+    tl.fromTo("#dash", { rotation: 0 }, { rotation: 160, duration: 3.4, ease: "none", immediateRender: true }, 0.12);
+    tl.fromTo("#badge", { scale: 0, rotation: -90 }, { scale: 1, rotation: 12, duration: 0.3, ease: "back.out(3)", immediateRender: true }, 0.5);
+    // name: PERODUA rises letter by letter, SHAUKY slams in letter by letter
+    tl.fromTo("#n1 .ch", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "back.out(2)", stagger: 0.03, immediateRender: true }, 0.3);
+    tl.fromTo("#n2 .ch", { scale: 2.6, opacity: 0, rotation: (i) => (i % 2 ? 14 : -14) }, { scale: 1, opacity: 1, rotation: 0, duration: 0.18, ease: "power4.in", stagger: 0.045, immediateRender: true }, 0.38);
+    [10, -8, 6, -3, 0].forEach((y, i) => tl.to("#n2", { y, duration: 0.03, ease: "none" }, 0.83 + i * 0.03));
+    tl.set("#shine", { opacity: 0 }, 0);
+    [1.05, 2.3].forEach((t) => {
+      tl.fromTo("#shine", { xPercent: -200, opacity: 1 }, { xPercent: 560, duration: 0.6, ease: "power2.inOut", immediateRender: false }, t);
+      tl.set("#shine", { opacity: 0 }, t + 0.6);
+    });
+    // hashtag stamp with a colour-split jitter, then confetti
+    tl.fromTo("#tag .t", { scale: 2.2, opacity: 0, rotation: 10 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.14, ease: "power4.in", immediateRender: true }, 1.0);
+    [9, -7, 5, -3, 0].forEach((v, i) => tl.set("#tag .t", { "--rx": v + "px" }, 1.14 + i * 0.033));
+    gsap.utils.toArray("#burst .cf").forEach((el, i) => {
+      const a = (i / 30) * Math.PI * 2 + (i % 3) * 0.25;
+      const r = 320 + (i % 5) * 80;
+      const dx = Math.cos(a) * r, dy = Math.sin(a) * r * 0.6 - 160;
+      tl.fromTo(el, { opacity: 1, x: 0, y: 0, rotation: 0, scale: 0.6 }, { x: dx, y: dy, rotation: 200 + i * 41, scale: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, 1.14);
+      tl.to(el, { y: dy + 700 + (i % 4) * 90, rotation: 420 + i * 41, duration: 1.4, ease: "power1.in" }, 1.64);
+    });
+    tl.set("#burst .cf", { opacity: 0 }, 0);
+    tl.fromTo("#cta .t", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.26, ease: "back.out(2.4)", immediateRender: true }, 1.45);
+    tl.to("#cta .t", { scale: 1.06, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.8);
+    window.__timelines["outro"] = tl;
+  </script>
+</template>

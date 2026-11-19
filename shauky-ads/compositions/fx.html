@@ -9,6 +9,7 @@
   <div id="root" data-composition-id="fx" data-width="1080" data-height="1920" data-layout-allow-overflow>
     <div class="wipe" id="wipe1"><span class="s1"></span><span class="s2"></span><span class="s3"></span></div>
     <div class="wipe" id="wipe2"><span class="s3"></span><span class="s1"></span><span class="s2"></span></div>
+    <div class="wipe" id="wipe3"><span class="s2"></span><span class="s1"></span><span class="s3"></span></div>
     <div id="flash"></div>
   </div>
   <script>
@@ -21,6 +22,7 @@
     }
     wipe("#wipe1", 7.867, 1);
     wipe("#wipe2", 12.633, -1);
+    wipe("#wipe3", 23.8, 1);
     tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.55, duration: 0.03, ease: "none", immediateRender: true }, 18.69);
     tl.to("#flash", { opacity: 0, duration: 0.3, ease: "power2.out" }, 18.72);
     window.__timelines["fx"] = tl;
