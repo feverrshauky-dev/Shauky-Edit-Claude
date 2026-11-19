@@ -10,7 +10,7 @@
       line-height: 1; letter-spacing: -0.01em; white-space: nowrap;
     }
     .paper { background: #fff8e7; color: #0f0f12; }
-    .hot { background: #ff3b30; color: #ffffff; -webkit-text-stroke: 3px #0f0f12; paint-order: stroke fill; }
+    .hot { background: #ff3b30; color: #ffffff; -webkit-text-stroke: 3px #0f0f12; paint-order: stroke fill; --rx: 0px; text-shadow: var(--rx) 0 0 rgba(0, 210, 255, 0.9), calc(var(--rx) * -1) 0 0 rgba(255, 214, 10, 0.9); }
     .sun { background: #ffd60a; color: #0f0f12; }
     .x {
       width: 52px; height: 52px; flex: none; border-radius: 50%; background: #ff3b30; border: 6px solid #0f0f12;
@@ -38,6 +38,7 @@
     tl.fromTo("#hk1", { scale: 1.06, y: -6 }, { scale: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 0);
     tl.fromTo("#hk2", { scale: 1.1, x: 18 }, { scale: 1, x: 0, duration: 0.4, ease: "back.out(2.2)" }, 0.04);
     tl.to("#hk2", { rotation: -3, scale: 1.08, duration: 0.08, ease: "power2.out" }, 1.56);
+    [9, -7, 5, -3, 0].forEach((v, i) => tl.set("#hk2-t", { "--rx": v + "px" }, 1.56 + i * 0.033));
     tl.to("#hk2", { rotation: 2, duration: 0.08, ease: "power1.inOut" }, 1.64);
     tl.to("#hk2", { rotation: 0, scale: 1, duration: 0.14, ease: "power2.out" }, 1.72);
     tl.to("#hk1", { y: -260, opacity: 0, duration: 0.2, ease: "power3.in" }, 2.0);

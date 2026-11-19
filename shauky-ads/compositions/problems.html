@@ -1,61 +1,103 @@
 <template>
   <style>
     #root { position: absolute; inset: 0; pointer-events: none; font-family: "Archivo Black", sans-serif; }
-    /* Covers: red "X" stickers that sit exactly over the labels burned into the footage.
-       They carry no text (the lower right is under the TikTok/Reels buttons); the words go in the top list. */
-    .cover {
-      position: absolute; display: flex; align-items: center; justify-content: center;
-      background: #ff3b30; border: 7px solid #0f0f12; border-radius: 24px; box-shadow: 9px 11px 0 #0f0f12; opacity: 0;
-      background-image: repeating-linear-gradient(-45deg, rgba(15, 15, 18, 0.16) 0 14px, rgba(15, 15, 18, 0) 14px 30px);
+    /* The three problem labels from the original edit, rebuilt in place: each one flies up the same
+       path as the old burned-in label (so it fully replaces it), lands, glitches and gets marked. */
+    .lab {
+      position: absolute; display: flex; align-items: center; gap: 16px; opacity: 0;
+      border: 7px solid #0f0f12; border-radius: 22px; box-shadow: 9px 11px 0 #0f0f12;
+      background: #fff8e7; color: #0f0f12; --rx: 0px;
     }
-    .cover svg { width: 96px; height: 96px; }
-    #c1 { left: 628px; top: 990px; width: 414px; height: 160px; }
-    #c2 { left: 14px; top: 838px; width: 392px; height: 228px; }
-    #c3 { left: 270px; top: 1020px; width: 382px; height: 270px; background-color: #ffd60a; }
-    .list { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; }
-    .item {
-      display: inline-flex; align-items: center; gap: 16px; font-size: 46px; line-height: 1; padding: 10px 26px 14px 14px;
-      background: #fff8e7; color: #0f0f12; border: 6px solid #0f0f12; border-radius: 18px; box-shadow: 8px 9px 0 #0f0f12; white-space: nowrap;
+    .lab .t { display: flex; flex-direction: column; line-height: 0.95; letter-spacing: -0.01em; position: relative; }
+    .rgb { text-shadow: var(--rx) 0 0 rgba(255, 30, 70, 0.85), calc(var(--rx) * -1) 0 0 rgba(0, 210, 255, 0.85); }
+    .ico { flex: none; width: 76px; height: 76px; border-radius: 50%; background: #ff3b30; border: 5px solid #0f0f12; display: flex; align-items: center; justify-content: center; }
+    .ico svg { width: 46px; height: 46px; }
+    .sq { position: absolute; left: -4px; bottom: -16px; width: 104%; height: 22px; overflow: visible; }
+    #l1 { left: 628px; top: 990px; width: 414px; height: 160px; padding: 0 20px 0 22px; }
+    #l1 .small { font-size: 40px; color: #ff3b30; -webkit-text-stroke: 2px #0f0f12; paint-order: stroke fill; }
+    #l1 .big { font-size: 74px; }
+    #l2 { left: 14px; top: 838px; width: 456px; height: 228px; padding: 0 18px 0 66px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 10px; }
+    #l2 .small { font-size: 40px; }
+    #l2 .big { font-size: 70px; color: #ff3b30; -webkit-text-stroke: 3px #0f0f12; paint-order: stroke fill; }
+    #l2 .ico { position: absolute; right: -24px; top: -30px; width: 84px; height: 84px; background: #ffd60a; transform: rotate(10deg); }
+    #l3 { left: 270px; top: 1020px; width: 382px; height: 270px; flex-direction: column; justify-content: center; gap: 4px; background: #0f0f12; border-color: #0f0f12; }
+    #l3 .big { font-size: 96px; color: #fff8e7; line-height: 0.9; }
+    #gauge { width: 300px; height: 160px; overflow: visible; }
+        #head { position: absolute; left: 0; width: 100%; top: 282px; display: flex; justify-content: center; opacity: 0; }
+    #head .tag {
+      display: inline-flex; align-items: center; gap: 14px; font-size: 48px; line-height: 1; padding: 12px 26px 16px;
+      background: #ffd60a; border: 7px solid #0f0f12; border-radius: 18px; box-shadow: 9px 10px 0 #0f0f12; transform: rotate(-2deg);
     }
-    .num { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; background: #ff3b30; color: #fff; font-size: 30px; border: 5px solid #0f0f12; }
+    #head svg { width: 40px; height: 40px; }
   </style>
-  <div id="root" data-composition-id="problems" data-width="1080" data-height="1920" data-layout-allow-overlap>
-    <div class="cover" id="c1"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M24 24l48 48M72 24L24 72" stroke="#0f0f12" stroke-width="22" stroke-linecap="round"/><path d="M24 24l48 48M72 24L24 72" stroke="#fff" stroke-width="11" stroke-linecap="round"/></svg></div>
-    <div class="cover" id="c2"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M24 24l48 48M72 24L24 72" stroke="#0f0f12" stroke-width="22" stroke-linecap="round"/><path d="M24 24l48 48M72 24L24 72" stroke="#fff" stroke-width="11" stroke-linecap="round"/></svg></div>
-    <div class="cover" id="c3"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M24 24l48 48M72 24L24 72" stroke="#0f0f12" stroke-width="22" stroke-linecap="round"/><path d="M24 24l48 48M72 24L24 72" stroke="#ff3b30" stroke-width="11" stroke-linecap="round"/></svg></div>
+  <div id="root" data-composition-id="problems" data-width="1080" data-height="1920" data-layout-allow-overlap data-layout-allow-overflow>
+    <div id="head"><div class="tag">MASALAH MACAM NI
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path class="chev" d="M8 12l12 12 12-12" fill="none" stroke="#0f0f12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
 
-    <div class="list" id="i1" style="top: 276px"><div class="item" style="transform: rotate(-1.5deg)"><span class="num">1</span>SANGKUT PTPTN</div></div>
-    <div class="list" id="i2" style="top: 368px"><div class="item" style="transform: rotate(1deg)"><span class="num">2</span>BARU KERJA SEBULAN</div></div>
-    <div class="list" id="i3" style="top: 460px"><div class="item" style="transform: rotate(-1deg)"><span class="num">3</span>AKPK / BLACKLIST</div></div>
+    <div class="lab" id="l1">
+      <div class="ico"><svg viewBox="0 0 46 46" aria-hidden="true"><path d="M23 8L3 17l20 9 20-9z" fill="#fff" stroke="#0f0f12" stroke-width="3.5" stroke-linejoin="round"/><path d="M11 21v9c0 3 6 6 12 6s12-3 12-6v-9" fill="#fff" stroke="#0f0f12" stroke-width="3.5"/><path d="M41 17v12" stroke="#0f0f12" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+      <div class="t rgb"><span class="small">SANGKUT</span><span class="big">PTPTN</span>
+        <svg class="sq" viewBox="0 0 300 22" preserveAspectRatio="none" aria-hidden="true"><path id="sq1" d="M4 12 C40 2, 70 22, 110 11 S180 2, 220 12 S270 20, 296 8" fill="none" stroke="#ff3b30" stroke-width="7" stroke-linecap="round"/></svg></div>
+    </div>
+
+    <div class="lab" id="l2">
+      <div class="t rgb"><span class="small">BARU BEKERJA</span><span class="big">SEBULAN</span>
+        <svg class="sq" viewBox="0 0 300 22" preserveAspectRatio="none" aria-hidden="true"><path id="sq2" d="M4 10 C50 20, 90 2, 140 12 S210 22, 250 9 S285 6, 296 12" fill="none" stroke="#0f0f12" stroke-width="7" stroke-linecap="round"/></svg></div>
+      <div class="ico"><svg viewBox="0 0 46 46" aria-hidden="true"><rect x="6" y="9" width="34" height="31" rx="5" fill="#fff" stroke="#0f0f12" stroke-width="3.5"/><path d="M6 18h34" stroke="#0f0f12" stroke-width="3.5"/><path d="M15 5v8M31 5v8" stroke="#0f0f12" stroke-width="3.5" stroke-linecap="round"/><text data-layout-ignore x="23" y="35" text-anchor="middle" font-family="Archivo Black" font-size="15" fill="#ff3b30">1</text></svg></div>
+    </div>
+
+    <div class="lab" id="l3">
+      <svg id="gauge" viewBox="0 0 300 160" aria-hidden="true">
+        <path d="M30 150 A120 120 0 0 1 90 46" fill="none" stroke="#ff3b30" stroke-width="26"/>
+        <path d="M94 44 A120 120 0 0 1 206 44" fill="none" stroke="#ffd60a" stroke-width="26"/>
+        <path d="M210 46 A120 120 0 0 1 270 150" fill="none" stroke="#25d366" stroke-width="26"/>
+        <g id="needle"><path d="M150 150 L150 48" stroke="#fff8e7" stroke-width="9" stroke-linecap="round"/></g>
+        <circle cx="150" cy="150" r="16" fill="#fff8e7" stroke="#0f0f12" stroke-width="5"/>
+      </svg>
+      <div class="t rgb"><span class="big">CTOS</span></div>
+    </div>
   </div>
   <script>
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
     const T0 = 4.62; // scene start on the main timeline
-    // Per-frame fly-in that follows the old label's own glitch fly-in, measured frame by frame on
-    // the a-roll: [frame, centre y, half height] against the cover's resting centre and half height.
     // Each set lands a hair before its frame (n/30) so it is in place when that frame is drawn.
     const F = (n) => n / 30 - 0.004 - T0;
+    // Fly-in along the old label's path, measured frame by frame on the a-roll:
+    // [frame, centre y, half height]; stretched and colour-split while moving.
     function fly(id, base, halfBase, frames) {
-      frames.forEach(([n, cy, half]) => tl.set(id, { y: cy - base, scaleY: half / halfBase, scaleX: 1, rotation: 0, opacity: 1 }, F(n)));
+      frames.forEach(([n, cy, half]) =>
+        tl.set(id, { y: cy - base, scaleY: half / halfBase, scaleX: 1, rotation: 0, opacity: 1, "--rx": "12px" }, F(n))
+      );
     }
-    fly("#c1", 1070, 80, [[183, 1855, 62], [184, 1792, 125], [185, 1717, 200], [186, 1527, 130], [187, 1435, 240], [188, 1236, 76], [189, 1112, 60]]);
-    tl.fromTo("#c1", { y: 0, scaleY: 1.12, scaleX: 0.94 }, { y: 0, scaleY: 1, scaleX: 1, duration: 0.2, ease: "back.out(3)", immediateRender: false }, F(190));
-    fly("#c2", 952, 114, [[193, 1695, 117], [194, 1642, 175], [195, 1447, 185], [196, 1340, 205], [197, 1242, 220], [198, 1010, 112]]);
-    tl.fromTo("#c2", { y: 0, scaleY: 1.1, scaleX: 0.95 }, { y: 0, scaleY: 1, scaleX: 1, duration: 0.2, ease: "back.out(3)", immediateRender: false }, F(199));
-    fly("#c3", 1155, 135, [[222, 1740, 190], [223, 1350, 340]]);
-    tl.fromTo("#c3", { y: 0, scaleX: 1.08, scaleY: 1.08, rotation: -6 }, { y: 0, scaleX: 1, scaleY: 1, rotation: -2, duration: 0.24, ease: "back.out(2.6)", immediateRender: false }, F(224));
-    [["#c1", 6.36], ["#c2", 6.66], ["#c3", 7.5]].forEach(([id, t]) =>
-      tl.fromTo(id + " svg", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.22, ease: "back.out(3)", immediateRender: true }, t - T0)
-    );
-    // the readable list, one line per "macam ni"
-    [["#i1", 6.3], ["#i2", 6.58], ["#i3", 7.42]].forEach(([id, t]) => {
-      tl.fromTo(id, { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "back.out(1.6)", immediateRender: true }, t - T0);
-      tl.fromTo(id + " .num", { scale: 0 }, { scale: 1, duration: 0.2, ease: "back.out(3)", immediateRender: true }, t + 0.12 - T0);
+    function land(id, n, rot) {
+      tl.fromTo(id, { y: 0, scaleY: 1.14, scaleX: 0.93 }, { y: 0, scaleY: 1, scaleX: 1, rotation: rot, duration: 0.24, ease: "back.out(3)", immediateRender: false }, F(n));
+      // RGB glitch: the split jitters in hard steps, then settles
+      [8, -6, 5, -3, 0].forEach((v, i) => tl.set(id, { "--rx": v + "px" }, F(n) + 0.03 + i * 0.033));
+    }
+    fly("#l1", 1070, 80, [[183, 1855, 62], [184, 1792, 125], [185, 1717, 200], [186, 1527, 130], [187, 1435, 240], [188, 1236, 76], [189, 1112, 60]]);
+    land("#l1", 190, -2);
+    fly("#l2", 952, 114, [[193, 1695, 117], [194, 1642, 175], [195, 1447, 185], [196, 1340, 205], [197, 1242, 220], [198, 1010, 112]]);
+    land("#l2", 199, 2);
+    fly("#l3", 1155, 135, [[222, 1740, 190], [223, 1350, 340]]);
+    land("#l3", 224, -2);
+    // icons pop, squiggles draw
+    tl.fromTo("#l1 .ico", { scale: 0, rotation: -60 }, { scale: 1, rotation: 0, duration: 0.24, ease: "back.out(3)", immediateRender: true }, F(192));
+    tl.fromTo("#l2 .ico", { scale: 0, rotation: 60 }, { scale: 1, rotation: 10, duration: 0.24, ease: "back.out(3)", immediateRender: true }, F(201));
+    tl.fromTo("#sq1", { strokeDasharray: 340, strokeDashoffset: 340 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out", immediateRender: true }, F(194));
+    tl.fromTo("#sq2", { strokeDasharray: 340, strokeDashoffset: 340 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out", immediateRender: true }, F(203));
+    // CTOS score: the needle starts on green and drops into red
+    tl.set("#needle", { rotation: 62, svgOrigin: "150 150" }, 0);
+    tl.to("#needle", { rotation: -10, svgOrigin: "150 150", duration: 0.18, ease: "power2.in" }, F(228));
+    tl.to("#needle", { rotation: -68, svgOrigin: "150 150", duration: 0.2, ease: "back.out(2.5)" }, F(233));
+    [6, -6, 4, -3, 0].forEach((x, i) => tl.to("#l3", { x, duration: 0.03, ease: "none" }, F(239) + i * 0.03));
+    // header for the beat
+    tl.fromTo("#head", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.2, ease: "back.out(2.4)", immediateRender: true }, F(190));
+    [6.75, 7.05, 7.35, 7.65].forEach((t) => {
+      tl.to("#head .chev", { y: 6, duration: 0.1, ease: "power2.out" }, t - T0);
+      tl.to("#head .chev", { y: 0, duration: 0.12, ease: "power2.in" }, t + 0.1 - T0);
     });
-    tl.set(["#c1", "#c2", "#c3"], { opacity: 0 }, 7.867 - T0);
-    // the list outlives the cut so line 3 can be read, then leaves before "tak ada masalah"
-    tl.to(["#i1", "#i2", "#i3"], { x: 1000, duration: 0.22, ease: "power3.in", stagger: 0.04 }, 8.7 - T0);
+    tl.set(["#l1", "#l2", "#l3", "#head"], { opacity: 0 }, 7.867 - T0);
     window.__timelines["problems"] = tl;
   </script>
 </template>

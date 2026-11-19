@@ -1,24 +1,33 @@
 <template>
   <style>
     #root { position: absolute; inset: 0; pointer-events: none; font-family: "Archivo Black", sans-serif; }
-    /* Full-width band over the top: also replaces the old "AKPK, BLACKLIST" title burned into this shot */
+    /* Caution-tape band over the top: carries the original "AKPK, BLACKLIST, SAA" as stamps
+       (and covers the old burned-in title of this shot) */
     #band {
-      position: absolute; left: -60px; width: 1200px; top: 162px; height: 376px;
-      background: #0f0f12; border-top: 8px solid #ffd60a; border-bottom: 8px solid #ffd60a;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding-top: 70px;
-      transform-origin: 50% 50%;
+      position: absolute; left: -70px; width: 1220px; top: 158px; height: 384px; background: #0f0f12;
+      transform-origin: 50% 50%; overflow: hidden;
     }
-    #q { font-size: 62px; color: #ffd60a; line-height: 1; letter-spacing: -0.01em; }
-    #sorry {
-      font-size: 42px; line-height: 1; color: #fff; padding: 12px 22px 16px; background: #ff3b30;
-      border: 6px solid #fff8e7; border-radius: 18px; transform: rotate(-2deg);
+    .tape { position: absolute; left: -200px; width: 1620px; height: 30px;
+      background: repeating-linear-gradient(-45deg, #ffd60a 0 26px, #0f0f12 26px 52px); }
+    #tape-a { top: 0; } #tape-b { bottom: 0; }
+    #inner { position: absolute; left: 70px; width: 1080px; top: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding-top: 70px; }
+    #kicker { font-size: 34px; line-height: 1; color: #fff8e7; letter-spacing: 0.02em; }
+    #stamps { display: flex; gap: 16px; }
+    .st {
+      font-size: 46px; line-height: 1; padding: 12px 18px 16px; color: #ff3b30; background: #fff8e7;
+      border: 6px solid #ff3b30; border-radius: 12px; box-shadow: 0 0 0 4px #0f0f12, 7px 8px 0 4px #ff3b30;
+      --rx: 0px; text-shadow: var(--rx) 0 0 rgba(255, 30, 70, 0.7), calc(var(--rx) * -1) 0 0 rgba(0, 210, 255, 0.7);
     }
-    #q-wrap { position: relative; padding: 0 12px; }
+    #sorry { font-size: 34px; line-height: 1; color: #0f0f12; padding: 10px 20px 13px; background: #ffd60a; border: 5px solid #fff8e7; border-radius: 14px; transform: rotate(-1.5deg); }
   </style>
   <div id="root" data-composition-id="maaf" data-width="1080" data-height="1920" data-layout-allow-overflow>
     <div id="band">
-      <div id="q-wrap"><div id="q">TAK ADA MASALAH?</div></div>
-      <div id="sorry">MAAF, BUKAN UNTUK ANDA</div>
+      <div class="tape" id="tape-a"></div><div class="tape" id="tape-b"></div>
+      <div id="inner">
+        <div id="kicker">MASALAH MACAM NI:</div>
+        <div id="stamps"><span class="st" id="s1">AKPK</span><span class="st" id="s2">BLACKLIST</span><span class="st" id="s3">SAA</span></div>
+        <div id="sorry">TAK ADA? MAAF, BUKAN UNTUK ANDA</div>
+      </div>
     </div>
   </div>
   <script>
@@ -26,10 +35,17 @@
     const tl = gsap.timeline({ paused: true });
     const T0 = 10.44;
     // the old title appears at 10.60: the band is opaque from 10.53
-    tl.fromTo("#band", { scaleY: 0, rotation: 0 }, { scaleY: 1, rotation: -2.5, duration: 0.09, ease: "power4.out", immediateRender: true }, 10.44 - T0);
-    tl.fromTo("#q", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "back.out(2.4)", immediateRender: true }, 10.5 - T0);
-    tl.fromTo("#sorry", { scale: 0, rotation: -14 }, { scale: 1, rotation: -2, duration: 0.24, ease: "back.out(2.8)", immediateRender: true }, 11.0 - T0);
-    tl.to("#band", { rotation: -1.5, duration: 1.1, ease: "sine.inOut" }, 11.2 - T0);
+    tl.fromTo("#band", { scaleY: 0, rotation: 0 }, { scaleY: 1, rotation: -2.5, duration: 0.09, ease: "power4.out", immediateRender: true }, 0);
+    tl.fromTo(".tape", { x: 0 }, { x: -146, duration: 2.2, ease: "none", immediateRender: true }, 0);
+    tl.fromTo("#kicker", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out", immediateRender: true }, 10.5 - T0);
+    // three rubber stamps slam in, each with a short colour-split jitter
+    [["#s1", 10.56, -6], ["#s2", 10.72, 3], ["#s3", 10.88, -4]].forEach(([id, t, r]) => {
+      tl.fromTo(id, { opacity: 0, scale: 2.4, rotation: r * 3 }, { opacity: 1, scale: 1, rotation: r, duration: 0.12, ease: "power4.in", immediateRender: true }, t - 0.12 - T0);
+      [7, -5, 3, 0].forEach((v, i) => tl.set(id, { "--rx": v + "px" }, t - T0 + i * 0.033));
+      tl.fromTo("#band", { y: 0 }, { y: 6, duration: 0.03, yoyo: true, repeat: 1, ease: "none", immediateRender: false }, t - T0);
+    });
+    tl.fromTo("#sorry", { scale: 0, rotation: -12 }, { scale: 1, rotation: -1.5, duration: 0.24, ease: "back.out(2.8)", immediateRender: true }, 11.02 - T0);
+    tl.to("#band", { rotation: -1.5, duration: 1.0, ease: "sine.inOut" }, 11.3 - T0);
     window.__timelines["maaf"] = tl;
   </script>
 </template>

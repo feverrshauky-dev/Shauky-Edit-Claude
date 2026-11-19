@@ -30,11 +30,14 @@
 
       <!-- Motion graphics: one scene per beat, all kept off the face (y 550-920) -->
       <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="4.62" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
-      <div id="problems" data-composition-id="problems" data-composition-src="compositions/problems.html" data-start="4.62" data-duration="4.4" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="problems" data-composition-id="problems" data-composition-src="compositions/problems.html" data-start="4.62" data-duration="3.25" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
       <div id="maaf" data-composition-id="maaf" data-composition-src="compositions/maaf.html" data-start="10.44" data-duration="2.19" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
       <div id="lima" data-composition-id="lima" data-composition-src="compositions/lima.html" data-start="12.63" data-duration="4.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
       <div id="rebate" data-composition-id="rebate" data-composition-src="compositions/rebate.html" data-start="17.5" data-duration="2.6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
       <div id="cta" data-composition-id="cta" data-composition-src="compositions/cta.html" data-start="19.83" data-duration="4.07" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+
+      <!-- Warm light leak over the payoff (registry: organic-light-leak-overlay) -->
+      <div id="leak" data-composition-id="organic-light-leak-overlay" data-composition-src="compositions/organic-light-leak-overlay.html" data-start="18.62" data-duration="1.9" data-track-index="4" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 15"></div>
 
       <!-- Stripe wipes on the two location changes, flash on the payoff -->
       <div id="fx" data-composition-id="fx" data-composition-src="compositions/fx.html" data-start="0" data-duration="23.9" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 30"></div>
@@ -57,8 +60,7 @@
       <audio id="sfx-chip-ptptn" class="clip" src="assets/sfx/pop.mp3" data-start="6.213" data-duration="0.5" data-track-index="22" data-volume="0.8"></audio>
       <audio id="sfx-chip-ptptn-swish" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="6.120" data-duration="0.4" data-track-index="21" data-volume="0.22"></audio>
       <audio id="sfx-chip-baru" class="clip" src="assets/sfx/click.mp3" data-start="6.540" data-duration="0.35" data-track-index="23" data-volume="0.9"></audio>
-      <audio id="sfx-list-out" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="8.62" data-duration="0.5" data-track-index="21" data-volume="0.25"></audio>
-      <audio id="sfx-chip-akpk" class="clip" src="assets/sfx/pop.mp3" data-start="7.343" data-duration="0.5" data-track-index="22" data-volume="0.85"></audio>
+      <audio id="sfx-chip-ctos" class="clip" src="assets/sfx/pop.mp3" data-start="7.380" data-duration="0.5" data-track-index="22" data-volume="0.85"></audio>
       <audio id="sfx-wipe-1" class="clip" src="assets/sfx/whoosh.mp3" data-start="7.741" data-duration="0.5" data-track-index="21" data-volume="0.5"></audio>
       <audio id="sfx-maaf-slam" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="10.490" data-duration="1.4" data-track-index="20" data-volume="0.22"></audio>
       <audio id="sfx-maaf-glitch" class="clip" src="assets/sfx/glitch-3.mp3" data-start="8.743" data-duration="2.3" data-track-index="23" data-volume="0.18" data-media-start="0" data-fade-in="0.3"></audio>
@@ -77,6 +79,13 @@
       <audio id="sfx-cta-notif" class="clip" src="assets/sfx/notification.mp3" data-start="20.524" data-duration="1.5" data-track-index="24" data-volume="0.35" data-fade-out="0.4"></audio>
       <audio id="sfx-peace" class="clip" src="assets/sfx/pop.mp3" data-start="22.533" data-duration="0.5" data-track-index="22" data-volume="0.8"></audio>
       <audio id="sfx-peace-shine" class="clip" src="assets/sfx/sparkle.mp3" data-start="22.666" data-duration="1.2" data-track-index="23" data-volume="0.22" data-fade-out="0.4"></audio>
+      <audio id="sfx-l1-glitch" class="clip" src="assets/sfx/glitch-1.mp3" data-start="6.080" data-duration="0.35" data-track-index="27" data-volume="0.16" data-fade-out="0.1"></audio>
+      <audio id="sfx-l2-glitch" class="clip" src="assets/sfx/glitch-3.mp3" data-start="4.613" data-media-start="0" data-duration="2.15" data-track-index="28" data-volume="0.14" data-fade-in="1.6" data-fade-out="0.1"></audio>
+      <audio id="sfx-ctos-needle" class="clip" src="assets/sfx/error.mp3" data-start="7.720" data-duration="0.9" data-track-index="27" data-volume="0.25" data-fade-out="0.2"></audio>
+      <audio id="sfx-stamp-2" class="clip" src="assets/sfx/pop.mp3" data-start="10.633" data-duration="0.5" data-track-index="22" data-volume="0.7"></audio>
+      <audio id="sfx-stamp-3" class="clip" src="assets/sfx/click.mp3" data-start="10.840" data-duration="0.35" data-track-index="27" data-volume="0.9"></audio>
+      <audio id="sfx-sorry" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="10.891" data-duration="0.5" data-track-index="21" data-volume="0.3"></audio>
+      <audio id="sfx-shine-cta" class="clip" src="assets/sfx/sparkle.mp3" data-start="21.873" data-duration="1.0" data-track-index="28" data-volume="0.12" data-fade-out="0.4"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};

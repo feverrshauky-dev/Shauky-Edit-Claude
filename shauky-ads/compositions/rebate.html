@@ -13,12 +13,18 @@
       -webkit-text-stroke: 7px #0f0f12; paint-order: stroke fill;
       background: #ff3b30; border: 9px solid #0f0f12; border-radius: 28px; box-shadow: 13px 15px 0 #0f0f12;
     }
+    #slab { position: relative; overflow: hidden; }
+    #shine { position: absolute; top: -20%; left: 0; width: 40%; height: 140%; transform: translateX(-160%) skewX(-18deg);
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.75) 50%, rgba(255,255,255,0) 100%); }
+    #burst { position: absolute; left: 540px; top: 410px; width: 0; height: 0; }
+    .cf { position: absolute; left: -9px; top: -14px; width: 18px; height: 28px; border-radius: 4px; border: 3px solid #0f0f12; opacity: 0; }
     #akal { font-size: 46px; line-height: 1; padding: 11px 22px 15px; background: #ffd60a; color: #0f0f12; border: 7px solid #0f0f12; border-radius: 18px; box-shadow: 9px 10px 0 #0f0f12; }
   </style>
   <div id="root" data-composition-id="rebate" data-width="1080" data-height="1920" data-layout-allow-overflow>
     <div id="rays-box"><div id="rays"></div></div>
     <div class="row" id="r-baru" style="top: 272px"><div id="baru">KERETA BARU +</div></div>
-    <div class="row" id="r-slab" style="top: 334px"><div id="slab">REBATE</div></div>
+    <div class="row" id="r-slab" style="top: 334px"><div id="slab"><span id="slab-t">REBATE</span><span id="shine"></span></div></div>
+    <div id="burst"><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#0f0f12"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#0f0f12"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#0f0f12"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#0f0f12"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span><span class="cf" style="background:#25d366"></span><span class="cf" style="background:#0f0f12"></span><span class="cf" style="background:#ffd60a"></span><span class="cf" style="background:#ff3b30"></span><span class="cf" style="background:#fff8e7"></span></div>
     <div class="row" id="r-akal" style="top: 478px"><div id="akal">TAK MASUK AKAL!</div></div>
   </div>
   <script>
@@ -33,6 +39,17 @@
     tl.fromTo("#rays-box", { opacity: 0 }, { opacity: 0.85, duration: 0.1, ease: "power2.out", immediateRender: true }, 18.72 - T0);
     tl.fromTo("#rays", { rotation: 0, scale: 0.6 }, { rotation: 40, scale: 1, duration: 1.1, ease: "power2.out", immediateRender: true }, 18.72 - T0);
     tl.to("#r-baru", { y: -14, duration: 0.2, ease: "power2.out" }, 18.72 - T0);
+    // confetti: deterministic burst from the slab, falling with gravity
+    gsap.utils.toArray("#burst .cf").forEach((el, i) => {
+      const a = (i / 28) * Math.PI * 2 + (i % 3) * 0.2;
+      const r = 300 + (i % 5) * 70;
+      const dx = Math.cos(a) * r, dy = Math.sin(a) * r * 0.55 - 120;
+      tl.fromTo(el, { opacity: 1, x: 0, y: 0, rotation: 0, scale: 0.6 }, { x: dx, y: dy, rotation: 200 + i * 37, scale: 1, duration: 0.45, ease: "power3.out", immediateRender: false }, 18.72 - T0);
+      tl.to(el, { y: dy + 420 + (i % 4) * 60, rotation: 380 + i * 37, duration: 0.75, ease: "power1.in" }, 18.72 + 0.45 - T0);
+      tl.set(el, { opacity: 0 }, 19.9 - T0);
+    });
+    tl.set("#burst .cf", { opacity: 0 }, 0);
+    tl.fromTo("#shine", { xPercent: -160 }, { xPercent: 360, duration: 0.5, ease: "power2.inOut", immediateRender: true }, 18.95 - T0);
     tl.fromTo("#r-akal", { scale: 0, rotation: -18 }, { scale: 1, rotation: 3, duration: 0.24, ease: "back.out(2.8)", immediateRender: true }, 19.2 - T0);
     tl.to(["#r-baru", "#r-slab", "#r-akal", "#rays-box"], { y: -500, opacity: 0, duration: 0.12, ease: "power3.in", stagger: 0.01 }, 19.84 - T0);
     window.__timelines["rebate"] = tl;
