@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; font-family: "Archivo Black", sans-serif; }
+    /* Full-width band over the top: also replaces the old "AKPK, BLACKLIST" title burned into this shot */
+    #band {
+      position: absolute; left: -60px; width: 1200px; top: 162px; height: 376px;
+      background: #0f0f12; border-top: 8px solid #ffd60a; border-bottom: 8px solid #ffd60a;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding-top: 70px;
+      transform-origin: 50% 50%;
+    }
+    #q { font-size: 62px; color: #ffd60a; line-height: 1; letter-spacing: -0.01em; }
+    #sorry {
+      font-size: 42px; line-height: 1; color: #fff; padding: 12px 22px 16px; background: #ff3b30;
+      border: 6px solid #fff8e7; border-radius: 18px; transform: rotate(-2deg);
+    }
+    #q-wrap { position: relative; padding: 0 12px; }
+  </style>
+  <div id="root" data-composition-id="maaf" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="band">
+      <div id="q-wrap"><div id="q">TAK ADA MASALAH?</div></div>
+      <div id="sorry">MAAF, BUKAN UNTUK ANDA</div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const T0 = 10.44;
+    // the old title appears at 10.60: the band is opaque from 10.53
+    tl.fromTo("#band", { scaleY: 0, rotation: 0 }, { scaleY: 1, rotation: -2.5, duration: 0.09, ease: "power4.out", immediateRender: true }, 10.44 - T0);
+    tl.fromTo("#q", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "back.out(2.4)", immediateRender: true }, 10.5 - T0);
+    tl.fromTo("#sorry", { scale: 0, rotation: -14 }, { scale: 1, rotation: -2, duration: 0.24, ease: "back.out(2.8)", immediateRender: true }, 11.0 - T0);
+    tl.to("#band", { rotation: -1.5, duration: 1.1, ease: "sine.inOut" }, 11.2 - T0);
+    window.__timelines["maaf"] = tl;
+  </script>
+</template>

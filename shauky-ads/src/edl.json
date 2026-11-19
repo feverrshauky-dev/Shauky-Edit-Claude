@@ -1,0 +1,69 @@
+{
+ "duration": 23.9333,
+ "segments": [
+  {
+   "i": 0,
+   "src_start": 0.2667,
+   "src_end": 3.1,
+   "start": 0.0,
+   "end": 2.8333,
+   "text": "Nak beli kereta tapi abang ada masalah, tiada lesen,"
+  },
+  {
+   "i": 1,
+   "src_start": 3.3667,
+   "src_end": 5.1,
+   "start": 2.8333,
+   "end": 4.5666,
+   "text": "tiada deposit ataupun tiada penjamin,"
+  },
+  {
+   "i": 2,
+   "src_start": 5.3667,
+   "src_end": 7.1667,
+   "start": 4.5666,
+   "end": 6.3666,
+   "text": "ataupun abang ada masalah macam ni,"
+  },
+  {
+   "i": 3,
+   "src_start": 8.0,
+   "src_end": 8.5333,
+   "start": 6.3666,
+   "end": 6.8999,
+   "text": "macam ni,"
+  },
+  {
+   "i": 4,
+   "src_start": 9.0,
+   "src_end": 9.9667,
+   "start": 6.8999,
+   "end": 7.8666,
+   "text": "atau macam ni."
+  },
+  {
+   "i": 5,
+   "src_start": 10.5333,
+   "src_end": 15.3,
+   "start": 7.8666,
+   "end": 12.6333,
+   "text": "Tapi kalau abang tak ada masalah macam ni, saya minta maaf banyak sangat-sangatnya."
+  },
+  {
+   "i": 6,
+   "src_start": 16.3333,
+   "src_end": 23.5333,
+   "start": 12.6333,
+   "end": 19.8333,
+   "text": "Saya nak bantu lima orang yang terawal sahaja sekarang ni. Jadi siapa yang nak memiliki kereta baru dengan rebate yang tak masuk akal,"
+  },
+  {
+   "i": 7,
+   "src_start": 23.8,
+   "src_end": 27.9,
+   "start": 19.8333,
+   "end": 23.9333,
+   "text": "boleh klik nombor WhatsApp saya di bawah, insyaAllah, peace yo!"
+  }
+ ]
+}

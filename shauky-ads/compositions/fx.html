@@ -1,0 +1,28 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .wipe { position: absolute; left: 50%; top: 50%; width: 2400px; height: 3000px; margin: -1500px 0 0 -1200px; display: flex; transform: translateX(-2600px) rotate(18deg); }
+    .wipe span { flex: 1; height: 100%; }
+    .s1 { background: #ffd60a; } .s2 { background: #ff3b30; } .s3 { background: #0f0f12; }
+    #flash { position: absolute; inset: 0; background: #ffd60a; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div class="wipe" id="wipe1"><span class="s1"></span><span class="s2"></span><span class="s3"></span></div>
+    <div class="wipe" id="wipe2"><span class="s3"></span><span class="s1"></span><span class="s2"></span></div>
+    <div id="flash"></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // stripe wipe: fully covers the frame on the cut frame, clears 0.2 s later
+    function wipe(id, cut, dir) {
+      tl.fromTo(id, { x: -2700 * dir, rotation: 18 }, { x: 0, duration: 0.2, ease: "power3.in", immediateRender: true }, cut - 0.2);
+      tl.to(id, { x: 2700 * dir, duration: 0.22, ease: "power3.out" }, cut + 1 / 30);
+    }
+    wipe("#wipe1", 7.867, 1);
+    wipe("#wipe2", 12.633, -1);
+    tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.55, duration: 0.03, ease: "none", immediateRender: true }, 18.69);
+    tl.to("#flash", { opacity: 0, duration: 0.3, ease: "power2.out" }, 18.72);
+    window.__timelines["fx"] = tl;
+  </script>
+</template>

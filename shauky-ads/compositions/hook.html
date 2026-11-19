@@ -1,0 +1,55 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; font-family: "Archivo Black", sans-serif; }
+    .stk {
+      position: absolute; left: 0; width: 100%; display: flex; justify-content: center; overflow: visible;
+    }
+    .tag {
+      display: inline-flex; align-items: center; gap: 18px; padding: 12px 28px 16px;
+      border: 7px solid #0f0f12; border-radius: 22px; box-shadow: 10px 12px 0 #0f0f12;
+      line-height: 1; letter-spacing: -0.01em; white-space: nowrap;
+    }
+    .paper { background: #fff8e7; color: #0f0f12; }
+    .hot { background: #ff3b30; color: #ffffff; -webkit-text-stroke: 3px #0f0f12; paint-order: stroke fill; }
+    .sun { background: #ffd60a; color: #0f0f12; }
+    .x {
+      width: 52px; height: 52px; flex: none; border-radius: 50%; background: #ff3b30; border: 6px solid #0f0f12;
+      position: relative;
+    }
+    .x::before, .x::after {
+      content: ""; position: absolute; left: 50%; top: 50%; width: 28px; height: 8px; border-radius: 5px;
+      background: #ffffff; transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .x::after { transform: translate(-50%, -50%) rotate(-45deg); }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <!-- frame 0 is the thumbnail: both lines already on screen -->
+    <div class="stk" id="hk1" style="top: 282px"><div class="tag paper" id="hk1-t" style="font-size: 60px; transform: rotate(-3deg)">NAK BELI KERETA</div></div>
+    <div class="stk" id="hk2" style="top: 398px"><div class="tag hot" id="hk2-t" style="font-size: 54px; transform: rotate(2deg)">TAPI ADA MASALAH?</div></div>
+
+    <div class="stk" id="tx1" style="top: 274px"><div class="tag sun" style="font-size: 50px"><span class="x"></span>TIADA LESEN</div></div>
+    <div class="stk" id="tx2" style="top: 362px"><div class="tag sun" style="font-size: 50px"><span class="x"></span>TIADA DEPOSIT</div></div>
+    <div class="stk" id="tx3" style="top: 450px"><div class="tag sun" style="font-size: 50px"><span class="x"></span>TIADA PENJAMIN</div></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    // hook: visible at 0, settles, the question wiggles on "masalah"
+    tl.fromTo("#hk1", { scale: 1.06, y: -6 }, { scale: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 0);
+    tl.fromTo("#hk2", { scale: 1.1, x: 18 }, { scale: 1, x: 0, duration: 0.4, ease: "back.out(2.2)" }, 0.04);
+    tl.to("#hk2", { rotation: -3, scale: 1.08, duration: 0.08, ease: "power2.out" }, 1.56);
+    tl.to("#hk2", { rotation: 2, duration: 0.08, ease: "power1.inOut" }, 1.64);
+    tl.to("#hk2", { rotation: 0, scale: 1, duration: 0.14, ease: "power2.out" }, 1.72);
+    tl.to("#hk1", { y: -260, opacity: 0, duration: 0.2, ease: "power3.in" }, 2.0);
+    tl.to("#hk2", { y: -380, opacity: 0, duration: 0.2, ease: "power3.in" }, 2.03);
+    tl.set(["#hk1", "#hk2"], { visibility: "hidden" }, 2.24);
+    // the three "no" stamps, each on its word
+    [["#tx1", 2.2, -2], ["#tx2", 2.94, 1.5], ["#tx3", 3.92, -1.5]].forEach(([id, t, r]) => {
+      tl.fromTo(id, { opacity: 0, scale: 1.7, rotation: r * 4 }, { opacity: 1, scale: 1, rotation: r, duration: 0.2, ease: "back.out(2.6)", immediateRender: true }, t - 0.04);
+      tl.fromTo(id + " .x", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.22, ease: "back.out(3)", immediateRender: true }, t + 0.06);
+    });
+    tl.to(["#tx1", "#tx2", "#tx3"], { x: -1200, duration: 0.22, ease: "power3.in", stagger: 0.04 }, 4.42);
+    tl.set(["#tx1", "#tx2", "#tx3"], { visibility: "hidden" }, 4.6);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

@@ -1,0 +1,60 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; font-family: "Archivo Black", sans-serif; }
+    .row { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; overflow: visible; }
+    #slot { font-size: 34px; line-height: 1; padding: 9px 18px 11px; color: #fff; background: #ff3b30; border: 6px solid #0f0f12; border-radius: 14px; transform: rotate(-2deg); }
+    #btn {
+      position: relative; display: flex; align-items: center; gap: 20px; padding: 18px 38px 22px 26px;
+      background: #25d366; border: 8px solid #0f0f12; border-radius: 999px; box-shadow: 11px 13px 0 #0f0f12;
+    }
+    #btn-t { font-size: 54px; line-height: 1; color: #fff; -webkit-text-stroke: 5px #0f0f12; paint-order: stroke fill; white-space: nowrap; }
+    #bubble { width: 78px; height: 78px; flex: none; }
+    #ring { position: absolute; left: 50%; top: 50%; width: 160px; height: 160px; margin: -80px 0 0 -80px; border-radius: 50%; border: 10px solid #fff8e7; opacity: 0; }
+    #down { display: flex; align-items: center; gap: 14px; font-size: 34px; line-height: 1; color: #0f0f12; padding: 12px 22px 14px; background: #ffd60a; border: 6px solid #0f0f12; border-radius: 16px; box-shadow: 7px 8px 0 #0f0f12; }
+    .chev { width: 34px; height: 34px; }
+    #peace { font-size: 46px; line-height: 1; padding: 11px 20px 15px; color: #0f0f12; background: #fff8e7; border: 7px solid #0f0f12; border-radius: 18px; box-shadow: 8px 9px 0 #0f0f12; }
+  </style>
+  <div id="root" data-composition-id="cta" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div class="row" id="r-slot" style="top: 272px"><div id="slot">5 SLOT SAHAJA</div></div>
+    <div class="row" id="r-btn" style="top: 338px">
+      <div id="btn">
+        <svg id="bubble" viewBox="0 0 92 92" aria-hidden="true">
+          <path d="M46 8C24 8 8 23 8 43c0 8 3 15 7 21l-5 19 20-6c5 3 10 4 16 4 22 0 38-16 38-37S68 8 46 8z" fill="#fff" stroke="#0f0f12" stroke-width="6" stroke-linejoin="round"/>
+          <circle cx="30" cy="44" r="5.5" fill="#0f0f12"/><circle cx="46" cy="44" r="5.5" fill="#0f0f12"/><circle cx="62" cy="44" r="5.5" fill="#0f0f12"/>
+        </svg>
+        <span id="btn-t">WHATSAPP SAYA</span>
+        <span id="ring"></span>
+      </div>
+    </div>
+    <div class="row" id="r-down" style="top: 506px">
+      <div id="down">
+        <svg class="chev" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 12l12 12 12-12" fill="none" stroke="#0f0f12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>KLIK BUTANG DI BAWAH</span>
+        <svg class="chev" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 12l12 12 12-12" fill="none" stroke="#0f0f12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+    <div class="row" id="r-peace" style="top: 512px; justify-content: flex-end; padding-right: 150px"><div id="peace">PEACE YO!</div></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const T0 = 19.83;
+    tl.fromTo("#r-btn", { y: -360, rotation: -6 }, { y: 0, rotation: 0, duration: 0.34, ease: "back.out(1.8)", immediateRender: true }, 19.96 - T0);
+    tl.fromTo("#r-slot", { scale: 0, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.22, ease: "back.out(3)", immediateRender: true }, 20.4 - T0);
+    // "klik": the button is pressed
+    tl.to("#btn", { scale: 0.92, duration: 0.06, ease: "power2.in" }, 20.15 - T0);
+    tl.to("#btn", { scale: 1, duration: 0.3, ease: "back.out(3)" }, 20.21 - T0);
+    tl.fromTo("#ring", { scale: 0.3, opacity: 0.9 }, { scale: 3.2, opacity: 0, duration: 0.5, ease: "power2.out", immediateRender: true }, 20.17 - T0);
+    tl.fromTo("#bubble", { rotation: 0 }, { rotation: -12, duration: 0.1, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 20.7 - T0);
+    // "di bawah": pointer to the ad's button below
+    tl.fromTo("#r-down", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "back.out(2.4)", immediateRender: true }, 21.3 - T0);
+    [21.55, 21.85, 22.15].forEach((t) => {
+      tl.to(".chev", { y: 10, duration: 0.12, ease: "power2.out" }, t - T0);
+      tl.to(".chev", { y: 0, duration: 0.15, ease: "power2.in" }, t + 0.12 - T0);
+    });
+    tl.to("#r-down", { opacity: 0, y: 20, duration: 0.14, ease: "power2.in" }, 22.46 - T0);
+    tl.fromTo("#r-peace", { scale: 0, rotation: 25 }, { scale: 1, rotation: 7, duration: 0.26, ease: "back.out(3)", immediateRender: true }, 22.62 - T0);
+    tl.to("#btn", { scale: 1.04, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 23.0 - T0);
+    window.__timelines["cta"] = tl;
+  </script>
+</template>

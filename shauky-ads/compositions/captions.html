@@ -1,0 +1,114 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    .cg {
+      position: absolute; padding: 0;
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 0 0.22em; text-align: center; opacity: 0; visibility: hidden; overflow: visible;
+    }
+    .cw { position: relative; display: inline-block; line-height: 1; padding: 0.08em 0.12em 0.12em; }
+    .cw-t {
+      position: relative; z-index: 1; display: inline-block;
+      font-family: "Archivo Black", sans-serif; color: #ffffff;
+      -webkit-text-stroke: 0.15em #0f0f12; paint-order: stroke fill;
+      text-shadow: 0.06em 0.07em 0 #0f0f12;
+    }
+    .cw-tape {
+      position: absolute; left: -0.02em; right: -0.02em; top: 0.12em; bottom: 0.06em; z-index: 0;
+      background: #ff3b30; border: 0.06em solid #0f0f12; border-radius: 0.12em;
+      transform: scaleX(0) rotate(-2deg); transform-origin: 0% 50%;
+    }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div class="cg" id="cap-g0" style="top: 1122px; font-size: 51px; left: 120px; width: 660px"><span class="cw" id="cap-w0"><span class="cw-tape"></span><span class="cw-t">NAK</span></span> <span class="cw" id="cap-w1"><span class="cw-tape"></span><span class="cw-t">BELI</span></span> <span class="cw" id="cap-w2"><span class="cw-tape"></span><span class="cw-t">KERETA</span></span></div>
+    <div class="cg" id="cap-g1" style="top: 1122px; font-size: 55px; left: 120px; width: 660px"><span class="cw" id="cap-w3"><span class="cw-tape"></span><span class="cw-t">TAPI</span></span> <span class="cw" id="cap-w4"><span class="cw-tape"></span><span class="cw-t">ABANG</span></span> <span class="cw" id="cap-w5"><span class="cw-tape"></span><span class="cw-t">ADA</span></span></div>
+    <div class="cg" id="cap-g2" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw kw" id="cap-w6"><span class="cw-tape"></span><span class="cw-t">MASALAH</span></span></div>
+    <div class="cg" id="cap-g3" style="top: 1122px; font-size: 70px; left: 120px; width: 660px"><span class="cw kw" id="cap-w7"><span class="cw-tape"></span><span class="cw-t">TIADA</span></span> <span class="cw kw" id="cap-w8"><span class="cw-tape"></span><span class="cw-t">LESEN</span></span></div>
+    <div class="cg" id="cap-g4" style="top: 1122px; font-size: 59px; left: 120px; width: 660px"><span class="cw kw" id="cap-w9"><span class="cw-tape"></span><span class="cw-t">TIADA</span></span> <span class="cw kw" id="cap-w10"><span class="cw-tape"></span><span class="cw-t">DEPOSIT</span></span></div>
+    <div class="cg" id="cap-g5" style="top: 1122px; font-size: 59px; left: 120px; width: 660px"><span class="cw" id="cap-w11"><span class="cw-tape"></span><span class="cw-t">ATAUPUN</span></span> <span class="cw kw" id="cap-w12"><span class="cw-tape"></span><span class="cw-t">TIADA</span></span></div>
+    <div class="cg" id="cap-g6" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw kw" id="cap-w13"><span class="cw-tape"></span><span class="cw-t">PENJAMIN</span></span></div>
+    <div class="cg" id="cap-g7" style="top: 282px; font-size: 58px; left: 120px; width: 840px"><span class="cw" id="cap-w14"><span class="cw-tape"></span><span class="cw-t">ATAUPUN</span></span> <span class="cw" id="cap-w15"><span class="cw-tape"></span><span class="cw-t">ABANG</span></span> <span class="cw" id="cap-w16"><span class="cw-tape"></span><span class="cw-t">ADA</span></span></div>
+    <div class="cg" id="cap-g8" style="top: 282px; font-size: 62px; left: 120px; width: 840px"><span class="cw kw" id="cap-w17"><span class="cw-tape"></span><span class="cw-t">MASALAH</span></span> <span class="cw" id="cap-w18"><span class="cw-tape"></span><span class="cw-t">MACAM</span></span> <span class="cw" id="cap-w19"><span class="cw-tape"></span><span class="cw-t">NI</span></span></div>
+    <div class="cg" id="cap-g11" style="top: 1122px; font-size: 48px; left: 120px; width: 660px"><span class="cw" id="cap-w25"><span class="cw-tape"></span><span class="cw-t">TAPI</span></span> <span class="cw" id="cap-w26"><span class="cw-tape"></span><span class="cw-t">KALAU</span></span> <span class="cw" id="cap-w27"><span class="cw-tape"></span><span class="cw-t">ABANG</span></span></div>
+    <div class="cg" id="cap-g12" style="top: 1122px; font-size: 51px; left: 120px; width: 660px"><span class="cw" id="cap-w28"><span class="cw-tape"></span><span class="cw-t">TAK</span></span> <span class="cw" id="cap-w29"><span class="cw-tape"></span><span class="cw-t">ADA</span></span> <span class="cw kw" id="cap-w30"><span class="cw-tape"></span><span class="cw-t">MASALAH</span></span></div>
+    <div class="cg" id="cap-g13" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w31"><span class="cw-tape"></span><span class="cw-t">MACAM</span></span> <span class="cw" id="cap-w32"><span class="cw-tape"></span><span class="cw-t">NI</span></span></div>
+    <div class="cg" id="cap-g14" style="top: 1122px; font-size: 51px; left: 120px; width: 660px"><span class="cw" id="cap-w33"><span class="cw-tape"></span><span class="cw-t">SAYA</span></span> <span class="cw" id="cap-w34"><span class="cw-tape"></span><span class="cw-t">MINTA</span></span> <span class="cw kw" id="cap-w35"><span class="cw-tape"></span><span class="cw-t">MAAF</span></span></div>
+    <div class="cg" id="cap-g15" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w36"><span class="cw-tape"></span><span class="cw-t">BANYAK</span></span></div>
+    <div class="cg" id="cap-g16" style="top: 1122px; font-size: 48px; left: 120px; width: 660px"><span class="cw" id="cap-w37"><span class="cw-tape"></span><span class="cw-t">SANGAT-SANGATNYA</span></span></div>
+    <div class="cg" id="cap-g17" style="top: 1122px; font-size: 55px; left: 120px; width: 660px"><span class="cw" id="cap-w38"><span class="cw-tape"></span><span class="cw-t">SAYA</span></span> <span class="cw" id="cap-w39"><span class="cw-tape"></span><span class="cw-t">NAK</span></span> <span class="cw" id="cap-w40"><span class="cw-tape"></span><span class="cw-t">BANTU</span></span></div>
+    <div class="cg" id="cap-g18" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw kw" id="cap-w41"><span class="cw-tape"></span><span class="cw-t">LIMA</span></span> <span class="cw" id="cap-w42"><span class="cw-tape"></span><span class="cw-t">ORANG</span></span></div>
+    <div class="cg" id="cap-g19" style="top: 1122px; font-size: 64px; left: 120px; width: 660px"><span class="cw" id="cap-w43"><span class="cw-tape"></span><span class="cw-t">YANG</span></span> <span class="cw kw" id="cap-w44"><span class="cw-tape"></span><span class="cw-t">TERAWAL</span></span></div>
+    <div class="cg" id="cap-g20" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw kw" id="cap-w45"><span class="cw-tape"></span><span class="cw-t">SAHAJA</span></span></div>
+    <div class="cg" id="cap-g21" style="top: 1122px; font-size: 70px; left: 120px; width: 660px"><span class="cw kw" id="cap-w46"><span class="cw-tape"></span><span class="cw-t">SEKARANG</span></span> <span class="cw" id="cap-w47"><span class="cw-tape"></span><span class="cw-t">NI</span></span></div>
+    <div class="cg" id="cap-g22" style="top: 1122px; font-size: 64px; left: 120px; width: 660px"><span class="cw" id="cap-w48"><span class="cw-tape"></span><span class="cw-t">JADI</span></span> <span class="cw" id="cap-w49"><span class="cw-tape"></span><span class="cw-t">SESIAPA</span></span></div>
+    <div class="cg" id="cap-g23" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w50"><span class="cw-tape"></span><span class="cw-t">YANG</span></span> <span class="cw" id="cap-w51"><span class="cw-tape"></span><span class="cw-t">NAK</span></span></div>
+    <div class="cg" id="cap-g24" style="top: 1122px; font-size: 51px; left: 120px; width: 660px"><span class="cw" id="cap-w52"><span class="cw-tape"></span><span class="cw-t">MEMILIKI</span></span> <span class="cw" id="cap-w53"><span class="cw-tape"></span><span class="cw-t">KERETA</span></span></div>
+    <div class="cg" id="cap-g25" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw kw" id="cap-w54"><span class="cw-tape"></span><span class="cw-t">BARU</span></span></div>
+    <div class="cg" id="cap-g26" style="top: 1122px; font-size: 59px; left: 120px; width: 660px"><span class="cw" id="cap-w55"><span class="cw-tape"></span><span class="cw-t">DENGAN</span></span> <span class="cw kw" id="cap-w56"><span class="cw-tape"></span><span class="cw-t">REBATE</span></span></div>
+    <div class="cg" id="cap-g27" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w57"><span class="cw-tape"></span><span class="cw-t">YANG</span></span> <span class="cw" id="cap-w58"><span class="cw-tape"></span><span class="cw-t">TAK</span></span></div>
+    <div class="cg" id="cap-g28" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w59"><span class="cw-tape"></span><span class="cw-t">MASUK</span></span> <span class="cw kw" id="cap-w60"><span class="cw-tape"></span><span class="cw-t">AKAL</span></span></div>
+    <div class="cg" id="cap-g29" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w61"><span class="cw-tape"></span><span class="cw-t">BOLEH</span></span> <span class="cw kw" id="cap-w62"><span class="cw-tape"></span><span class="cw-t">KLIK</span></span></div>
+    <div class="cg" id="cap-g30" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w63"><span class="cw-tape"></span><span class="cw-t">NOMBOR</span></span></div>
+    <div class="cg" id="cap-g31" style="top: 1122px; font-size: 59px; left: 120px; width: 660px"><span class="cw kw" id="cap-w64"><span class="cw-tape"></span><span class="cw-t">WHATSAPP</span></span> <span class="cw" id="cap-w65"><span class="cw-tape"></span><span class="cw-t">SAYA</span></span></div>
+    <div class="cg" id="cap-g32" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w66"><span class="cw-tape"></span><span class="cw-t">DI</span></span> <span class="cw" id="cap-w67"><span class="cw-tape"></span><span class="cw-t">BAWAH</span></span></div>
+    <div class="cg" id="cap-g33" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w68"><span class="cw-tape"></span><span class="cw-t">INSYAALLAH</span></span></div>
+    <div class="cg" id="cap-g34" style="top: 1122px; font-size: 74px; left: 120px; width: 660px"><span class="cw" id="cap-w69"><span class="cw-tape"></span><span class="cw-t">PEACE</span></span> <span class="cw" id="cap-w70"><span class="cw-tape"></span><span class="cw-t">YO</span></span></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const SUN = "#ffd60a";
+    function G(i, start, end, words) {
+      const g = "#cap-g" + i;
+      tl.set(g, { visibility: "visible" }, start);
+      tl.fromTo(g, { opacity: 0, y: 26, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: "back.out(2.4)", immediateRender: false }, start);
+      words.forEach(([id, t], k) => {
+        const w = "#cap-" + id;
+        const next = k + 1 < words.length ? words[k + 1][1] : end;
+        const isKey = document.querySelector(w).classList.contains("kw");
+        tl.fromTo(w + " .cw-t", { y: 0, scale: 1, rotation: 0 }, { y: -10, scale: 1.12, rotation: k % 2 ? 2 : -2, duration: 0.09, ease: "power3.out", immediateRender: false }, t);
+        tl.to(w + " .cw-t", { color: SUN, duration: 0.04 }, t);
+        if (isKey) tl.to(w + " .cw-tape", { scaleX: 1, duration: 0.14, ease: "power4.out" }, t);
+        if (isKey) tl.to(w + " .cw-t", { color: "#ffffff", duration: 0.04 }, t + 0.14);
+        tl.to(w + " .cw-t", { y: 0, scale: 1, rotation: 0, duration: 0.14, ease: "power2.out" }, Math.min(next, t + 0.22));
+        if (!isKey) tl.to(w + " .cw-t", { color: "#ffffff", duration: 0.06 }, Math.max(t + 0.1, next - 0.02));
+      });
+      tl.to(g, { opacity: 0, duration: 0.08, ease: "power2.in" }, end - 0.08);
+      tl.set(g, { opacity: 0, visibility: "hidden" }, end);
+    }
+  G(0, 0.000, 0.600, [["w0", 0.030], ["w1", 0.140], ["w2", 0.330]]);
+  G(1, 0.600, 1.500, [["w3", 0.660], ["w4", 0.920], ["w5", 1.410]]);
+  G(2, 1.500, 2.100, [["w6", 1.560]]);
+  G(3, 2.100, 2.840, [["w7", 2.160], ["w8", 2.460]]);
+  G(4, 2.840, 3.430, [["w9", 2.900], ["w10", 3.040]]);
+  G(5, 3.430, 4.120, [["w11", 3.490], ["w12", 3.880]]);
+  G(6, 4.120, 4.570, [["w13", 4.180]]);
+  G(7, 4.570, 5.470, [["w14", 4.630], ["w15", 4.940], ["w16", 5.370]]);
+  G(8, 5.470, 6.280, [["w17", 5.530], ["w18", 5.990], ["w19", 6.190]]);
+  G(11, 7.930, 8.990, [["w25", 7.990], ["w26", 8.270], ["w27", 8.710]]);
+  G(12, 8.990, 10.070, [["w28", 9.050], ["w29", 9.350], ["w30", 9.530]]);
+  G(13, 10.070, 10.790, [["w31", 10.130], ["w32", 10.540]]);
+  G(14, 10.790, 11.350, [["w33", 10.850], ["w34", 11.000], ["w35", 11.230]]);
+  G(15, 11.350, 11.700, [["w36", 11.410]]);
+  G(16, 11.700, 12.690, [["w37", 11.760]]);
+  G(17, 12.690, 13.410, [["w38", 12.750], ["w39", 12.930], ["w40", 13.120]]);
+  G(18, 13.410, 13.930, [["w41", 13.470], ["w42", 13.680]]);
+  G(19, 13.930, 14.610, [["w43", 13.990], ["w44", 14.240]]);
+  G(20, 14.610, 14.980, [["w45", 14.670]]);
+  G(21, 14.980, 15.730, [["w46", 15.040], ["w47", 15.600]]);
+  G(22, 15.730, 16.610, [["w48", 15.790], ["w49", 15.990]]);
+  G(23, 16.610, 17.090, [["w50", 16.670], ["w51", 16.930]]);
+  G(24, 17.090, 18.000, [["w52", 17.150], ["w53", 17.660]]);
+  G(25, 18.000, 18.340, [["w54", 18.060]]);
+  G(26, 18.340, 18.930, [["w55", 18.400], ["w56", 18.720]]);
+  G(27, 18.930, 19.290, [["w57", 18.990], ["w58", 19.190]]);
+  G(28, 19.290, 19.890, [["w59", 19.350], ["w60", 19.620]]);
+  G(29, 19.890, 20.340, [["w61", 19.950], ["w62", 20.150]]);
+  G(30, 20.340, 20.610, [["w63", 20.400]]);
+  G(31, 20.610, 21.250, [["w64", 20.670], ["w65", 21.090]]);
+  G(32, 21.250, 21.820, [["w66", 21.310], ["w67", 21.400]]);
+  G(33, 21.820, 22.540, [["w68", 21.880]]);
+  G(34, 22.540, 23.450, [["w69", 22.600], ["w70", 22.860]]);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>
