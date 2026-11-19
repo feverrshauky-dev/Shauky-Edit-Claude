@@ -1,0 +1,6 @@
+node_modules/
+.hyperframes/
+renders/
+# 18 MB source footage; copy the upload to src/source.mp4 to rebuild
+src/source.mp4
+assets/aroll.mp4
