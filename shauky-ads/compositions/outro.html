@@ -8,12 +8,16 @@
       background: repeating-conic-gradient(from 0deg, #ffd60a 0deg 8deg, rgba(0, 0, 0, 0) 8deg 20deg); border-radius: 50%; }
     #glow { position: absolute; left: 540px; top: 560px; width: 760px; height: 760px; margin: -380px 0 0 -380px; border-radius: 50%;
       background: radial-gradient(circle, rgba(255, 214, 10, 0.45) 0%, rgba(255, 59, 48, 0.18) 45%, rgba(0, 0, 0, 0) 70%); }
-    /* avatar: a still of Shauky from this video in a ringed badge */
-    #av { position: absolute; left: 360px; top: 380px; width: 360px; height: 360px; }
-    #av img { position: absolute; inset: 18px; width: 324px; height: 324px; border-radius: 50%; object-fit: cover; border: 8px solid #0f0f12; }
-    #ring { position: absolute; inset: 0; border-radius: 50%; background: #ffd60a; }
-    #dash { position: absolute; inset: -22px; overflow: visible; }
-    #badge { position: absolute; right: -14px; bottom: 18px; width: 92px; height: 92px; border-radius: 50%; background: #ff3b30; border: 6px solid #0f0f12;
+    /* avatar: Shauky's studio cutout, body inside the ring, head breaking out over the top */
+    #av { position: absolute; left: 0; top: 0; width: 1080px; height: 900px; }
+    #ring { position: absolute; left: 330px; top: 350px; width: 420px; height: 420px; border-radius: 50%; background: #ffd60a; }
+    #disc { position: absolute; left: 346px; top: 366px; width: 388px; height: 388px; border-radius: 50%; overflow: hidden;
+      background: radial-gradient(circle at 50% 35%, #ff6a3d 0%, #ff3b30 45%, #9e1b14 100%); }
+    #disc img { position: absolute; left: -92px; top: -76px; width: 540px; }
+    #top-clip { position: absolute; left: 0; top: 0; width: 1080px; height: 548px; overflow: hidden; }
+    #top-clip img { position: absolute; left: 254px; top: 290px; width: 540px; }
+    #dash { position: absolute; left: 308px; top: 328px; width: 464px; height: 464px; overflow: visible; }
+    #badge { position: absolute; left: 652px; top: 668px; width: 92px; height: 92px; border-radius: 50%; background: #ff3b30; border: 6px solid #0f0f12;
       display: flex; align-items: center; justify-content: center; }
     #badge svg { width: 54px; height: 54px; }
     .name { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; }
@@ -21,9 +25,7 @@
     #n2 { top: 868px; font-size: 156px; line-height: 1; color: #ffd60a; -webkit-text-stroke: 8px #0f0f12; paint-order: stroke fill;
       text-shadow: 10px 12px 0 #ff3b30; }
     .ch { display: inline-block; }
-    #n2 .wrap { position: relative; overflow: hidden; padding: 0 18px 22px; }
-    #shine { position: absolute; top: -10%; left: 0; width: 26%; height: 120%; transform: translateX(-200%) skewX(-18deg);
-      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%); mix-blend-mode: overlay; }
+    #n2 .wrap { position: relative; padding: 0 18px 22px; }
     #tag { top: 1060px; }
     #tag .t { font-size: 46px; line-height: 1; color: #fff; padding: 14px 26px 18px; background: #ff3b30; border: 7px solid #fff8e7; border-radius: 18px;
       box-shadow: 9px 10px 0 #ffd60a; transform: rotate(-2deg); --rx: 0px;
@@ -39,13 +41,14 @@
     <div id="rays"></div>
     <div id="glow"></div>
     <div id="av">
+      <svg id="dash" viewBox="0 0 464 464" aria-hidden="true"><circle cx="232" cy="232" r="224" fill="none" stroke="#ff3b30" stroke-width="8" stroke-dasharray="26 18" stroke-linecap="round"/></svg>
       <div id="ring"></div>
-      <svg id="dash" viewBox="0 0 404 404" aria-hidden="true"><circle cx="202" cy="202" r="196" fill="none" stroke="#ff3b30" stroke-width="8" stroke-dasharray="26 18" stroke-linecap="round"/></svg>
-      <img id="av-img" src="assets/img/shauky-avatar.jpg" alt="Shauky" />
+      <div id="disc"><img class="cut" src="assets/img/shauky-cutout.png" alt="Shauky" /></div>
+      <div id="top-clip"><img class="cut" src="assets/img/shauky-cutout.png" alt="" /></div>
       <div id="badge"><svg viewBox="0 0 54 54" aria-hidden="true"><path d="M27 6l6.2 13 14.3 1.7-10.5 9.8 2.8 14.1L27 37.6 14.2 44.6 17 30.5 6.5 20.7 20.8 19z" fill="#ffd60a" stroke="#0f0f12" stroke-width="3.5" stroke-linejoin="round"/></svg></div>
     </div>
     <div class="name" id="n1"><span class="ch">P</span><span class="ch">E</span><span class="ch">R</span><span class="ch">O</span><span class="ch">D</span><span class="ch">U</span><span class="ch">A</span></div>
-    <div class="name" id="n2"><div class="wrap"><span class="ch">S</span><span class="ch">H</span><span class="ch">A</span><span class="ch">U</span><span class="ch">K</span><span class="ch">Y</span><span id="shine"></span></div></div>
+    <div class="name" id="n2"><div class="wrap"><span class="ch">S</span><span class="ch">H</span><span class="ch">A</span><span class="ch">U</span><span class="ch">K</span><span class="ch">Y</span></div></div>
     <div class="name" id="tag"><div class="t">#PenjualKeretaTerhebat</div></div>
     <div class="name" id="cta"><div class="t">
       <svg viewBox="0 0 92 92" aria-hidden="true"><path d="M46 8C24 8 8 23 8 43c0 8 3 15 7 21l-5 19 20-6c5 3 10 4 16 4 22 0 38-16 38-37S68 8 46 8z" fill="#fff" stroke="#0f0f12" stroke-width="7" stroke-linejoin="round"/></svg>
@@ -60,18 +63,17 @@
     tl.fromTo("#rays", { rotation: 0, scale: 0.6 }, { rotation: 56, scale: 1, duration: 3.5, ease: "power1.out", immediateRender: true }, 0);
     tl.fromTo("#glow", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "power2.out", immediateRender: true }, 0.1);
     // avatar badge pops, rings spin
-    tl.fromTo("#av", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.42, ease: "back.out(2.2)", immediateRender: true }, 0.12);
+    tl.fromTo(["#ring", "#disc", "#dash"], { scale: 0 }, { scale: 1, duration: 0.36, ease: "back.out(2.2)", immediateRender: true }, 0.12);
     tl.fromTo("#dash", { rotation: 0 }, { rotation: 160, duration: 3.4, ease: "none", immediateRender: true }, 0.12);
-    tl.fromTo("#badge", { scale: 0, rotation: -90 }, { scale: 1, rotation: 12, duration: 0.3, ease: "back.out(3)", immediateRender: true }, 0.5);
+    tl.fromTo(".cut", { y: 260 }, { y: 0, duration: 0.5, ease: "back.out(1.6)", immediateRender: true }, 0.3);
+    tl.fromTo("#badge", { scale: 0, rotation: -90 }, { scale: 1, rotation: 12, duration: 0.3, ease: "back.out(3)", immediateRender: true }, 0.7);
     // name: PERODUA rises letter by letter, SHAUKY slams in letter by letter
     tl.fromTo("#n1 .ch", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "back.out(2)", stagger: 0.03, immediateRender: true }, 0.3);
     tl.fromTo("#n2 .ch", { scale: 2.6, opacity: 0, rotation: (i) => (i % 2 ? 14 : -14) }, { scale: 1, opacity: 1, rotation: 0, duration: 0.18, ease: "power4.in", stagger: 0.045, immediateRender: true }, 0.38);
     [10, -8, 6, -3, 0].forEach((y, i) => tl.to("#n2", { y, duration: 0.03, ease: "none" }, 0.83 + i * 0.03));
-    tl.set("#shine", { opacity: 0 }, 0);
-    [1.05, 2.3].forEach((t) => {
-      tl.fromTo("#shine", { xPercent: -200, opacity: 1 }, { xPercent: 560, duration: 0.6, ease: "power2.inOut", immediateRender: false }, t);
-      tl.set("#shine", { opacity: 0 }, t + 0.6);
-    });
+    // letter wave through SHAUKY on the hold
+    tl.to("#n2 .ch", { y: -18, duration: 0.14, ease: "power2.out", stagger: 0.05 }, 2.2);
+    tl.to("#n2 .ch", { y: 0, duration: 0.2, ease: "bounce.out", stagger: 0.05 }, 2.34);
     // hashtag stamp with a colour-split jitter, then confetti
     tl.fromTo("#tag .t", { scale: 2.2, opacity: 0, rotation: 10 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.14, ease: "power4.in", immediateRender: true }, 1.0);
     [9, -7, 5, -3, 0].forEach((v, i) => tl.set("#tag .t", { "--rx": v + "px" }, 1.14 + i * 0.033));
