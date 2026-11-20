@@ -379,50 +379,32 @@
 },
 {
 "id": "w63",
-"text": "nombor",
-"start": 20.4,
-"end": 20.57
+"text": "di",
+"start": 20.543,
+"end": 20.633
 },
 {
 "id": "w64",
-"text": "WhatsApp",
-"start": 20.67,
-"end": 21.09
+"text": "bawah,",
+"start": 20.633,
+"end": 21.113
 },
 {
 "id": "w65",
-"text": "saya",
-"start": 21.09,
-"end": 21.22
+"text": "InsyaAllah,",
+"start": 21.113,
+"end": 21.833
 },
 {
 "id": "w66",
-"text": "di",
-"start": 21.31,
-"end": 21.4
+"text": "Peace",
+"start": 21.833,
+"end": 22.093
 },
 {
 "id": "w67",
-"text": "bawah,",
-"start": 21.4,
-"end": 21.88
-},
-{
-"id": "w68",
-"text": "InsyaAllah,",
-"start": 21.88,
-"end": 22.6
-},
-{
-"id": "w69",
-"text": "Peace",
-"start": 22.6,
-"end": 22.86
-},
-{
-"id": "w70",
 "text": "yo!",
-"start": 22.86,
-"end": 23.1
+"start": 22.093,
+"end": 22.333
 }
 ]

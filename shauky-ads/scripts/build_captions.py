@@ -14,7 +14,7 @@ TOP_WINDOWS = [(4.55, 6.28)]      # lower frame is busy with the cover stickers:
 MUTE = [(6.28, 7.867)]            # the numbered problem list says these words ("macam ni" x3)
 BOTTOM_Y, TOP_Y = 1122, 282
 # group starts (word indices), chosen by phrase: 1-3 words, never across a cut into the top band
-STARTS = [0, 3, 6, 7, 9, 11, 13, 14, 17, 20, 22, 25, 28, 31, 33, 36, 37, 38, 41, 43, 45, 46, 48, 50, 52, 54, 55, 57, 59, 61, 63, 64, 66, 68, 69]
+STARTS = [0, 3, 6, 7, 9, 11, 13, 14, 17, 20, 22, 25, 28, 31, 33, 36, 37, 38, 41, 43, 45, 46, 48, 50, 52, 54, 55, 57, 59, 61, 63, 65, 66]
 groups = [W[a:b] for a, b in zip(STARTS, STARTS[1:] + [len(W)])]
 rows, js = [], []
 for gi, g in enumerate(groups):

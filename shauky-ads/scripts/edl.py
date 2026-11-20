@@ -14,7 +14,9 @@ K = [  # (src_in, src_out, words)
  (8.99, 9.98, "atau macam ni."),
  (10.55, 15.29, "Tapi kalau abang tak ada masalah macam ni, saya minta maaf banyak sangat-sangatnya."),
  (16.34, 23.55, "Saya nak bantu lima orang yang terawal sahaja sekarang ni. Jadi siapa yang nak memiliki kereta baru dengan rebate yang tak masuk akal,"),
- (23.80, 27.90, "boleh klik nombor WhatsApp saya di bawah, insyaAllah, peace yo!"),
+ (23.80, 24.40, "boleh klik"),
+ # "nombor WhatsApp saya" (24.40-25.16) is cut: the ad sends people to DM instead
+ (25.16, 27.90, "di bawah, insyaAllah, peace yo!"),
 ]
 fr = lambda x: round(round(x * 30) / 30, 4)
 segs = [(fr(a), fr(b), t) for a, b, t in K]

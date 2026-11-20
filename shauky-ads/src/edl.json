@@ -1,5 +1,5 @@
 {
- "duration": 23.9333,
+ "duration": 23.1666,
  "segments": [
   {
    "i": 0,
@@ -60,10 +60,18 @@
   {
    "i": 7,
    "src_start": 23.8,
-   "src_end": 27.9,
+   "src_end": 24.4,
    "start": 19.8333,
-   "end": 23.9333,
-   "text": "boleh klik nombor WhatsApp saya di bawah, insyaAllah, peace yo!"
+   "end": 20.4333,
+   "text": "boleh klik"
+  },
+  {
+   "i": 8,
+   "src_start": 25.1667,
+   "src_end": 27.9,
+   "start": 20.4333,
+   "end": 23.1666,
+   "text": "di bawah, insyaAllah, peace yo!"
   }
  ]
 }

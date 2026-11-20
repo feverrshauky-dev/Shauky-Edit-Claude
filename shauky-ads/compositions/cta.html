@@ -5,15 +5,15 @@
     #slot { font-size: 34px; line-height: 1; padding: 9px 18px 11px; color: #fff; background: #ff3b30; border: 6px solid #0f0f12; border-radius: 14px; transform: rotate(-2deg); }
     #btn {
       position: relative; display: flex; align-items: center; gap: 20px; padding: 18px 38px 22px 26px;
-      background: #25d366; border: 8px solid #0f0f12; border-radius: 999px; box-shadow: 11px 13px 0 #0f0f12;
+      background: #ffd60a; border: 8px solid #0f0f12; border-radius: 999px; box-shadow: 11px 13px 0 #0f0f12;
     }
-    #btn-t { font-size: 54px; line-height: 1; color: #fff; -webkit-text-stroke: 5px #0f0f12; paint-order: stroke fill; white-space: nowrap; }
+    #btn-t { font-size: 48px; line-height: 1; color: #0f0f12; white-space: nowrap; }
     #bubble { width: 78px; height: 78px; flex: none; }
     #ring { position: absolute; left: 50%; top: 50%; width: 160px; height: 160px; margin: -80px 0 0 -80px; border-radius: 50%; border: 10px solid #fff8e7; opacity: 0; }
     #btn { overflow: hidden; }
     #shine { position: absolute; top: -30%; left: 0; width: 30%; height: 160%; transform: translateX(-200%) skewX(-18deg);
       background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%); }
-    #down { display: flex; align-items: center; gap: 14px; font-size: 34px; line-height: 1; color: #0f0f12; padding: 12px 22px 14px; background: #ffd60a; border: 6px solid #0f0f12; border-radius: 16px; box-shadow: 7px 8px 0 #0f0f12; }
+    #down { display: flex; align-items: center; gap: 14px; font-size: 34px; line-height: 1; color: #0f0f12; padding: 12px 22px 14px; background: #fff8e7; border: 6px solid #0f0f12; border-radius: 16px; box-shadow: 7px 8px 0 #0f0f12; }
     .chev { width: 34px; height: 34px; }
     #peace { font-size: 46px; line-height: 1; padding: 11px 20px 15px; color: #0f0f12; background: #fff8e7; border: 7px solid #0f0f12; border-radius: 18px; box-shadow: 8px 9px 0 #0f0f12; }
   </style>
@@ -25,7 +25,7 @@
           <path d="M46 8C24 8 8 23 8 43c0 8 3 15 7 21l-5 19 20-6c5 3 10 4 16 4 22 0 38-16 38-37S68 8 46 8z" fill="#fff" stroke="#0f0f12" stroke-width="6" stroke-linejoin="round"/>
           <circle cx="30" cy="44" r="5.5" fill="#0f0f12"/><circle cx="46" cy="44" r="5.5" fill="#0f0f12"/><circle cx="62" cy="44" r="5.5" fill="#0f0f12"/>
         </svg>
-        <span id="btn-t">WHATSAPP SAYA</span>
+        <span id="btn-t">DM SAYA SEKARANG</span>
         <span id="ring"></span><span id="shine"></span>
       </div>
     </div>
@@ -48,17 +48,17 @@
     tl.to("#btn", { scale: 0.92, duration: 0.06, ease: "power2.in" }, 20.15 - T0);
     tl.to("#btn", { scale: 1, duration: 0.3, ease: "back.out(3)" }, 20.21 - T0);
     tl.fromTo("#ring", { scale: 0.3, opacity: 0.9 }, { scale: 3.2, opacity: 0, duration: 0.5, ease: "power2.out", immediateRender: true }, 20.17 - T0);
-    tl.fromTo("#bubble", { rotation: 0 }, { rotation: -12, duration: 0.1, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 20.7 - T0);
+    tl.fromTo("#bubble", { rotation: 0 }, { rotation: -12, duration: 0.1, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 20.5 - T0);
     // "di bawah": pointer to the ad's button below
-    tl.fromTo("#r-down", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "back.out(2.4)", immediateRender: true }, 21.3 - T0);
-    [21.55, 21.85, 22.15].forEach((t) => {
+    tl.fromTo("#r-down", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "back.out(2.4)", immediateRender: true }, 20.53 - T0);
+    [20.78, 21.08, 21.38].forEach((t) => {
       tl.to(".chev", { y: 10, duration: 0.12, ease: "power2.out" }, t - T0);
       tl.to(".chev", { y: 0, duration: 0.15, ease: "power2.in" }, t + 0.12 - T0);
     });
-    tl.to("#r-down", { opacity: 0, y: 20, duration: 0.14, ease: "power2.in" }, 22.46 - T0);
-    tl.fromTo("#r-peace", { scale: 0, rotation: 25 }, { scale: 1, rotation: 7, duration: 0.26, ease: "back.out(3)", immediateRender: true }, 22.62 - T0);
-    tl.to("#btn", { scale: 1.04, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 23.0 - T0);
-    [20.7, 21.9, 23.2].forEach((t) => tl.fromTo("#shine", { xPercent: -200 }, { xPercent: 480, duration: 0.55, ease: "power2.inOut", immediateRender: false }, t - T0));
+    tl.to("#r-down", { opacity: 0, y: 20, duration: 0.14, ease: "power2.in" }, 21.7 - T0);
+    tl.fromTo("#r-peace", { scale: 0, rotation: 25 }, { scale: 1, rotation: 7, duration: 0.26, ease: "back.out(3)", immediateRender: true }, 21.85 - T0);
+    tl.to("#btn", { scale: 1.04, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 22.25 - T0);
+    [20.6, 21.5, 22.5].forEach((t) => tl.fromTo("#shine", { xPercent: -200 }, { xPercent: 480, duration: 0.55, ease: "power2.inOut", immediateRender: false }, t - T0));
     window.__timelines["cta"] = tl;
   </script>
 </template>
